@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:indeterminate="true"
+    android:indeterminateDuration="500"
+    android:layout_marginTop="-8dp"
+    android:layout_marginBottom="-8dp"
+    android:layout_alignParentStart="false"
+    android:layout_alignParentLeft="false"
+    style="?android:attr/progressBarStyleHorizontal">
+
+</ProgressBar>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardview_spacing">5dp</dimen>
+    <dimen name="defaultPadding">10dp</dimen>
+    <dimen name="textTitle">34sp</dimen>
+    <dimen name="textButton">16sp</dimen>
+
+    <dimen name="sheet_text_scrim_height_top">50sp</dimen>
+    <dimen name="sheet_text_scrim_height_bottom">80dp</dimen>
+</resources>

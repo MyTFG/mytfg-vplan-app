@@ -4,7 +4,7 @@
     <string name="drawer_close">Close Navigation</string>
 
     <!-- Main Menu -->
-    <string name="menutitle_start">Upcoming</string>
+    <string name="menutitle_start">Demnächst</string>
     <string name="menutitle_discover">Discover</string>
     <string name="menutitle_movies">Movies</string>
     <string name="menutitle_series">TV Shows</string>
@@ -14,9 +14,9 @@
     <string name="menutitle_watchlist">Watchlist</string>
     <string name="menutitle_favorites">Favorites</string>
     <string name="menutitle_account">My Account</string>
-    <string name="menutitle_about">About this App</string>
+    <string name="menutitle_about">Über diese App</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
-    <string name="about_text">BLUBB</string>
+    <string name="about_text">Diese App nutzt die MyTFG API, ist kein zertifiziertes Tool des API Betreibers. BLUBB</string>
 </resources>

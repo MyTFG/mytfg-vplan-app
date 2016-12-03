@@ -1,0 +1,52 @@
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="@dimen/defaultPadding"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_cardview_tmdb"
+            android:padding="@dimen/cardview_spacing"
+            android:layout_marginBottom="@dimen/defaultPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+
+                <TextView
+                    android:id="@+id/about_tmdb_title"
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_title" />
+                <TextView
+                    android:id="@+id/about_tmdb_attribution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_text" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_gravity="end"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="@dimen/cardview_default_radius"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/mytfg"
+                    android:layout_marginRight="@dimen/cardview_default_radius" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,11 +1,44 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="AppTheme.Base" />
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme.Toolbar.Base" />
+
+    <style name="AppTheme.Toolbar.Base" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/colorIcons</item>
+    </style>
+
+    <style name="AppTheme.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/colorIcons</item>
+        <item name="android:textSize">@dimen/textButton</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AppTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+
     </style>
 
 </resources>
