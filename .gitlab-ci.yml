@@ -1,0 +1,6 @@
+before_script:  
+  - export ANDROID_HOME="/opt/android-sdk"
+dev:  
+  script:
+    - chmod +x gradlew
+    - ./gradlew assembleDebug
