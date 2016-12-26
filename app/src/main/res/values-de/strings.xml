@@ -3,17 +3,10 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
-    <!-- Main Menu -->
-    <string name="menutitle_start">Demnächst</string>
-    <string name="menutitle_discover">Discover</string>
-    <string name="menutitle_movies">Movies</string>
-    <string name="menutitle_series">TV Shows</string>
-    <string name="menutitle_persons">Persons</string>
-    <string name="menutitle_search">Search</string>
-    <string name="menutitle_statistics">Statistics</string>
-    <string name="menutitle_watchlist">Watchlist</string>
-    <string name="menutitle_favorites">Favorites</string>
-    <string name="menutitle_account">My Account</string>
+    <!-- VPlan Menu -->
+    <string name="menutitle_home">Start</string>
+    <string name="menutitle_plan">VPlan</string>
+    <string name="menutitle_account">Mein Account</string>
     <string name="menutitle_about">Über diese App</string>
 
     <!-- ABOUT -->
