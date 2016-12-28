@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = getSupportFragmentManager().getFragment(savedInstanceState,
                         "fragmentInstanceSaved");
             } else {
-                fragment = new StartFragment();
+                fragment = new PlanFragment();
             }
         }
         navi.navigate(fragment, R.id.fragment_container);
