@@ -80,6 +80,7 @@ public class Vplan extends MytfgObject {
         this.absent_teachers = new LinkedList<>();
         try {
             JSONObject plan = result.getJSONObject("plan");
+            this.day_str = plan.getString("day_str");
             JSONArray entries = plan.getJSONArray("entries");
             for (int i = 0; i < entries.length(); ++i) {
                 VplanEntry vplanEntry = new VplanEntry();
@@ -91,6 +92,14 @@ public class Vplan extends MytfgObject {
             return false;
         }
         return true;
+    }
+
+    public String getDayString() {
+        return this.day_str;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     public List<VplanEntry> getEntries() {

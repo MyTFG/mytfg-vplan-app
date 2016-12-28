@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class PlanLogic implements FragmentHolderLogic {
 
     @Override
     public void init(final Context context, View view, Bundle args) {
+        this.context = context;
         recyclerView = (RecyclerView) view.findViewById(R.id.base_recylcerview);
         adapter = new RecylcerPlanAdapter(context);
         recyclerView.setAdapter(adapter);
@@ -85,5 +87,11 @@ public class PlanLogic implements FragmentHolderLogic {
             adapter.addItem(entry);
         }
         adapter.notifyDataSetChanged();
+        TabLayout tabLayout = ((MainActivity)context).getToolbarManager().getTabs();
+        if (this.plan.getDay().equals("today")) {
+            tabLayout.getTabAt(0).setText(plan.getDayString());
+        } else {
+            tabLayout.getTabAt(1).setText(plan.getDayString());
+        }
     }
 }
