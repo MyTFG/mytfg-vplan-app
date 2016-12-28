@@ -88,10 +88,14 @@ public class PlanLogic implements FragmentHolderLogic {
         }
         adapter.notifyDataSetChanged();
         TabLayout tabLayout = ((MainActivity)context).getToolbarManager().getTabs();
+        TabLayout.Tab tab;
         if (this.plan.getDay().equals("today")) {
-            tabLayout.getTabAt(0).setText(plan.getDayString());
+            tab = tabLayout.getTabAt(0);
         } else {
-            tabLayout.getTabAt(1).setText(plan.getDayString());
+            tab = tabLayout.getTabAt(1);
+        }
+        if (tab != null) {
+            tab.setText(plan.getDayString());
         }
     }
 }

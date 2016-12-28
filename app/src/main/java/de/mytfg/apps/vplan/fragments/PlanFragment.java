@@ -6,6 +6,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -47,7 +49,16 @@ public class PlanFragment extends Fragment {
         today = new PlanLogic(todayPlan);
         tomorrow = new PlanLogic(tomorrowPlan);
 
+        setHasOptionsMenu(true);
+
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.plan_details_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

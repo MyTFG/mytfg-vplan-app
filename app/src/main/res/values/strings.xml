@@ -31,6 +31,8 @@
     <string name="plan_header">Plan:</string>
     <string name="subst_header">Substitution:</string>
     <string name="comment_header">Comment:</string>
+    <string name="plan_show_marquee">Show announcements</string>
+    <string name="plan_show_absent">Show absent teachers</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>

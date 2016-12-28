@@ -51,6 +51,8 @@
     <string name="plan_header">Plan:</string>
     <string name="subst_header">Vertretung:</string>
     <string name="comment_header">Bemerkung:</string>
+    <string name="plan_show_marquee">Mitteilungen anzeigen</string>
+    <string name="plan_show_absent">Abwesende Lehrer anzeigen</string>
 
     <!-- ACCOUNT -->
     <string name="account_info">Sie sind angemeldet.</string>
