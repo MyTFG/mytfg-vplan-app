@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class PlanFragment extends Fragment {
     private Vplan todayPlan;
     private Vplan tomorrowPlan;
     private MainActivity context;
+    private ViewPagerAdapter viewPagerAdapter;
 
 
     public PlanFragment() {
@@ -56,46 +58,39 @@ public class PlanFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
 
-        // Create Pager elements
-        if (today == null || tomorrow == null) {
+        // Create Pager elements if not existent
+        if (today == null || tomorrow == null || viewPagerAdapter == null) {
             todayPlan = new Vplan(context, "today");
             tomorrowPlan = new Vplan(context, "tomorrow");
 
             today = new PlanLogic(todayPlan);
             tomorrow = new PlanLogic(tomorrowPlan);
+
+
+            viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+
+            viewPagerAdapter.addFragment(
+                    FragmentHolder.newInstance(
+                            R.layout.fragment_base_list,
+                            today
+                    ),
+                    getResources().getString(R.string.plan_today)
+            );
+            viewPagerAdapter.addFragment(
+                    FragmentHolder.newInstance(
+                            R.layout.fragment_base_list,
+                            tomorrow
+                    ),
+                    getResources().getString(R.string.plan_tomorrow)
+            );
+            viewPager.setAdapter(viewPagerAdapter);
         }
-
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
-
-        viewPagerAdapter.addFragment(
-
-                FragmentHolder.newInstance(
-                        R.layout.fragment_base_list,
-                        today
-                ),
-                getResources().getString(R.string.plan_today)
-        );
-        viewPagerAdapter.addFragment(
-                FragmentHolder.newInstance(
-                        R.layout.fragment_base_list,
-                        tomorrow
-                ),
-                getResources().getString(R.string.plan_tomorrow)
-        );
-        viewPager.setAdapter(viewPagerAdapter);
 
         TabLayout tabLayout = context.getToolbarManager().getTabs();
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
-    }
-
-    private void openUrl(String url) {
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
     }
 }

@@ -33,6 +33,9 @@ public class Vplan extends MytfgObject {
     private String marquee;
     private List<Pair<String, String>> absent_teachers = new LinkedList<>();
 
+    private int lastCode;
+    private boolean loaded;
+
     /**
      * Instanciates a new Vplan
      * @param day The day to use when using the <code>load</code>-method.
@@ -52,7 +55,9 @@ public class Vplan extends MytfgObject {
         api.call("api_vplan_get", params, new ApiCallback() {
             @Override
             public void callback(JSONObject result, int responseCode) {
+                lastCode = responseCode;
                 if (responseCode == 200) {
+                    loaded = true;
                     parse(result);
                     callback.callback(true);
                 } else {
@@ -60,6 +65,14 @@ public class Vplan extends MytfgObject {
                 }
             }
         });
+    }
+
+    public int getLastCode() {
+        return this.lastCode;
+    }
+
+    public boolean isLoaded() {
+        return loaded;
     }
 
     private boolean parse(JSONObject result) {

@@ -4,5 +4,10 @@
     android:layout_gravity="bottom"
     app:tabMode="fixed"
     app:tabGravity="fill"
+    android:theme="@style/AppTheme"
+    android:background="@color/colorPrimaryDark"
+    app:tabTextColor="@color/colorSecondaryText"
+    app:tabSelectedTextColor="@color/colorIcons"
+    app:tabIndicatorColor="@color/colorAccent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android" />

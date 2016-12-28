@@ -15,6 +15,11 @@
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
 
+    <!-- API CODES -->
+    <string name="api_offline">Keine Internet Verbindung</string>
+    <string name="api_noauth">Keine Berechtigung</string>
+    <string name="api_serverfault">Interner Server Fehler</string>
+
     <!-- LOGIN -->
     <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
         müssen Sie sich anmelden.</string>

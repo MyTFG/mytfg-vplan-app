@@ -32,6 +32,11 @@
     <string name="subst_header">Substitution:</string>
     <string name="comment_header">Comment:</string>
 
+    <!-- API CODES -->
+    <string name="api_offline">No Internet connection</string>
+    <string name="api_noauth">No permissions to request the content</string>
+    <string name="api_serverfault">Internal Server error</string>
+
     <!-- LOGIN -->
     <string name="login_text">To use this App and all its features you have to login first.</string>
     <string name="login_action">Login</string>
