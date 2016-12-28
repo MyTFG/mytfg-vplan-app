@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringDef;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -43,10 +44,7 @@ public class AccountFragment extends Fragment {
         String username = api.getUsername();
         String device = api.getStoredDevice();
         long expirets = api.getExpire();
-        Timestamp stamp = new Timestamp(expirets * 1000);
-        Date date = new Date(stamp.getTime());
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        String expire = df.format(date);
+        String expire = api.getExpireString();
 
         TextView title = (TextView) view.findViewById(R.id.account_name);
         TextView tv_username = (TextView) view.findViewById(R.id.account_info_username);

@@ -34,7 +34,35 @@
                     android:textSize="@dimen/textDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/home_login_status"
                     android:text="@string/home_status_not_loggedin" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_spacing"
+            android:layout_marginBottom="@dimen/defaultPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NEWS" />
+                <TextView
+                    android:textSize="@dimen/textDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Display news or other junk here? ;)" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

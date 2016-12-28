@@ -27,6 +27,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
@@ -114,6 +118,13 @@ public class MyTFGApi {
     public long getExpire() {
         SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getLong("expire", 0);
+    }
+
+    public String getExpireString() {
+        Timestamp stamp = new Timestamp(getExpire() * 1000);
+        Date date = new Date(stamp.getTime());
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        return df.format(date);
     }
 
     /**

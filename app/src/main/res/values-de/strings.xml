@@ -39,9 +39,7 @@
         Sie sind derzeit nicht eingeloggt.\nKlicken Sie hier, um Ihre Anmeldung zu verwalten.
     </string>
     <string name="home_status_loggedin">
-        Sie sind derzeit als %1$s eingeloggt.\n
-        Ihr Login ist gültig bis %2$s.\n
-        Klicken Sie hier, um Ihre Anmeldung zu verwalten.
+        Sie sind derzeit als %1$s eingeloggt.\nIhr Login ist gültig bis %2$s.
     </string>
     <string name="home_status_action_logout">Abmelden</string>
     <string name="home_status_action_login">Anmelden</string>
