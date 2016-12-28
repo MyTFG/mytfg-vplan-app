@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.sql.Timestamp;
@@ -28,9 +31,9 @@ public class AccountFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_account, container, false);
-        MainActivity context = (MainActivity)this.getActivity();
+        final MainActivity context = (MainActivity)this.getActivity();
         context.getToolbarManager()
                 .setTitle(getString(R.string.menutitle_account))
                 .setExpandable(true, true)
@@ -53,6 +56,24 @@ public class AccountFragment extends Fragment {
         tv_username.setText(String.format(getString(R.string.account_info_username), username));
         tv_device.setText(String.format(getString(R.string.account_info_device), device));
         tv_expire.setText(String.format(getString(R.string.account_info_expire), expire));
+
+        Button logoutbtn = (Button) view.findViewById(R.id.logout_button);
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyTFGApi api = new MyTFGApi(context);
+                api.logout(false);
+
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout,
+                                getString(R.string.account_logged_out),
+                                Snackbar.LENGTH_LONG);
+                snackbar.show();
+                context.getNavi().clear();
+                context.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
+            }
+        });
 
         return view;
     }

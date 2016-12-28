@@ -44,6 +44,10 @@ public class LoginFragment extends Fragment {
                 .setImage(R.mipmap.front)
                 .setTabs(false);
 
+        MyTFGApi api = new MyTFGApi(context);
+        EditText username = (EditText) view.findViewById(R.id.login_username);
+        username.setText(api.getUsername());
+
         // Set Login Button listener
         Button loginButton = (Button) view.findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +82,7 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void callback(JSONObject result, int responseCode) {
                             dialog.dismiss();
-                            String snackText = "";
+                            String snackText;
                             if (responseCode == HttpsURLConnection.HTTP_OK) {
                                 // Login worked
                                 snackText = getString(R.string.login_successful);
@@ -90,7 +94,7 @@ public class LoginFragment extends Fragment {
                                     long expire = result.getLong("expires");
                                     api.saveLogin(uname, token, device, expire);
                                     context.getNavi().clear();
-                                    context.getNavi().navigate(new StartFragment(), R.id.fragment_container);
+                                    context.getNavi().navigate(new PlanFragment(), R.id.fragment_container);
                                 } catch (JSONException ex) {
                                     snackText = getString(R.string.login_badresponse);
                                 }

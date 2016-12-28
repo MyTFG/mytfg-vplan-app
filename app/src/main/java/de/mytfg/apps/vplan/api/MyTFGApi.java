@@ -134,6 +134,24 @@ public class MyTFGApi {
     }
 
     /**
+     * Deletes authentication information from the device.
+     * @param deleteUsername Specifies if the username should be deleted, too
+     */
+    public void logout(boolean deleteUsername) {
+        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
+        preferences.edit()
+                .remove("token")
+                .remove("device")
+                .remove("expire")
+                .apply();
+        if (deleteUsername) {
+            preferences.edit()
+                    .remove("username")
+                    .apply();
+        }
+    }
+
+    /**
      * Sends a request to the MyTFG API
      * @param apiFunction The URL for the API function
      * @param params Parameters to pass

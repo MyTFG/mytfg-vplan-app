@@ -55,6 +55,7 @@
     <string name="account_info_device"><b>Device-Id</b>: %1$s</string>
     <string name="account_info_expire">Your login will expire at %1$s</string>
     <string name="logout_action">Logout</string>
+    <string name="account_logged_out">You were logged out</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>

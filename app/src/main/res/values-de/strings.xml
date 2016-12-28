@@ -60,6 +60,7 @@
     <string name="account_info_device"><b>Geräte-ID</b>: %1$s</string>
     <string name="account_info_expire">Ihr Login ist gültig bis %1$s</string>
     <string name="logout_action">Abmelden</string>
+    <string name="account_logged_out">Sie wurden ausgeloggt</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
