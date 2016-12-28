@@ -1,14 +1,10 @@
 package de.mytfg.apps.vplan.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +15,6 @@ import de.mytfg.apps.vplan.adapters.FragmentHolder;
 import de.mytfg.apps.vplan.adapters.ViewPagerAdapter;
 import de.mytfg.apps.vplan.logic.PlanLogic;
 import de.mytfg.apps.vplan.objects.Vplan;
-import de.mytfg.apps.vplan.toolbar.ToolbarManager;
 
 public class PlanFragment extends Fragment {
     private View view;
