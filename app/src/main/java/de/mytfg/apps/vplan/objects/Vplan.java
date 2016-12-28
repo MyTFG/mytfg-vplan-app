@@ -30,8 +30,9 @@ public class Vplan extends MytfgObject {
     private String cls_string;
     private String day_str;
     private String changed;
-    private String marquee;
+    private List<String> marquee = new LinkedList<>();
     private List<Pair<String, String>> absent_teachers = new LinkedList<>();
+    private List<String> absent_strings = new LinkedList<>();
 
     private int lastCode;
     private boolean loaded;
@@ -77,7 +78,9 @@ public class Vplan extends MytfgObject {
 
     private boolean parse(JSONObject result) {
         this.entries = new LinkedList<>();
+        this.marquee = new LinkedList<>();
         this.absent_teachers = new LinkedList<>();
+        this.absent_strings = new LinkedList<>();
         try {
             JSONObject plan = result.getJSONObject("plan");
             this.day_str = plan.getString("day_str");
@@ -87,6 +90,18 @@ public class Vplan extends MytfgObject {
                 vplanEntry.load(this, entries.getJSONObject(i));
                 this.entries.add(vplanEntry);
             }
+            JSONArray marquee = plan.getJSONArray("marquee");
+            for (int i = 0; i < marquee.length(); ++i) {
+                this.marquee.add(marquee.getString(i));
+            }
+            JSONArray absent = plan.getJSONArray("absent_teachers");
+            JSONArray absentlessons = plan.getJSONArray("absent_lessons");
+            for (int i = 0; i < absent.length(); ++i) {
+                Pair<String, String> p = new Pair<>(absent.getString(i), absentlessons.getString(i));
+                this.absent_teachers.add(p);
+                this.absent_strings.add(p.first + ": " + p.second);
+            }
+            changed = plan.getString("changed");
         } catch (JSONException ex) {
             ex.printStackTrace();
             return false;
@@ -100,6 +115,18 @@ public class Vplan extends MytfgObject {
 
     public String getDay() {
         return day;
+    }
+
+    public List<String> getMarquee() {
+        return marquee;
+    }
+
+    public List<String> getAbsentStrings() {
+        return absent_strings;
+    }
+
+    public String getChanged() {
+        return changed;
     }
 
     public List<VplanEntry> getEntries() {

@@ -53,6 +53,11 @@
     <string name="comment_header">Bemerkung:</string>
     <string name="plan_show_marquee">Mitteilungen anzeigen</string>
     <string name="plan_show_absent">Abwesende Lehrer anzeigen</string>
+    <string name="plan_absent">Abwesende Lehrer</string>
+    <string name="plan_show_time">Zeige letzte Aktualisierung</string>
+    <string name="plan_marquee">Mitteilungen</string>
+    <string name="plan_time">Letzte Aktualisierung</string>
+    <string name="plan_not_loaded">Plan noch nicht geladen</string>
 
     <!-- ACCOUNT -->
     <string name="account_info">Sie sind angemeldet.</string>
@@ -66,4 +71,9 @@
     <string name="about_title">MyTFG VPlan</string>
     <string name="about_text">Diese App nutzt die MyTFG API, ist jedoch kein zertifiziertes Tool des API Betreibers.
         Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.</string>
+    <string name="about_opensource">Open Source</string>
+    <string name="about_opensource_text">Diese App ist Teil des MyTFG Open Source Projekts.
+        Der Quellcode kann auf Github eingesehen werden.
+        Die kommerzielle Verbreitung dieser App ist untersagt.
+    </string>
 </resources>

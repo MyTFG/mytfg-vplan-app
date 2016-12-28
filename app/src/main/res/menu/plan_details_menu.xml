@@ -9,4 +9,8 @@
         android:icon="@drawable/ic_show_marquee"
         android:title="@string/plan_show_marquee"
         app:showAsAction="ifRoom" />
+    <item android:id="@+id/show_time"
+        android:icon="@drawable/ic_show_time"
+        android:title="@string/plan_show_time"
+        app:showAsAction="ifRoom" />
 </menu>

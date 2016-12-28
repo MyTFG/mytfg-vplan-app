@@ -2,12 +2,16 @@ package de.mytfg.apps.vplan.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -59,6 +63,65 @@ public class PlanFragment extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.plan_details_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        TabLayout tabLayout = context.getToolbarManager().getTabs();
+        Vplan plan = tabLayout.getSelectedTabPosition() == 0 ? todayPlan : tomorrowPlan;
+        if (!plan.isLoaded()) {
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout,
+                            getString(R.string.plan_not_loaded),
+                            Snackbar.LENGTH_LONG);
+            snackbar.show();
+            return true;
+        }
+        switch (item.getItemId()) {
+            case R.id.show_absent:
+                AlertDialog.Builder absentDialog = new AlertDialog.Builder(context);
+                absentDialog.setTitle(getString(R.string.plan_absent));
+                String absent = null;
+                for (String msg : plan.getAbsentStrings()) {
+                    if (absent == null) {
+                        absent = msg;
+                    } else {
+                        absent += "\n\n" + msg;
+                    }
+                }
+                absentDialog.setMessage(absent);
+                absentDialog.setIcon(R.drawable.ic_menu_absent);
+                AlertDialog abs = absentDialog.create();
+                abs.show();
+                return true;
+            case R.id.show_marquee:
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle(getString(R.string.plan_marquee));
+                String message = null;
+                for (String msg : plan.getMarquee()) {
+                    if (message == null) {
+                        message = msg;
+                    } else {
+                        message += "\n" + msg;
+                    }
+                }
+                alertDialog.setMessage(message);
+                alertDialog.setIcon(R.drawable.ic_menu_about);
+                AlertDialog alert = alertDialog.create();
+                alert.show();
+                return true;
+            case R.id.show_time:
+                AlertDialog.Builder timeDialog = new AlertDialog.Builder(context);
+                timeDialog.setTitle(getString(R.string.plan_time));
+                String time = plan.getChanged();
+                timeDialog.setMessage(time);
+                timeDialog.setIcon(R.drawable.ic_menu_clock);
+                AlertDialog timeDlg = timeDialog.create();
+                timeDlg.show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

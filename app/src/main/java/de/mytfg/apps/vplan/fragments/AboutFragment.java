@@ -27,6 +27,7 @@ import  de.mytfg.apps.vplan.toolbar.ToolbarManager;
 
 public class AboutFragment extends Fragment {
     private View view;
+    private final String githubUrl = "https://github.com/MyTFG/mytfg-vplan-app";
 
 
     public AboutFragment() {
@@ -42,13 +43,15 @@ public class AboutFragment extends Fragment {
                 .setExpandable(true, true)
                 .setTabs(false);
 
-        /*Vplan plan = new Vplan(getContext(), "today");
-        plan.load(new SuccessCallback() {
+        ImageView github = (ImageView) view.findViewById(R.id.github);
+        github.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void callback(boolean success) {
-
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(githubUrl));
+                startActivity(i);
             }
-        });*/
+        });
 
         return view;
     }
@@ -56,11 +59,5 @@ public class AboutFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-    }
-
-    private void openUrl(String url) {
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
     }
 }

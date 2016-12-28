@@ -33,6 +33,11 @@
     <string name="comment_header">Comment:</string>
     <string name="plan_show_marquee">Show announcements</string>
     <string name="plan_show_absent">Show absent teachers</string>
+    <string name="plan_show_time">Show Update time</string>
+    <string name="plan_absent">Absent teachers</string>
+    <string name="plan_marquee">Announcements</string>
+    <string name="plan_time">Last Update</string>
+    <string name="plan_not_loaded">Plan not loaded</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>
@@ -61,5 +66,7 @@
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
-    <string name="about_text">BLUBB</string>
+    <string name="about_text">This App uses the MyTFG API. All rights reserved.</string>
+    <string name="about_opensource">Open Source</string>
+    <string name="about_opensource_text">This App is part of the MyTFG Open Source Project.</string>
 </resources>
