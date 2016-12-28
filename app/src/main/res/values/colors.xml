@@ -7,7 +7,7 @@
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
     <color name="colorDivider">#B6B6B6</color>
-    <color name="colorAccent">#BB061D</color>
+    <color name="colorAccent">#FF7400</color>
 
     <color name="translucent_scrim_top">#AA000000</color>
     <color name="translucent_scrim_top_center">#66000000</color>

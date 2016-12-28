@@ -1,5 +1,6 @@
 package de.mytfg.apps.vplan.activities;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,10 +18,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import de.mytfg.apps.vplan.R;
+import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
+import de.mytfg.apps.vplan.fragments.AccountFragment;
+import de.mytfg.apps.vplan.fragments.LoginFragment;
+import de.mytfg.apps.vplan.fragments.PlanFragment;
+import de.mytfg.apps.vplan.fragments.StartFragment;
 import de.mytfg.apps.vplan.navigation.Navigation;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
 
@@ -28,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private Navigation navi;
-    public static Context context;
     // private ApiManager apiManager;
     public static SharedPreferences sharedPreferences;
+    private ToolbarManager toolbarManager;
+    private MainActivity context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,28 +47,27 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getPreferences(MODE_PRIVATE);
 
-        // apiManager = ApiManager.getInstance();
-
-        context = this;
-
-        //TmdbApi.init((ProgressBar) findViewById(R.id.loadingBar));
-
-        // ToolbarManager.init(this, drawerLayout);
-
         navi = new Navigation(this);
+        context = this;
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        ToolbarManager.init(this, drawerLayout);
+        toolbarManager = new ToolbarManager(this, drawerLayout);
+        toolbarManager.setExpandable(false, false);
 
         navigationView.inflateMenu(R.menu.navigation_menu);
 
-        /*
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                MyTFGApi api = new MyTFGApi(context);
+                if (!api.isLoggedIn()) {
+                    navi.clear();
+                    navi.navigate(new LoginFragment(), R.id.fragment_container);
+                    return true;
+                }
                 switch (item.getItemId()) {
                     default:
                         return false;
@@ -68,33 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         navi.clear();
                         navi.navigate(new StartFragment(), R.id.fragment_container);
                         return true;
-                    case R.id.mainmenu_discover:
+                    case R.id.mainmenu_plan:
                         navi.clear();
-                        navi.navigate(new DiscoverFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_movies:
-                        navi.clear();
-                        navi.navigate(new MoviesFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_series:
-                        navi.clear();
-                        navi.navigate(new TvShowsFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_persons:
-                        navi.clear();
-                        navi.navigate(new PersonsFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_search:
-                        navi.clear();
-                        navi.navigate(new SearchFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_watchlist:
-                        navi.clear();
-                        navi.navigate(new WatchlistFragment(), R.id.fragment_container);
-                        return true;
-                    case R.id.mainmenu_favorites:
-                        navi.clear();
-                        navi.navigate(new FavoritesFragment(), R.id.fragment_container);
+                        navi.navigate(new PlanFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_account:
                         navi.clear();
@@ -106,15 +89,21 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                 }
             }
-        });*/
+        });
 
 
         Fragment fragment;
-        if (savedInstanceState != null) {
-            fragment = getSupportFragmentManager().getFragment(savedInstanceState,
-                    "fragmentInstanceSaved");
+
+        MyTFGApi api = new MyTFGApi(context);
+        if (!api.isLoggedIn()) {
+            fragment = new LoginFragment();
         } else {
-            fragment = new AboutFragment();
+            if (savedInstanceState != null) {
+                fragment = getSupportFragmentManager().getFragment(savedInstanceState,
+                        "fragmentInstanceSaved");
+            } else {
+                fragment = new StartFragment();
+            }
         }
         navi.navigate(fragment, R.id.fragment_container);
 
@@ -146,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // getMenuInflater().inflate(R.menu.cast, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public ToolbarManager getToolbarManager() {
+        return toolbarManager;
+    }
+
+    public Navigation getNavi() {
+        return this.navi;
     }
 }
 

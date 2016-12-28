@@ -3,11 +3,53 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
+    <!-- Dialogs -->
+    <string name="please_wait">Please wait</string>
+    <string name="login_process">Logging in&#8230;</string>
+    <string name="login_empty">Please enter username and password</string>
+
     <!-- VPlan Menu -->
     <string name="menutitle_home">Home</string>
     <string name="menutitle_plan">Plan</string>
+    <string name="menutitle_login">Login</string>
     <string name="menutitle_account">My Account</string>
     <string name="menutitle_about">About this App</string>
+
+    <!-- HOME -->
+    <string name="home_status_title">MyTFG VPlan</string>
+    <string name="home_status_not_loggedin">You are currently not logged in.\nTap here to manager your login.</string>
+    <string name="home_status_loggedin">
+        You are currently logged in as %1$s.\nYour login will expire at %2$s.\nTap here to manage your login.
+    </string>
+    <string name="home_status_action_logout">Logout</string>
+    <string name="home_status_action_login">Login</string>
+
+    <!-- PLAN -->
+    <string name="plan_failed">Plan could not be loaded</string>
+    <string name="plan_today">Current day</string>
+    <string name="plan_tomorrow">Next day</string>
+    <string name="plan_header">Plan:</string>
+    <string name="subst_header">Substitution:</string>
+    <string name="comment_header">Comment:</string>
+
+    <!-- LOGIN -->
+    <string name="login_text">To use this App and all its features you have to login first.</string>
+    <string name="login_action">Login</string>
+    <string name="login_hint_username">Username</string>
+    <string name="login_hint_password">Password</string>
+    <string name="login_successful">Successfully logged in!</string>
+    <string name="login_invalid">Username or password not correct</string>
+    <string name="login_timeout">No internet connection</string>
+    <string name="login_badrequest">Invalid request - is this App outdated?</string>
+    <string name="login_badresponse">Returned Server data invalid</string>
+    <string name="login_serverfault">Server error</string>
+
+    <!-- ACCOUNT -->
+    <string name="account_info">You are currently logged in.</string>
+    <string name="account_info_username"><b>Username</b>: %1$s</string>
+    <string name="account_info_device"><b>Device-Id</b>: %1$s</string>
+    <string name="account_info_expire">Your login will expire at %1$s</string>
+    <string name="logout_action">Logout</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>

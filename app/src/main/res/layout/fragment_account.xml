@@ -29,20 +29,38 @@
                     android:textSize="@dimen/textTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/about_title" />
+                    android:id="@+id/account_name"/>
                 <TextView
+                    android:textSize="@dimen/textDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/account_info"
+                    android:id="@+id/account_info" />
+                <TextView
                     android:textSize="@dimen/textDefault"
-                    android:text="@string/about_text" />
-                <ImageView
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_info_username"
+                    android:text="@string/account_info_username" />
+                <TextView
+                    android:textSize="@dimen/textDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_info_device"
+                    android:text="@string/account_info_device" />
+                <TextView
+                    android:textSize="@dimen/textDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_info_expire"
+                    android:text="@string/account_info_expire" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="@dimen/cardview_default_radius"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/mytfg"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                    android:id="@+id/logout_button"
+                    android:text="@string/logout_action"
+                    style="@style/AppTheme.Button"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

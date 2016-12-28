@@ -45,10 +45,10 @@ public class Navigation {
             return;
         }*/
 
-
         this.hideKeyboard();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
             TransitionSet transitionSet = new TransitionSet();
 
             CopyDrawableImageTransform copyDrawableImageTransform = new CopyDrawableImageTransform();
@@ -70,7 +70,6 @@ public class Navigation {
             fragment.setExitTransition(new Fade());
         }
 
-
         Bundle args = fragment.getArguments();
         if (args == null) {
             args = new Bundle();
@@ -79,7 +78,7 @@ public class Navigation {
 
         FragmentTransaction ft = ((MainActivity)context).getSupportFragmentManager().beginTransaction();
 
-        for (String transitionName : sharedElements.keySet()) {
+        /*for (String transitionName : sharedElements.keySet()) {
             String unique = sharedElements.get(transitionName).first;
 
             ViewCompat.setTransitionName(sharedElements.get(transitionName).second, unique);
@@ -87,7 +86,7 @@ public class Navigation {
             ft.addSharedElement(sharedElements.get(transitionName).second, unique);
 
             args.putString(transitionName, unique);
-        }
+        }*/
 
         if (!fragment.isAdded()) {
             fragment.setArguments(args);

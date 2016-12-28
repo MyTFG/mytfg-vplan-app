@@ -3,13 +3,61 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
+    <!-- Dialogs -->
+    <string name="please_wait">Bitte warten</string>
+    <string name="login_process">Sie werden eingeloggt&#8230;</string>
+    <string name="login_empty">Bitte Nutzernamen und Passwort angeben.</string>
+
     <!-- VPlan Menu -->
     <string name="menutitle_home">Start</string>
     <string name="menutitle_plan">VPlan</string>
     <string name="menutitle_account">Mein Account</string>
+    <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
+
+    <!-- LOGIN -->
+    <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
+        müssen Sie sich anmelden.</string>
+    <string name="login_action">Anmelden</string>
+    <string name="login_hint_username">Nutzername</string>
+    <string name="login_hint_password">Passwort</string>
+    <string name="login_successful">Sie wurden eingeloggt</string>
+    <string name="login_invalid">Nutzername oder Passwort nicht korrekt</string>
+    <string name="login_timeout">Keine Internetverbindung</string>
+    <string name="login_badrequest">Ungültige Anfrage - App nicht mehr aktuell?</string>
+    <string name="login_badresponse">Serverantwort ungültig</string>
+    <string name="login_serverfault">Server Fehler</string>
+
+    <!-- HOME -->
+    <string name="home_status_title">MyTFG VPlan</string>
+    <string name="home_status_not_loggedin">
+        Sie sind derzeit nicht eingeloggt.\nKlicken Sie hier, um Ihre Anmeldung zu verwalten.
+    </string>
+    <string name="home_status_loggedin">
+        Sie sind derzeit als %1$s eingeloggt.\n
+        Ihr Login ist gültig bis %2$s.\n
+        Klicken Sie hier, um Ihre Anmeldung zu verwalten.
+    </string>
+    <string name="home_status_action_logout">Abmelden</string>
+    <string name="home_status_action_login">Anmelden</string>
+
+    <!-- PLAN -->
+    <string name="plan_failed">Plan konnte nicht geladen werden</string>
+    <string name="plan_today">Aktueller Tag</string>
+    <string name="plan_tomorrow">Nächster Tag</string>
+    <string name="plan_header">Plan:</string>
+    <string name="subst_header">Vertretung:</string>
+    <string name="comment_header">Bemerkung:</string>
+
+    <!-- ACCOUNT -->
+    <string name="account_info">Sie sind angemeldet.</string>
+    <string name="account_info_username"><b>Nutzername</b>: %1$s</string>
+    <string name="account_info_device"><b>Geräte-ID</b>: %1$s</string>
+    <string name="account_info_expire">Ihr Login ist gültig bis %1$s</string>
+    <string name="logout_action">Abmelden</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
-    <string name="about_text">Diese App nutzt die MyTFG API, ist kein zertifiziertes Tool des API Betreibers. BLUBB</string>
+    <string name="about_text">Diese App nutzt die MyTFG API, ist jedoch kein zertifiziertes Tool des API Betreibers.
+        Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.</string>
 </resources>
