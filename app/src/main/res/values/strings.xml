@@ -52,6 +52,7 @@
     <string name="api_offline">No Internet connection</string>
     <string name="api_noauth">No permissions to request the content</string>
     <string name="api_serverfault">Internal Server error</string>
+    <string name="api_response">Invalid Server response</string>
 
     <!-- LOGIN -->
     <string name="login_text">To use this App and all its features you have to login first.</string>
@@ -66,12 +67,36 @@
     <string name="login_serverfault">Server error</string>
 
     <!-- ACCOUNT -->
-    <string name="account_info">You are currently logged in.</string>
-    <string name="account_info_username"><b>Username</b>: %1$s</string>
-    <string name="account_info_device"><b>Device-Id</b>: %1$s</string>
-    <string name="account_info_expire">Your login will expire at %1$s</string>
+    <string name="account_info_text">
+        Hello, &lt;b>%1$s %2$s&lt;/b>&lt;br/>
+        You are currently logged in.&lt;br/>
+        Your username is &lt;b>%3$s&lt;/b>&lt;br/>
+        The device ID is &lt;b>%4$s&lt;/b>&lt;br/>
+        Your login will expire at %5$s&lt;br/>
+        Your user level is &lt;b>%6$s&lt;/b>&lt;br/>
+        Your class is &lt;b>%7$s&lt;/b>
+    </string>
     <string name="logout_action">Logout</string>
     <string name="account_logged_out">You were logged out</string>
+    <string name="account_additional_title">Additional classes</string>
+    <string name="account_additional_select">Select additional classes</string>
+    <string name="account_additional_explanation_pupil">
+        As Pupil with class &lt;b>%1$s&lt;/b> you will obtain all entries related to your class.&lt;br/>
+        You have the possibility to get information about &lt;b>3&lt;/b> other classes as well.
+    </string>
+    <string name="account_additional_explanation_teacher">
+        As Teacher you will obtain all entries related to you.&lt;br/>
+        You have the possibility to get information about multiple other classes as well.
+    </string>
+    <string name="account_additional_explanation_highlevel">
+        As %1$s you will obtain all entries of the plan.&lt;br/>
+        Thus you cannot select additional classes.
+    </string>
+    <string name="account_addional_classes">&lt;b>Additional classes&lt;/b>&lt;br/>%1$s</string>
+    <string name="account_addional_classes_none">&lt;i>No additional classes selected&lt;/i></string>
+    <string name="account_process">Additional classes are loading</string>
+    <string name="account_accept">OK</string>
+    <string name="account_discard">Discard</string>
 
     <!-- USER -->
     <string name="user_rights_norights">Not logged in</string>

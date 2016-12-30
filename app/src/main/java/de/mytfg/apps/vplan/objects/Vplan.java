@@ -1,6 +1,7 @@
 package de.mytfg.apps.vplan.objects;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
@@ -76,6 +77,7 @@ public class Vplan extends MytfgObject {
         MyTFGApi api = new MyTFGApi(context);
         ApiParams params = new ApiParams();
         params.addParam("day", this.day);
+        params.addParam("additionals", TextUtils.join(",", api.getAdditionalClasses()));
         api.addAuth(params);
         api.call("api_vplan_get", params, new ApiCallback() {
             @Override
@@ -115,8 +117,15 @@ public class Vplan extends MytfgObject {
 
             JSONArray entries = plan.getJSONArray("entries");
             for (int i = 0; i < entries.length(); ++i) {
-                VplanEntry vplanEntry = new VplanEntry();
+                VplanEntry vplanEntry = new VplanEntry(true);
                 vplanEntry.load(this, entries.getJSONObject(i));
+                this.entries.add(vplanEntry);
+            }
+
+            JSONArray additionals = plan.getJSONArray("additional_entries");
+            for (int i = 0; i < additionals.length(); ++i) {
+                VplanEntry vplanEntry = new VplanEntry(false);
+                vplanEntry.load(this, additionals.getJSONObject(i));
                 this.entries.add(vplanEntry);
             }
             JSONArray marquee = plan.getJSONArray("marquee");

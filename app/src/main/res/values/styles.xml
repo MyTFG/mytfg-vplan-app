@@ -43,6 +43,7 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:paddingLeft">@dimen/defaultPadding</item>
         <item name="android:paddingRight">@dimen/defaultPadding</item>
+        <item name="android:layout_marginTop">@dimen/defaultPadding</item>
     </style>
 
     <style name="AppTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">

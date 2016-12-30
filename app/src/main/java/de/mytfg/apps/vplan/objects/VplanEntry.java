@@ -17,7 +17,14 @@ public class VplanEntry extends MytfgObject {
     private String comment;
     private String teacher;
 
+    private boolean own;
+
     private Vplan day;
+
+    public VplanEntry(boolean own) {
+        this.own = own;
+    }
+
     /**
      * Loading is done locally. Use <code>load(JSONObject data)</code> instead.
      * @param callback Called when loading finished.
@@ -87,5 +94,9 @@ public class VplanEntry extends MytfgObject {
                 || getLesson().toLowerCase().contains(filter)
                 || getPlan().toLowerCase().contains(filter)
                 || getSubstitution().toLowerCase().contains(filter);
+    }
+
+    public boolean isOwn() {
+        return own;
     }
 }

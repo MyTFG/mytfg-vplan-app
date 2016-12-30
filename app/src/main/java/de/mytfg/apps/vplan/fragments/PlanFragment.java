@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -183,9 +182,6 @@ public class PlanFragment extends Fragment {
 
             today = new PlanLogic(todayPlan);
             tomorrow = new PlanLogic(tomorrowPlan);
-
-
-            Log.d("onResume", "Called on Resume");
 
             ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 

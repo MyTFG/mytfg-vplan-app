@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.ArraySet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -31,7 +32,10 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -97,6 +101,27 @@ public class MyTFGApi {
         User user = new User(context);
         user.load(getUsername());
         return user;
+    }
+
+    public List<String> getAdditionalClasses() {
+        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
+        Set<String> set = preferences.getStringSet("additional_classes", new android.support.v4.util.ArraySet<String>());
+        List<String> list = new LinkedList<>();
+        for (String cls : set) {
+            list.add(cls);
+        }
+        return list;
+    }
+
+    public void setAdditionalClasses(List<String> classes) {
+        Set<String> classSet = new android.support.v4.util.ArraySet<>(classes.size());
+        for (String cls : classes) {
+            classSet.add(cls);
+        }
+        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
+        preferences.edit()
+                .putStringSet("additional_classes", classSet)
+                .apply();
     }
 
     /**

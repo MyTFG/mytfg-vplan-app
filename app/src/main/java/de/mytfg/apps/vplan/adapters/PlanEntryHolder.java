@@ -40,6 +40,11 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
         subst.setText(planEntry.getSubstitution());
         comment.setText(planEntry.getComment());
         cls.setText(planEntry.getCls());
+        if (planEntry.isOwn()) {
+            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimaryLight));
+        } else {
+            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorSecondaryLight));
+        }
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

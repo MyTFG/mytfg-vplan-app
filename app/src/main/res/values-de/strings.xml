@@ -19,6 +19,7 @@
     <string name="api_offline">Keine Internet Verbindung</string>
     <string name="api_noauth">Keine Berechtigung</string>
     <string name="api_serverfault">Interner Server Fehler</string>
+    <string name="api_response">Ungültige Server Antwort</string>
 
     <!-- LOGIN -->
     <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
@@ -67,12 +68,37 @@
     <string name="plan_search">Suchen</string>
 
     <!-- ACCOUNT -->
-    <string name="account_info">Sie sind angemeldet.</string>
-    <string name="account_info_username"><b>Nutzername</b>: %1$s</string>
-    <string name="account_info_device"><b>Geräte-ID</b>: %1$s</string>
-    <string name="account_info_expire">Ihr Login ist gültig bis %1$s</string>
+    <string name="account_info_text">
+        Hallo, &lt;b>%1$s %2$s&lt;/b>!&lt;br/>
+        Sie sind angemeldet.&lt;br/>
+        Ihr Nutzername ist &lt;b>%3$s&lt;/b>&lt;br/>
+        Die Geräte-ID ist &lt;b>%4$s&lt;/b>&lt;br/>
+        Ihre Anmeldung ist gültig bis %5$s&lt;br/>
+        Ihr Berechtigungslevel ist &lt;b>%6$s&lt;/b>&lt;br/>
+        Ihre Klasse ist &lt;b>%7$s&lt;/b>
+    </string>
     <string name="logout_action">Abmelden</string>
     <string name="account_logged_out">Sie wurden ausgeloggt</string>
+    <string name="account_additional_title">Zusätzliche Klassen</string>
+    <string name="account_additional_select">Weitere Klassen wählen</string>
+    <string name="account_additional_explanation_pupil">
+        Als Schüler der Klasse &lt;b>%1$s&lt;/b> erhalten Sie alle Einträge, die Ihre Klasse betreffen.&lt;br/>
+        Sie haben die Möglichkeit, &lt;b>3&lt;/b> weitere Klassen hinzuzufügen, für die Sie Einträge angezeigt bekommen möchten.
+    </string>
+    <string name="account_additional_explanation_teacher">
+        Als Lehrer erhalten Sie alle Einträge, welche Sie betreffen.&lt;br/>
+        Sie haben die Möglichkeit, verschiedene Klassen hinzuzufügen, für die Sie ebenfalls Einträge erhalten wollen.
+    </string>
+    <string name="account_additional_explanation_highlevel">
+        Als %1$s erhalten Sie alle Einträge der Vertretungsplans.&lt;br/>
+        Somit können Sie keine zusätzlichen Klassen wählen.
+    </string>
+    <string name="account_addional_classes">&lt;b>Zusätzliche Klassen&lt;/b>&lt;br/>%1$s</string>
+    <string name="account_addional_classes_none">&lt;i>Keine zusätzlichen Klassen ausgewählt&lt;/i></string>
+    <string name="account_process">Zusätzliche Klassen werden geladen</string>
+    <string name="account_accept">Speichern</string>
+    <string name="account_discard">Verwerfen</string>
+
 
     <!-- USER -->
     <string name="user_rights_norights">Nicht eingeloggt</string>
