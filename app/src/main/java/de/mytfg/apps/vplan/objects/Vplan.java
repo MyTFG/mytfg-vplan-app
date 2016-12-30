@@ -11,10 +11,12 @@ import org.json.JSONObject;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.ApiCallback;
 import de.mytfg.apps.vplan.api.ApiParams;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.api.SuccessCallback;
+import de.mytfg.apps.vplan.tools.JsonFileManager;
 
 /**
  * Represents the Vplan for one day
@@ -33,9 +35,12 @@ public class Vplan extends MytfgObject {
     private List<String> marquee = new LinkedList<>();
     private List<Pair<String, String>> absent_teachers = new LinkedList<>();
     private List<String> absent_strings = new LinkedList<>();
+    private long timestamp = 0;
 
     private int lastCode;
     private boolean loaded;
+    // 3 Minutes
+    private final long timeout = 3 * 60 * 1000;
 
     /**
      * Instanciates a new Vplan
@@ -45,10 +50,29 @@ public class Vplan extends MytfgObject {
     public Vplan(Context context, String day) {
         this.day = day;
         this.context = context;
+        if ("today".equals(day)) {
+            this.day_str = context.getString(R.string.plan_today);
+        } else {
+            this.day_str = context.getString(R.string.plan_tomorrow);
+        }
     }
 
     @Override
     public void load(final SuccessCallback callback) {
+        this.load(callback, false);
+    }
+
+    public void load(final SuccessCallback callback, boolean clearCache) {
+        // Try to load from cache
+        if (!clearCache && loadFromCache()) {
+            if (upToDate()) {
+                callback.callback(true);
+                return;
+            }
+
+        }
+        loaded = false;
+        // Otherwise request new data
         MyTFGApi api = new MyTFGApi(context);
         ApiParams params = new ApiParams();
         params.addParam("day", this.day);
@@ -59,8 +83,12 @@ public class Vplan extends MytfgObject {
                 lastCode = responseCode;
                 if (responseCode == 200) {
                     loaded = true;
-                    parse(result);
-                    callback.callback(true);
+                    if (parse(result)) {
+                        saveToCache(result);
+                        callback.callback(true);
+                    } else {
+                        callback.callback(false);
+                    }
                 } else {
                     callback.callback(false);
                 }
@@ -84,6 +112,7 @@ public class Vplan extends MytfgObject {
         try {
             JSONObject plan = result.getJSONObject("plan");
             this.day_str = plan.getString("day_str");
+
             JSONArray entries = plan.getJSONArray("entries");
             for (int i = 0; i < entries.length(); ++i) {
                 VplanEntry vplanEntry = new VplanEntry();
@@ -102,11 +131,17 @@ public class Vplan extends MytfgObject {
                 this.absent_strings.add(p.first + ": " + p.second);
             }
             changed = plan.getString("changed");
+            timestamp = result.optLong("api_time", System.currentTimeMillis());
+            loaded = true;
         } catch (JSONException ex) {
             ex.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    public boolean upToDate() {
+        return (timestamp + timeout) >= System.currentTimeMillis();
     }
 
     public String getDayString() {
@@ -129,7 +164,36 @@ public class Vplan extends MytfgObject {
         return changed;
     }
 
+    private void saveToCache(JSONObject json) {
+        try {
+            json.put("api_time", System.currentTimeMillis());
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+        JsonFileManager.write(json, "vplan_" + getDay(), context);
+    }
+
+    private boolean loadFromCache() {
+        JSONObject json = JsonFileManager.read("vplan_" + getDay(), context);
+        return parse(json);
+    }
+
     public List<VplanEntry> getEntries() {
         return entries;
+    }
+
+    public List<VplanEntry> filter(String filter) {
+        if (filter == null) {
+            return getEntries();
+        }
+        filter = filter.toLowerCase();
+
+        List<VplanEntry> results = new LinkedList<>();
+        for (VplanEntry entry : getEntries()) {
+            if (entry.filter(filter)) {
+                results.add(entry);
+            }
+        }
+        return results;
     }
 }

@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,10 +40,11 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_about, container, false);
         MainActivity context = (MainActivity)this.getActivity();
+        setHasOptionsMenu(true);
         context.getToolbarManager()
+                .clear()
                 .setTitle(getString(R.string.menutitle_about))
-                .setExpandable(true, true)
-                .setTabs(false);
+                .setExpandable(true, true);
 
         ImageView github = (ImageView) view.findViewById(R.id.github);
         github.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +59,10 @@ public class AboutFragment extends Fragment {
         return view;
     }
 
+
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

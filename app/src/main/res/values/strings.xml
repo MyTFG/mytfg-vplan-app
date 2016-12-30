@@ -21,6 +21,13 @@
     <string name="home_status_loggedin">
         You are currently logged in as %1$s.\nYour login will expire at %2$s.\nTap here to manage your login.
     </string>
+    <string name="home_welcome_text">
+        Welcome, %1$s %2$s!
+
+        You are logged in as %3$s with the username %4$s.
+
+        Your login for grade %5$s is valid until %6$s.
+    </string>
     <string name="home_status_action_logout">Logout</string>
     <string name="home_status_action_login">Login</string>
 
@@ -38,6 +45,8 @@
     <string name="plan_marquee">Announcements</string>
     <string name="plan_time">Last Update</string>
     <string name="plan_not_loaded">Plan not loaded</string>
+    <string name="plan_loading">Loading plan&#8230;</string>
+    <string name="plan_search">Search</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>
@@ -63,6 +72,14 @@
     <string name="account_info_expire">Your login will expire at %1$s</string>
     <string name="logout_action">Logout</string>
     <string name="account_logged_out">You were logged out</string>
+
+    <!-- USER -->
+    <string name="user_rights_norights">Not logged in</string>
+    <string name="user_rights_pupil">Pupil</string>
+    <string name="user_rights_teacher">Teacher</string>
+    <string name="user_rights_management">Management</string>
+    <string name="user_rights_system">System</string>
+    <string name="user_rights_admin">Administrator</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>

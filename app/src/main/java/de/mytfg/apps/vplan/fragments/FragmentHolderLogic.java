@@ -6,4 +6,6 @@ import android.view.View;
 
 public interface FragmentHolderLogic {
     void init(Context context, View view, Bundle args);
+
+    String getTabTitle();
 }

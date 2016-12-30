@@ -3,11 +3,14 @@ package de.mytfg.apps.vplan.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,31 +32,44 @@ public class PlanFragment extends Fragment {
     private Vplan todayPlan;
     private Vplan tomorrowPlan;
     private MainActivity context;
-    private ViewPagerAdapter viewPagerAdapter;
-
 
     public PlanFragment() {
     }
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_plan, container, false);
-        MainActivity context = (MainActivity)this.getActivity();
+        final MainActivity context = (MainActivity)this.getActivity();
         this.context = context;
         context.getToolbarManager()
+                .clear(false)
                 .setTitle(getString(R.string.menutitle_plan))
+                .clearMenu()
                 .setExpandable(true, true)
-                .setTabs(true);
+                .setTabs(true)
+                .showFab()
+                .setTabOutscroll(true);
 
         // Create logics
-        todayPlan = new Vplan(context, "today");
+        /*todayPlan = new Vplan(context, "today");
         tomorrowPlan = new Vplan(context, "tomorrow");
 
         today = new PlanLogic(todayPlan);
         tomorrow = new PlanLogic(tomorrowPlan);
+        */
 
         setHasOptionsMenu(true);
+
+        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.getToolbarManager().showSearchBar();
+            }
+        });
 
         return view;
     }
@@ -63,12 +79,43 @@ public class PlanFragment extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.plan_details_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+
+        SearchView searchView = context.getToolbarManager().getSearchView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                today.filter(newText);
+                tomorrow.filter(newText);
+                return true;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                today.resetFilter();
+                tomorrow.resetFilter();
+                return true;
+            }
+        });
+    }
+
+    private Vplan getTodayPlan() {
+        return todayPlan;
+    }
+
+    private Vplan getTomorrowPlan() {
+        return tomorrowPlan;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         TabLayout tabLayout = context.getToolbarManager().getTabs();
-        Vplan plan = tabLayout.getSelectedTabPosition() == 0 ? todayPlan : tomorrowPlan;
+        Vplan plan = tabLayout.getSelectedTabPosition() == 0 ? getTodayPlan() : getTomorrowPlan();
         if (!plan.isLoaded()) {
             CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
             Snackbar snackbar = Snackbar
@@ -130,7 +177,7 @@ public class PlanFragment extends Fragment {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
 
         // Create Pager elements if not existent
-        if (today == null || tomorrow == null || viewPagerAdapter == null) {
+        if (today == null || tomorrow == null) {
             todayPlan = new Vplan(context, "today");
             tomorrowPlan = new Vplan(context, "tomorrow");
 
@@ -138,21 +185,21 @@ public class PlanFragment extends Fragment {
             tomorrow = new PlanLogic(tomorrowPlan);
 
 
-            viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+            Log.d("onResume", "Called on Resume");
+
+            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 
             viewPagerAdapter.addFragment(
                     FragmentHolder.newInstance(
                             R.layout.fragment_base_list,
                             today
-                    ),
-                    getResources().getString(R.string.plan_today)
+                    )
             );
             viewPagerAdapter.addFragment(
                     FragmentHolder.newInstance(
                             R.layout.fragment_base_list,
                             tomorrow
-                    ),
-                    getResources().getString(R.string.plan_tomorrow)
+                    )
             );
             viewPager.setAdapter(viewPagerAdapter);
         }

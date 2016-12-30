@@ -37,6 +37,21 @@
             style="@style/AppTheme.ProgressBar"
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="bottom"/>
+
+
+        <!-- app:layout_behavior="de.mytfg.apps.vplan.tools.ScrollAwareFabBehavior" -->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:src="@android:drawable/ic_menu_search"
+            app:fabSize="normal"
+            app:backgroundTint="@color/colorAccent"
+            android:tint="@color/colorIcons"
+            android:clickable="true"
+            android:layout_margin="16dp"
+            android:layout_gravity="bottom|end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </android.support.design.widget.CoordinatorLayout>
 
     <include layout="@layout/include_navigationview" />

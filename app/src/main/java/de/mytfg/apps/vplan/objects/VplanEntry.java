@@ -75,4 +75,17 @@ public class VplanEntry extends MytfgObject {
     public String getTeacher() {
         return teacher;
     }
+
+    /**
+     * Checks wheter this entry contains information matching the given filter.
+     * @param filter The filter to apply
+     * @return True iff filter matches this entry
+     */
+    public boolean filter(String filter) {
+        return getCls().toLowerCase().contains(filter)
+                || getComment().toLowerCase().contains(filter)
+                || getLesson().toLowerCase().contains(filter)
+                || getPlan().toLowerCase().contains(filter)
+                || getSubstitution().toLowerCase().contains(filter);
+    }
 }

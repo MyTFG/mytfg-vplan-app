@@ -10,12 +10,16 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -34,8 +38,10 @@ public class ToolbarManager {
     private CoordinatorLayout holder;
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private TabLayout tabs;
+    private SearchView searchView;
 
-    public Toolbar toolbar;
+    private Toolbar toolbar;
 
     public ToolbarManager(MainActivity c, DrawerLayout drawer) {
         this.context = c;
@@ -62,9 +68,35 @@ public class ToolbarManager {
         return holder;
     }
 
+    public ToolbarManager clear() {
+        return this.clear(true);
+    }
+
+    public ToolbarManager clear(boolean hideFab) {
+        this.setTitle(context.getString(R.string.app_name));
+        if (hideFab) {
+            this.hideFab();
+        }
+        this.clearMenu();
+        this.setTabs(false);
+        this.setTabOutscroll(false);
+        return this;
+    }
+
+    public ToolbarManager setTabOutscroll(boolean outscroll) {
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
+        // TODO: Allow outscroll of Toolbar without tabs
+        return this;
+    }
+
     public ToolbarManager setTitle(@NonNull String title) {
         toolbar.setTitle(title);
         collapsingToolbarLayout.setTitle(title);
+        return this;
+    }
+
+    public ToolbarManager clearMenu() {
+        toolbar.getMenu().clear();
         return this;
     }
 
@@ -83,7 +115,7 @@ public class ToolbarManager {
     }
 
     public ToolbarManager setTabs(boolean show) {
-        TabLayout tabs = (TabLayout) appBarLayout.findViewById(R.id.tablayout);
+        tabs = (TabLayout) appBarLayout.findViewById(R.id.tablayout);
         if (show) {
             if (tabs == null) {
                 tabs = (TabLayout) LayoutInflater.from(context).inflate(R.layout.tabs, null);
@@ -98,7 +130,49 @@ public class ToolbarManager {
     }
 
     public TabLayout getTabs() {
-        return (TabLayout) appBarLayout.findViewById(R.id.tablayout);
+        return tabs == null ? (TabLayout) appBarLayout.findViewById(R.id.tablayout) : tabs;
+    }
+
+    public ToolbarManager hideFab() {
+        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        if (fab.getVisibility() != View.GONE) {
+            fab.hide();
+        }
+        return this;
+    }
+
+    public ToolbarManager showFab() {
+        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        if (fab.getVisibility() != View.VISIBLE) {
+            fab.show();
+        }
+        return this;
+    }
+
+    public ToolbarManager showSearchBar() {
+        MenuItem searchItem = toolbar.getMenu().findItem(R.id.action_search);
+        if (searchItem != null) {
+            searchItem.expandActionView();
+            searchItem.getActionView().requestFocus();
+            context.getNavi().showKeyboard();
+        }
+        return this;
+    }
+
+    public ToolbarManager hideSeachBar() {
+        MenuItem searchItem = toolbar.getMenu().findItem(R.id.action_search);
+        if (searchItem != null) {
+            searchItem.setVisible(false);
+        }
+        return this;
+    }
+
+    public SearchView getSearchView() {
+        MenuItem searchItem = toolbar.getMenu().findItem(R.id.action_search);
+        if (searchItem != null) {
+            return (SearchView) searchItem.getActionView();
+        }
+        return null;
     }
 
     public void setToolbar(@LayoutRes int layout, String title) {

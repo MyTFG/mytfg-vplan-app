@@ -43,6 +43,11 @@
     </string>
     <string name="home_status_action_logout">Abmelden</string>
     <string name="home_status_action_login">Anmelden</string>
+    <string name="home_welcome_text">
+        Willkommen, &lt;b>%1$s %2$s&lt;/b>!&lt;br />
+        Sie sind als %3$s mit dem Nutzer &lt;b>%4$s&lt;/b> eingeloggt.&lt;br />
+        Ihr Login für die Klasse %5$s ist gültig bis zum %6$s.
+    </string>
 
     <!-- PLAN -->
     <string name="plan_failed">Plan konnte nicht geladen werden</string>
@@ -58,6 +63,8 @@
     <string name="plan_marquee">Mitteilungen</string>
     <string name="plan_time">Letzte Aktualisierung</string>
     <string name="plan_not_loaded">Plan noch nicht geladen</string>
+    <string name="plan_loading">Plan wird geladen&#8230;</string>
+    <string name="plan_search">Suchen</string>
 
     <!-- ACCOUNT -->
     <string name="account_info">Sie sind angemeldet.</string>
@@ -66,6 +73,14 @@
     <string name="account_info_expire">Ihr Login ist gültig bis %1$s</string>
     <string name="logout_action">Abmelden</string>
     <string name="account_logged_out">Sie wurden ausgeloggt</string>
+
+    <!-- USER -->
+    <string name="user_rights_norights">Nicht eingeloggt</string>
+    <string name="user_rights_pupil">Schüler</string>
+    <string name="user_rights_teacher">Lehrer</string>
+    <string name="user_rights_management">Verwaltung</string>
+    <string name="user_rights_system">System</string>
+    <string name="user_rights_admin">Administrator</string>
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>

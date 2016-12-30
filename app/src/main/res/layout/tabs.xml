@@ -6,6 +6,7 @@
     app:tabGravity="fill"
     android:theme="@style/AppTheme"
     android:background="@color/colorPrimaryDark"
+    app:tabTextAppearance="@style/AppTheme.TabTextAppearance"
     app:tabTextColor="@color/colorSecondaryText"
     app:tabSelectedTextColor="@color/colorIcons"
     app:tabIndicatorColor="@color/colorAccent"

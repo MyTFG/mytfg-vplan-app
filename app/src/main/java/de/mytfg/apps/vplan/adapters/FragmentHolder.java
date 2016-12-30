@@ -13,7 +13,7 @@ import de.mytfg.apps.vplan.fragments.FragmentHolderLogic;
 
 public class FragmentHolder extends Fragment {
     int resId;
-    FragmentHolderLogic logic;
+    private FragmentHolderLogic logic;
 
     public static FragmentHolder newInstance(int layout) {
         return FragmentHolder.newInstance(layout, null);
@@ -30,7 +30,6 @@ public class FragmentHolder extends Fragment {
         fragmentHolder.setArguments(args);
         fragmentHolder.logic = logic;
         return fragmentHolder;
-
     }
 
     public FragmentHolder() {
@@ -46,5 +45,9 @@ public class FragmentHolder extends Fragment {
             logic.init(getContext(), view, getArguments());
         }
         return view;
+    }
+
+    public FragmentHolderLogic getLogic() {
+        return logic;
     }
 }

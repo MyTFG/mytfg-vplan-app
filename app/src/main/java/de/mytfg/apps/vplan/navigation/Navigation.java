@@ -18,6 +18,7 @@ import android.transition.TransitionInflater;
 import android.transition.TransitionSet;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
@@ -29,12 +30,10 @@ import de.mytfg.apps.vplan.adapters.FragmentHolder;
 import de.mytfg.apps.vplan.tools.CopyDrawableImageTransform;
 
 public class Navigation {
-    Context context;
-    public static Navigation instance;
+    private Context context;
 
     public Navigation(Context context) {
         this.context = context;
-        instance = this;
     }
 
 
@@ -47,7 +46,7 @@ public class Navigation {
 
         this.hideKeyboard();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             TransitionSet transitionSet = new TransitionSet();
 
@@ -75,6 +74,7 @@ public class Navigation {
             args = new Bundle();
         }
         long transId = System.currentTimeMillis();
+        */
 
         FragmentTransaction ft = ((MainActivity)context).getSupportFragmentManager().beginTransaction();
 
@@ -86,11 +86,11 @@ public class Navigation {
             ft.addSharedElement(sharedElements.get(transitionName).second, unique);
 
             args.putString(transitionName, unique);
-        }*/
+        }
 
         if (!fragment.isAdded()) {
             fragment.setArguments(args);
-        }
+        }*/
 
         ft.replace(container, fragment);
         ft.addToBackStack(null);
@@ -113,7 +113,7 @@ public class Navigation {
 
     public void clear() {
         FragmentManager fragmentManager = ((MainActivity)context).getSupportFragmentManager();
-        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     public void hideKeyboard() {
@@ -123,6 +123,9 @@ public class Navigation {
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
 
+    public void showKeyboard() {
+        ((MainActivity) context).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
 }

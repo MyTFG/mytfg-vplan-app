@@ -10,6 +10,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +27,7 @@ import de.mytfg.apps.vplan.activities.MainActivity;
 import de.mytfg.apps.vplan.api.ApiCallback;
 import de.mytfg.apps.vplan.api.ApiParams;
 import de.mytfg.apps.vplan.api.MyTFGApi;
+import de.mytfg.apps.vplan.objects.User;
 
 public class LoginFragment extends Fragment {
     private View view;
@@ -38,11 +41,11 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         final MainActivity context = (MainActivity)this.getActivity();
+        setHasOptionsMenu(true);
         context.getToolbarManager()
+                .clear()
                 .setTitle(getString(R.string.menutitle_login))
-                .setExpandable(true, true)
-                .setImage(R.mipmap.front)
-                .setTabs(false);
+                .setExpandable(true, true);
 
         MyTFGApi api = new MyTFGApi(context);
         EditText username = (EditText) view.findViewById(R.id.login_username);
@@ -93,6 +96,11 @@ public class LoginFragment extends Fragment {
                                     String device = result.getString("device");
                                     long expire = result.getLong("expires");
                                     api.saveLogin(uname, token, device, expire);
+                                    User user = new User(context);
+                                    JSONObject jsonuser = result.getJSONObject("user");
+                                    if (!user.load(jsonuser)) {
+                                        Log.e("LOGIN", "Could not load user during login");
+                                    }
                                     context.getNavi().clear();
                                     context.getNavi().navigate(new PlanFragment(), R.id.fragment_container);
                                 } catch (JSONException ex) {
@@ -124,6 +132,12 @@ public class LoginFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

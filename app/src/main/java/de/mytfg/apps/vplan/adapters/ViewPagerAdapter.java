@@ -9,16 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-    private final List<Fragment> fragmentList = new ArrayList<>();
-    private final List<String> fragmentTitelList = new ArrayList<>();
-
+    private final List<FragmentHolder> fragmentList = new ArrayList<>();
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(FragmentHolder fragment) {
         fragmentList.add(fragment);
-        fragmentTitelList.add(title);
     }
 
     @Override
@@ -33,6 +30,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return fragmentTitelList.get(position);
+        return fragmentList.get(position).getLogic().getTabTitle();
     }
 }

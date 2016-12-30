@@ -37,6 +37,7 @@ import java.util.UUID;
 import javax.net.ssl.HttpsURLConnection;
 
 import de.mytfg.apps.vplan.R;
+import de.mytfg.apps.vplan.objects.User;
 
 /**
  * Wrapper for the MyTFG API. Handles Login tokens, authentication errors and result parsing.
@@ -90,6 +91,12 @@ public class MyTFGApi {
      */
     public void checkLogin(SuccessCallback callback) {
 
+    }
+
+    public User getUser() {
+        User user = new User(context);
+        user.load(getUsername());
+        return user;
     }
 
     /**
