@@ -1,10 +1,10 @@
 # Todo
-* Clear Plan Cache when changing additional classes
+* ~~Clear Plan Cache when changing additional classes~~
 * Remove/Replace deprecated functions
 * Call a lawyer - data-policy and impressum ;)
 * Keyboard does not close on Login
 * Make Toolbar hide after collapsing, but keep TabLayout (Only show TabLayout at top)
-* Delete all cached data on Logout (User + VPlancache) except Username
+* ~~Delete all cached data on Logout (User + VPlancache) except Username~~
 
 # Known Bugs 
 * TabText not displays correctly when loading information from Cache
@@ -15,6 +15,10 @@
 * Find my Room
 * Timetable - how to get the data?
 * Push
+* Link to "Förderverein"
+* Link to Moodle (App?)
+* Link to Cafeteria
+* Display full information (plan_text + subst_text) on card click
 
 # Changelog
 ## 0.2b
