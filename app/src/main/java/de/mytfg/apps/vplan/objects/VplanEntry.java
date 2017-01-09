@@ -13,9 +13,12 @@ public class VplanEntry extends MytfgObject {
     private String lesson;
     private String cls;
     private String plan;
+    private String plan_text;
     private String substitution;
+    private String subst_text;
     private String comment;
     private String teacher;
+
 
     private boolean own;
 
@@ -51,6 +54,8 @@ public class VplanEntry extends MytfgObject {
             substitution = data.getString("substitution");
             comment = data.getString("comment");
             teacher = data.getString("teacher");
+            subst_text = data.getString("subst_text");
+            plan_text = data.getString("plan_text");
         } catch (JSONException ex) {
             // TODO: Remove this line:
             ex.printStackTrace();
@@ -83,6 +88,14 @@ public class VplanEntry extends MytfgObject {
         return teacher;
     }
 
+    public String getPlanText() {
+        return plan_text;
+    }
+
+    public String getSubstText() {
+        return subst_text;
+    }
+
     /**
      * Checks wheter this entry contains information matching the given filter.
      * @param filter The filter to apply
@@ -93,6 +106,8 @@ public class VplanEntry extends MytfgObject {
                 || getComment().toLowerCase().contains(filter)
                 || getLesson().toLowerCase().contains(filter)
                 || getPlan().toLowerCase().contains(filter)
+                || getPlanText().toLowerCase().contains(filter)
+                || getSubstText().toLowerCase().contains(filter)
                 || getSubstitution().toLowerCase().contains(filter);
     }
 
