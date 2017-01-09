@@ -49,4 +49,8 @@ public class JsonFileManager {
         }
         return false;
     }
+
+    public static boolean clear(String filename, Context context) {
+        return context.deleteFile(filename);
+    }
 }

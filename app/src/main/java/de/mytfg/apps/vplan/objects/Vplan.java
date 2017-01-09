@@ -19,6 +19,8 @@ import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.api.SuccessCallback;
 import de.mytfg.apps.vplan.tools.JsonFileManager;
 
+import static de.mytfg.apps.vplan.R.id.plan;
+
 /**
  * Represents the Vplan for one day
  * Contains multiple entries for different classes and lessons.
@@ -28,6 +30,7 @@ public class Vplan extends MytfgObject {
     private Context context;
 
     private String day;
+    private String date;
     private List<VplanEntry> entries = new LinkedList<>();
     private String mode;
     private String cls_string;
@@ -37,6 +40,7 @@ public class Vplan extends MytfgObject {
     private List<Pair<String, String>> absent_teachers = new LinkedList<>();
     private List<String> absent_strings = new LinkedList<>();
     private long timestamp = 0;
+    private boolean cacheAvail = false;
 
     private int lastCode;
     private boolean loaded;
@@ -65,6 +69,7 @@ public class Vplan extends MytfgObject {
 
     public void load(final SuccessCallback callback, boolean clearCache) {
         // Try to load from cache
+        cacheAvail = false;
         if (!clearCache && loadFromCache()) {
             if (upToDate()) {
                 callback.callback(true);
@@ -92,7 +97,12 @@ public class Vplan extends MytfgObject {
                         callback.callback(false);
                     }
                 } else {
-                    callback.callback(false);
+                    if (responseCode == -1 && loadFromCache()) {
+                        // No internet connection -> use cache even when cache timed out
+                        callback.callback(true);
+                    } else {
+                        callback.callback(false);
+                    }
                 }
             }
         });
@@ -114,6 +124,7 @@ public class Vplan extends MytfgObject {
         try {
             JSONObject plan = result.getJSONObject("plan");
             this.day_str = plan.getString("day_str");
+            date = plan.getString("date");
 
             JSONArray entries = plan.getJSONArray("entries");
             for (int i = 0; i < entries.length(); ++i) {
@@ -204,5 +215,9 @@ public class Vplan extends MytfgObject {
             }
         }
         return results;
+    }
+
+    public static void clearCache(String day, Context context) {
+        JsonFileManager.clear("vplan_" + day, context);
     }
 }

@@ -42,6 +42,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.objects.User;
+import de.mytfg.apps.vplan.objects.Vplan;
 
 /**
  * Wrapper for the MyTFG API. Handles Login tokens, authentication errors and result parsing.
@@ -122,6 +123,9 @@ public class MyTFGApi {
         preferences.edit()
                 .putStringSet("additional_classes", classSet)
                 .apply();
+
+        Vplan.clearCache("heute", context);
+        Vplan.clearCache("morgen", context);
     }
 
     /**
