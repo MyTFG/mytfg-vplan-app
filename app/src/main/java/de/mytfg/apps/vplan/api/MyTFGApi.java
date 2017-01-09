@@ -196,6 +196,8 @@ public class MyTFGApi {
                     .remove("username")
                     .apply();
         }
+        Vplan.clearCache("heute", context);
+        Vplan.clearCache("morgen", context);
     }
 
     /**
