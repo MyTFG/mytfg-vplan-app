@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,19 +16,25 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
+import de.mytfg.apps.vplan.adapters.RecylcerNewsAdapter;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.api.SuccessCallback;
+import de.mytfg.apps.vplan.objects.TfgNews;
+import de.mytfg.apps.vplan.objects.TfgNewsEntry;
 import de.mytfg.apps.vplan.objects.User;
 import de.mytfg.apps.vplan.objects.Vplan;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
+import de.mytfg.apps.vplan.tools.ItemOffsetDecoration;
 
 public class StartFragment extends Fragment {
     private View view;
-
+    private RecylcerNewsAdapter adapter;
+    private RecyclerView recyclerView;
 
     public StartFragment() {
     }
@@ -57,6 +66,8 @@ public class StartFragment extends Fragment {
             infotext.setText(Html.fromHtml(text));
         }
 
+        this.displayNews();
+
         return view;
     }
 
@@ -75,5 +86,34 @@ public class StartFragment extends Fragment {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    public void displayNews() {
+        final ProgressBar pb = (ProgressBar) view.findViewById(R.id.news_loading_bar);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_news);
+        pb.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.addItemDecoration(new ItemOffsetDecoration(getContext(), R.dimen.cardview_spacing));
+
+        final TfgNews news = new TfgNews(getContext());
+        news.load(new SuccessCallback() {
+            @Override
+            public void callback(boolean success) {
+                pb.setVisibility(View.GONE);
+                if (success) {
+                    adapter = new RecylcerNewsAdapter(getContext());
+                    recyclerView.setAdapter(adapter);
+                    for (TfgNewsEntry entry : news.getEntries()) {
+                        adapter.addItem(entry);
+                    }
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    ((MainActivity)getActivity()).getNavi().snackbar(getString(R.string.api_news_error));
+                }
+            }
+        }, true);
     }
 }

@@ -20,6 +20,7 @@
     <string name="api_noauth">Keine Berechtigung</string>
     <string name="api_serverfault">Interner Server Fehler</string>
     <string name="api_response">Ungültige Server Antwort</string>
+    <string name="api_news_error">News konnten nicht geladen werden</string>
 
     <!-- LOGIN -->
     <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
@@ -36,6 +37,7 @@
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG VPlan</string>
+    <string name="home_news">Aktuelles</string>
     <string name="home_status_not_loggedin">
         Sie sind derzeit nicht eingeloggt.\nKlicken Sie hier, um Ihre Anmeldung zu verwalten.
     </string>

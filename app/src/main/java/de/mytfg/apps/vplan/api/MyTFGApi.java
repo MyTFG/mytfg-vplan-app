@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -346,6 +347,18 @@ public class MyTFGApi {
                     callback.callback(new JSONObject(), responseCode);
                 }
             }
+        }
+    }
+
+    public static String tsToString(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
         }
     }
 }

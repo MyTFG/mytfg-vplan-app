@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -127,5 +129,14 @@ public class Navigation {
 
     public void showKeyboard() {
         ((MainActivity) context).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
+
+    public void snackbar(String text) {
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) ((MainActivity)context).findViewById(R.id.coordinator_layout);
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout,
+                        text,
+                        Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }
