@@ -1,4 +1,4 @@
-<android.support.v4.widget.NestedScrollView
+<android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -89,6 +89,64 @@
                     android:visibility="gone"
                     android:text="@string/account_additional_select"
                     style="@style/AppTheme.Button"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_spacing"
+            android:layout_marginBottom="@dimen/defaultPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_general_title"
+                    android:id="@+id/settings_general"/>
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </ListView>
+
+                <Switch
+                    android:text="@string/settings_opt_fulltext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/switch_fulltext" />
+                <Switch
+                    android:text="@string/settings_opt_newslink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/switch_news_browser" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:text="@string/settings_opt_landing_page" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/settings_opt_landing_page_entries"
+                    android:id="@+id/spinner_landing" />
+
+
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

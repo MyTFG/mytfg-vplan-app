@@ -100,6 +100,22 @@
     <string name="account_accept">OK</string>
     <string name="account_discard">Discard</string>
 
+    <!-- SETTING -->
+    <string name="settings_general_title">Settings</string>
+    <string name="settings_opt_newslink">Open News in Browser</string>
+    <string name="settings_opt_fulltext">Show Plan as Fulltext</string>
+    <string name="settings_opt_landing_page">Default Page</string>
+    <string-array name="settings_opt_landing_page_entries">
+        <item>@string/menutitle_home</item>
+        <item>@string/menutitle_plan</item>
+        <item>@string/menutitle_about</item>
+    </string-array>
+    <string-array name="settings_opt_landing_page_fragments">
+        <item>StartFragment</item>
+        <item>PlanFragment</item>
+        <item>AboutFragment</item>
+    </string-array>
+
     <!-- USER -->
     <string name="user_rights_norights">Not logged in</string>
     <string name="user_rights_pupil">Pupil</string>

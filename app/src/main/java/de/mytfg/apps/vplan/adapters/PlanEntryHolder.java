@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.objects.VplanEntry;
+import de.mytfg.apps.vplan.tools.Settings;
 
 import static android.view.View.GONE;
 
@@ -40,14 +41,18 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
     }
 
     public void update(VplanEntry planEntry) {
+        Settings settings = new Settings(context);
+
         //titleView.setText(baseObject.getName());
         lesson.setText(planEntry.getLesson());
-        plan.setText(planEntry.getPlan());
+        String planText = settings.getBool("plan_fulltext") ? planEntry.getPlanText() : planEntry.getPlan();
+        String substText = settings.getBool("plan_fulltext") ? planEntry.getSubstText() : planEntry.getSubstitution();
+        plan.setText(planText);
         if (planEntry.getSubstitution().isEmpty()) {
             substHeader.setVisibility(GONE);
             subst.setVisibility(GONE);
         } else {
-            subst.setText(planEntry.getSubstitution());
+            subst.setText(substText);
             subst.setVisibility(View.VISIBLE);
             substHeader.setVisibility(View.VISIBLE);
         }

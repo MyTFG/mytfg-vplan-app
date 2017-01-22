@@ -7,7 +7,7 @@
     android:theme="@style/AppTheme"
     android:background="@color/colorPrimaryDark"
     app:tabTextAppearance="@style/AppTheme.TabTextAppearance"
-    app:tabTextColor="@color/colorSecondaryText"
+    app:tabTextColor="@color/colorIconsDark"
     app:tabSelectedTextColor="@color/colorIcons"
     app:tabIndicatorColor="@color/colorAccent"
     xmlns:app="http://schemas.android.com/apk/res-auto"

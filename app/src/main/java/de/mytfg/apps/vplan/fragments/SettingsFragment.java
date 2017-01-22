@@ -12,12 +12,17 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -35,6 +40,7 @@ import de.mytfg.apps.vplan.api.ApiCallback;
 import de.mytfg.apps.vplan.api.ApiParams;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.objects.User;
+import de.mytfg.apps.vplan.tools.Settings;
 
 public class SettingsFragment extends Fragment {
     private View view;
@@ -94,6 +100,8 @@ public class SettingsFragment extends Fragment {
                 context.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
             }
         });
+
+        updateSettings();
 
         updateAdditionalClasses();
 
@@ -264,6 +272,42 @@ public class SettingsFragment extends Fragment {
                         }
                     }
                 });
+            }
+        });
+    }
+
+    private void updateSettings() {
+        Switch fulltext = (Switch) view.findViewById(R.id.switch_fulltext);
+        Switch newsbrowser = (Switch) view.findViewById(R.id.switch_news_browser);
+        Spinner landing = (Spinner) view.findViewById(R.id.spinner_landing);
+
+        final Settings settings = new Settings(context);
+
+        fulltext.setChecked(settings.getBool("plan_fulltext"));
+        fulltext.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                settings.save("plan_fulltext", b);
+            }
+        });
+        newsbrowser.setChecked(settings.getBool("news_browser"));
+        newsbrowser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                settings.save("news_browser", b);
+            }
+        });
+
+        landing.setSelection(settings.getInt("landing_page"));
+        landing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                settings.save("landing_page", i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }

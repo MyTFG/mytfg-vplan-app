@@ -5,8 +5,9 @@
     <color name="colorPrimaryLight">#C5CAE9</color>
     <color name="colorSecondaryLight">#DFE2F4</color>
     <color name="colorIcons">#FFFFFF</color>
-    <color name="colorPrimaryText">#212121</color>
-    <color name="colorSecondaryText">#DDDDDD</color>
+    <color name="colorIconsDark">#dddddd</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#333333</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorAccent">#FF7400</color>
 

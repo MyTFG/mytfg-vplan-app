@@ -1,6 +1,7 @@
 package de.mytfg.apps.vplan.activities;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentContainer;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,8 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Set;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
@@ -20,6 +24,7 @@ import de.mytfg.apps.vplan.fragments.PlanFragment;
 import de.mytfg.apps.vplan.fragments.StartFragment;
 import de.mytfg.apps.vplan.navigation.Navigation;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
+import de.mytfg.apps.vplan.tools.Settings;
 
 public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
@@ -92,7 +97,21 @@ public class MainActivity extends AppCompatActivity {
                 fragment = getSupportFragmentManager().getFragment(savedInstanceState,
                         "fragmentInstanceSaved");
             } else {
-                fragment = new PlanFragment();
+                // Read Landing Page from settings
+                Settings settings = new Settings(context);
+                int page = settings.getInt("landing_page");
+                String[] fragmentNames = getResources().getStringArray(R.array.settings_opt_landing_page_fragments);
+                String fragName = "StartFragment";
+                if (page >= 0 && page < fragmentNames.length) {
+                    fragName = fragmentNames[page];
+                }
+                try {
+                    fragName = "de.mytfg.apps.vplan.fragments." + fragName;
+                    Class c = Class.forName(fragName);
+                    fragment = (Fragment)c.newInstance();
+                } catch (Exception ex) {
+                    fragment = new StartFragment();
+                }
             }
         }
         navi.navigate(fragment, R.id.fragment_container);

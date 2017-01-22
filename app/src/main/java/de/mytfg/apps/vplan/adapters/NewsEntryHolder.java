@@ -9,9 +9,12 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Set;
+
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.objects.TfgNewsEntry;
 import de.mytfg.apps.vplan.objects.VplanEntry;
+import de.mytfg.apps.vplan.tools.Settings;
 
 import static android.view.View.GONE;
 
@@ -38,7 +41,8 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
         date.setText(entry.getDateString());
         summary.setText(Html.fromHtml(entry.getSummary()));
         final String link = entry.getLink();
-        if (!link.isEmpty()) {
+        Settings settings = new Settings(context);
+        if (!link.isEmpty() && settings.getBool("news_browser")) {
             setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

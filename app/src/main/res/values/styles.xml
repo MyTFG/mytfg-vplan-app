@@ -54,5 +54,4 @@
         <item name="android:textColor">@color/colorIcons</item>
         <item name="android:textAllCaps">false</item>
     </style>
-
 </resources>
