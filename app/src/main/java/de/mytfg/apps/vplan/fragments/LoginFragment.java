@@ -108,7 +108,6 @@ public class LoginFragment extends Fragment {
                                 }
                             } else if (responseCode == -1) {
                                 // Timeout
-                                // TODO: Verfiy responseCode -1 for Timeouts
                                 snackText = getString(R.string.login_timeout);
                             } else if (responseCode == 403) {
                                 // Invalid login
