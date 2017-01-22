@@ -2,29 +2,19 @@ package de.mytfg.apps.vplan.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
-import de.mytfg.apps.vplan.fragments.AccountFragment;
+import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
 import de.mytfg.apps.vplan.fragments.PlanFragment;
 import de.mytfg.apps.vplan.fragments.StartFragment;
@@ -81,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.mainmenu_account:
                         navi.clear();
-                        navi.navigate(new AccountFragment(), R.id.fragment_container);
+                        navi.navigate(new SettingsFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_about:
                         navi.clear();

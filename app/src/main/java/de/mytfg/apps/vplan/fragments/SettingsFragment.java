@@ -44,12 +44,12 @@ import de.mytfg.apps.vplan.api.ApiParams;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.objects.User;
 
-public class AccountFragment extends Fragment {
+public class SettingsFragment extends Fragment {
     private View view;
     private MainActivity context;
 
 
-    public AccountFragment() {
+    public SettingsFragment() {
     }
 
     @Nullable
@@ -61,7 +61,7 @@ public class AccountFragment extends Fragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setTitle(getString(R.string.menutitle_account))
+                .setTitle(getString(R.string.menutitle_settings))
                 .setExpandable(true, true);
 
         MyTFGApi api = new MyTFGApi(context);

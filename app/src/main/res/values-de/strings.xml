@@ -11,7 +11,7 @@
     <!-- VPlan Menu -->
     <string name="menutitle_home">Start</string>
     <string name="menutitle_plan">VPlan</string>
-    <string name="menutitle_account">Mein Account</string>
+    <string name="menutitle_settings">Account &amp; Einstellungen</string>
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
 

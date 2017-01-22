@@ -12,7 +12,7 @@
     <string name="menutitle_home">Home</string>
     <string name="menutitle_plan">Plan</string>
     <string name="menutitle_login">Login</string>
-    <string name="menutitle_account">My Account</string>
+    <string name="menutitle_settings">Account &amp; Settings</string>
     <string name="menutitle_about">About this App</string>
 
     <!-- HOME -->
