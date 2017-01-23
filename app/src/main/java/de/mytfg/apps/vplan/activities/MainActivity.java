@@ -60,11 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 MyTFGApi api = new MyTFGApi(context);
-                if (!api.isLoggedIn()) {
-                    navi.clear();
-                    navi.navigate(new LoginFragment(), R.id.fragment_container);
-                    return true;
-                }
                 switch (item.getItemId()) {
                     default:
                         return false;
@@ -73,8 +68,13 @@ public class MainActivity extends AppCompatActivity {
                         navi.navigate(new StartFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_plan:
+                        // Login required to see VPlan
                         navi.clear();
-                        navi.navigate(new PlanFragment(), R.id.fragment_container);
+                        if (!api.isLoggedIn()) {
+                            navi.navigate(new LoginFragment(), R.id.fragment_container);
+                        } else {
+                            navi.navigate(new PlanFragment(), R.id.fragment_container);
+                        }
                         return true;
                     case R.id.mainmenu_vrr:
                         navi.clear();
@@ -108,9 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         Fragment fragment;
+        Settings settings = new Settings(context);
 
         MyTFGApi api = new MyTFGApi(context);
-        if (!api.isLoggedIn()) {
+        if (!api.isLoggedIn() && !settings.getBool("first_login_hint")) {
+            settings.save("first_login_hint", true);
             fragment = new LoginFragment();
         } else {
             if (savedInstanceState != null) {
@@ -118,13 +120,7 @@ public class MainActivity extends AppCompatActivity {
                         "fragmentInstanceSaved");
             } else {
                 // Read Landing Page from settings
-                Settings settings = new Settings(context);
-                int page = settings.getInt("landing_page");
-                String[] fragmentNames = getResources().getStringArray(R.array.settings_opt_landing_page_fragments);
-                String fragName = "StartFragment";
-                if (page >= 0 && page < fragmentNames.length) {
-                    fragName = fragmentNames[page];
-                }
+                String fragName = settings.getString("landing_page");
                 try {
                     fragName = "de.mytfg.apps.vplan.fragments." + fragName;
                     Class c = Class.forName(fragName);

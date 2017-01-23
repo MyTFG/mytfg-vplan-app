@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.TextViewCompat;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +53,9 @@ public class LoginFragment extends Fragment {
         MyTFGApi api = new MyTFGApi(context);
         EditText username = (EditText) view.findViewById(R.id.login_username);
         username.setText(api.getUsername());
+
+        TextView loginText = (TextView) view.findViewById(R.id.login_text);
+        loginText.setText(Html.fromHtml(getString(R.string.login_text)));
 
         // Set Login Button listener
         Button loginButton = (Button) view.findViewById(R.id.login_button);

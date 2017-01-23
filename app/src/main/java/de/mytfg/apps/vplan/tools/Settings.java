@@ -47,6 +47,12 @@ public class Settings {
         return preferences.getString(option, "");
     }
 
+    public void clear(String option) {
+        preferences.edit()
+                .remove(option)
+                .apply();
+    }
+
     public int getInt(String option) {
         return preferences.getInt(option, 0);
     }

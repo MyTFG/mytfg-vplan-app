@@ -33,8 +33,12 @@
     <string name="api_vrr_error">Abfahrtszeiten konnten nicht geladen werden</string>
 
     <!-- LOGIN -->
-    <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
-        müssen Sie sich anmelden.</string>
+    <string name="login_text">
+        Für den Zugriff auf den Vertretungsplan ist eine Anmeldung erforderlich.&lt;br />
+        Sie können sich mit Ihrem MyTFG Account anmelden.&lt;br />
+        Eltern können den Zugang des Kindes nutzen.&lt;br />
+        Klassen von Geschwistern oder Freunden können anschließend in den Einstellungen ausgewählt werden.
+    </string>
     <string name="login_action">Anmelden</string>
     <string name="login_hint_username">Nutzername</string>
     <string name="login_hint_password">Passwort</string>
@@ -102,7 +106,7 @@
         Sie haben die Möglichkeit, verschiedene Klassen hinzuzufügen, für die Sie ebenfalls Einträge erhalten wollen.
     </string>
     <string name="account_additional_explanation_highlevel">
-        Als %1$s erhalten Sie alle Einträge der Vertretungsplans.&lt;br/>
+        Als %1$s erhalten Sie alle Einträge des Vertretungsplans.&lt;br/>
         Somit können Sie keine zusätzlichen Klassen wählen.
     </string>
     <string name="account_addional_classes">&lt;b>Zusätzliche Klassen&lt;/b>&lt;br/>%1$s</string>

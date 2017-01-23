@@ -68,6 +68,7 @@
     <string name="api_vrr_error">VRR Data could not be loaded</string>
 
     <!-- LOGIN -->
+    <string name="login_title">MyTFG Login</string>
     <string name="login_text">To use this App and all its features you have to login first.</string>
     <string name="login_action">Login</string>
     <string name="login_hint_username">Username</string>
@@ -119,11 +120,13 @@
     <string-array name="settings_opt_landing_page_entries">
         <item>@string/menutitle_home</item>
         <item>@string/menutitle_plan</item>
+        <item>@string/menutitle_vrr</item>
         <item>@string/menutitle_about</item>
     </string-array>
     <string-array name="settings_opt_landing_page_fragments">
         <item>StartFragment</item>
         <item>PlanFragment</item>
+        <item>VrrFragment</item>
         <item>AboutFragment</item>
     </string-array>
 

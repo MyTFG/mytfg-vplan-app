@@ -10,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -62,50 +63,72 @@ public class SettingsFragment extends Fragment {
                 .setTitle(getString(R.string.menutitle_settings))
                 .setExpandable(true, true);
 
-        MyTFGApi api = new MyTFGApi(context);
-        String device = api.getStoredDevice();
-        long expirets = api.getExpire();
-        String expire = api.getExpireString();
-        final User user = api.getUser();
-
-        TextView username = (TextView) view.findViewById(R.id.account_name);
-        username.setText(user.getUsername());
-        TextView text = (TextView) view.findViewById(R.id.account_info_text);
-        text.setText(Html.fromHtml(
-                String.format(getString(R.string.account_info_text),
-                        user.getFirstname(),
-                        user.getLastname(),
-                        user.getUsername(),
-                        device,
-                        expire,
-                        user.getLevel(),
-                        user.getGrade()
-                        )
-        ));
-
-        Button logoutbtn = (Button) view.findViewById(R.id.logout_button);
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyTFGApi api = new MyTFGApi(context);
-                api.logout(false);
-
-                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
-                Snackbar snackbar = Snackbar
-                        .make(coordinatorLayout,
-                                getString(R.string.account_logged_out),
-                                Snackbar.LENGTH_LONG);
-                snackbar.show();
-                context.getNavi().clear();
-                context.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
-            }
-        });
-
-        updateSettings();
-
-        updateAdditionalClasses();
+        updateViews();
 
         return view;
+    }
+
+    private void updateViews() {
+        CardView details = (CardView) view.findViewById(R.id.account_loggedin);
+        CardView login = (CardView) view.findViewById(R.id.account_goto_login);
+        CardView additional = (CardView) view.findViewById(R.id.account_additional_card);
+
+        MyTFGApi api = new MyTFGApi(context);
+        if (api.isLoggedIn()) {
+            login.setVisibility(View.GONE);
+            details.setVisibility(View.VISIBLE);
+            additional.setVisibility(View.VISIBLE);
+            String device = api.getStoredDevice();
+            long expirets = api.getExpire();
+            String expire = api.getExpireString();
+            final User user = api.getUser();
+
+            TextView username = (TextView) view.findViewById(R.id.account_name);
+            username.setText(user.getUsername());
+            TextView text = (TextView) view.findViewById(R.id.account_info_text);
+            text.setText(Html.fromHtml(
+                    String.format(getString(R.string.account_info_text),
+                            user.getFirstname(),
+                            user.getLastname(),
+                            user.getUsername(),
+                            device,
+                            expire,
+                            user.getLevel(),
+                            user.getGrade()
+                    )
+            ));
+
+            Button logoutbtn = (Button) view.findViewById(R.id.logout_button);
+            logoutbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyTFGApi api = new MyTFGApi(context);
+                    api.logout(false);
+
+                    CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout,
+                                    getString(R.string.account_logged_out),
+                                    Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    updateViews();
+                }
+            });
+
+            updateAdditionalClasses();
+        } else {
+            login.setVisibility(View.VISIBLE);
+            details.setVisibility(View.GONE);
+            additional.setVisibility(View.GONE);
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity)getActivity()).getNavi().navigate(new LoginFragment(), R.id.fragment_container);
+                }
+            });
+        }
+
+        updateSettings();
     }
 
     @Override
@@ -224,7 +247,7 @@ public class SettingsFragment extends Fragment {
                 break;
             default:
                 explanation.setText(Html.fromHtml(
-                        String.format(getString(R.string.account_additional_explanation_pupil),
+                        String.format(getString(R.string.account_additional_explanation_highlevel),
                                 user.getLevel())
                 ));
                 break;
@@ -298,11 +321,21 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        landing.setSelection(settings.getInt("landing_page"));
+        String selection = settings.getString("landing_page");
+        int selectedId = 0;
+        String[] arr = getResources().getStringArray(R.array.settings_opt_landing_page_fragments);
+        for (int i = 0; i < arr.length; ++i) {
+            if (arr[i].equals(selection)) {
+                selectedId = i;
+                break;
+            }
+        }
+
+        landing.setSelection(selectedId);
         landing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                settings.save("landing_page", i);
+                settings.save("landing_page", getResources().getStringArray(R.array.settings_opt_landing_page_fragments)[i]);
             }
 
             @Override

@@ -28,6 +28,7 @@ import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
 import de.mytfg.apps.vplan.adapters.FragmentHolder;
 import de.mytfg.apps.vplan.adapters.ViewPagerAdapter;
+import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.logic.PlanLogic;
 import de.mytfg.apps.vplan.objects.Vplan;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
@@ -52,6 +53,7 @@ public class PlanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_plan, container, false);
         final MainActivity context = (MainActivity)this.getActivity();
+
         this.context = context;
         context.getToolbarManager()
                 .clear(false)
@@ -61,14 +63,6 @@ public class PlanFragment extends Fragment {
                 .setTabs(true)
                 .showFab()
                 .setTabOutscroll(true);
-
-        // Create logics
-        /*todayPlan = new Vplan(context, "today");
-        tomorrowPlan = new Vplan(context, "tomorrow");
-
-        today = new PlanLogic(todayPlan);
-        tomorrow = new PlanLogic(tomorrowPlan);
-        */
 
         setHasOptionsMenu(true);
 
