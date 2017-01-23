@@ -25,6 +25,18 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".widgets.MytfgAppWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/vplan_appwidget_info" />
+        </receiver>
+        <!-- Widget service -->
+        <service
+            android:name="de.mytfg.apps.vplan.widgets.WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
     </application>
 
 </manifest>

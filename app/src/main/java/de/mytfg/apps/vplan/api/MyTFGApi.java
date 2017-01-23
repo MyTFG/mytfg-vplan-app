@@ -55,10 +55,17 @@ public class MyTFGApi {
 
     public MyTFGApi(Context context) {
         this.context = context;
-        View rootview = ((Activity)context).getWindow().getDecorView()
-                .findViewById(android.R.id.content);
-        loadingBar = (ProgressBar) rootview.findViewById(R.id.loadingBar);
-        loadingBar.setVisibility(View.GONE);
+        // When using with Activity (in-App):
+        if (context instanceof Activity) {
+            View rootview = ((Activity) context).getWindow().getDecorView()
+                    .findViewById(android.R.id.content);
+            loadingBar = (ProgressBar) rootview.findViewById(R.id.loadingBar);
+            loadingBar.setVisibility(View.GONE);
+        } else {
+            // No PG in Widgets
+            loadingBar = new ProgressBar(context);
+            loadingBar.setVisibility(View.GONE);
+        }
     }
 
     /**

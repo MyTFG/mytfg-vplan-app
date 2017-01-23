@@ -16,4 +16,7 @@
     <color name="translucent_scrim_top_center">#66000000</color>
     <color name="translucent_scrim_bottom">#AA000000</color>
     <color name="translucent_scrim_bottom_center">#66000000</color>
+
+    <color name="colorWidgetTransparent">#883F51B5</color>
+    <color name="colorWidgetTransparentWhite">#88FFFFFF</color>
 </resources>

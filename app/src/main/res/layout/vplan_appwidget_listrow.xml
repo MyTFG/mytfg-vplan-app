@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/textTitle"
+                android:id="@+id/plan_entry_lesson" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/textTitle"
+                android:id="@+id/plan_entry_class" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:textSize="@dimen/textSmallTitle"
+                android:id="@+id/plan_header"
+                android:text="@string/plan_header"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardview_spacing"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:id="@+id/plan"
+                android:layout_marginLeft="@dimen/cardview_spacing" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:textSize="@dimen/textSmallTitle"
+                android:id="@+id/subst_header"
+                android:text="@string/subst_header"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardview_spacing"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:id="@+id/subst"
+                android:layout_marginLeft="@dimen/cardview_spacing" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:textSize="@dimen/textSmallTitle"
+                android:id="@+id/comment_header"
+                android:text="@string/comment_header"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardview_spacing"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="start"
+                android:id="@+id/comment"
+                android:layout_marginLeft="@dimen/cardview_spacing" />
+
+        </LinearLayout>
+</LinearLayout>
