@@ -143,6 +143,9 @@ public class PlanFragment extends AuthenticationFragment {
                         absent += "\n\n" + msg;
                     }
                 }
+                if (absent == null) {
+                    absent = "";
+                }
                 absentDialog.setMessage(absent);
                 absentDialog.setIcon(R.drawable.ic_menu_absent);
                 AlertDialog abs = absentDialog.create();
@@ -158,6 +161,9 @@ public class PlanFragment extends AuthenticationFragment {
                     } else {
                         message += "\n" + msg;
                     }
+                }
+                if (message == null) {
+                    message = "";
                 }
                 alertDialog.setMessage(message);
                 alertDialog.setIcon(R.drawable.ic_menu_about);
