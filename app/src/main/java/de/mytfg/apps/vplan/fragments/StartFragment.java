@@ -128,6 +128,6 @@ public class StartFragment extends Fragment {
                     ((MainActivity)getActivity()).getNavi().snackbar(getString(R.string.api_news_error));
                 }
             }
-        }, true);
+        });
     }
 }

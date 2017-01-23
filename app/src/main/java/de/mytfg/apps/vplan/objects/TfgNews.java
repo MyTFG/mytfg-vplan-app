@@ -42,7 +42,6 @@ public class TfgNews extends MytfgObject {
                 callback.callback(true);
                 return;
             }
-
         }
         loaded = false;
         // Otherwise request new data
@@ -52,7 +51,6 @@ public class TfgNews extends MytfgObject {
             public void callback(JSONObject result, int responseCode) {
                 if (responseCode == 200) {
                     loaded = true;
-                    Log.d("NEWS", result.toString());
                     if (parse(result)) {
                         saveToCache(result);
                         callback.callback(true);
