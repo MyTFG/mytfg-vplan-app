@@ -35,7 +35,7 @@ import de.mytfg.apps.vplan.toolbar.ToolbarManager;
 import de.mytfg.apps.vplan.tools.CustomViewTarget;
 import de.mytfg.apps.vplan.tools.ShowCaseManager;
 
-public class PlanFragment extends Fragment {
+public class PlanFragment extends AuthenticationFragment {
     private View view;
     private PlanLogic today;
     private PlanLogic tomorrow;
@@ -46,7 +46,10 @@ public class PlanFragment extends Fragment {
     public PlanFragment() {
     }
 
-
+    @Override
+    public boolean needsAuthentication() {
+        return true;
+    }
 
     @Nullable
     @Override

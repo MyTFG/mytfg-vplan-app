@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
 
-public class LinksFragment extends Fragment {
+public class LinksFragment extends AuthenticationFragment {
     private final String mytfgUrl = "https://mytfg.de";
     private final String moodleUrl = "https://tfgym-duesseldorf.lms.schulon.org/";
     private final String tfgUrl = "http://tfg-duesseldorf.de";

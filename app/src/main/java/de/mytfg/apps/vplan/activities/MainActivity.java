@@ -18,6 +18,7 @@ import java.util.Set;
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
+import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
 import de.mytfg.apps.vplan.fragments.LinksFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
@@ -68,13 +69,8 @@ public class MainActivity extends AppCompatActivity {
                         navi.navigate(new StartFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_plan:
-                        // Login required to see VPlan
                         navi.clear();
-                        if (!api.isLoggedIn()) {
-                            navi.navigate(new LoginFragment(), R.id.fragment_container);
-                        } else {
-                            navi.navigate(new PlanFragment(), R.id.fragment_container);
-                        }
+                        navi.navigate(new PlanFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_vrr:
                         navi.clear();
@@ -107,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Fragment fragment;
+        AuthenticationFragment fragment;
         Settings settings = new Settings(context);
 
         MyTFGApi api = new MyTFGApi(context);
@@ -116,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             fragment = new LoginFragment();
         } else {
             if (savedInstanceState != null) {
-                fragment = getSupportFragmentManager().getFragment(savedInstanceState,
+                fragment = (AuthenticationFragment)getSupportFragmentManager().getFragment(savedInstanceState,
                         "fragmentInstanceSaved");
             } else {
                 // Read Landing Page from settings
@@ -124,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     fragName = "de.mytfg.apps.vplan.fragments." + fragName;
                     Class c = Class.forName(fragName);
-                    fragment = (Fragment)c.newInstance();
+                    fragment = (AuthenticationFragment)c.newInstance();
                 } catch (Exception ex) {
                     fragment = new StartFragment();
                 }

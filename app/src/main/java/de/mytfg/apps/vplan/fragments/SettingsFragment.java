@@ -43,7 +43,7 @@ import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.objects.User;
 import de.mytfg.apps.vplan.tools.Settings;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends AuthenticationFragment {
     private View view;
     private MainActivity context;
 
@@ -74,6 +74,7 @@ public class SettingsFragment extends Fragment {
         CardView additional = (CardView) view.findViewById(R.id.account_additional_card);
 
         MyTFGApi api = new MyTFGApi(context);
+        Log.d("LoggedIn", "" + api.isLoggedIn());
         if (api.isLoggedIn()) {
             login.setVisibility(View.GONE);
             details.setVisibility(View.VISIBLE);

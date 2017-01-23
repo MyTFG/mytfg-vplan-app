@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import  de.mytfg.apps.vplan.R;
 import  de.mytfg.apps.vplan.activities.MainActivity;
 
-public class AboutFragment extends Fragment {
+public class AboutFragment extends AuthenticationFragment {
     private final String githubUrl = "https://github.com/MyTFG/mytfg-vplan-app";
 
 

@@ -32,7 +32,7 @@ import de.mytfg.apps.vplan.api.ApiParams;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.objects.User;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends AuthenticationFragment {
     private View view;
 
 

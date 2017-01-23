@@ -39,7 +39,7 @@ import de.mytfg.apps.vplan.tools.CustomViewTarget;
 import de.mytfg.apps.vplan.tools.ItemOffsetDecoration;
 import de.mytfg.apps.vplan.tools.ShowCaseManager;
 
-public class StartFragment extends Fragment {
+public class StartFragment extends AuthenticationFragment {
     private View view;
     private RecylcerNewsAdapter adapter;
     private RecyclerView recyclerView;

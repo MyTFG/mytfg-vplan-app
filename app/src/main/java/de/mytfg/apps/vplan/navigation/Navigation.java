@@ -29,6 +29,9 @@ import java.util.HashMap;
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
 import de.mytfg.apps.vplan.adapters.FragmentHolder;
+import de.mytfg.apps.vplan.api.MyTFGApi;
+import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
+import de.mytfg.apps.vplan.fragments.LoginFragment;
 import de.mytfg.apps.vplan.tools.CopyDrawableImageTransform;
 
 public class Navigation {
@@ -39,12 +42,18 @@ public class Navigation {
     }
 
 
-    public void navigate(Fragment fragment, int container, HashMap<String, Pair<String, View>> sharedElements) {
+    public void navigate(AuthenticationFragment fragment, int container, HashMap<String, Pair<String, View>> sharedElements) {
         // Need to accept Terms of Use first
         /*if (!MainActivity.sharedPreferences.getBoolean("tou_accepted", false) && !(fragment instanceof AboutFragment)) {
             navigate(new AboutFragment(), container);
             return;
         }*/
+
+        MyTFGApi api = new MyTFGApi(context);
+        if (fragment.needsAuthentication() && !api.isLoggedIn()) {
+            navigate(new LoginFragment(), container);
+            return;
+        }
 
         this.hideKeyboard();
 
@@ -100,7 +109,7 @@ public class Navigation {
         ((MainActivity)context).getDrawerLayout().closeDrawers();
     }
 
-    public void navigate(Fragment fragment, int container) {
+    public void navigate(AuthenticationFragment fragment, int container) {
         this.navigate(fragment, container, new HashMap<String, Pair<String, View>>());
     }
 
