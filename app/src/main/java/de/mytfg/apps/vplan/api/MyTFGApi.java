@@ -129,6 +129,13 @@ public class MyTFGApi {
         Vplan.clearCache("morgen", context);
     }
 
+    public void clearAdditionalClasses() {
+        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
+        preferences.edit()
+                .remove("additional_classes")
+                .apply();
+    }
+
     /**
      * Generates the device ID passed to the API.
      * @return The device ID.
@@ -191,6 +198,7 @@ public class MyTFGApi {
                 .remove("token")
                 .remove("device")
                 .remove("expire")
+                .remove("additional_classes")
                 .apply();
         if (deleteUsername) {
             preferences.edit()
