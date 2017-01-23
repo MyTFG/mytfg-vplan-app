@@ -57,7 +57,7 @@ public class Navigation {
 
         this.hideKeyboard();
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             TransitionSet transitionSet = new TransitionSet();
 
@@ -65,8 +65,8 @@ public class Navigation {
             ChangeTransform changeTransform = new ChangeTransform();
             ChangeBounds changeBounds = new ChangeBounds();
 
-            changeBounds.setDuration(500);
-            copyDrawableImageTransform.setDuration(500);
+            changeBounds.setDuration(200);
+            copyDrawableImageTransform.setDuration(200);
 
 
             transitionSet.addTransition(copyDrawableImageTransform);
@@ -76,8 +76,8 @@ public class Navigation {
 
             fragment.setSharedElementEnterTransition(transitionSet);
             fragment.setSharedElementReturnTransition(transitionSet);
-            fragment.setEnterTransition(new Fade());
-            fragment.setExitTransition(new Fade());
+            //fragment.setEnterTransition(new Fade());
+            //fragment.setExitTransition(new Fade());
         }
 
         Bundle args = fragment.getArguments();
@@ -85,11 +85,11 @@ public class Navigation {
             args = new Bundle();
         }
         long transId = System.currentTimeMillis();
-        */
+
 
         FragmentTransaction ft = ((MainActivity)context).getSupportFragmentManager().beginTransaction();
 
-        /*for (String transitionName : sharedElements.keySet()) {
+        for (String transitionName : sharedElements.keySet()) {
             String unique = sharedElements.get(transitionName).first;
 
             ViewCompat.setTransitionName(sharedElements.get(transitionName).second, unique);
@@ -101,7 +101,7 @@ public class Navigation {
 
         if (!fragment.isAdded()) {
             fragment.setArguments(args);
-        }*/
+        }
 
         ft.replace(container, fragment);
         ft.addToBackStack(null);
@@ -137,7 +137,9 @@ public class Navigation {
     }
 
     public void showKeyboard() {
-        ((MainActivity) context).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        InputMethodManager inputMethodManager =
+                (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     public void snackbar(String text) {
