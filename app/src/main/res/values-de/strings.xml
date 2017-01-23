@@ -11,9 +11,18 @@
     <!-- VPlan Menu -->
     <string name="menutitle_home">Start</string>
     <string name="menutitle_plan">VPlan</string>
+    <string name="menutitle_vrr">Fahrplan</string>
+    <string name="menutitle_partners">Partner</string>
     <string name="menutitle_settings">Account &amp; Einstellungen</string>
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
+    <string name="menutitle_back">Zurück</string>
+
+    <!-- Partner Menu -->
+    <string name="menutitle_boosters">TFG Förderverein</string>
+    <string name="menutitle_parents">TFG Eltern</string>
+    <string name="menutitle_secretary">Sekretariat</string>
+    <string name="menutitle_foundation">Schulstiftung</string>
 
     <!-- API CODES -->
     <string name="api_offline">Keine Internet Verbindung</string>
@@ -21,6 +30,7 @@
     <string name="api_serverfault">Interner Server Fehler</string>
     <string name="api_response">Ungültige Server Antwort</string>
     <string name="api_news_error">News konnten nicht geladen werden</string>
+    <string name="api_vrr_error">Abfahrtszeiten konnten nicht geladen werden</string>
 
     <!-- LOGIN -->
     <string name="login_text">Um diese App und all ihre Funktionen nutzen zu können,
@@ -126,6 +136,11 @@
         Die kommerzielle Verbreitung dieser App ist untersagt.
     </string>
 
+    <!-- VRR -->
+    <string name="vrr_dir_header">Richtung</string>
+    <string name="vrr_time_header">Ankunft</string>
+    <string name="vrr_process">Loading VRR data</string>
+
     <!-- SHOWCASE -->
     <string name="hide_showcase">Fertig</string>
     <string name="next_showcase">Weiter</string>
@@ -140,5 +155,5 @@
     <string name="sc_plan_menu_title">Weitere Informationen</string>
     <string name="sc_plan_menu_text">Erhalten Sie Informationen über abwesende Lehrer, Mitteilungen und den Zeitpunkt der letzten Aktualisierung</string>
     <string name="sc_plan_search_title">Suche</string>
-    <string name="sc_plan_search_text">Suchen Sie ach Klassen, Lehrern, Fächern, Stunden, Räumen und mehr</string>
+    <string name="sc_plan_search_text">Suchen Sie nach Klassen, Lehrern, Fächern, Stunden, Räumen und mehr</string>
 </resources>

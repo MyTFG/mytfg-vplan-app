@@ -18,10 +18,12 @@ import java.util.Set;
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
+import de.mytfg.apps.vplan.fragments.LinksFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
 import de.mytfg.apps.vplan.fragments.PlanFragment;
 import de.mytfg.apps.vplan.fragments.StartFragment;
+import de.mytfg.apps.vplan.fragments.VrrFragment;
 import de.mytfg.apps.vplan.navigation.Navigation;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
 import de.mytfg.apps.vplan.tools.Settings;
@@ -74,13 +76,31 @@ public class MainActivity extends AppCompatActivity {
                         navi.clear();
                         navi.navigate(new PlanFragment(), R.id.fragment_container);
                         return true;
+                    case R.id.mainmenu_vrr:
+                        navi.clear();
+                        navi.navigate(new VrrFragment(), R.id.fragment_container);
+                        return true;
                     case R.id.mainmenu_account:
                         navi.clear();
                         navi.navigate(new SettingsFragment(), R.id.fragment_container);
                         return true;
+                    case R.id.mainmenu_links:
+                        navi.clear();
+                        navi.navigate(new LinksFragment(), R.id.fragment_container);
+                        return true;
                     case R.id.mainmenu_about:
                         navi.clear();
                         navi.navigate(new AboutFragment(), R.id.fragment_container);
+                        return true;
+
+                    // SUBMENU "PARTNERS"
+                    case R.id.mainmenu_partners:
+                        navigationView.getMenu().clear();
+                        navigationView.inflateMenu(R.menu.submenu_partners);
+                        return true;
+                    case R.id.submenu_partners_back:
+                        navigationView.getMenu().clear();
+                        navigationView.inflateMenu(R.menu.navigation_menu);
                         return true;
                 }
             }

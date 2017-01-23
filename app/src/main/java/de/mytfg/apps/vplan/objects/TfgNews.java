@@ -24,7 +24,6 @@ public class TfgNews extends MytfgObject {
     private List<TfgNewsEntry> entries = new LinkedList<>();
     private boolean loaded = false;
     private long timestamp;
-    // 3 Minutes
     private final long timeout = 60 * 60 * 1000; // 60 minutes
 
     public TfgNews(Context context) {

@@ -7,6 +7,18 @@
         <item android:id="@+id/mainmenu_plan"
             android:icon="@drawable/ic_menu_plan"
             android:title="@string/menutitle_plan" />
+        <item android:id="@+id/mainmenu_vrr"
+            android:icon="@drawable/ic_menu_vrr"
+            android:title="@string/menutitle_vrr" >
+        </item>
+        <item android:id="@+id/mainmenu_partners"
+            android:icon="@drawable/ic_menu_partners"
+            android:title="@string/menutitle_partners" >
+        </item>
+        <item android:id="@+id/mainmenu_links"
+            android:icon="@drawable/ic_menu_links"
+            android:title="@string/menutitle_links" >
+        </item>
 
     </group>
     <group android:id="@+id/menu_group_2">

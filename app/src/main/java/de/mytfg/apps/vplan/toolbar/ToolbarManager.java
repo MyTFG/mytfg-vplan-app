@@ -77,6 +77,7 @@ public class ToolbarManager {
         if (hideFab) {
             this.hideFab();
         }
+        this.setImage(R.mipmap.front);
         this.clearMenu();
         this.setTabs(false);
         this.setTabOutscroll(false);

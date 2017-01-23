@@ -8,12 +8,22 @@
     <string name="login_process">Logging in&#8230;</string>
     <string name="login_empty">Please enter username and password</string>
 
-    <!-- VPlan Menu -->
+    <!-- Main Menu -->
     <string name="menutitle_home">Home</string>
     <string name="menutitle_plan">Plan</string>
+    <string name="menutitle_vrr">VRR</string>
+    <string name="menutitle_partners">Partners</string>
     <string name="menutitle_login">Login</string>
     <string name="menutitle_settings">Account &amp; Settings</string>
     <string name="menutitle_about">About this App</string>
+    <string name="menutitle_links">Links</string>
+    <string name="menutitle_back">Back</string>
+
+    <!-- Partner Menu -->
+    <string name="menutitle_boosters">TFG Förderverein</string>
+    <string name="menutitle_parents">TFG Eltern</string>
+    <string name="menutitle_secretary">Office</string>
+    <string name="menutitle_foundation">Schulstiftung</string>
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG VPlan</string>
@@ -55,6 +65,7 @@
     <string name="api_serverfault">Internal Server error</string>
     <string name="api_response">Invalid Server response</string>
     <string name="api_news_error">News could not be loaded</string>
+    <string name="api_vrr_error">VRR Data could not be loaded</string>
 
     <!-- LOGIN -->
     <string name="login_text">To use this App and all its features you have to login first.</string>
@@ -129,6 +140,19 @@
     <string name="about_text">This App uses the MyTFG API. All rights reserved.</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">This App is part of the MyTFG Open Source Project.</string>
+
+    <!-- LINKS -->
+    <string name="link_moodle">TFG Moodle</string>
+    <string name="link_mytfg">MyTFG</string>
+    <string name="link_tfgweb">TFG Web</string>
+    <string name="link_parents">TFG Eltern</string>
+    <string name="link_boosters">TFG Förderverein</string>
+    <string name="link_foundation">Schulstiftung</string>
+
+    <!-- VRR -->
+    <string name="vrr_dir_header">Direction</string>
+    <string name="vrr_time_header">Arrival</string>
+    <string name="vrr_process">Fahrplan wird geladen</string>
 
     <!-- SHOWCASE -->
     <string name="hide_showcase">Hide</string>

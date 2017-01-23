@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/partners_group_1">
+        <item android:id="@+id/submenu_partners_back"
+            android:icon="@drawable/ic_menu_back"
+            android:title="@string/menutitle_back" />
+    </group>
+    <group android:id="@+id/menu_group_1">
+        <item android:id="@+id/submenu_partners_boosters"
+            android:icon="@drawable/ic_menu_boosters"
+            android:title="@string/menutitle_boosters" />
+        <item android:id="@+id/submenu_partners_parents"
+            android:icon="@drawable/ic_menu_parents"
+            android:title="@string/menutitle_parents" />
+        <item android:id="@+id/submenu_partners_foundation"
+            android:icon="@drawable/ic_menu_foundation"
+            android:title="@string/menutitle_foundation" />
+        <item android:id="@+id/submenu_partners_secretary"
+            android:icon="@drawable/ic_menu_secretary"
+            android:title="@string/menutitle_secretary" />
+    </group>
+</menu>
