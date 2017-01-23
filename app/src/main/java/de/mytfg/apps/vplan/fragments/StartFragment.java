@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.widget.CardView;
@@ -34,6 +35,7 @@ import de.mytfg.apps.vplan.objects.TfgNewsEntry;
 import de.mytfg.apps.vplan.objects.User;
 import de.mytfg.apps.vplan.objects.Vplan;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
+import de.mytfg.apps.vplan.tools.CustomViewTarget;
 import de.mytfg.apps.vplan.tools.ItemOffsetDecoration;
 import de.mytfg.apps.vplan.tools.ShowCaseManager;
 
@@ -73,6 +75,12 @@ public class StartFragment extends Fragment {
         }
 
         this.displayNews();
+
+        ShowCaseManager scm = new ShowCaseManager(context);
+        View toolbar = ((MainActivity)getActivity()).getToolbarManager().getToolbar();
+        scm.createChain(this)
+                .add(new CustomViewTarget(toolbar, 50, 0, CustomViewTarget.Type.ABS_MID_L), R.string.sc_home_navi_title, R.string.sc_home_navi_text)
+                .showChain();
 
         return view;
     }

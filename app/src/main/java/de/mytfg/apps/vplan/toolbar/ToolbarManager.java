@@ -214,4 +214,8 @@ public class ToolbarManager {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
+
+    public Toolbar getToolbar() {
+        return this.toolbar;
+    }
 }

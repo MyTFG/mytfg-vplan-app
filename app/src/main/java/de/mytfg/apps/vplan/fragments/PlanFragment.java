@@ -220,19 +220,19 @@ public class PlanFragment extends Fragment {
 
     private void showcase() {
         ShowCaseManager scm = new ShowCaseManager(getContext());
+
         ToolbarManager tbm = ((MainActivity)getActivity()).getToolbarManager();
 
-        // scm.show(this, R.id.fab ,"SEARCH", "Such du Spacko!");
-
-
-        Target tab1 = new CustomViewTarget(tbm.getTabs(), 0.25f, 0.5f, getActivity());
-        Target tab2 = new CustomViewTarget(tbm.getTabs(), 0.75f, 0.5f, getActivity());
+        Target tab1 = new CustomViewTarget(tbm.getTabs(), 0.25, 0.5);
+        Target tab2 = new CustomViewTarget(tbm.getTabs(), 0.75, 0.5);
         Target fab = new ViewTarget(R.id.fab, getActivity());
+        Target menu = new CustomViewTarget(tbm.getToolbar(), 200, 0, CustomViewTarget.Type.ABS_MID_R);
 
         scm.createChain(this)
-                .add(tab1, "HEUTE", "Plan für heute")
-                .add(tab2, "Morgen", "Plan für morgen")
-                .add(fab, "Suche", "Nach Fächern etc suchen", true)
+                .add(tab1, R.string.sc_plan_today_title, R.string.sc_plan_today_text)
+                .add(tab2, R.string.sc_plan_next_title, R.string.sc_plan_next_text)
+                .add(menu, R.string.sc_plan_menu_title, R.string.sc_plan_menu_text)
+                .add(fab, R.string.sc_plan_search_title, R.string.sc_plan_search_text, true)
                 .showChain();
 
     }

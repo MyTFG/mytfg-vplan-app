@@ -2,6 +2,7 @@ package de.mytfg.apps.vplan.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -42,21 +43,21 @@ public class ShowCaseManager {
         preferences = context.getSharedPreferences("showcase", Context.MODE_PRIVATE);
     }
 
-    public void clear(String fragment) {
+    public void clear(Fragment fragment) {
         preferences.edit()
-                .remove(fragment)
+                .remove(fragment.getClass().toString())
                 .apply();
     }
 
-    public void setDone(String fragment) {
+    public void setDone(Fragment fragment) {
         preferences.edit()
-                .putBoolean(fragment, true)
+                .putBoolean(fragment.getClass().toString(), true)
                 .apply();
 
     }
 
-    public boolean isDone(String fragment) {
-        return preferences.getBoolean(fragment, false);
+    public boolean isDone(Fragment fragment) {
+        return preferences.getBoolean(fragment.getClass().toString(), false);
     }
 
     public void show(Fragment fragment, int viewId, String title, String text) {
@@ -66,7 +67,7 @@ public class ShowCaseManager {
 
 
     public void show(Fragment fragment, Target target, String title, String text) {
-        if (isDone(fragment.getClass().toString())) {
+        if (isDone(fragment)) {
             return;
         }
 
@@ -92,16 +93,21 @@ public class ShowCaseManager {
         this.fragment = fragment;
         this.chain = new LinkedList<>();
         if (showcaseView != null) {
-            Log.d("SC", "Already there");
             showcaseView.hide();
-        } else {
-            Log.d("SC", "null (nothing shown)");
         }
         return this;
     }
 
     public ShowCaseManager add(Target target, String title, String text) {
         return add(target, title, text, false);
+    }
+
+    public ShowCaseManager add(Target target, @StringRes int title, @StringRes int text) {
+        return add(target, title, text, false);
+    }
+
+    public ShowCaseManager add(Target target, @StringRes int title, @StringRes int text, boolean buttonLeft) {
+        return add(target, context.getString(title), context.getString(text), buttonLeft);
     }
 
     public ShowCaseManager add(Target target, String title, String text, boolean buttonLeft) {
@@ -116,7 +122,7 @@ public class ShowCaseManager {
     }
 
     public void showChain() {
-        if (isDone(fragment.getClass().toString())) {
+        if (isDone(fragment)) {
             return;
         }
 
@@ -186,6 +192,8 @@ public class ShowCaseManager {
             showcaseView.setContentTitle(elem.title);
             showcaseView.setContentText(elem.text);
         } else {
+            // Do not repeat the tutorial for this fragment
+            setDone(fragment);
             showcaseView.hide();
         }
     }

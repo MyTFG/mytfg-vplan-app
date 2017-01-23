@@ -125,4 +125,20 @@
         Der Quellcode kann auf Github eingesehen werden.
         Die kommerzielle Verbreitung dieser App ist untersagt.
     </string>
+
+    <!-- SHOWCASE -->
+    <string name="hide_showcase">Fertig</string>
+    <string name="next_showcase">Weiter</string>
+
+    <!-- SHOWCASE TEXTS & TITLES -->
+    <string name="sc_home_navi_title">Navigation</string>
+    <string name="sc_home_navi_text">Klicken Sie zum Öffnen der Navigation hier</string>
+    <string name="sc_plan_today_title">Aktueller Tag</string>
+    <string name="sc_plan_today_text">Plan für den aktuellen Schultag</string>
+    <string name="sc_plan_next_title">Nächster Tag</string>
+    <string name="sc_plan_next_text">Plan für den nächsten Schultag</string>
+    <string name="sc_plan_menu_title">Weitere Informationen</string>
+    <string name="sc_plan_menu_text">Erhalten Sie Informationen über abwesende Lehrer, Mitteilungen und den Zeitpunkt der letzten Aktualisierung</string>
+    <string name="sc_plan_search_title">Suche</string>
+    <string name="sc_plan_search_text">Suchen Sie ach Klassen, Lehrern, Fächern, Stunden, Räumen und mehr</string>
 </resources>

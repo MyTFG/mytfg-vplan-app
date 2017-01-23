@@ -133,4 +133,16 @@
     <!-- SHOWCASE -->
     <string name="hide_showcase">Hide</string>
     <string name="next_showcase">Next</string>
+
+    <!-- SHOWCASE TEXTS & TITLES -->
+    <string name="sc_home_navi_title">Navigation</string>
+    <string name="sc_home_navi_text">Click here to open the navigation</string>
+    <string name="sc_plan_today_title">Current Day</string>
+    <string name="sc_plan_today_text">The plan for the current day</string>
+    <string name="sc_plan_next_title">Next Day</string>
+    <string name="sc_plan_next_text">The plan for the next day</string>
+    <string name="sc_plan_menu_title">More information</string>
+    <string name="sc_plan_menu_text">Use these options to see more information like absent teachers, messages and the time of the last update</string>
+    <string name="sc_plan_search_title">Search</string>
+    <string name="sc_plan_search_text">You can search for classes, teachers, subjects, rooms and more</string>
 </resources>
