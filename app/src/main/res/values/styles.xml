@@ -54,4 +54,21 @@
         <item name="android:textColor">@color/colorIcons</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="CustomShowcaseTheme" parent="ShowcaseView.Light">
+        <item name="sv_backgroundColor">@color/colorPrimaryTransparent</item>
+        <item name="sv_showcaseColor">@color/colorAccent</item>
+        <item name="sv_titleTextAppearance">@style/CustomTitle</item>
+        <item name="sv_detailTextAppearance">@style/CustomText</item>
+        <item name="sv_buttonText">Hide</item>
+        <item name="sv_tintButtonColor">false</item>
+    </style>
+    <style name="CustomTitle" parent="TextAppearance.ShowcaseView.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="CustomText" parent="TextAppearance.ShowcaseView.Detail.Light">
+        <item name="android:textColor">@color/colorIcons</item>
+    </style>
+
 </resources>

@@ -9,13 +9,20 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
@@ -23,6 +30,9 @@ import de.mytfg.apps.vplan.adapters.FragmentHolder;
 import de.mytfg.apps.vplan.adapters.ViewPagerAdapter;
 import de.mytfg.apps.vplan.logic.PlanLogic;
 import de.mytfg.apps.vplan.objects.Vplan;
+import de.mytfg.apps.vplan.toolbar.ToolbarManager;
+import de.mytfg.apps.vplan.tools.CustomViewTarget;
+import de.mytfg.apps.vplan.tools.ShowCaseManager;
 
 public class PlanFragment extends Fragment {
     private View view;
@@ -204,5 +214,28 @@ public class PlanFragment extends Fragment {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+
+        this.showcase();
     }
+
+    private void showcase() {
+        ShowCaseManager scm = new ShowCaseManager(getContext());
+        ToolbarManager tbm = ((MainActivity)getActivity()).getToolbarManager();
+
+        // scm.show(this, R.id.fab ,"SEARCH", "Such du Spacko!");
+
+
+        Target tab1 = new CustomViewTarget(tbm.getTabs(), 0.25f, 0.5f, getActivity());
+        Target tab2 = new CustomViewTarget(tbm.getTabs(), 0.75f, 0.5f, getActivity());
+        Target fab = new ViewTarget(R.id.fab, getActivity());
+
+        scm.createChain(this)
+                .add(tab1, "HEUTE", "Plan für heute")
+                .add(tab2, "Morgen", "Plan für morgen")
+                .add(fab, "Suche", "Nach Fächern etc suchen", true)
+                .showChain();
+
+    }
+
 }
+

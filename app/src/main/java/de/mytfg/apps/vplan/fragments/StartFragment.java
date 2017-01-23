@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -19,6 +20,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
 import de.mytfg.apps.vplan.adapters.RecylcerNewsAdapter;
@@ -30,6 +35,7 @@ import de.mytfg.apps.vplan.objects.User;
 import de.mytfg.apps.vplan.objects.Vplan;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
 import de.mytfg.apps.vplan.tools.ItemOffsetDecoration;
+import de.mytfg.apps.vplan.tools.ShowCaseManager;
 
 public class StartFragment extends Fragment {
     private View view;

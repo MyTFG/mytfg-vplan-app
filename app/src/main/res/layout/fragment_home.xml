@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            android:id="@+id/home_login_status_card"
             android:layout_marginBottom="@dimen/defaultPadding">
 
             <LinearLayout

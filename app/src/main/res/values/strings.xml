@@ -129,4 +129,8 @@
     <string name="about_text">This App uses the MyTFG API. All rights reserved.</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">This App is part of the MyTFG Open Source Project.</string>
+
+    <!-- SHOWCASE -->
+    <string name="hide_showcase">Hide</string>
+    <string name="next_showcase">Next</string>
 </resources>
