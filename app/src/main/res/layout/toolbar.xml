@@ -27,6 +27,14 @@
             android:id="@+id/toolbar_image"
             android:src="@mipmap/front"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sheet_text_scrim_height_bottom"
+            android:layout_gravity="bottom"
+            android:id="@+id/toolbar_scrim_bottom"
+            android:layout_alignBottom="@+id/toolbar_image"
+            android:background="@drawable/scrim_bottom"/>
+
         <android.support.v7.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"

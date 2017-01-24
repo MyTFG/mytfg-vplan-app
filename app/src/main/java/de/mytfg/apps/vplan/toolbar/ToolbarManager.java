@@ -80,6 +80,7 @@ public class ToolbarManager {
         this.setImage(R.mipmap.front);
         this.clearMenu();
         this.setTabs(false);
+        this.hideBottomScrim();
         this.setTabOutscroll(false);
         return this;
     }
@@ -165,6 +166,18 @@ public class ToolbarManager {
         if (searchItem != null) {
             searchItem.setVisible(false);
         }
+        return this;
+    }
+
+    public ToolbarManager showBottomScrim() {
+        View scrim = collapsingToolbarLayout.findViewById(R.id.toolbar_scrim_bottom);
+        scrim.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    public ToolbarManager hideBottomScrim() {
+        View scrim = collapsingToolbarLayout.findViewById(R.id.toolbar_scrim_bottom);
+        scrim.setVisibility(View.GONE);
         return this;
     }
 

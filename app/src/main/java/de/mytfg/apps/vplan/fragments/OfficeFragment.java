@@ -5,16 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
@@ -34,6 +31,8 @@ public class OfficeFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
+                .setImage(R.mipmap.office_header)
+                .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_secretary))
                 .setExpandable(true, true);
 
@@ -69,37 +68,6 @@ public class OfficeFragment extends AuthenticationFragment {
                 startActivity(i);
             }
         });
-
-        /*CardView mytfg = (CardView) view.findViewById(R.id.link_mytfg);
-        mytfg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(mytfgUrl));
-                startActivity(i);
-            }
-        });
-
-        final CardView moodle = (CardView) view.findViewById(R.id.link_moodle);
-        moodle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(moodleUrl));
-                startActivity(i);
-            }
-        });
-
-        CardView tfg = (CardView) view.findViewById(R.id.link_tfg_web);
-        tfg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(tfgUrl));
-                startActivity(i);
-            }
-        });
-        */
         return view;
     }
 
