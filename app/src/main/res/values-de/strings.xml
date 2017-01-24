@@ -145,6 +145,14 @@
     <string name="vrr_time_header">Ankunft</string>
     <string name="vrr_process">Loading VRR data</string>
 
+    <!-- OFFICE -->
+    <string name="office_address">Adresse</string>
+    <string name="office_phone">Telefon</string>
+    <string name="office_fax">Fax</string>
+    <string name="office_mail">E-Mail</string>
+    <string name="office_open">Öffnungszeiten</string>
+    <string name="office_open_val">8:00 bis 16:00 Uhr</string>
+
     <!-- SHOWCASE -->
     <string name="hide_showcase">Fertig</string>
     <string name="next_showcase">Weiter</string>

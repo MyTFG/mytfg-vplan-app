@@ -157,6 +157,18 @@
     <string name="vrr_time_header">Arrival</string>
     <string name="vrr_process">Fahrplan wird geladen</string>
 
+    <!-- OFFICE -->
+    <string name="office_address">Address</string>
+    <string name="office_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
+    <string name="office_phone">Phone</string>
+    <string name="office_phone_val">0211/9405701</string>
+    <string name="office_fax">Fax</string>
+    <string name="office_fax_val">0211/9405747</string>
+    <string name="office_mail">Mail</string>
+    <string name="office_mail_val">mail@tfg-duesseldorf.de</string>
+    <string name="office_open">Opening times</string>
+    <string name="office_open_val">8am to 4pm</string>
+
     <!-- SHOWCASE -->
     <string name="hide_showcase">Hide</string>
     <string name="next_showcase">Next</string>

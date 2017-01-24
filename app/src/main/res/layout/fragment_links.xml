@@ -15,9 +15,11 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/link_mytfg"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:layout_marginBottom="@dimen/cardview_spacing">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,8 +60,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:id="@+id/link_moodle"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:layout_marginBottom="@dimen/cardview_spacing">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +105,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/link_tfg_web"
             android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginBottom="@dimen/cardview_spacing">
 
             <LinearLayout
                 android:layout_width="match_parent"

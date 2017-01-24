@@ -20,6 +20,7 @@ import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
 import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
 import de.mytfg.apps.vplan.fragments.LinksFragment;
+import de.mytfg.apps.vplan.fragments.OfficeFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
 import de.mytfg.apps.vplan.fragments.PlanFragment;
@@ -97,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_back:
                         navigationView.getMenu().clear();
                         navigationView.inflateMenu(R.menu.navigation_menu);
+                        return true;
+                    case R.id.submenu_partners_secretary:
+                        navi.clear();
+                        navi.navigate(new OfficeFragment(), R.id.fragment_container);
                         return true;
                 }
             }
