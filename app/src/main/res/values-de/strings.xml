@@ -17,6 +17,7 @@
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
     <string name="menutitle_back">Zurück</string>
+    <string name="menutitle_feedback">Feedback</string>
 
     <!-- Partner Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
@@ -152,6 +153,27 @@
     <string name="office_mail">E-Mail</string>
     <string name="office_open">Öffnungszeiten</string>
     <string name="office_open_val">8:00 bis 16:00 Uhr</string>
+
+    <!-- FEEDBACK -->
+    <string name="feedback_hint_title">Feedback abgeben</string>
+    <string name="feedback_hint_text">
+        Diese App befindet sich derzeit noch in der Entwicklung.
+        \nUm diese App zu verbessern, sind wir auf Ihr Feedback angewiesen.
+        \nSollten Ihnen Fehler in technischer oder inhaltlicher Hinsicht auffallen,
+        Sie sich eine weitere Funktion wünschen oder Sie andere Ideen haben, wie man diese App
+        verbessern könnte, teilen Sie uns dies mit!
+        \nIhr Feedback wird anonym entgegengenommen und ohne personenbezogene Daten gespeichert.
+    </string>
+    <string name="feedback_form_title">Feedback</string>
+    <string name="feedback_form_stars">Wie würden Sie die App derzeit bewerten?</string>
+    <string name="feedback_form_like">Was gefällt Ihnen an der App?</string>
+    <string name="feedback_form_improve">Was sollte Ihrer Meinung nach verbessert werden / welche Fehler treten auf?</string>
+    <string name="feedback_action">Absenden</string>
+    <string name="feedback_process">Feedback wird übermittelt</string>
+    <string name="feedback_success">Vielen Dank für Ihr Feedback</string>
+    <string name="feedback_400">Feedback konnte nicht übermittelt werden</string>
+    <string name="feedback_500">Feedback konnte nicht an Entwickler weitergeleitet werden</string>
+    <string name="feedback_error">Überprüfen Sie Ihre Netzwerkverbindung</string>
 
     <!-- SHOWCASE -->
     <string name="hide_showcase">Fertig</string>

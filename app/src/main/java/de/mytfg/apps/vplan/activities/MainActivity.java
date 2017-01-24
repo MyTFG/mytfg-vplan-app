@@ -19,6 +19,7 @@ import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
 import de.mytfg.apps.vplan.fragments.AboutFragment;
 import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
+import de.mytfg.apps.vplan.fragments.FeedbackFragment;
 import de.mytfg.apps.vplan.fragments.LinksFragment;
 import de.mytfg.apps.vplan.fragments.OfficeFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
@@ -88,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.mainmenu_about:
                         navi.clear();
                         navi.navigate(new AboutFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.mainmenu_feedback:
+                        navi.clear();
+                        navi.navigate(new FeedbackFragment(), R.id.fragment_container);
                         return true;
 
                     // SUBMENU "PARTNERS"

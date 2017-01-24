@@ -1,0 +1,122 @@
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorIcons"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="@dimen/defaultPadding"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_spacing"
+            android:layout_marginBottom="@dimen/defaultPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feedback_hint_title" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"
+                    android:id="@+id/login_text"
+                    android:text="@string/feedback_hint_text" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_spacing"
+            android:layout_marginBottom="@dimen/defaultPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feedback_form_title" />
+
+                <TextView
+                    android:text="@string/feedback_form_stars"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"/>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:id="@+id/feedback_rating"
+                    android:rating="1"
+                    android:numStars="5" />
+
+                <TextView
+                    android:text="@string/feedback_form_like"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/feedback_form_like"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/feedback_like"
+                    android:minLines="5"/>
+
+                <TextView
+                    android:text="@string/feedback_form_improve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/feedback_form_improve"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/feedback_improve"
+                    android:minLines="5"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:id="@+id/feedback_button"
+                    android:text="@string/feedback_action"
+                    style="@style/AppTheme.Button"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
