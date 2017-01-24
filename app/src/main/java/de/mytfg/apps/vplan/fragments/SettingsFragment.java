@@ -60,6 +60,8 @@ public class SettingsFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
+                .setImage(R.mipmap.settings_header)
+                .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_settings))
                 .setExpandable(true, true);
 
