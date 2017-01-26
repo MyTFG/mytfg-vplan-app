@@ -82,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
                         navi.clear();
                         navi.navigate(new SettingsFragment(), R.id.fragment_container);
                         return true;
-                    case R.id.mainmenu_links:
-                        navi.clear();
-                        navi.navigate(new LinksFragment(), R.id.fragment_container);
-                        return true;
                     case R.id.mainmenu_about:
                         navi.clear();
                         navi.navigate(new AboutFragment(), R.id.fragment_container);
@@ -96,13 +92,17 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     // SUBMENU "PARTNERS"
-                    case R.id.mainmenu_partners:
+                    case R.id.mainmenu_more:
                         navigationView.getMenu().clear();
-                        navigationView.inflateMenu(R.menu.submenu_partners);
+                        navigationView.inflateMenu(R.menu.submenu_more);
                         return true;
                     case R.id.submenu_partners_back:
                         navigationView.getMenu().clear();
                         navigationView.inflateMenu(R.menu.navigation_menu);
+                        return true;
+                    case R.id.mainmenu_links:
+                        navi.clear();
+                        navi.navigate(new LinksFragment(), R.id.fragment_container);
                         return true;
                     case R.id.submenu_partners_secretary:
                         navi.clear();

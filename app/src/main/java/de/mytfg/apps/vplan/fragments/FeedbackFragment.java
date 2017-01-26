@@ -43,7 +43,7 @@ public class FeedbackFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setImage(R.mipmap.feedback_header)
+                .setImage(R.drawable.feedback_header)
                 .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_feedback))
                 .setExpandable(true, true);

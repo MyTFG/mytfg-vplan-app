@@ -16,15 +16,16 @@
     <string name="menutitle_login">Login</string>
     <string name="menutitle_settings">Account &amp; Settings</string>
     <string name="menutitle_about">About this App</string>
-    <string name="menutitle_links">Links</string>
     <string name="menutitle_back">Back</string>
     <string name="menutitle_feedback">Feedback</string>
+    <string name="menutitle_more">More</string>
 
-    <!-- Partner Menu -->
+    <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
     <string name="menutitle_parents">TFG Eltern</string>
     <string name="menutitle_secretary">Office</string>
     <string name="menutitle_foundation">Schulstiftung</string>
+    <string name="menutitle_links">Links</string>
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG VPlan</string>
@@ -169,6 +170,11 @@
     <string name="office_mail_val">mail@tfg-duesseldorf.de</string>
     <string name="office_open">Opening times</string>
     <string name="office_open_val">8am to 4pm</string>
+
+    <!-- PARENTS -->
+    <string name="parents_info_text">
+        Sorry, not available in English.
+    </string>
 
     <!-- FEEDBACK -->
     <string name="feedback_hint_title">Provide Feedback</string>

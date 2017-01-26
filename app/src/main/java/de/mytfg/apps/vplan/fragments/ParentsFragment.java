@@ -16,11 +16,11 @@ import java.net.URLEncoder;
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.activities.MainActivity;
 
-public class OfficeFragment extends AuthenticationFragment {
+public class ParentsFragment extends AuthenticationFragment {
     private final String addressString = "Kalkumer Schlossallee 28 40489 Düsseldorf";
 
 
-    public OfficeFragment() {
+    public ParentsFragment() {
     }
 
     @Nullable

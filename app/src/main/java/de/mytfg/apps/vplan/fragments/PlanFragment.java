@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
@@ -69,7 +70,7 @@ public class PlanFragment extends AuthenticationFragment {
 
         setHasOptionsMenu(true);
 
-        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -58,7 +58,7 @@ public class VrrFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setImage(R.mipmap.vrr_header_s)
+                .setImage(R.drawable.vrr_header_s)
                 .setTitle(getString(R.string.menutitle_vrr))
                 .setExpandable(true, true);
 

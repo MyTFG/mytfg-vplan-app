@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,8 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
     private Context context;
     private ArrayList<VplanEntry> elements = new ArrayList<>();
     private PlanEntryAdapterEvents events;
+
+    private int lastPosition = -1; // None
 
     private String unique;
 
@@ -57,6 +61,7 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
     @Override
     public void onBindViewHolder(final PlanEntryHolder holder, final int position) {
         holder.update(elements.get(position));
+        setAnimation(holder.getCardView(), position);
     }
 
     @Override
@@ -70,5 +75,22 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
 
     public void clear() {
         elements.clear();
+    }
+
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(PlanEntryHolder holder) {
+        holder.clearAnimation();
+        super.onViewDetachedFromWindow(holder);
     }
 }

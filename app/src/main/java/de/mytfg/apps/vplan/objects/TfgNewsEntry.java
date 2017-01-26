@@ -55,4 +55,8 @@ public class TfgNewsEntry extends MytfgObject {
     public String getLink() {
         return link;
     }
+
+    public String getText() {
+        return text;
+    }
 }

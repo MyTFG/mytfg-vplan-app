@@ -79,4 +79,9 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
     public CardView getCardView() {
         return cardView;
     }
+
+    public void clearAnimation()
+    {
+        cardView.clearAnimation();
+    }
 }

@@ -11,15 +11,10 @@
             android:icon="@drawable/ic_menu_vrr"
             android:title="@string/menutitle_vrr" >
         </item>
-        <item android:id="@+id/mainmenu_partners"
-            android:icon="@drawable/ic_menu_partners"
-            android:title="@string/menutitle_partners" >
+        <item android:id="@+id/mainmenu_more"
+            android:icon="@drawable/ic_menu_more"
+            android:title="@string/menutitle_more" >
         </item>
-        <item android:id="@+id/mainmenu_links"
-            android:icon="@drawable/ic_menu_links"
-            android:title="@string/menutitle_links" >
-        </item>
-
     </group>
     <group android:id="@+id/menu_group_2">
         <item android:id="@+id/mainmenu_account"

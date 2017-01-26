@@ -12,18 +12,19 @@
     <string name="menutitle_home">Start</string>
     <string name="menutitle_plan">VPlan</string>
     <string name="menutitle_vrr">Fahrplan</string>
-    <string name="menutitle_partners">Partner</string>
     <string name="menutitle_settings">Account &amp; Einstellungen</string>
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
     <string name="menutitle_back">Zurück</string>
     <string name="menutitle_feedback">Feedback</string>
+    <string name="menutitle_more">Mehr</string>
 
-    <!-- Partner Menu -->
+    <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
     <string name="menutitle_parents">TFG Eltern</string>
     <string name="menutitle_secretary">Sekretariat</string>
     <string name="menutitle_foundation">Schulstiftung</string>
+    <string name="menutitle_partners">Partner</string>
 
     <!-- API CODES -->
     <string name="api_offline">Keine Internet Verbindung</string>
@@ -153,6 +154,17 @@
     <string name="office_mail">E-Mail</string>
     <string name="office_open">Öffnungszeiten</string>
     <string name="office_open_val">8:00 bis 16:00 Uhr</string>
+
+    <!-- PARENTS -->
+    <string name="parents_info_text">
+        Die Elternarbeit am TFG wird geprägt durch die Vertreter der einzelnen Klassen- und Jahrgangsstufen,
+        die durchschnittlich mit 90 Personen den Kreis der Schulpflegschaft bilden.
+        \nDie dreimal pro Jahr stattfindenden Schulpflegschaftssitzungen sind das Informationsforum,
+        in dem schulübergreifende Themen vorgestellt und diskutiert sowie Wünsche und Bedürfnisse aus
+        den Klassen und Jahrgangsstufen gesammelt werden, die dann ggf. zu Anträgen führen,
+        die in der Schulkonferenz - dem paritätisch besetzten obersten Entscheidungsgremium der Schule -
+        zur Abstimmung gestellt werden.
+    </string>
 
     <!-- FEEDBACK -->
     <string name="feedback_hint_title">Feedback abgeben</string>
