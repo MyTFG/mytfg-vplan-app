@@ -12,6 +12,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.transition.Fade;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,6 +25,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -111,7 +114,32 @@ public class ToolbarManager {
     }
 
     public ToolbarManager setImage(@DrawableRes int drawable) {
-        ImageView image = (ImageView)holder.findViewById(R.id.toolbar_image);
+        return this.setImage(drawable, false);
+    }
+
+    public ToolbarManager setImage(@DrawableRes int drawable, boolean fade) {
+        final ImageView image = (ImageView)holder.findViewById(R.id.toolbar_image);
+        if (fade) {
+            Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+            image.startAnimation(fadeIn);
+            /*fadeIn.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    Animation fadeOut = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+                    image.startAnimation(fadeOut);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });*/
+        }
         image.setImageResource(drawable);
         return this;
     }

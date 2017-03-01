@@ -285,7 +285,7 @@ public class MyTFGApi {
 
                 HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
 
-                connection.setReadTimeout(5000);
+                connection.setReadTimeout(8000);
                 connection.setConnectTimeout(10000);
                 connection.setRequestMethod("POST");
                 connection.setDoInput(true);
@@ -362,6 +362,42 @@ public class MyTFGApi {
         timestamp = timestamp * 1000;
         try{
             DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
+        }
+    }
+
+    public static String getDay(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("dd", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
+        }
+    }
+
+    public static String getMonth(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("MMM", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
+        }
+    }
+
+    public static String getYear(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("yyyy", Locale.GERMAN);
             Date netDate = (new Date(timestamp));
             return sdf.format(netDate);
         }

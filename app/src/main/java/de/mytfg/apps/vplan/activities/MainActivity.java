@@ -1,19 +1,14 @@
 package de.mytfg.apps.vplan.activities;
 
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentContainer;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.Set;
 
 import de.mytfg.apps.vplan.R;
 import de.mytfg.apps.vplan.api.MyTFGApi;
@@ -21,11 +16,12 @@ import de.mytfg.apps.vplan.fragments.AboutFragment;
 import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
 import de.mytfg.apps.vplan.fragments.FeedbackFragment;
 import de.mytfg.apps.vplan.fragments.LinksFragment;
+import de.mytfg.apps.vplan.fragments.NewsFragment;
 import de.mytfg.apps.vplan.fragments.OfficeFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
 import de.mytfg.apps.vplan.fragments.PlanFragment;
-import de.mytfg.apps.vplan.fragments.StartFragment;
+import de.mytfg.apps.vplan.fragments.TfgFragment;
 import de.mytfg.apps.vplan.fragments.VrrFragment;
 import de.mytfg.apps.vplan.navigation.Navigation;
 import de.mytfg.apps.vplan.toolbar.ToolbarManager;
@@ -66,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     default:
                         return false;
-                    case R.id.mainmenu_start:
+                    case R.id.mainmenu_news:
                         navi.clear();
-                        navi.navigate(new StartFragment(), R.id.fragment_container);
+                        navi.navigate(new TfgFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_plan:
                         navi.clear();
@@ -132,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     Class c = Class.forName(fragName);
                     fragment = (AuthenticationFragment)c.newInstance();
                 } catch (Exception ex) {
-                    fragment = new StartFragment();
+                    fragment = new TfgFragment();
                 }
             }
         }

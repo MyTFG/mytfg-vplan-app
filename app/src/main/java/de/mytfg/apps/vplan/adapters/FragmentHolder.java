@@ -40,8 +40,10 @@ public class FragmentHolder extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         resId = getArguments().getInt("fraglayout");
         View view = inflater.inflate(resId, container, false);;
+        Log.d("FH", "onCreateView");
 
         if (logic != null) {
+            Log.d("FH", "Logic exists");
             logic.init(getContext(), view, getArguments());
         }
         return view;

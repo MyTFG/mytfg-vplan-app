@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/menu_group_1">
-        <item android:id="@+id/mainmenu_start"
+        <item android:id="@+id/mainmenu_news"
             android:icon="@drawable/ic_menu_home"
-            android:title="@string/menutitle_home" />
+            android:title="@string/menutitle_tfg" />
         <item android:id="@+id/mainmenu_plan"
             android:icon="@drawable/ic_menu_plan"
             android:title="@string/menutitle_plan" />

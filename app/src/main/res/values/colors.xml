@@ -3,17 +3,30 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryTransparent">#EE3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorPrimaryLight2">#C5CAE9</color>
+    <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorSecondaryLight">#DFE2F4</color>
-    <color name="colorIcons">#FFFFFF</color>
+    <color name="colorIcons">@color/googleBackground</color>
     <color name="colorIconsDark">#dddddd</color>
     <color name="colorPrimaryText">#000000</color>
     <color name="colorSecondaryText">#333333</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorAccent">#FF7400</color>
 
+    <color name="googleBackground">#F9F9F9</color>
+    <color name="colorBlack">#000000</color>
+
     <color name="translucent_scrim_top">#AA000000</color>
     <color name="translucent_scrim_top_center">#66000000</color>
     <color name="translucent_scrim_bottom">#AA000000</color>
     <color name="translucent_scrim_bottom_center">#66000000</color>
+
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="accent">#FF5722</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

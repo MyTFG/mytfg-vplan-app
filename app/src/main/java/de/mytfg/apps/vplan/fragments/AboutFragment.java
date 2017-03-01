@@ -31,6 +31,7 @@ public class AboutFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
+                .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_about))
                 .setExpandable(true, true);
 

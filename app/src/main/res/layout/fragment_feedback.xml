@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:padding="@dimen/defaultPadding"
+        android:padding="@dimen/cardview_padding"
         android:orientation="vertical"
         android:fitsSystemWindows="true"
         android:focusable="true"
@@ -18,14 +18,14 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:padding="@dimen/cardview_padding"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView
@@ -47,14 +47,14 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:padding="@dimen/cardview_padding"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView

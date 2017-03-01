@@ -2,6 +2,7 @@
     <string name="app_name">MyTFG VPlan</string>
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
+    <string name="news_failed">News konnten nicht geladen werden</string>
 
     <!-- Dialogs -->
     <string name="please_wait">Bitte warten</string>
@@ -10,6 +11,9 @@
 
     <!-- VPlan Menu -->
     <string name="menutitle_home">Start</string>
+    <string name="menutitle_news">Aktuelles</string>
+    <string name="menutitle_calendar">Kalender</string>
+    <string name="menutitle_tfg">TFG</string>
     <string name="menutitle_plan">VPlan</string>
     <string name="menutitle_vrr">Fahrplan</string>
     <string name="menutitle_settings">Account &amp; Einstellungen</string>

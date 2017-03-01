@@ -63,6 +63,8 @@ public class PlanFragment extends AuthenticationFragment {
                 .clear(false)
                 .setTitle(getString(R.string.menutitle_plan))
                 .clearMenu()
+                .setImage(R.drawable.vplan_header_s)
+                .showBottomScrim()
                 .setExpandable(true, true)
                 .setTabs(true)
                 .showFab()

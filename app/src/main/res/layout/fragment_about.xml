@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:padding="@dimen/defaultPadding"
+        android:padding="@dimen/cardview_padding"
         android:orientation="vertical"
         android:fitsSystemWindows="true"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -15,14 +15,14 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:padding="@dimen/cardview_padding"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView
@@ -40,6 +40,7 @@
                     android:layout_gravity="end"
                     android:layout_height="60dp"
                     android:layout_marginEnd="@dimen/cardview_default_radius"
+                    android:layout_marginBottom="@dimen/cardview_default_radius"
                     android:scaleType="fitEnd"
                     android:src="@mipmap/mytfg"
                     android:layout_marginRight="@dimen/cardview_default_radius" />
@@ -51,13 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView

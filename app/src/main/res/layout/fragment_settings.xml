@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:padding="@dimen/defaultPadding"
+        android:padding="@dimen/cardview_padding"
         android:orientation="vertical"
         android:fitsSystemWindows="true"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -17,16 +17,16 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
+            android:padding="@dimen/cardview_padding"
             android:visibility="gone"
             android:id="@+id/account_goto_login"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
                 <ImageView
                     android:layout_width="60dp"
@@ -35,7 +35,7 @@
                     android:layout_marginEnd="20dp"
                     android:scaleType="fitEnd"
                     android:src="@mipmap/ic_mytfg_launcher_raw"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                    android:layout_marginRight="@dimen/cardview_padding" />
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -60,15 +60,15 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
+            android:padding="@dimen/cardview_padding"
             android:id="@+id/account_loggedin"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView
@@ -100,14 +100,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/account_additional_card"
-            android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:padding="@dimen/cardview_padding"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView
@@ -143,14 +143,14 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/cardview_spacing"
-            android:layout_marginBottom="@dimen/defaultPadding">
+            android:padding="@dimen/cardview_padding"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
+                android:padding="@dimen/cardview_padding"
                 android:background="@color/colorPrimaryLight">
 
                 <TextView

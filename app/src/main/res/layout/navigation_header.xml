@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/front"
+        android:src="@drawable/school_header"
         android:cropToPadding="false"
         android:adjustViewBounds="true" />
 </RelativeLayout>
