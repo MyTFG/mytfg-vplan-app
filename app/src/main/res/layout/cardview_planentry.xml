@@ -22,7 +22,7 @@
                 android:layout_marginRight="@dimen/cardview_spacing"
                 android:layout_marginEnd="@dimen/cardview_spacing"
                 android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/textDefault"
+                android:textSize="@dimen/textTitle"
                 android:id="@+id/plan_entry_lesson" />
 
             <TextView

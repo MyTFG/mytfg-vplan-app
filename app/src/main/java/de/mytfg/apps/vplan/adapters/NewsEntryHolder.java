@@ -39,7 +39,7 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
         //titleView.setText(baseObject.getName());
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
-        summary.setText(Html.fromHtml(entry.getText()));
+        summary.setText(entry.getSummary());
         final String link = entry.getLink();
         Settings settings = new Settings(context);
         if (!link.isEmpty() && settings.getBool("news_browser")) {

@@ -16,7 +16,6 @@ import de.mytfg.apps.vplan.fragments.AboutFragment;
 import de.mytfg.apps.vplan.fragments.AuthenticationFragment;
 import de.mytfg.apps.vplan.fragments.FeedbackFragment;
 import de.mytfg.apps.vplan.fragments.LinksFragment;
-import de.mytfg.apps.vplan.fragments.NewsFragment;
 import de.mytfg.apps.vplan.fragments.OfficeFragment;
 import de.mytfg.apps.vplan.fragments.SettingsFragment;
 import de.mytfg.apps.vplan.fragments.LoginFragment;
