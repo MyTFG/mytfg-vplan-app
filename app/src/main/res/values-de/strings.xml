@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTFG VPlan</string>
+    <string name="app_name">MyTFG</string>
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
     <string name="news_failed">News konnten nicht geladen werden</string>
@@ -29,6 +29,7 @@
     <string name="menutitle_secretary">Sekretariat</string>
     <string name="menutitle_foundation">Schulstiftung</string>
     <string name="menutitle_partners">Partner</string>
+    <string name="menutitle_links">Links</string>
 
     <!-- API CODES -->
     <string name="api_offline">Keine Internet Verbindung</string>
@@ -39,6 +40,7 @@
     <string name="api_vrr_error">Abfahrtszeiten konnten nicht geladen werden</string>
 
     <!-- LOGIN -->
+    <string name="login_title">MyTFG Login</string>
     <string name="login_text">
         Für den Zugriff auf den Vertretungsplan ist eine Anmeldung erforderlich.&lt;br />
         Sie können sich mit Ihrem MyTFG Account anmelden.&lt;br />
@@ -146,6 +148,14 @@
         Die kommerzielle Verbreitung dieser App ist untersagt.
     </string>
 
+    <!-- LINKS -->
+    <string name="link_moodle">TFG Moodle</string>
+    <string name="link_mytfg">MyTFG</string>
+    <string name="link_tfgweb">TFG Web</string>
+    <string name="link_parents">TFG Eltern</string>
+    <string name="link_boosters">TFG Förderverein</string>
+    <string name="link_foundation">Schulstiftung</string>
+
     <!-- VRR -->
     <string name="vrr_dir_header">Richtung</string>
     <string name="vrr_time_header">Ankunft</string>
@@ -158,6 +168,10 @@
     <string name="office_mail">E-Mail</string>
     <string name="office_open">Öffnungszeiten</string>
     <string name="office_open_val">8:00 bis 16:00 Uhr</string>
+    <string name="office_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
+    <string name="office_phone_val">0211/9405701</string>
+    <string name="office_fax_val">0211/9405747</string>
+    <string name="office_mail_val">mail@tfg-duesseldorf.de</string>
 
     <!-- PARENTS -->
     <string name="parents_info_text">
@@ -179,8 +193,13 @@
         Sie sich eine weitere Funktion wünschen oder Sie andere Ideen haben, wie man diese App
         verbessern könnte, teilen Sie uns dies mit!
         \nIhr Feedback wird anonym entgegengenommen und ohne personenbezogene Daten gespeichert.
+        \nUm eventuelle Rückfragen zu ermöglichen, freuen wir uns, wenn Sie dennoch Ihren Namen und/oder Ihre E-Mail Adresse angeben.
+        \nDiese Angaben sind jedoch vollkommen freiwillig!
     </string>
     <string name="feedback_form_title">Feedback</string>
+    <string name="feedback_form_name">Name (optional)</string>
+    <string name="feedback_form_name_default">Ein Android Nutzer</string>
+    <string name="feedback_form_mail">E-Mail (optional)</string>
     <string name="feedback_form_stars">Wie würden Sie die App derzeit bewerten?</string>
     <string name="feedback_form_like">Was gefällt Ihnen an der App?</string>
     <string name="feedback_form_improve">Was sollte Ihrer Meinung nach verbessert werden / welche Fehler treten auf?</string>
@@ -198,12 +217,28 @@
     <!-- SHOWCASE TEXTS & TITLES -->
     <string name="sc_home_navi_title">Navigation</string>
     <string name="sc_home_navi_text">Klicken Sie zum Öffnen der Navigation hier</string>
+    <string name="sc_home_news">Aktuelles vom TFG</string>
+    <string name="sc_home_news_text">Aktuelles News vom TFG - Ankündigungen, Projekte und mehr!</string>
+    <string name="sc_home_events">TFG Kalender</string>
+    <string name="sc_home_events_text">Aktuelle Events am TFG</string>
     <string name="sc_plan_today_title">Aktueller Tag</string>
     <string name="sc_plan_today_text">Plan für den aktuellen Schultag</string>
     <string name="sc_plan_next_title">Nächster Tag</string>
     <string name="sc_plan_next_text">Plan für den nächsten Schultag</string>
     <string name="sc_plan_menu_title">Weitere Informationen</string>
-    <string name="sc_plan_menu_text">Erhalten Sie Informationen über abwesende Lehrer, Mitteilungen und den Zeitpunkt der letzten Aktualisierung</string>
+    <string name="sc_plan_menu_text">Sehen Sie Mitteilungen und den Zeitpunkt der letzten Aktualisierung</string>
     <string name="sc_plan_search_title">Suche</string>
     <string name="sc_plan_search_text">Suchen Sie nach Klassen, Lehrern, Fächern, Stunden, Räumen und mehr</string>
+
+
+    <string-array name="settings_opt_landing_page_entries">
+        <item>@string/menutitle_tfg</item>
+        <item>@string/menutitle_plan</item>
+        <item>@string/menutitle_vrr</item>
+    </string-array>
+    <string-array name="settings_opt_landing_page_fragments">
+        <item>TfgFragment</item>
+        <item>PlanFragment</item>
+        <item>VrrFragment</item>
+    </string-array>
 </resources>

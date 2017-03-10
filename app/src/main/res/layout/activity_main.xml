@@ -40,7 +40,7 @@
             android:gravity="bottom"/>
 
 
-        <!-- app:layout_behavior="de.mytfg.apps.vplan.tools.ScrollAwareFabBehavior" -->
+        <!-- app:layout_behavior="de.mytfg.apps.mytfg.tools.ScrollAwareFabBehavior" -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:src="@android:drawable/ic_menu_search"

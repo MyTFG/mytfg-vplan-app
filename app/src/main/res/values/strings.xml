@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTFG VPlan</string>
+    <string name="app_name">MyTFG</string>
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
@@ -124,16 +124,14 @@
     <string name="settings_opt_fulltext">Show Plan as Fulltext</string>
     <string name="settings_opt_landing_page">Default Page</string>
     <string-array name="settings_opt_landing_page_entries">
-        <item>@string/menutitle_home</item>
+        <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
         <item>@string/menutitle_vrr</item>
-        <item>@string/menutitle_about</item>
     </string-array>
     <string-array name="settings_opt_landing_page_fragments">
-        <item>StartFragment</item>
+        <item>TfgFragment</item>
         <item>PlanFragment</item>
         <item>VrrFragment</item>
-        <item>AboutFragment</item>
     </string-array>
 
     <!-- USER -->
@@ -186,6 +184,9 @@
         Please give some feedback.
     </string>
     <string name="feedback_form_title">Feedback</string>
+    <string name="feedback_form_name">Name (optional)</string>
+    <string name="feedback_form_name_default">Android User</string>
+    <string name="feedback_form_mail">E-Mail (optional)</string>
     <string name="feedback_form_stars">How would you rate this App at the moment?</string>
     <string name="feedback_form_like">What do you like about this App?</string>
     <string name="feedback_form_improve">What would you like us to improve?</string>
@@ -203,12 +204,16 @@
     <!-- SHOWCASE TEXTS & TITLES -->
     <string name="sc_home_navi_title">Navigation</string>
     <string name="sc_home_navi_text">Click here to open the navigation</string>
+    <string name="sc_home_news">TFG News</string>
+    <string name="sc_home_news_text">Read news about the TFG</string>
+    <string name="sc_home_events">TFG Calendar</string>
+    <string name="sc_home_events_text">Read upcoming events at TFG</string>
     <string name="sc_plan_today_title">Current Day</string>
     <string name="sc_plan_today_text">The plan for the current day</string>
     <string name="sc_plan_next_title">Next Day</string>
     <string name="sc_plan_next_text">The plan for the next day</string>
     <string name="sc_plan_menu_title">More information</string>
-    <string name="sc_plan_menu_text">Use these options to see more information like absent teachers, messages and the time of the last update</string>
+    <string name="sc_plan_menu_text">Use these options to see more information like messages and the time of the last update</string>
     <string name="sc_plan_search_title">Search</string>
     <string name="sc_plan_search_text">You can search for classes, teachers, subjects, rooms and more</string>
 </resources>

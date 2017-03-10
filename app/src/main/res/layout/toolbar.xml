@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:layout_behavior="de.mytfg.apps.vplan.tools.DisableableAppBarLayoutBehavior"
+    app:layout_behavior="de.mytfg.apps.mytfg.tools.DisableableAppBarLayoutBehavior"
     android:id="@+id/toolbarDefault"
     android:fitsSystemWindows="true"
     android:paddingBottom="0dp">

@@ -78,19 +78,50 @@
                     android:numStars="5" />
 
                 <TextView
+                    android:text="@string/feedback_form_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"/>
+
+                <EditText
+                    android:id="@+id/feedback_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/feedback_form_name"
+                    android:text="@string/feedback_form_name_default"
+                    android:inputType="text"
+                    android:layout_marginBottom="@dimen/cardview_padding"
+                    android:scrollbars="vertical" />
+
+                <TextView
+                    android:text="@string/feedback_form_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textDefault"/>
+
+                <EditText
+                    android:id="@+id/feedback_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/feedback_form_mail"
+                    android:layout_marginBottom="@dimen/cardview_padding"
+                    android:inputType="text"
+                    android:scrollbars="vertical" />
+
+                <TextView
                     android:text="@string/feedback_form_like"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textDefault"/>
 
                 <EditText
+                    android:id="@+id/feedback_like"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/feedback_form_like"
-                    android:scrollbars="vertical"
                     android:inputType="textMultiLine"
-                    android:id="@+id/feedback_like"
-                    android:minLines="5"/>
+                    android:minLines="5"
+                    android:scrollbars="vertical" />
 
                 <TextView
                     android:text="@string/feedback_form_improve"
