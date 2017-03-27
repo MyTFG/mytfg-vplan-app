@@ -6,6 +6,9 @@ This is the official App of the Theodor-Fliedner-Gymnasium Düsseldorf.
 
 It uses the MyTFG API. 
 
+Available via [Google Play](https://play.google.com/store/apps/details?id=de.mytfg.apps.mytfg
+)
+
 ## Features
 * VPlan
 * VRR information
