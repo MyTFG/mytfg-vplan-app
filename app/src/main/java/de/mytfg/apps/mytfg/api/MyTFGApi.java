@@ -198,8 +198,8 @@ public class MyTFGApi {
                     .remove("username")
                     .apply();
         }
-        Vplan.clearCache("heute", context);
-        Vplan.clearCache("morgen", context);
+        Vplan.clearCache("today", context);
+        Vplan.clearCache("tomorrow", context);
     }
 
     /**
@@ -379,6 +379,18 @@ public class MyTFGApi {
         timestamp = timestamp * 1000;
         try{
             DateFormat sdf = new SimpleDateFormat("MMM", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
+        }
+    }
+
+    public static String getDayname(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("EEE", Locale.GERMAN);
             Date netDate = (new Date(timestamp));
             return sdf.format(netDate);
         }

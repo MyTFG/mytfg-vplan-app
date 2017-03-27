@@ -14,6 +14,7 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
     private TextView title;
     private TextView date;
     private TextView day;
+    private TextView dayname;
     private TextView month;
     private TextView year;
     private TextView location;
@@ -28,6 +29,7 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
         title    = (TextView) view.findViewById(R.id.event_title);
         //date     = (TextView) view.findViewById(R.id.event_date);
         day     = (TextView) view.findViewById(R.id.event_day);
+        dayname     = (TextView) view.findViewById(R.id.event_dayname);
         month     = (TextView) view.findViewById(R.id.event_month);
         year     = (TextView) view.findViewById(R.id.event_year);
 
@@ -41,6 +43,7 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
         day.setText(MyTFGApi.getDay(ts));
         month.setText(MyTFGApi.getMonth(ts));
         year.setText(MyTFGApi.getYear(ts));
+        dayname.setText(MyTFGApi.getDayname(ts));
         String time = entry.getTime();
         String loc = entry.getLocation();
         if (time.length() > 0) {

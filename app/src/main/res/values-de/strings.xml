@@ -161,6 +161,9 @@
     <string name="vrr_dir_header">Richtung</string>
     <string name="vrr_time_header">Ankunft</string>
     <string name="vrr_process">Loading VRR data</string>
+    <string name="vrr_autorefresh">Automatisch Aktualisieren</string>
+    <string name="vrr_autorefresh_enabled">Automatische Aktualisierung aktiviert (30 Sek)</string>
+    <string name="vrr_autorefresh_disabled">Automatische Aktualisierung deaktiviert</string>
 
     <!-- OFFICE -->
     <string name="office_address">Adresse</string>

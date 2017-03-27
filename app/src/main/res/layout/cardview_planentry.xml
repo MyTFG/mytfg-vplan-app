@@ -22,57 +22,65 @@
                 android:layout_marginRight="@dimen/cardview_spacing"
                 android:layout_marginEnd="@dimen/cardview_spacing"
                 android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
                 android:textSize="@dimen/textTitle"
                 android:id="@+id/plan_entry_lesson" />
+
+
+            <com.lb.auto_fit_textview.AutoResizeTextView
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:textAlignment="center"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/textMediumTitle"
+                android:id="@+id/plan_entry_summary" />
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/cardview_spacing"
                 android:layout_marginEnd="@dimen/cardview_spacing"
+                android:textAlignment="center"
                 android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/textTitle"
+                android:textSize="@dimen/textSmallTitle"
                 android:id="@+id/plan_entry_class" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="start"
-                android:textSize="@dimen/textSmallTitle"
-                android:id="@+id/plan_header"
-                android:text="@string/plan_header"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/cardview_spacing"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textSmallTitle"
                 android:layout_gravity="start"
                 android:id="@+id/plan"
                 android:layout_marginLeft="@dimen/cardview_spacing" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="40sp"
+                android:layout_height="15sp"
+                android:layout_marginTop="@dimen/defaultPadding"
+                android:layout_marginBottom="@dimen/defaultPadding"
+                android:layout_marginLeft="50sp"
+                android:layout_marginStart="50sp"
                 android:layout_gravity="start"
-                android:textSize="@dimen/textSmallTitle"
-                android:id="@+id/subst_header"
-                android:text="@string/subst_header"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_vplan_arrow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmallTitle"
                 android:layout_marginStart="@dimen/cardview_spacing"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_gravity="start"
                 android:id="@+id/subst"
                 android:layout_marginLeft="@dimen/cardview_spacing" />
@@ -80,17 +88,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="start"
-                android:textSize="@dimen/textSmallTitle"
-                android:id="@+id/comment_header"
-                android:text="@string/comment_header"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/cardview_spacing"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textSmallTitle"
                 android:layout_gravity="start"
                 android:id="@+id/comment"
                 android:layout_marginLeft="@dimen/cardview_spacing" />

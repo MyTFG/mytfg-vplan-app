@@ -23,6 +23,16 @@
                 android:layout_marginEnd="@dimen/cardview_spacing"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
+                android:textSize="@dimen/textDefault"
+                android:id="@+id/event_dayname" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
                 android:textSize="@dimen/textDate"
                 android:id="@+id/event_day" />
 

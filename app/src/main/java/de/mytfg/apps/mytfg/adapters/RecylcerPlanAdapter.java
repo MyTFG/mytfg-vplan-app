@@ -75,7 +75,7 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
         // If the bound view wasn't previously displayed on screen, it's animated
         if (position > lastPosition)
         {
-            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_in_bottom);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }

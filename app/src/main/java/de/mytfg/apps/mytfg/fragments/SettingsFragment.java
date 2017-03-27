@@ -104,6 +104,8 @@ public class SettingsFragment extends AuthenticationFragment {
                 public void onClick(View view) {
                     MyTFGApi api = new MyTFGApi(context);
                     api.logout(false);
+                    api.clearAdditionalClasses();
+
 
                     CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
                     Snackbar snackbar = Snackbar

@@ -54,11 +54,13 @@ public class Vrr extends MytfgObject {
         this.entries = new LinkedList<>();
         try {
             JSONObject vrr = result.getJSONObject("vrr");
-            JSONArray entries = vrr.getJSONArray("preformatted");
+            JSONArray entries = vrr.getJSONArray("relevant");
             for (int i = 0; i < entries.length(); ++i) {
                 VrrEntry entry = new VrrEntry();
-                entry.load(entries.getJSONArray(i));
-                this.entries.add(entry);
+                entry.load(entries.getJSONObject(i));
+                if (!entry.getDirection().isEmpty()) {
+                    this.entries.add(entry);
+                }
             }
         } catch (JSONException ex) {
             ex.printStackTrace();

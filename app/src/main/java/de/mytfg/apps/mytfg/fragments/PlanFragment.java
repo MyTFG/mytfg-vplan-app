@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -166,7 +167,7 @@ public class PlanFragment extends AuthenticationFragment {
                     if (message == null) {
                         message = msg;
                     } else {
-                        message += "\n" + msg;
+                        message += "\n\n" + msg;
                     }
                 }
                 if (message == null) {
@@ -225,7 +226,26 @@ public class PlanFragment extends AuthenticationFragment {
             tabLayout.setupWithViewPager(viewPager);
         }
 
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                setupViewpager();
+            }
+        };
+        Handler handler = new Handler();
+        handler.postDelayed(runnable, 10);
+
         this.showcase();
+    }
+
+    private void setupViewpager() {
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
+
+        TabLayout tabLayout = context.getToolbarManager().getTabs();
+        if (tabLayout != null) {
+            tabLayout.setupWithViewPager(viewPager);
+        }
+
     }
 
     private void showcase() {

@@ -162,6 +162,9 @@
     <string name="vrr_dir_header">Direction</string>
     <string name="vrr_time_header">Arrival</string>
     <string name="vrr_process">Fahrplan wird geladen</string>
+    <string name="vrr_autorefresh">Auto-Refresh</string>
+    <string name="vrr_autorefresh_enabled">Autorefresh enabled</string>
+    <string name="vrr_autorefresh_disabled">Autorefresh disabled</string>
 
     <!-- OFFICE -->
     <string name="office_address">Address</string>

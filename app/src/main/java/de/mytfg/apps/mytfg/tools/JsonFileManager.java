@@ -50,6 +50,7 @@ public class JsonFileManager {
     }
 
     public static boolean clear(String filename, Context context) {
+        Log.d("Delete File", filename);
         return context.deleteFile(filename);
     }
 }

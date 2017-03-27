@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.objects;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 
 import org.json.JSONArray;
@@ -215,6 +216,6 @@ public class Vplan extends MytfgObject {
     }
 
     public static void clearCache(String day, Context context) {
-        JsonFileManager.clear("vplan_" + day, context);
+        Log.d("CLEAR CACHE", "" + JsonFileManager.clear("vplan_" + day, context));
     }
 }

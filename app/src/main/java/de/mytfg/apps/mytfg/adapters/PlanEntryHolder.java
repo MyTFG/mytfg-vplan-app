@@ -4,7 +4,10 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.lb.auto_fit_textview.AutoResizeTextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.VplanEntry;
@@ -20,6 +23,8 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
     private TextView substHeader;
     private TextView comment;
     private TextView commentHeader;
+    private AutoResizeTextView summary;
+    private ImageView arrow;
 
     private Context context;
     private CardView cardView;
@@ -30,11 +35,11 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
         cardView = (CardView) view;
         lesson = (TextView) view.findViewById(R.id.plan_entry_lesson);
         cls    = (TextView) view.findViewById(R.id.plan_entry_class);
+        summary = (AutoResizeTextView) view.findViewById(R.id.plan_entry_summary);
         plan   = (TextView) view.findViewById(R.id.plan);
         subst  = (TextView) view.findViewById(R.id.subst);
         comment = (TextView) view.findViewById(R.id.comment);
-        substHeader  = (TextView) view.findViewById(R.id.subst_header);
-        commentHeader = (TextView) view.findViewById(R.id.comment_header);
+        arrow = (ImageView) view.findViewById(R.id.arrow);
     }
 
     public void update(VplanEntry planEntry) {
@@ -46,27 +51,35 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
         String substText = settings.getBool("plan_fulltext") ? planEntry.getSubstText() : planEntry.getSubstitution();
         plan.setText(planText);
         if (planEntry.getSubstitution().isEmpty()) {
-            substHeader.setVisibility(GONE);
+            //substHeader.setVisibility(GONE);
             subst.setVisibility(GONE);
         } else {
             subst.setText(substText);
             subst.setVisibility(View.VISIBLE);
-            substHeader.setVisibility(View.VISIBLE);
+            //substHeader.setVisibility(View.VISIBLE);
         }
         if (planEntry.getComment().isEmpty()) {
             comment.setVisibility(GONE);
-            commentHeader.setVisibility(GONE);
+            //commentHeader.setVisibility(GONE);
         } else {
             comment.setText(planEntry.getComment());
-            commentHeader.setVisibility(View.VISIBLE);
+            //commentHeader.setVisibility(View.VISIBLE);
             comment.setVisibility(View.VISIBLE);
         }
+
+        if (planEntry.getComment().isEmpty() && planEntry.getSubstitution().isEmpty()) {
+            arrow.setVisibility(GONE);
+        } else {
+            arrow.setVisibility(View.VISIBLE);
+        }
+
         cls.setText(planEntry.getCls());
         if (planEntry.isOwn()) {
             cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimaryLight));
         } else {
             cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorSecondaryLight));
         }
+        summary.setText(planEntry.getSummary());
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

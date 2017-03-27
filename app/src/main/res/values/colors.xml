@@ -16,6 +16,8 @@
     <color name="googleBackground">#F9F9F9</color>
     <color name="colorBlack">#000000</color>
 
+    <color name="colorDelay">#AA0000</color>
+
     <color name="translucent_scrim_top">#AA000000</color>
     <color name="translucent_scrim_top_center">#66000000</color>
     <color name="translucent_scrim_bottom">#AA000000</color>

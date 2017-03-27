@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/vrr_auto_refresh"
+        android:icon="@drawable/ic_action_vrr_enabled_autorefresh"
+        android:title="@string/vrr_autorefresh"
+        android:checkable="true"
+        android:checked="true"
+        app:showAsAction="ifRoom"/>
+</menu>

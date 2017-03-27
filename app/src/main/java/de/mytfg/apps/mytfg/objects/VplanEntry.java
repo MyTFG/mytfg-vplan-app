@@ -18,6 +18,7 @@ public class VplanEntry extends MytfgObject {
     private String subst_text;
     private String comment;
     private String teacher;
+    private String summary;
 
 
     private boolean own;
@@ -56,6 +57,7 @@ public class VplanEntry extends MytfgObject {
             teacher = data.getString("teacher");
             subst_text = data.getString("subst_text");
             plan_text = data.getString("plan_text");
+            summary = data.getString("shortage");
         } catch (JSONException ex) {
             // TODO: Remove this line:
             ex.printStackTrace();
@@ -96,6 +98,10 @@ public class VplanEntry extends MytfgObject {
         return subst_text;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
     /**
      * Checks wheter this entry contains information matching the given filter.
      * @param filter The filter to apply
@@ -108,6 +114,7 @@ public class VplanEntry extends MytfgObject {
                 || getPlan().toLowerCase().contains(filter)
                 || getPlanText().toLowerCase().contains(filter)
                 || getSubstText().toLowerCase().contains(filter)
+                || getSummary().toLowerCase().contains(filter)
                 || getSubstitution().toLowerCase().contains(filter);
     }
 

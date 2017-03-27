@@ -11,56 +11,88 @@
         android:orientation="horizontal"
         android:background="@color/colorPrimaryLight"
         android:padding="10dp">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/cardview_spacing"
-            android:layout_marginEnd="@dimen/cardview_spacing"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/textTitle"
-            android:id="@+id/vrr_entry_line" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_vertical"
+                android:textAlignment="center"
+                android:textSize="@dimen/textTitle"
+                android:id="@+id/vrr_entry_line" />
+
+            <ImageView
+                android:layout_marginTop="@dimen/defaultPadding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="start"
-                android:textSize="@dimen/textSmallTitle"
-                android:id="@+id/vrr_dir_header"
-                android:text="@string/vrr_dir_header"/>
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/vrr_type_img"
+                android:src="@drawable/ic_vrr_tram"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardview_spacing"
+            android:layout_marginStart="@dimen/cardview_spacing"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textMediumTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_time"
+                    android:text="@string/vrr_time_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/defaultPadding"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:textColor="@color/colorDelay"
+                    android:layout_gravity="start|center_vertical"
+                    android:id="@+id/vrr_delay"
+                    android:text="@string/vrr_time_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing"
+                    android:layout_marginRight="@dimen/defaultPadding" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/cardview_spacing"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textSmallTitle"
                 android:layout_gravity="start"
+                android:text="@string/vrr_dir_header"
                 android:id="@+id/vrr_dir"
                 android:layout_marginLeft="@dimen/cardview_spacing" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="start"
-                android:textSize="@dimen/textSmallTitle"
-                android:id="@+id/vrr_time_header"
-                android:text="@string/vrr_time_header"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/cardview_spacing"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textDefault"
+                android:text="Test"
                 android:layout_gravity="start"
-                android:id="@+id/vrr_time"
+                android:id="@+id/vrr_type"
                 android:layout_marginLeft="@dimen/cardview_spacing" />
 
         </LinearLayout>
