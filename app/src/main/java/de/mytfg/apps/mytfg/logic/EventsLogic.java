@@ -74,7 +74,11 @@ public class EventsLogic implements FragmentHolderLogic {
         adapter.notifyDataSetChanged();
         //TabLayout.Tab tab = getTab();
         ViewPager pager = (ViewPager)((MainActivity)context).findViewById(R.id.tfg_pager);
-        ((MainActivity)context).getToolbarManager().getTabs().setupWithViewPager(pager);/*
+        TabLayout tabLayout = ((MainActivity)context).getToolbarManager().getTabs();
+        if (tabLayout != null) {
+            tabLayout.setupWithViewPager(pager);
+        }
+        /*
         if (tab != null) {
             //tab.setText("Test, sas  - asd");
             Log.d("TAB TEXT", tab.getText().toString());
