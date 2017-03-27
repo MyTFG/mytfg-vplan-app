@@ -1,8 +1,27 @@
-# MyTFG VPlan
+# MyTFG
 
-![build status](https://gitlab.lbader.de/mytfg/mytfg-vplan-app/badges/master/build.svg)
+![build status](https://travis-ci.org/MyTFG/mytfg-vplan-app.svg?branch=master)
 
-This App implements the MyTFG VPlan API and displays the daily VPlan to the user.
+This is the official App of the Theodor-Fliedner-Gymnasium Düsseldorf.
+
+It uses the MyTFG API. 
+
+## Features
+* VPlan
+* VRR information
+* TFG News
+* TFG Calendar
+* TFG Partners
+
 
 # Contribution
-Just do it
+Feel free to contribute to this project. 
+
+## Ideas
+If you have suggestions on how to improve this App, please contact us:
+* You can use the Feedback formular inside the App
+* Create an Issue on Github
+
+## Development
+If you want to do more, clone this project and use Android Studio. 
+It should be ready-to-built directly.
