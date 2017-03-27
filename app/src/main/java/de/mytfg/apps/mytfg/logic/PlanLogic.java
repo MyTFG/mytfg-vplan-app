@@ -50,6 +50,16 @@ public class PlanLogic implements FragmentHolderLogic {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.addItemDecoration(new ItemOffsetDecoration(context, R.dimen.cardview_spacing));
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    ((MainActivity) context).getToolbarManager().hideFab();
+                } else {
+                    ((MainActivity) context).getToolbarManager().showFab();
+                }
+            }
+        });
 
         if (this.plan.isLoaded()) {
             display();
