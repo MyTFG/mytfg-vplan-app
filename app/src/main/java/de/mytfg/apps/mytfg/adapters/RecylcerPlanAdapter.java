@@ -54,7 +54,7 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
     @Override
     public void onBindViewHolder(final PlanEntryHolder holder, final int position) {
         holder.update(elements.get(position));
-        setAnimation(holder.getCardView(), position);
+        //setAnimation(holder.getCardView(), position);
     }
 
     @Override
