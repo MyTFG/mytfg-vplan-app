@@ -1,6 +1,6 @@
 language: android
 
-jdk: oraclejdk
+jdk: oraclejdk8
 
 android:
   components:
@@ -23,3 +23,4 @@ android:
 
 script:
   - ./gradlew assembleRelease
+
