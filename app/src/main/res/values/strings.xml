@@ -8,6 +8,8 @@
     <string name="login_process">Logging in&#8230;</string>
     <string name="login_empty">Please enter username and password</string>
 
+    <string name="next_close">Press back again to close the App</string>
+
     <!-- Main Menu -->
     <string name="menutitle_home">Home</string>
     <string name="menutitle_news">News</string>

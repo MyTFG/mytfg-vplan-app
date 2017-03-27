@@ -8,6 +8,7 @@
     <string name="please_wait">Bitte warten</string>
     <string name="login_process">Sie werden eingeloggt&#8230;</string>
     <string name="login_empty">Bitte Nutzernamen und Passwort angeben.</string>
+    <string name="next_close">Drücken Sie den Zurück-Button zum Schließen erneut</string>
 
     <!-- VPlan Menu -->
     <string name="menutitle_home">Start</string>
@@ -218,7 +219,7 @@
     <string name="sc_home_navi_title">Navigation</string>
     <string name="sc_home_navi_text">Klicken Sie zum Öffnen der Navigation hier</string>
     <string name="sc_home_news">Aktuelles vom TFG</string>
-    <string name="sc_home_news_text">Aktuelles News vom TFG - Ankündigungen, Projekte und mehr!</string>
+    <string name="sc_home_news_text">Aktuelle News vom TFG - Ankündigungen, Projekte und mehr!</string>
     <string name="sc_home_events">TFG Kalender</string>
     <string name="sc_home_events_text">Aktuelle Events am TFG</string>
     <string name="sc_plan_today_title">Aktueller Tag</string>

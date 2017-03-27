@@ -27,6 +27,8 @@ import de.mytfg.apps.mytfg.tools.CopyDrawableImageTransform;
 public class Navigation {
     private Context context;
 
+    private boolean finishOnBack = false;
+
     public Navigation(Context context) {
         this.context = context;
     }
@@ -38,6 +40,8 @@ public class Navigation {
             navigate(new AboutFragment(), container);
             return;
         }*/
+
+        finishOnBack = false;
 
         MyTFGApi api = new MyTFGApi(context);
         if (fragment.needsAuthentication() && !api.isLoggedIn()) {
@@ -108,7 +112,12 @@ public class Navigation {
         if (fragmentManager.getBackStackEntryCount() > 1) {
             fragmentManager.popBackStack();
         } else {
-            ((MainActivity)context).finish();
+            if (finishOnBack) {
+                ((MainActivity) context).finish();
+            } else {
+                finishOnBack = true;
+                snackbar(context.getString(R.string.next_close));
+            }
         }
     }
 

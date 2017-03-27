@@ -63,7 +63,7 @@ public class TfgFragment extends AuthenticationFragment {
         super.onResume();
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
         // Create Pager elements if not existent
-        if (newsLogic == null || eventsLogic == null) {
+        if (newsLogic == null || eventsLogic == null || true) {
             news = new TfgNews(context);
             newsLogic = new NewsLogic(news, context);
 

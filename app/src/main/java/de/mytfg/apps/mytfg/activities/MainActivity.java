@@ -63,27 +63,27 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         return false;
                     case R.id.mainmenu_news:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new TfgFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_plan:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new PlanFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_vrr:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new VrrFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_account:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new SettingsFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_about:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new AboutFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_feedback:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new FeedbackFragment(), R.id.fragment_container);
                         return true;
 
@@ -97,11 +97,11 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.inflateMenu(R.menu.navigation_menu);
                         return true;
                     case R.id.mainmenu_links:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new LinksFragment(), R.id.fragment_container);
                         return true;
                     case R.id.submenu_partners_secretary:
-                        navi.clear();
+                        //navi.clear();
                         navi.navigate(new OfficeFragment(), R.id.fragment_container);
                         return true;
                 }

@@ -196,7 +196,7 @@ public class PlanFragment extends AuthenticationFragment {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
 
         // Create Pager elements if not existent
-        if (today == null || tomorrow == null) {
+        if (today == null || tomorrow == null || true) {
             todayPlan = new Vplan(context, "today");
             tomorrowPlan = new Vplan(context, "tomorrow");
 

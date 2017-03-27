@@ -151,7 +151,7 @@ public class Vplan extends MytfgObject {
             timestamp = result.optLong("api_time", System.currentTimeMillis());
             loaded = true;
         } catch (JSONException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             return false;
         }
         return true;
