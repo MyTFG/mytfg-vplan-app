@@ -1,0 +1,25 @@
+language: android
+
+jdk: oraclejdk
+
+android:
+  components:
+    - tools
+    # The BuildTools version used by your project
+    - build-tools-25.0.1
+    # The SDK version used to compile your project
+    - android-25
+    # Additional components
+    ## Google Cloud Messaging for Android Library
+    - extra-google-gcm
+    ## Android Support Library (appcompat)
+    - extra-android-support
+    ## Android Support Repository
+    - extra-android-m2repository
+    ## Google Play Services Library
+    - extra-google-google_play_services
+    ## Goodle Android Repository
+    - extra-google-m2repository
+
+script:
+  - ./gradlew assembleRelease
