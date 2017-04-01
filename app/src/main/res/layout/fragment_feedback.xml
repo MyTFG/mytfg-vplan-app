@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:stepSize="1"
                     android:id="@+id/feedback_rating"
-                    android:rating="1"
+                    android:rating="0"
                     android:numStars="5" />
 
                 <TextView

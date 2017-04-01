@@ -66,15 +66,13 @@
 
             <ImageView
                 android:id="@+id/arrow"
-                android:layout_width="40sp"
-                android:layout_height="15sp"
-                android:layout_marginTop="@dimen/defaultPadding"
-                android:layout_marginBottom="@dimen/defaultPadding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="50sp"
                 android:layout_marginStart="50sp"
                 android:layout_gravity="start"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_vplan_arrow" />
+                android:src="@drawable/ic_vplan_arrow_down" />
 
             <TextView
                 android:layout_width="wrap_content"

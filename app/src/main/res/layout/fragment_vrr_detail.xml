@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/cardview_light_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/defaultPadding"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/cardview_spacing"
+                    android:layout_marginEnd="@dimen/cardview_spacing"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textTitle"
+                    android:id="@+id/vrr_detail_line" />
+
+                <ImageView
+                    android:layout_marginTop="@dimen/defaultPadding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/vrr_detail_img"
+                    android:src="@drawable/ic_vrr_tram"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cardview_spacing"
+                android:layout_marginStart="@dimen/cardview_spacing"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_dir_header"
+                    android:text="@string/vrr_dir_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_direction"
+                    android:text="@string/vrr_dir_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_sched_header"
+                    android:text="@string/vrr_planned_datetime"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_sched"
+                    android:text="@string/vrr_dir_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_real_header"
+                    android:text="@string/vrr_real_datetime"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_real"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_delay_header"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:text="@string/vrr_delay"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_delay"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_arrival_header"
+                    android:text="@string/vrr_arrival"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_arrival"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_platform_header"
+                    android:text="@string/vrr_platform"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_platform"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_type_header"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:text="@string/vrr_type"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/vrr_detail_type"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/button_margin"
+            android:layout_marginStart="@dimen/cardview_spacing"
+            android:textSize="@dimen/textSmallContent"
+            android:layout_gravity="start"
+            android:id="@+id/vrr_detail_route_header"
+            android:text="@string/vrr_route"
+            android:layout_marginLeft="@dimen/cardview_spacing" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardview_spacing"
+            android:textSize="@dimen/textSmallTitle"
+            android:layout_gravity="start"
+            android:id="@+id/vrr_detail_route"
+            android:layout_marginLeft="@dimen/cardview_spacing" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -48,4 +48,12 @@ public class FragmentHolder extends Fragment {
     public FragmentHolderLogic getLogic() {
         return logic;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //logic.saveInstanceState();
+    }
+
+
 }

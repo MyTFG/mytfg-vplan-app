@@ -3,6 +3,7 @@ package de.mytfg.apps.mytfg.logic;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -27,11 +28,13 @@ import de.mytfg.apps.mytfg.tools.ItemOffsetDecoration;
 
 public class PlanLogic implements FragmentHolderLogic {
     private Vplan plan;
+    private View view;
     private Context context;
     private RecylcerPlanAdapter adapter;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
     private ProgressDialog dialog;
+    private Parcelable recyclerViewState;
 
     private String current_filter = null;
     public PlanLogic(Vplan plan) {
@@ -41,6 +44,7 @@ public class PlanLogic implements FragmentHolderLogic {
     @Override
     public void init(final Context context, View view, Bundle args) {
         this.context = context;
+        this.view = view;
         recyclerView = (RecyclerView) view.findViewById(R.id.base_recylcerview);
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.base_refreshLayout);
 
@@ -53,9 +57,9 @@ public class PlanLogic implements FragmentHolderLogic {
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) {
+                if (dy > 2) {
                     ((MainActivity) context).getToolbarManager().hideFab();
-                } else {
+                } else if (dy < -2) {
                     ((MainActivity) context).getToolbarManager().showFab();
                 }
             }
@@ -82,6 +86,9 @@ public class PlanLogic implements FragmentHolderLogic {
             adapter.addItem(entry);
         }
         adapter.notifyDataSetChanged();
+        if (recyclerViewState != null) {
+            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+        }
         //TabLayout.Tab tab = getTab();
         ViewPager pager = (ViewPager)((MainActivity)context).findViewById(R.id.plan_pager);
         ((MainActivity)context).getToolbarManager().getTabs().setupWithViewPager(pager);/*
@@ -90,6 +97,21 @@ public class PlanLogic implements FragmentHolderLogic {
             Log.d("TAB TEXT", tab.getText().toString());
             Log.d("TAB TEXT LEN", tab.getText().toString().length() + "");
         }*/
+    }
+
+
+    @Override
+    public void saveInstanceState() {
+        recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+    }
+
+
+    @Override
+    public void restoreInstanceState() {
+        if (recyclerViewState != null) {
+            recyclerView = (RecyclerView) view.findViewById(R.id.base_recylcerview);
+            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+        }
     }
 
     private void loadPlan(boolean reload) {

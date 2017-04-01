@@ -7,6 +7,7 @@
     <dimen name="textDate">44sp</dimen>
     <dimen name="textDefault">16sp</dimen>
     <dimen name="textSmallTitle">20sp</dimen>
+    <dimen name="textSmallContent">18sp</dimen>
     <dimen name="textMediumTitle">26sp</dimen>
     <dimen name="textButton">16sp</dimen>
 

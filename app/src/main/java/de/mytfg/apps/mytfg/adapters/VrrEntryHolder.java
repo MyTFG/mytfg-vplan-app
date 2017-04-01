@@ -44,12 +44,12 @@ public class VrrEntryHolder extends RecyclerView.ViewHolder {
             typeImg.setImageResource(R.drawable.ic_vrr_bus);
         }
         type.setText(entry.getType());
-        if (entry.getDelay() > 0) {
+        /*if (entry.getDelay() > 0) {
             delay.setVisibility(View.VISIBLE);
             delay.setText(entry.getDelayText());
-        } else {
-            delay.setVisibility(View.GONE);
-        }
+        } else {*/
+        delay.setVisibility(View.GONE);
+
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {
@@ -58,5 +58,29 @@ public class VrrEntryHolder extends RecyclerView.ViewHolder {
 
     public CardView getCardView() {
         return cardView;
+    }
+
+    public TextView getLine() {
+        return line;
+    }
+
+    public TextView getDirection() {
+        return direction;
+    }
+
+    public TextView getArrival() {
+        return arrival;
+    }
+
+    public TextView getType() {
+        return type;
+    }
+
+    public TextView getDelay() {
+        return delay;
+    }
+
+    public ImageView getTypeImg() {
+        return typeImg;
     }
 }

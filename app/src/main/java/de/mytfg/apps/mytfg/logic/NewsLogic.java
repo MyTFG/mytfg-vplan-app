@@ -65,6 +65,17 @@ public class NewsLogic implements FragmentHolderLogic {
         });
     }
 
+
+    @Override
+    public void saveInstanceState() {
+
+    }
+
+    @Override
+    public void restoreInstanceState() {
+
+    }
+
     private void display() {
         adapter = new RecylcerNewsAdapter(context);
         recyclerView.setAdapter(adapter);

@@ -102,6 +102,10 @@ public class VplanEntry extends MytfgObject {
         return summary;
     }
 
+    public Vplan getVplan() {
+        return day;
+    }
+
     /**
      * Checks wheter this entry contains information matching the given filter.
      * @param filter The filter to apply

@@ -7,8 +7,8 @@ android {
         applicationId "de.mytfg.apps.mytfg"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 9
-        versionName "0.5.4b"
+        versionCode 11
+        versionName "0.5.6b"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,10 +26,10 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.android.support:design:25.3.0'
-    compile 'com.android.support:cardview-v7:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.github.amlcurran.showcaseview:library:5.4.3'
     compile 'ch.acra:acra:4.7.0'
     compile 'com.google.firebase:firebase-messaging:10.2.0'

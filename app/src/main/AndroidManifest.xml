@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/mytfg_launcher_raw"
+        android:icon="@mipmap/tfg2_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:name=".MytfgVplan"

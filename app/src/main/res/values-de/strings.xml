@@ -79,9 +79,9 @@
     <string name="plan_failed">Plan konnte nicht geladen werden</string>
     <string name="plan_today">Aktueller Tag</string>
     <string name="plan_tomorrow">Nächster Tag</string>
-    <string name="plan_header">Plan:</string>
-    <string name="subst_header">Vertretung:</string>
-    <string name="comment_header">Bemerkung:</string>
+    <string name="plan_header">Plan</string>
+    <string name="subst_header">Vertretung</string>
+    <string name="comment_header">Bemerkung</string>
     <string name="plan_show_marquee">Mitteilungen anzeigen</string>
     <string name="plan_show_absent">Abwesende Lehrer anzeigen</string>
     <string name="plan_absent">Abwesende Lehrer</string>
@@ -91,6 +91,9 @@
     <string name="plan_not_loaded">Plan noch nicht geladen</string>
     <string name="plan_loading">Plan wird geladen&#8230;</string>
     <string name="plan_search">Suchen</string>
+    <string name="plan_no_announcements">Keine Mitteilungen</string>
+    <string name="plan_no_teachers">Keine abwesenden Lehrer</string>
+    <string name="plan_no_update">Unbekannt</string>
 
     <!-- ACCOUNT -->
     <string name="account_info_text">
@@ -164,6 +167,14 @@
     <string name="vrr_autorefresh">Automatisch Aktualisieren</string>
     <string name="vrr_autorefresh_enabled">Automatische Aktualisierung aktiviert (30 Sek)</string>
     <string name="vrr_autorefresh_disabled">Automatische Aktualisierung deaktiviert</string>
+
+    <string name="vrr_planned_datetime">Geplante Ankunft</string>
+    <string name="vrr_real_datetime">Tatsächliche Ankunft</string>
+    <string name="vrr_delay">Verspätung</string>
+    <string name="vrr_arrival">Ankunft In</string>
+    <string name="vrr_platform">Steig</string>
+    <string name="vrr_route">Route</string>
+    <string name="vrr_type">Fahrzeugtyp</string>
 
     <!-- OFFICE -->
     <string name="office_address">Adresse</string>

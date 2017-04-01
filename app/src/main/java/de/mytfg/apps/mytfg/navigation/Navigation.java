@@ -11,6 +11,7 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
+import android.transition.Fade;
 import android.transition.TransitionSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -33,8 +34,11 @@ public class Navigation {
         this.context = context;
     }
 
-
     public void navigate(AuthenticationFragment fragment, int container, HashMap<String, Pair<String, View>> sharedElements) {
+        navigate(fragment, container, sharedElements, false);
+    }
+
+    public void navigate(AuthenticationFragment fragment, int container, HashMap<String, Pair<String, View>> sharedElements, boolean add) {
         // Need to accept Terms of Use first
         /*if (!MainActivity.sharedPreferences.getBoolean("tou_accepted", false) && !(fragment instanceof AboutFragment)) {
             navigate(new AboutFragment(), container);
@@ -70,8 +74,10 @@ public class Navigation {
 
             fragment.setSharedElementEnterTransition(transitionSet);
             fragment.setSharedElementReturnTransition(transitionSet);
-            //fragment.setEnterTransition(new Fade());
-            //fragment.setExitTransition(new Fade());
+            /*if (sharedElements.size() > 0) {
+                fragment.setEnterTransition(new Fade());
+                fragment.setExitTransition(new Fade());
+            }*/
         }
 
         Bundle args = fragment.getArguments();
@@ -97,7 +103,11 @@ public class Navigation {
             fragment.setArguments(args);
         }
 
-        ft.replace(container, fragment);
+        if (add) {
+            ft.add(container, fragment);
+        } else {
+            ft.replace(container, fragment);
+        }
         ft.addToBackStack(null);
         ft.commit();
         ((MainActivity)context).getDrawerLayout().closeDrawers();

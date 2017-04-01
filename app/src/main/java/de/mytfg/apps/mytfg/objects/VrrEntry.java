@@ -42,6 +42,7 @@ public class VrrEntry extends MytfgObject {
             delay = data.getInt("delay");
             type = data.getString("type");
             route = new ArrayList<>();
+            platform = data.getString("platform");
             for (int i = 0; i < data.getJSONArray("route").length(); ++i) {
                 route.add(data.getJSONArray("route").getString(i));
             }
@@ -90,6 +91,6 @@ public class VrrEntry extends MytfgObject {
     }
 
     public String getDelayText() {
-        return "(+ " + getDelay() + " Min)";
+        return getDelay() + " Min";
     }
 }

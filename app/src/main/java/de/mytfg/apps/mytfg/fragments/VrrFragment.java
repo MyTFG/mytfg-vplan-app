@@ -2,10 +2,12 @@ package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,8 +38,10 @@ public class VrrFragment extends AuthenticationFragment {
     private Handler handler;
     private Runnable updateRunner;
     private boolean timerActive;
+    private Vrr vrr;
+    private boolean expand = true;
 
-    private static final int updateInterval = 10000;
+    private static final int updateInterval = 30000;
 
     public VrrFragment() {
     }
@@ -45,26 +49,32 @@ public class VrrFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d("VRR", "CreateView");
         view = inflater.inflate(R.layout.fragment_vrr, container, false);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.base_refreshLayout);
         context = (MainActivity)this.getActivity();
+        vrr = new Vrr(getContext());
 
         recyclerView = (RecyclerView) view.findViewById(R.id.vrr_recylcerview);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.addItemDecoration(new ItemOffsetDecoration(getContext(), R.dimen.cardview_spacing));
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.base_refreshLayout);
 
         Settings settings = new Settings(context);
         autoRefresh = settings.getBool("vrr_auto_refresh");
 
+        Log.d("VRR", "expand: " + expand);
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setImage(R.drawable.vrr_header_s)
-                .setTitle(getString(R.string.menutitle_vrr))
-                .setExpandable(true, true);
+                .setImage(R.drawable.vrr_header_s, !expand)
+                .setTitle(getString(R.string.menutitle_vrr));
 
+        if (expand) {
+            context.getToolbarManager().setExpandable(true, true);
+        }
+        expand = false;
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -86,9 +96,6 @@ public class VrrFragment extends AuthenticationFragment {
                 }
             }
         };
-
-
-        this.displayVrr();
 
         return view;
     }
@@ -132,7 +139,7 @@ public class VrrFragment extends AuthenticationFragment {
 
     private void startTimer() {
         if (!timerActive) {
-            updateRunner.run();
+            handler.postDelayed(updateRunner, updateInterval);
             timerActive = true;
         }
     }
@@ -145,6 +152,12 @@ public class VrrFragment extends AuthenticationFragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("VRR", "Resume!");
+        Log.d("VRR", "RecylcerView: " + recyclerView);
+        Log.d("VRR", "swipe: " + swipeRefreshLayout);
+        Log.d("VRR", "adapter: " + adapter);
+        Log.d("VRR", "vrr: " + vrr);
+        reshow();
         if (autoRefresh) {
             startTimer();
         }
@@ -158,11 +171,24 @@ public class VrrFragment extends AuthenticationFragment {
         super.onPause();
     }
 
+    private void reshow() {
+        recyclerView = (RecyclerView) view.findViewById(R.id.vrr_recylcerview);
+        if (adapter != null) {
+            Log.d("VRR", "notify");
+            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
+        } else {
+            displayVrr();
+        }
+    }
+
     public void displayVrr() {
         recyclerView = (RecyclerView) view.findViewById(R.id.vrr_recylcerview);
         swipeRefreshLayout.setRefreshing(true);
+        Log.d("VRR", "DisplayVrr");
 
-        final Vrr vrr = new Vrr(getContext());
+        final Parcelable state = recyclerView.getLayoutManager().onSaveInstanceState();
+
         vrr.load(new SuccessCallback() {
             @Override
             public void callback(boolean success) {
@@ -170,13 +196,14 @@ public class VrrFragment extends AuthenticationFragment {
                 if (success) {
                     if (adapter == null) {
                         adapter = new RecylcerVrrAdapter(getContext());
-                        recyclerView.setAdapter(adapter);
                     }
                     adapter.clear();
                     for (VrrEntry entry : vrr.getEntries()) {
                         adapter.addItem(entry);
                     }
+                    recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(state);
                 } else {
                     ((MainActivity)getActivity()).getNavi().snackbar(getString(R.string.api_vrr_error));
                 }

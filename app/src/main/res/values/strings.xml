@@ -54,9 +54,9 @@
     <string name="plan_failed">Plan could not be loaded</string>
     <string name="plan_today">Current day</string>
     <string name="plan_tomorrow">Next day</string>
-    <string name="plan_header">Plan:</string>
-    <string name="subst_header">Substitution:</string>
-    <string name="comment_header">Comment:</string>
+    <string name="plan_header">Plan</string>
+    <string name="subst_header">Substitution</string>
+    <string name="comment_header">Comment</string>
     <string name="plan_show_marquee">Show announcements</string>
     <string name="plan_show_absent">Show absent teachers</string>
     <string name="plan_show_time">Show Update time</string>
@@ -66,6 +66,9 @@
     <string name="plan_not_loaded">Plan not loaded</string>
     <string name="plan_loading">Loading plan&#8230;</string>
     <string name="plan_search">Search</string>
+    <string name="plan_no_announcements">No announcements</string>
+    <string name="plan_no_teachers">No absent teachers</string>
+    <string name="plan_no_update">Unknown</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>
@@ -165,6 +168,14 @@
     <string name="vrr_autorefresh">Auto-Refresh</string>
     <string name="vrr_autorefresh_enabled">Autorefresh enabled</string>
     <string name="vrr_autorefresh_disabled">Autorefresh disabled</string>
+
+    <string name="vrr_planned_datetime">Scheduled Arrival</string>
+    <string name="vrr_real_datetime">Actual Arrival</string>
+    <string name="vrr_delay">Delay</string>
+    <string name="vrr_arrival">Arrives In</string>
+    <string name="vrr_platform">Platform</string>
+    <string name="vrr_route">Route</string>
+    <string name="vrr_type">Type</string>
 
     <!-- OFFICE -->
     <string name="office_address">Address</string>

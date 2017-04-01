@@ -61,7 +61,7 @@ public class FeedbackFragment extends AuthenticationFragment {
             nameText.setText(savedFeedback.optString("name", ""));
             mailText.setText(savedFeedback.optString("mail", ""));
             improveText.setText(savedFeedback.optString("improve", ""));
-            ratingBar.setRating((float) savedFeedback.optDouble("rating", 1.0));
+            ratingBar.setRating((float) savedFeedback.optDouble("rating", 0.0));
         }
 
 

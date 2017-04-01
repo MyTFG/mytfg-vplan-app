@@ -2,12 +2,15 @@ package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -40,6 +43,11 @@ public class PlanFragment extends AuthenticationFragment {
     private Vplan todayPlan;
     private Vplan tomorrowPlan;
     private MainActivity context;
+    private int tab = 0;
+    private boolean expand = true;
+    private ViewPagerAdapter viewPagerAdapter;
+    private ViewPager viewPager;
+    private Parcelable viewPagerState;
 
     public PlanFragment() {
     }
@@ -52,9 +60,14 @@ public class PlanFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        setRetainInstance(true);
         view = inflater.inflate(R.layout.fragment_plan, container, false);
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
+        viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
         viewPager.setAdapter(new ViewPagerAdapter(this.getChildFragmentManager()));
+        if (viewPagerState != null) {
+            viewPager.onRestoreInstanceState(viewPagerState);
+        }
+
         final MainActivity context = (MainActivity)this.getActivity();
 
         this.context = context;
@@ -64,10 +77,14 @@ public class PlanFragment extends AuthenticationFragment {
                 .clearMenu()
                 .setImage(R.drawable.vplan_header_s)
                 .showBottomScrim()
-                .setExpandable(true, true)
                 .setTabs(true)
                 .showFab()
                 .setTabOutscroll(true);
+
+        if (expand) {
+            context.getToolbarManager().setExpandable(true, true);
+        }
+        expand = false;
 
         setHasOptionsMenu(true);
 
@@ -153,7 +170,7 @@ public class PlanFragment extends AuthenticationFragment {
                     }
                 }
                 if (absent == null) {
-                    absent = "";
+                    absent = getString(R.string.plan_no_teachers);
                 }
                 absentDialog.setMessage(absent);
                 absentDialog.setIcon(R.drawable.ic_menu_absent);
@@ -172,7 +189,7 @@ public class PlanFragment extends AuthenticationFragment {
                     }
                 }
                 if (message == null) {
-                    message = "";
+                    message = getString(R.string.plan_no_announcements);
                 }
                 alertDialog.setMessage(message);
                 alertDialog.setIcon(R.drawable.ic_menu_about);
@@ -183,7 +200,11 @@ public class PlanFragment extends AuthenticationFragment {
                 AlertDialog.Builder timeDialog = new AlertDialog.Builder(context);
                 timeDialog.setTitle(getString(R.string.plan_time));
                 String time = plan.getChanged();
-                timeDialog.setMessage(time);
+                if (time.isEmpty()) {
+                    timeDialog.setMessage(getString(R.string.plan_no_update));
+                } else {
+                    timeDialog.setMessage(time);
+                }
                 timeDialog.setIcon(R.drawable.ic_menu_clock);
                 AlertDialog timeDlg = timeDialog.create();
                 timeDlg.show();
@@ -193,19 +214,28 @@ public class PlanFragment extends AuthenticationFragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewPagerState = viewPager.onSaveInstanceState();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
+
+        if (viewPager == null) {
+            viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
+        }
 
         // Create Pager elements if not existent
-        if (today == null || tomorrow == null || true) {
+        if ((today == null || tomorrow == null || true)) {
             todayPlan = new Vplan(context, "today");
             tomorrowPlan = new Vplan(context, "tomorrow");
 
             today = new PlanLogic(todayPlan);
             tomorrow = new PlanLogic(tomorrowPlan);
 
-            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+            viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 
             viewPagerAdapter.addFragment(
                     FragmentHolder.newInstance(
@@ -223,14 +253,13 @@ public class PlanFragment extends AuthenticationFragment {
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                    if (Math.abs(positionOffset) > 0.5f) {
-                        context.getToolbarManager().showFab();
-                    }
+
                 }
 
                 @Override
                 public void onPageSelected(int position) {
-
+                    context.getToolbarManager().showFab();
+                    tab = position;
                 }
 
                 @Override
@@ -244,6 +273,12 @@ public class PlanFragment extends AuthenticationFragment {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+
+        viewPager.setCurrentItem(tab);
+
+        /*if (viewPagerState != null) {
+            viewPager.onRestoreInstanceState(viewPagerState);
+        }*/
 
         Runnable runnable = new Runnable() {
             @Override

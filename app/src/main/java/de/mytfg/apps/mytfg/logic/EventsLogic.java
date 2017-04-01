@@ -86,6 +86,16 @@ public class EventsLogic implements FragmentHolderLogic {
         }*/
     }
 
+    @Override
+    public void saveInstanceState() {
+
+    }
+
+    @Override
+    public void restoreInstanceState() {
+
+    }
+
     private void loadEvents(boolean reload) {
         refreshLayout.setRefreshing(true);
         this.events.load(new SuccessCallback() {

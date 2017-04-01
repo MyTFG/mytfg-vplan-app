@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryLight"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textSize="@dimen/textTitle"
+                android:id="@+id/plan_entry_lesson" />
+
+
+            <com.lb.auto_fit_textview.AutoResizeTextView
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:textAlignment="center"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/textMediumTitle"
+                android:id="@+id/plan_entry_summary" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_marginEnd="@dimen/cardview_spacing"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/textSmallTitle"
+                android:id="@+id/plan_entry_class" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:text="@string/plan_header"
+                    android:visibility="gone"
+                    android:id="@+id/plan_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/plan"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50sp"
+                    android:layout_marginStart="50sp"
+                    android:layout_gravity="start"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_vplan_arrow_down" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:text="@string/subst_header"
+                    android:visibility="gone"
+                    android:id="@+id/subst_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:layout_gravity="start"
+                    android:id="@+id/subst"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallContent"
+                    android:layout_gravity="start"
+                    android:text="@string/comment_header"
+                    android:visibility="gone"
+                    android:id="@+id/comment_header"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardview_spacing"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:layout_gravity="start"
+                    android:id="@+id/comment"
+                    android:layout_marginLeft="@dimen/cardview_spacing" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
