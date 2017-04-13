@@ -15,9 +15,12 @@ import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
+import de.mytfg.apps.mytfg.fragments.BoosterFragment;
 import de.mytfg.apps.mytfg.fragments.FeedbackFragment;
+import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
+import de.mytfg.apps.mytfg.fragments.ParentsFragment;
 import de.mytfg.apps.mytfg.fragments.SettingsFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.PlanFragment;
@@ -103,6 +106,18 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_secretary:
                         //navi.clear();
                         navi.navigate(new OfficeFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_partners_parents:
+                        //navi.clear();
+                        navi.navigate(new ParentsFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_partners_boosters:
+                        //navi.clear();
+                        navi.navigate(new BoosterFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_partners_foundation:
+                        //navi.clear();
+                        navi.navigate(new FoundationFragment(), R.id.fragment_container);
                         return true;
                 }
             }

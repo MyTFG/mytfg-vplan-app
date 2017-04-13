@@ -1,0 +1,197 @@
+<android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorIcons"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="@dimen/defaultPadding"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/boosters_text"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/defaultPadding"
+            android:layout_marginBottom="@dimen/cardview_spacing"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/cardview_spacing"
+            android:id="@+id/boosters_address">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryLight"
+                android:padding="@dimen/cardview_spacing">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_gravity="start"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitEnd"
+                    android:tint="@color/colorBlack"
+                    android:src="@drawable/ic_icon_address"
+                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/boosters_address"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/textSmallTitle"/>
+
+                    <TextView
+                        android:layout_marginStart="@dimen/defaultPadding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textDefault"
+                        android:text="@string/boosters_address_val"
+                        android:layout_marginLeft="@dimen/defaultPadding" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_action_open_link"
+                    android:tint="@color/colorBlack"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cardview_spacing"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/cardview_spacing"
+            android:id="@+id/parents_web">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryLight"
+                android:padding="@dimen/cardview_spacing">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_gravity="start"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/ic_web"
+                    android:tint="@color/colorBlack"
+                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/boosters_web"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/textSmallTitle"/>
+
+                    <TextView
+                        android:layout_marginStart="@dimen/defaultPadding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textDefault"
+                        android:text="@string/boosters_web_val"
+                        android:layout_marginLeft="@dimen/defaultPadding" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerInside"
+                    android:tint="@color/colorBlack"
+                    android:src="@drawable/ic_action_open_link"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cardview_spacing"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/cardview_spacing"
+            android:id="@+id/boosters_mail">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
+                android:orientation="horizontal"
+                android:padding="@dimen/cardview_spacing">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_gravity="start"
+                    android:layout_height="60dp"
+                    android:tint="@color/colorBlack"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/ic_icon_mail"
+                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/boosters_mail"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/textSmallTitle"/>
+
+                    <TextView
+                        android:layout_marginStart="@dimen/defaultPadding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textDefault"
+                        android:text="@string/boosters_mail_val"
+                        android:layout_marginLeft="@dimen/defaultPadding" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:tint="@color/colorBlack"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_action_open_link"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

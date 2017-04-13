@@ -75,7 +75,21 @@ public class ToolbarManager {
         this.clearMenu();
         this.setTabs(false);
         this.hideBottomScrim();
+        this.hideCornerImage();
         this.setTabOutscroll(false);
+        return this;
+    }
+
+    public ToolbarManager hideCornerImage() {
+        final ImageView corner = (ImageView)holder.findViewById(R.id.toolbar_image_corner);
+        corner.setVisibility(View.GONE);
+        return this;
+    }
+
+    public ToolbarManager setCornerImage(@DrawableRes int res) {
+        final ImageView corner = (ImageView)holder.findViewById(R.id.toolbar_image_corner);
+        corner.setImageResource(res);
+        corner.setVisibility(View.VISIBLE);
         return this;
     }
 

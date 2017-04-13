@@ -35,6 +35,17 @@
             android:layout_alignBottom="@+id/toolbar_image"
             android:background="@drawable/scrim_bottom"/>
 
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_marginRight="@dimen/defaultPadding"
+            android:layout_gravity="bottom|end"
+            android:scaleType="fitCenter"
+            android:id="@+id/toolbar_image_corner"
+            android:src="@drawable/schulstiftung_logo"/>
+
         <android.support.v7.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"

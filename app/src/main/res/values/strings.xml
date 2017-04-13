@@ -189,10 +189,57 @@
     <string name="office_open">Opening times</string>
     <string name="office_open_val">8am to 4pm</string>
 
+    <!-- PARENT -->
+    <string name="parents_address">Address</string>
+    <string name="parents_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
+    <string name="parents_web">Website</string>
+    <string name="parents_web_val">eltern.tfg-duesseldorf.de</string>
+    <string name="parents_mail">Mail</string>
+    <string name="parents_mail_val">eltern@tfg-duesseldorf.de</string>
+
+    <!-- FOUNDATION -->
+    <string name="foundation_info_text">
+        Viele Schülerinnen und Schüler besuchen die elf Bildungseinrichtungen der Schulstiftung der Evangelischen Kirche im Rheinland.
+        Damit werden einzigartige Talente gefördert. Das Anliegen der Schulstiftung ist es, den perfekten Rahmen für diese wertvolle Talentförderung zu bieten. (siehe aktuelle Projekte)
+        Möglichkeiten dafür gibt es viele, denn gute Lernbedingungen hängen nicht nur vom Inhalt des Unterrichts ab, sondern werden auch von den äußeren Gegebenheiten mitbestimmt.
+        Auf unserer Seite bekommen Sie einen Überblick über die verschiedenen Aktionen und Projekte, die die Schulen in Zusammenarbeit mit der Schulstiftung planen oder durchgeführt haben.
+        Außerdem spielen Zahlen bei uns eine große Rolle. Denn durch diese Seite möchten wir die Finanzierung dieser Projekte vorantreiben.
+        Deshalb schwingt in den Berichten immer auch eine große Bitte an Sie mit:
+        Werden Sie ebenfalls Unterstützer von unseren vielen Talenten und werden Sie damit Teil der Schulstiftung und Förderer von jungen Menschen.
+    </string>
+    <string name="foundation_address">Addresse</string>
+    <string name="foundation_address_val">Hans-Böckler-Straße 7\n40476 Düsseldorf</string>
+    <string name="foundation_web">Webseite</string>
+    <string name="foundation_web_val">schulstiftung.ekir.de</string>
+    <string name="foundation_phone">Telefon</string>
+    <string name="foundation_phone_val">+49 211 4562530</string>
+    <string name="foundation_mail">E-Mail</string>
+    <string name="foundation_mail_val">dirk.thrun@ekir-lka.de</string>
+    <string name="foundation_office">Office Times</string>
+    <string name="foundation_office_val">Mo – Fr, 8.00 – 12.00 Uhr</string>
+    <string name="foundation_donation">Donate</string>
+    <string name="foundation_donation_val">Via the official Website of the Schulstiftung</string>
+    <string name="foundation_donation_url">https://www.kd-onlinespende.de/m/organisation/schulstiftung-der-evangelischen-kirche-im-rheinland.html</string>
+
     <!-- PARENTS -->
     <string name="parents_info_text">
         Sorry, not available in English.
     </string>
+
+    <!-- Boosters -->
+    <string name="boosters_text">
+        Die Vereinigung der Freunde des Theodor-Fliedner-Gymnasiums e.V. (Förderverein des TFG, Düsseldorf) besteht seit 1956 und
+        ist unverzichtbarer Teil unseres aktiven Schullebens.
+        \nDie konkreten Ziele und Aufgaben des Fördervereins ergeben sich aus § 2 der Satzung des Fördervereins.
+        \nDer Förderverein unterstützt große und kleine Projekte an der Schule sowie Initiativen der Elternschaft und der Schüler,
+        die aus den Fördertöpfen des Schulträgers oder der Schulstiftung nicht bedient werden können.
+    </string>
+    <string name="boosters_address">Address</string>
+    <string name="boosters_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
+    <string name="boosters_web">Website</string>
+    <string name="boosters_web_val">tfg-foerderverein.de</string>
+    <string name="boosters_mail">Mail</string>
+    <string name="boosters_mail_val">info@tfg-foerderverein.de</string>
 
     <!-- FEEDBACK -->
     <string name="feedback_hint_title">Provide Feedback</string>

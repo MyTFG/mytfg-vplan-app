@@ -26,17 +26,17 @@ public class ParentsFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_office, container, false);
+        View view = inflater.inflate(R.layout.fragment_parents, container, false);
         MainActivity context = (MainActivity)this.getActivity();
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setImage(R.drawable.office_header)
+                .setImage(R.drawable.parents_header)
                 .showBottomScrim()
-                .setTitle(getString(R.string.menutitle_secretary))
+                .setTitle(getString(R.string.menutitle_parents))
                 .setExpandable(true, true);
 
-        CardView address = (CardView) view.findViewById(R.id.office_address);
+        CardView address = (CardView) view.findViewById(R.id.parents_address);
         address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,24 +47,24 @@ public class ParentsFragment extends AuthenticationFragment {
             }
         });
 
-        final String num = getString(R.string.office_phone_val).replace("/", "");
+        final String url = "http://" + getString(R.string.parents_web_val);
 
-        CardView phone = (CardView) view.findViewById(R.id.office_phone);
-        phone.setOnClickListener(new View.OnClickListener() {
+        CardView web = (CardView) view.findViewById(R.id.parents_web);
+        web.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_DIAL,
-                        Uri.parse("tel:" + num));
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
                 startActivity(i);
             }
         });
 
-        CardView mail = (CardView) view.findViewById(R.id.office_mail);
+        CardView mail = (CardView) view.findViewById(R.id.parents_mail);
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SENDTO);
-                i.setData(Uri.parse("mailto:" + getString(R.string.office_mail_val)));
+                i.setData(Uri.parse("mailto:" + getString(R.string.parents_mail_val)));
                 startActivity(i);
             }
         });
