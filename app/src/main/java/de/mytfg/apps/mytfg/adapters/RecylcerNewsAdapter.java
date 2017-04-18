@@ -11,12 +11,15 @@ import java.util.UUID;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
     private Context context;
     private ArrayList<TfgNewsEntry> elements = new ArrayList<>();
 
     private String unique;
+    private int lastPosition = -1; // None
+    private int expandedPosition = -1;
 
     public RecylcerNewsAdapter(Context c) {
         this.context = c;
@@ -41,7 +44,27 @@ public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
 
     @Override
     public void onBindViewHolder(final NewsEntryHolder holder, final int position) {
-        holder.update(elements.get(position));
+        final TfgNewsEntry entry = elements.get(position);
+        holder.update(entry, position == expandedPosition);
+
+        Settings settings = new Settings(context);
+        if (!settings.getBool("news_browser")) {
+            holder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (expandedPosition >= 0) {
+                        notifyItemChanged(expandedPosition);
+                    }
+                    if (holder.getAdapterPosition() == expandedPosition) {
+                        expandedPosition = -1;
+                        notifyItemChanged(holder.getAdapterPosition());
+                    } else {
+                        expandedPosition = holder.getAdapterPosition();
+                        notifyItemChanged(expandedPosition);
+                    }
+                }
+            });
+        }
     }
 
     @Override

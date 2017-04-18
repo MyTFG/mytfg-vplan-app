@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,11 +30,15 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
         summary  = (TextView) view.findViewById(R.id.news_summary);
     }
 
-    public void update(TfgNewsEntry entry) {
+    public void update(TfgNewsEntry entry, boolean extended) {
         //titleView.setText(baseObject.getName());
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
-        summary.setText(entry.getSummary());
+        if (extended) {
+            summary.setText(Html.fromHtml(entry.getHtml()));
+        } else {
+            summary.setText(entry.getSummary());
+        }
         final String link = entry.getLink();
         Settings settings = new Settings(context);
         if (!link.isEmpty() && settings.getBool("news_browser")) {

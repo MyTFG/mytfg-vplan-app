@@ -8,12 +8,9 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -192,7 +189,7 @@ public class PlanFragment extends AuthenticationFragment {
                     message = getString(R.string.plan_no_announcements);
                 }
                 alertDialog.setMessage(message);
-                alertDialog.setIcon(R.drawable.ic_menu_about);
+                alertDialog.setIcon(R.drawable.ic_menu_about_old);
                 AlertDialog alert = alertDialog.create();
                 alert.show();
                 return true;

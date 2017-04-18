@@ -144,12 +144,23 @@
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
-    <string name="about_text">Diese App nutzt die MyTFG API, ist jedoch kein zertifiziertes Tool des API Betreibers.
+    <string name="about_text">Diese App nutzt die MyTFG API.
+        Sie wird entwickelt, um Schülern, Lehrern und Eltern eine zentrale Informationsplattform zu bieten.
+        \nAlle Inhalte werden über die MyTFG API abgerufen. Hierbei wird eine verschlüsselte Verbindung genutzt.
+        \nWenn Sie sich in der App mit Ihrem MyTFG Konto anmelden, haben Sie Zugriff auf den Vertretungsplan.
+        Neben den für die Authentifizierung notwendigen Daten werden keine weiteren personenbezogenen Information gespeichert.
         Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">Diese App ist Teil des MyTFG Open Source Projekts.
         Der Quellcode kann auf Github eingesehen werden.
         Die kommerzielle Verbreitung dieser App ist untersagt.
+    </string>
+    <string name="about_permissions">App Berechtigungen</string>
+    <string name="about_permissions_text">
+        Diese App benötigt die folgenden Berechtigungen:
+        \nTelefon (Telefonstatus / Identität): Das Gerät muss sich gegenüber dem MyTFG Server authentifizieren können. Hierfür wird die Geräte-ID benötigt.
+        \nNetzwerkverbindung (Internet): Um die Daten vom MyTFG Server abzurufen, ist selbstverständlich Zugriff auf die Internetverbindung notwendig.
+        \nSpeicherzugriff: Anmeldedaten sowie abgerufene Inhalte werden lokal auf dem Gerät gespeichert (gecached), um den Datenverbrauch zu minimieren.
     </string>
 
     <!-- LINKS -->

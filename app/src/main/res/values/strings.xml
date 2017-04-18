@@ -152,6 +152,10 @@
     <string name="about_text">This App uses the MyTFG API. All rights reserved.</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">This App is part of the MyTFG Open Source Project.</string>
+    <string name="about_permissions">App Permissions</string>
+    <string name="about_permissions_text">
+        Phone ID, Network, Storage
+    </string>
 
     <!-- LINKS -->
     <string name="link_moodle">TFG Moodle</string>
@@ -263,6 +267,8 @@
     <!-- SHOWCASE -->
     <string name="hide_showcase">Hide</string>
     <string name="next_showcase">Next</string>
+
+
 
     <!-- SHOWCASE TEXTS & TITLES -->
     <string name="sc_home_navi_title">Navigation</string>

@@ -31,6 +31,8 @@ public class LinksFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
+                .setImage(R.drawable.links_header)
+                .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_links))
                 .setExpandable(true, true);
 

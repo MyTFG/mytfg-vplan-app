@@ -14,6 +14,7 @@ public class TfgNewsEntry extends MytfgObject {
     private String link;
     private String title;
     private String text;
+    private String html;
     private String summary;
     /**
      * Do not use this method. Use the load method and pass a JSON Object.
@@ -33,6 +34,7 @@ public class TfgNewsEntry extends MytfgObject {
             link = data.getString("link");
             title = data.getString("title");
             text = data.getString("text");
+            html = data.getString("html");
             summary = data.getString("summary");
         } catch (JSONException ex) {
             return false;
@@ -58,5 +60,9 @@ public class TfgNewsEntry extends MytfgObject {
 
     public String getText() {
         return text;
+    }
+
+    public String getHtml() {
+        return html;
     }
 }
