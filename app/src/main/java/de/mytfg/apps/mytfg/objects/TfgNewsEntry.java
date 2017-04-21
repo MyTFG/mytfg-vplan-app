@@ -65,4 +65,12 @@ public class TfgNewsEntry extends MytfgObject {
     public String getHtml() {
         return html;
     }
+
+    public boolean filter(String filter) {
+        filter = filter.toLowerCase();
+        return getSummary().toLowerCase().contains(filter)
+                || getLink().toLowerCase().contains(filter)
+                || getText().toLowerCase().contains(filter)
+                || getTitle().toLowerCase().contains(filter);
+    }
 }

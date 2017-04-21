@@ -3,6 +3,7 @@ package de.mytfg.apps.mytfg.objects;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 
 /**
@@ -57,5 +58,14 @@ public class TfgEventsEntry extends MytfgObject {
 
     public long getTimestamp() {
         return timestamp;
+    }
+
+    public boolean filter(String filter) {
+        filter = filter.toLowerCase();
+        return getTitle().toLowerCase().contains(filter)
+                || getLocation().toLowerCase().contains(filter)
+                || MyTFGApi.getDay(getTimestamp()).toLowerCase().contains(filter)
+                || MyTFGApi.getMonth(getTimestamp()).toLowerCase().contains(filter)
+                || MyTFGApi.getYear(getTimestamp()).toLowerCase().contains(filter);
     }
 }

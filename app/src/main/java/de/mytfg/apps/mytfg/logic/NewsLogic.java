@@ -79,7 +79,7 @@ public class NewsLogic implements FragmentHolderLogic {
     private void display() {
         adapter = new RecylcerNewsAdapter(context);
         recyclerView.setAdapter(adapter);
-        for (TfgNewsEntry entry : this.news.getEntries()) {
+        for (TfgNewsEntry entry : this.news.filter(this.current_filter)) {
             adapter.addItem(entry);
         }
         adapter.notifyDataSetChanged();
@@ -135,5 +135,14 @@ public class NewsLogic implements FragmentHolderLogic {
         return context.getString(R.string.menutitle_news);
     }
 
+    public void filter(String filter) {
+        this.current_filter = filter;
+        this.display();
+    }
+
+    public void resetFilter() {
+        this.current_filter = null;
+        this.display();
+    }
 
 }

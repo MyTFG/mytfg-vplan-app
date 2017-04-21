@@ -2,9 +2,13 @@ package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -46,16 +50,57 @@ public class TfgFragment extends AuthenticationFragment {
 
         this.context = context;
         context.getToolbarManager()
-                .clear()
+                .clear(false)
                 .setTitle(getString(R.string.menutitle_tfg))
                 .clearMenu()
                 .setImage(R.drawable.news_header_s)
                 .showBottomScrim()
                 .setExpandable(true, true)
                 .setTabs(true)
+                .showFab()
                 .setTabOutscroll(true);
 
+        final FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.getToolbarManager().showSearchBar();
+            }
+        });
+
+        setHasOptionsMenu(true);
+
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.tfg_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        SearchView searchView = context.getToolbarManager().getSearchView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newsLogic.filter(newText);
+                eventsLogic.filter(newText);
+                return true;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                newsLogic.resetFilter();
+                eventsLogic.resetFilter();
+                return true;
+            }
+        });
     }
 
     @Override

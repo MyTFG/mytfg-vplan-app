@@ -106,4 +106,19 @@ public class TfgEvents extends MytfgObject {
     public boolean upToDate() {
         return (timestamp + timeout) >= System.currentTimeMillis();
     }
+
+    public List<TfgEventsEntry> filter(String filter) {
+        if (filter == null) {
+            return getEntries();
+        }
+        filter = filter.toLowerCase();
+
+        List<TfgEventsEntry> results = new LinkedList<>();
+        for (TfgEventsEntry entry : getEntries()) {
+            if (entry.filter(filter)) {
+                results.add(entry);
+            }
+        }
+        return results;
+    }
 }

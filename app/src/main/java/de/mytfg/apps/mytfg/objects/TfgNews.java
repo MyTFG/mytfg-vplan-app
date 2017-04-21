@@ -100,6 +100,21 @@ public class TfgNews extends MytfgObject {
         return parse(json);
     }
 
+    public List<TfgNewsEntry> filter(String filter) {
+        if (filter == null) {
+            return getEntries();
+        }
+        filter = filter.toLowerCase();
+
+        List<TfgNewsEntry> results = new LinkedList<>();
+        for (TfgNewsEntry entry : getEntries()) {
+            if (entry.filter(filter)) {
+                results.add(entry);
+            }
+        }
+        return results;
+    }
+
     public List<TfgNewsEntry> getEntries() {
         return entries;
     }

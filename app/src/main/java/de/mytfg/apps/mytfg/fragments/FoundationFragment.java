@@ -31,7 +31,7 @@ public class FoundationFragment extends AuthenticationFragment {
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
-                .setImage(R.drawable.foundation_header)
+                .setImage(R.mipmap.front)
                 .setCornerImage(R.drawable.schulstiftung_logo)
                 .showBottomScrim()
                 .setTitle(getString(R.string.menutitle_foundation))
