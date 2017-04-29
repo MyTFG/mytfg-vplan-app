@@ -3,6 +3,7 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
     <string name="news_failed">News konnten nicht geladen werden</string>
+    <string name="firebase_failed">Could not update Firebase Token</string>
 
     <!-- Dialogs -->
     <string name="please_wait">Bitte warten</string>

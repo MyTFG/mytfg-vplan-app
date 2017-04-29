@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
+import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
 import de.mytfg.apps.mytfg.fragments.BoosterFragment;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 MyTFGApi api = new MyTFGApi(context);
+                FbApi.updateFirebase(context);
                 switch (item.getItemId()) {
                     default:
                         return false;

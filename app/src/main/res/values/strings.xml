@@ -2,6 +2,7 @@
     <string name="app_name">MyTFG</string>
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
+    <string name="firebase_failed">Could not update Firebase Token</string>
 
     <!-- Dialogs -->
     <string name="please_wait">Please wait</string>

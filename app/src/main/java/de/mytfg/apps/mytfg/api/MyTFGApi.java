@@ -35,6 +35,8 @@ import java.util.Set;
 import javax.net.ssl.HttpsURLConnection;
 
 import de.mytfg.apps.mytfg.R;
+import de.mytfg.apps.mytfg.activities.MainActivity;
+import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.objects.Vplan;
 
@@ -45,13 +47,17 @@ import de.mytfg.apps.mytfg.objects.Vplan;
 public class MyTFGApi {
     private ProgressBar loadingBar;
     private Context context;
+    private boolean inApp = false;
 
     public MyTFGApi(Context context) {
         this.context = context;
-        View rootview = ((Activity)context).getWindow().getDecorView()
-                .findViewById(android.R.id.content);
-        loadingBar = (ProgressBar) rootview.findViewById(R.id.loadingBar);
-        loadingBar.setVisibility(View.GONE);
+        if (context instanceof MainActivity) {
+            inApp = true;
+            View rootview = ((Activity) context).getWindow().getDecorView()
+                    .findViewById(android.R.id.content);
+            loadingBar = (ProgressBar) rootview.findViewById(R.id.loadingBar);
+            loadingBar.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -200,6 +206,7 @@ public class MyTFGApi {
         }
         Vplan.clearCache("today", context);
         Vplan.clearCache("tomorrow", context);
+        FbApi.unsubscribeAll(context);
     }
 
     /**
@@ -245,7 +252,9 @@ public class MyTFGApi {
             this.args = params;
             this.callback = callback;
             this.loadingBar = pb;
-            loadingBar.setVisibility(View.VISIBLE);
+            if (loadingBar != null) {
+                loadingBar.setVisibility(View.VISIBLE);
+            }
         }
 
         private RequestTask addBody(JSONObject body) {
@@ -324,7 +333,7 @@ public class MyTFGApi {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             activeCalls--;
-            if (activeCalls <= 0) {
+            if (activeCalls <= 0 && loadingBar != null) {
                 loadingBar.setVisibility(View.GONE);
             }
 
