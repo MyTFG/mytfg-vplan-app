@@ -65,10 +65,17 @@ public class PlanLogic implements FragmentHolderLogic {
             }
         });
 
-        if (this.plan.isLoaded()) {
-            display();
+        MainActivity c = (MainActivity) context;
+        if (c.getIntent().getExtras() != null && c.getIntent().getExtras().containsKey("type")) {
+            if ("vplan_update".equals(c.getIntent().getExtras().getString("type"))) {
+                loadPlan(true);
+            }
         } else {
-            loadPlan(false);
+            if (this.plan.isLoaded()) {
+                display();
+            } else {
+                loadPlan(false);
+            }
         }
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

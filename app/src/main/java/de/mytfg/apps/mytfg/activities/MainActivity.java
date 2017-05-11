@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        AuthenticationFragment fragment;
+        AuthenticationFragment fragment = null;
         Settings settings = new Settings(context);
 
         MyTFGApi api = new MyTFGApi(context);
@@ -138,14 +139,28 @@ public class MainActivity extends AppCompatActivity {
                 fragment = (AuthenticationFragment)getSupportFragmentManager().getFragment(savedInstanceState,
                         "fragmentInstanceSaved");
             } else {
-                // Read Landing Page from settings
-                String fragName = settings.getString("landing_page");
-                try {
-                    fragName = "de.mytfg.apps.mytfg.fragments." + fragName;
-                    Class c = Class.forName(fragName);
-                    fragment = (AuthenticationFragment)c.newInstance();
-                } catch (Exception ex) {
-                    fragment = new TfgFragment();
+                Intent intent = getIntent();
+                if (intent.getExtras() != null && intent.getExtras().containsKey("type")) {
+                    String type = intent.getExtras().getString("type");
+                    switch (type != null ? type : "") {
+                        case "vplan_update":
+                            int tab = intent.getExtras().getInt("tab");
+                            fragment = new PlanFragment();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (fragment == null) {
+                    // Read Landing Page from settings
+                    String fragName = settings.getString("landing_page");
+                    try {
+                        fragName = "de.mytfg.apps.mytfg.fragments." + fragName;
+                        Class c = Class.forName(fragName);
+                        fragment = (AuthenticationFragment) c.newInstance();
+                    } catch (Exception ex) {
+                        fragment = new TfgFragment();
+                    }
                 }
             }
         }

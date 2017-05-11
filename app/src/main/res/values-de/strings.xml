@@ -201,7 +201,7 @@
     <string name="office_mail_val">mail@tfg-duesseldorf.de</string>
 
     <!-- PARENTS -->
-    <string name="parents_address">Addresse</string>
+    <string name="parents_address">Adresse</string>
     <string name="parents_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
     <string name="parents_web">Webseite</string>
     <string name="parents_web_val">eltern.tfg-duesseldorf.de</string>
@@ -216,7 +216,7 @@
         \nDer Förderverein unterstützt große und kleine Projekte an der Schule sowie Initiativen der Elternschaft und der Schüler,
         die aus den Fördertöpfen des Schulträgers oder der Schulstiftung nicht bedient werden können.
     </string>
-    <string name="boosters_address">Addresse</string>
+    <string name="boosters_address">Adresse</string>
     <string name="boosters_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
     <string name="boosters_web">Webseite</string>
     <string name="boosters_web_val">tfg-foerderverein.de</string>
@@ -233,7 +233,7 @@
         Deshalb schwingt in den Berichten immer auch eine große Bitte an Sie mit:
         Werden Sie ebenfalls Unterstützer von unseren vielen Talenten und werden Sie damit Teil der Schulstiftung und Förderer von jungen Menschen.
     </string>
-    <string name="foundation_address">Addresse</string>
+    <string name="foundation_address">Adresse</string>
     <string name="foundation_address_val">Hans-Böckler-Straße 7\n40476 Düsseldorf</string>
     <string name="foundation_web">Webseite</string>
     <string name="foundation_web_val">schulstiftung.ekir.de</string>

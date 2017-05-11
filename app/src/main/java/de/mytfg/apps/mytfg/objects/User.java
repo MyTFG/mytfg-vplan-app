@@ -116,4 +116,8 @@ public class User extends MytfgObject {
                 return context.getString(R.string.user_rights_admin);
         }
     }
+
+    public String getShortage() {
+        return getUsername().substring(2);
+    }
 }

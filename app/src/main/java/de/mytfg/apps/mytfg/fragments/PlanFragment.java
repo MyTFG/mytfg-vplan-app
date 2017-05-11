@@ -45,6 +45,7 @@ public class PlanFragment extends AuthenticationFragment {
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager viewPager;
     private Parcelable viewPagerState;
+    private boolean firstOpen = true;
 
     public PlanFragment() {
     }
@@ -224,6 +225,7 @@ public class PlanFragment extends AuthenticationFragment {
             viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
         }
 
+
         // Create Pager elements if not existent
         if ((today == null || tomorrow == null || true)) {
             todayPlan = new Vplan(context, "today");
@@ -269,6 +271,16 @@ public class PlanFragment extends AuthenticationFragment {
         TabLayout tabLayout = context.getToolbarManager().getTabs();
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
+        }
+
+        if (firstOpen) {
+            firstOpen = false;
+
+            if (context.getIntent().getExtras() != null && context.getIntent().getExtras().containsKey("type")) {
+                if ("vplan_update".equals(context.getIntent().getExtras().getString("type"))) {
+                    tab = context.getIntent().getExtras().getInt("tab");
+                }
+            }
         }
 
         viewPager.setCurrentItem(tab);

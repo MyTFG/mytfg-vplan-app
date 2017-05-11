@@ -5,6 +5,11 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.Map;
+
 public class FbMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -17,6 +22,17 @@ public class FbMessagingService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            // Notify or update view
+            Map<String, String> data = remoteMessage.getData();
+            String type = data.get("type");
+            switch (type) {
+                default:
+                    break;
+                case "vplan_change":
+                    FbVplan fbVplan = new FbVplan(this);
+                    fbVplan.handle(data);
+                    break;
+            }
         }
 
         // Check if message contains a notification payload.
