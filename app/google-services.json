@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "607414959112",
+    "firebase_url": "https://mytfg-vplan-app.firebaseio.com",
+    "project_id": "mytfg-vplan-app",
+    "storage_bucket": "mytfg-vplan-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607414959112:android:0de961c90d59ce9d",
+        "android_client_info": {
+          "package_name": "de.mytfg.apps.mytfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607414959112-f9gh045n6nrmvcba7dub5ppmfe3e96uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.mytfg.apps.mytfg",
+            "certificate_hash": "b67e4e87351b09739fb15a211419ff07b18a4837"
+          }
+        },
+        {
+          "client_id": "607414959112-1be3kun1qcosdokqmn326jiunere46dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr3mUdfXRn5MLf2YcS55alVnIlzEzU9hI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607414959112-1be3kun1qcosdokqmn326jiunere46dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

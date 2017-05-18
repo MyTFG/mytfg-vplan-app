@@ -158,7 +158,10 @@
         \nWenn Sie sich in der App mit Ihrem MyTFG Konto anmelden, haben Sie Zugriff auf den Vertretungsplan.
         Neben den für die Authentifizierung notwendigen Daten werden keine weiteren personenbezogenen Information gespeichert.
         Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.
-        \nEntwickler: Lennart Bader</string>
+        \nEntwickler: Lennart Bader
+        \nRückfragen: Herr Meyer
+        \nKontakt: dev@mytfg.de
+    </string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">Diese App ist Teil des MyTFG Open Source Projekts.
         Der Quellcode kann auf Github eingesehen werden.
