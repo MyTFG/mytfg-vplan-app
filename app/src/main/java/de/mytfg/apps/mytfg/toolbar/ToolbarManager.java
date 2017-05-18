@@ -95,7 +95,14 @@ public class ToolbarManager {
 
     public ToolbarManager setTabOutscroll(boolean outscroll) {
         AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
+        //Toolbar.LayoutParams toolbarParams = (Toolbar.LayoutParams) toolbar.getLayoutParams();
         // TODO: Allow outscroll of Toolbar without tabs
+        if (outscroll) {
+            params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
+        } else {
+            params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
+        }
+        collapsingToolbarLayout.setLayoutParams(params);
         return this;
     }
 
@@ -158,6 +165,13 @@ public class ToolbarManager {
     public ToolbarManager setTabs(boolean show) {
         tabs = (TabLayout) appBarLayout.findViewById(R.id.tablayout);
         if (show) {
+            tabs.setVisibility(View.VISIBLE);
+        } else {
+            tabs.setVisibility(View.GONE);
+        }
+        return this;
+        /*
+        if (show) {
             if (tabs == null) {
                 tabs = (TabLayout) LayoutInflater.from(context).inflate(R.layout.tabs, null);
                 appBarLayout.addView(tabs);
@@ -167,7 +181,7 @@ public class ToolbarManager {
                 appBarLayout.removeViewAt(1);
             }
         }
-        return this;
+        return this;*/
     }
 
     public TabLayout getTabs() {
