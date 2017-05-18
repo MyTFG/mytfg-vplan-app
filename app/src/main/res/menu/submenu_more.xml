@@ -22,5 +22,8 @@
         <item android:id="@+id/submenu_partners_secretary"
             android:icon="@drawable/ic_menu_secretary"
             android:title="@string/menutitle_secretary" />
+        <item android:id="@+id/submenu_partners_abbreviations"
+            android:icon="@drawable/ic_menu_abbr"
+            android:title="@string/menutitle_abbreviations" />
     </group>
 </menu>

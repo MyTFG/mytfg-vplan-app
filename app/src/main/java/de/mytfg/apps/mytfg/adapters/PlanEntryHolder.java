@@ -28,6 +28,7 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
     private AutoResizeTextView summary;
     private ImageView arrow;
     private LinearLayout linearLayout;
+    private TextView emptyText;
 
     private Context context;
     private CardView cardView;
@@ -46,7 +47,8 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
         planHeader = (TextView) view.findViewById(R.id.plan_header);
         substHeader = (TextView) view.findViewById(R.id.subst_header);
         commentHeader = (TextView) view.findViewById(R.id.comment_header);
-        //linearLayout = (LinearLayout) view.findViewById(R.id.plan_layout);
+        linearLayout = (LinearLayout) view.findViewById(R.id.plan_entry_layout);
+        emptyText = (TextView) view.findViewById(R.id.plan_entry_empty);
     }
 
     public void update(VplanEntry planEntry) {
@@ -54,6 +56,16 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
     }
 
     public void update(VplanEntry planEntry, boolean expanded) {
+        if (planEntry == null) {
+            linearLayout.setVisibility(GONE);
+            emptyText.setVisibility(View.VISIBLE);
+            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimaryLight));
+            return;
+        }
+
+        emptyText.setVisibility(GONE);
+        linearLayout.setVisibility(View.VISIBLE);
+
         Settings settings = new Settings(context);
 
         if (expanded) {

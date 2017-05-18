@@ -60,24 +60,28 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
 
     @Override
     public void onBindViewHolder(final PlanEntryHolder holder, int position) {
-        final VplanEntry entry = elements.get(position);
-        holder.update(entry, position == expandedPosition);
+        if (elements.size() == 0) {
+            holder.update(null, false);
+        } else {
+            final VplanEntry entry = elements.get(position);
+            holder.update(entry, position == expandedPosition);
 
-        holder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (expandedPosition >= 0) {
-                    notifyItemChanged(expandedPosition);
+            holder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (expandedPosition >= 0) {
+                        notifyItemChanged(expandedPosition);
+                    }
+                    if (holder.getAdapterPosition() == expandedPosition) {
+                        expandedPosition = -1;
+                        notifyItemChanged(holder.getAdapterPosition());
+                    } else {
+                        expandedPosition = holder.getAdapterPosition();
+                        notifyItemChanged(expandedPosition);
+                    }
                 }
-                if (holder.getAdapterPosition() == expandedPosition) {
-                    expandedPosition = -1;
-                    notifyItemChanged(holder.getAdapterPosition());
-                } else {
-                    expandedPosition = holder.getAdapterPosition();
-                    notifyItemChanged(expandedPosition);
-                }
-            }
-        });
+            });
+        }
 
         /*final CardView cardView = holder.getCardView();
         final TextView plan = holder.getPlan();
@@ -118,7 +122,7 @@ public class RecylcerPlanAdapter extends RecyclerView.Adapter<PlanEntryHolder> {
 
     @Override
     public int getItemCount() {
-        return elements.size();
+        return Math.max(1, elements.size());
     }
 
     public interface PlanEntryAdapterEvents {

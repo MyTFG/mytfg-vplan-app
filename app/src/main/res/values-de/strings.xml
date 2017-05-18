@@ -32,6 +32,7 @@
     <string name="menutitle_foundation">Schulstiftung</string>
     <string name="menutitle_partners">Partner</string>
     <string name="menutitle_links">Links</string>
+    <string name="menutitle_abbreviations">Abkürzungen</string>
 
     <!-- API CODES -->
     <string name="api_offline">Keine Internet Verbindung</string>
@@ -95,6 +96,12 @@
     <string name="plan_no_announcements">Keine Mitteilungen</string>
     <string name="plan_no_teachers">Keine abwesenden Lehrer</string>
     <string name="plan_no_update">Unbekannt</string>
+    <string name="plan_empty">Keine Einträge vorhanden</string>
+
+    <!-- Abbreviations -->
+    <string name="abbr_failed">Abkürzungen konnten nicht geladen werden</string>
+    <string name="abbr_teacher">Lehrer</string>
+    <string name="abbr_subject">Fächer</string>
 
     <!-- ACCOUNT -->
     <string name="account_info_text">
@@ -144,13 +151,14 @@
     <string name="user_rights_admin">Administrator</string>
 
     <!-- ABOUT -->
-    <string name="about_title">MyTFG VPlan</string>
+    <string name="about_title">MyTFG</string>
     <string name="about_text">Diese App nutzt die MyTFG API.
         Sie wird entwickelt, um Schülern, Lehrern und Eltern eine zentrale Informationsplattform zu bieten.
         \nAlle Inhalte werden über die MyTFG API abgerufen. Hierbei wird eine verschlüsselte Verbindung genutzt.
         \nWenn Sie sich in der App mit Ihrem MyTFG Konto anmelden, haben Sie Zugriff auf den Vertretungsplan.
         Neben den für die Authentifizierung notwendigen Daten werden keine weiteren personenbezogenen Information gespeichert.
-        Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.</string>
+        Jegliche Inhalte dürfen nicht an Dritte weitergegeben werden.
+        \nEntwickler: Lennart Bader</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">Diese App ist Teil des MyTFG Open Source Projekts.
         Der Quellcode kann auf Github eingesehen werden.

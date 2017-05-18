@@ -32,6 +32,7 @@
     <string name="menutitle_secretary">Office</string>
     <string name="menutitle_foundation">Schulstiftung</string>
     <string name="menutitle_links">Links</string>
+    <string name="menutitle_abbreviations">Abbreviations</string>
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG VPlan</string>
@@ -50,6 +51,11 @@
     <string name="home_status_action_logout">Logout</string>
     <string name="home_status_action_login">Login</string>
     <string name="news_failed">Could not load News</string>
+
+    <!-- Abbreviations -->
+    <string name="abbr_failed">Could not load Abbreviations</string>
+    <string name="abbr_teacher">Teachers</string>
+    <string name="abbr_subject">Subjects</string>
 
     <!-- PLAN -->
     <string name="plan_failed">Plan could not be loaded</string>
@@ -70,6 +76,7 @@
     <string name="plan_no_announcements">No announcements</string>
     <string name="plan_no_teachers">No absent teachers</string>
     <string name="plan_no_update">Unknown</string>
+    <string name="plan_empty">No entries present</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>
@@ -150,7 +157,8 @@
 
     <!-- ABOUT -->
     <string name="about_title">MyTFG VPlan</string>
-    <string name="about_text">This App uses the MyTFG API. All rights reserved.</string>
+    <string name="about_text">This App uses the MyTFG API. All rights reserved.
+        \nThe primary developer is Lennart Bader</string>
     <string name="about_opensource">Open Source</string>
     <string name="about_opensource_text">This App is part of the MyTFG Open Source Project.</string>
     <string name="about_permissions">App Permissions</string>

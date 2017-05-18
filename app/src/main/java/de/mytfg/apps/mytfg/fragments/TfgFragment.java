@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -157,11 +158,27 @@ public class TfgFragment extends AuthenticationFragment {
             });
         }
 
+
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                setupViewpager();
+            }
+        };
+        Handler handler = new Handler();
+        handler.postDelayed(runnable, 10);
+
+        showcase();
+    }
+
+    private void setupViewpager() {
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
+
         TabLayout tabLayout = context.getToolbarManager().getTabs();
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
-        showcase();
     }
 
 

@@ -54,6 +54,16 @@ public class EventsLogic implements FragmentHolderLogic {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.addItemDecoration(new ItemOffsetDecoration(context, R.dimen.cardview_spacing));
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 2) {
+                    ((MainActivity) context).getToolbarManager().hideFab();
+                } else if (dy < -2) {
+                    ((MainActivity) context).getToolbarManager().showFab();
+                }
+            }
+        });
 
         loadEvents(false);
 

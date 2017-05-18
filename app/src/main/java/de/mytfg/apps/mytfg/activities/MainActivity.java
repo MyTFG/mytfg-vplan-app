@@ -15,6 +15,7 @@ import android.widget.EditText;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.firebase.FbApi;
+import de.mytfg.apps.mytfg.fragments.AbbreviationsFragment;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
 import de.mytfg.apps.mytfg.fragments.BoosterFragment;
@@ -121,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_foundation:
                         //navi.clear();
                         navi.navigate(new FoundationFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_partners_abbreviations:
+                        //navi.clear();
+                        navi.navigate(new AbbreviationsFragment(), R.id.fragment_container);
                         return true;
                 }
             }

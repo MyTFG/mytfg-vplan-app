@@ -2,6 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorIcons"
-    android:id="@+id/tfg_pager">
+    android:id="@+id/abbr_pager">
 
 </android.support.v4.view.ViewPager>

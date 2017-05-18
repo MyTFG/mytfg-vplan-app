@@ -8,14 +8,58 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:padding="@dimen/defaultPadding"
-        android:orientation="vertical"
         android:fitsSystemWindows="true"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/boosters_text"/>
+
+        <de.mytfg.apps.mytfg.tools.ViewFlipperIndicator
+            android:layout_marginTop="@dimen/defaultPadding"
+            android:layout_width="match_parent"
+            android:paddingBottom="25dp"
+            android:paddingTop="@dimen/defaultPadding"
+            android:paddingLeft="@dimen/defaultPadding"
+            android:paddingRight="@dimen/defaultPadding"
+            android:background="@color/colorPrimaryLight"
+            android:elevation="2dp"
+            android:id="@+id/boosters_flipper"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/boosters_slide_1"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/boosters_slide_2"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/boosters_slide_3"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/boosters_slide_4"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/booster_header"/>
+
+        </de.mytfg.apps.mytfg.tools.ViewFlipperIndicator>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"

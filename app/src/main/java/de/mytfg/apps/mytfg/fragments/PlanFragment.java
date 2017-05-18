@@ -308,7 +308,6 @@ public class PlanFragment extends AuthenticationFragment {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
-
     }
 
     private void showcase() {

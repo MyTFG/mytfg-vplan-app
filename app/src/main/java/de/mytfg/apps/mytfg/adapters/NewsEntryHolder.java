@@ -35,7 +35,8 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
         if (extended) {
-            summary.setText(Html.fromHtml(entry.getHtml()));
+            //summary.setText(Html.fromHtml(entry.getHtml()));
+            summary.setText(entry.getText());
         } else {
             summary.setText(entry.getSummary());
         }

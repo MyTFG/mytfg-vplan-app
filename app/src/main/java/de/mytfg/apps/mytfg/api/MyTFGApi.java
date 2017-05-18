@@ -124,8 +124,8 @@ public class MyTFGApi {
                 .putStringSet("additional_classes", classSet)
                 .apply();
 
-        Vplan.clearCache("heute", context);
-        Vplan.clearCache("morgen", context);
+        Vplan.clearCache("today", context);
+        Vplan.clearCache("tomorrow", context);
     }
 
     public void clearAdditionalClasses() {
@@ -133,6 +133,9 @@ public class MyTFGApi {
         preferences.edit()
                 .remove("additional_classes")
                 .apply();
+
+        Vplan.clearCache("today", context);
+        Vplan.clearCache("tomorrow", context);
     }
 
     /**

@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +11,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ViewFlipper;
 
 import java.net.URLEncoder;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
+import de.mytfg.apps.mytfg.tools.ViewFlipperIndicator;
 
 public class BoosterFragment extends AuthenticationFragment {
     private final String addressString = "Kalkumer Schlossallee 28 40489 Düsseldorf";
@@ -27,6 +30,22 @@ public class BoosterFragment extends AuthenticationFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_boosters, container, false);
+
+        ViewFlipperIndicator flipper = (ViewFlipperIndicator) view.findViewById(R.id.boosters_flipper);
+        flipper.setInAnimation(getContext(), R.anim.slide_in_right);
+        flipper.setOutAnimation(getContext(), R.anim.slide_out_left);
+        Paint paint = new Paint();
+        paint.setColor(getResources().getColor(R.color.accent));
+        flipper.setPaintCurrent(paint);
+        paint = new Paint();
+        paint.setColor((getResources().getColor(R.color.colorIconsDark)));
+        flipper.setRadius(15);
+        flipper.setMargin(15);
+        flipper.setPaintNormal(paint);
+        flipper.setAutoStart(true);
+        flipper.setFlipInterval(4000);
+        flipper.startFlipping();
+
         MainActivity context = (MainActivity)this.getActivity();
         setHasOptionsMenu(true);
         context.getToolbarManager()
