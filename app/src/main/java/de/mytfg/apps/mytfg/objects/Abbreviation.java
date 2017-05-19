@@ -13,6 +13,7 @@ import de.mytfg.apps.mytfg.api.SuccessCallback;
 public class Abbreviation extends MytfgObject {
     private String abbreviation;
     private String fulltext;
+    private String addon;
     private String type;
 
     @Override
@@ -24,13 +25,11 @@ public class Abbreviation extends MytfgObject {
         if (data == null) {
             return false;
         }
-        try {
-            abbreviation = data.getString("abbr");
-            fulltext = data.getString("name");
-            this.type = type;
-        } catch (JSONException ex) {
-            return false;
-        }
+        this.type = type;
+        abbreviation = data.optString("abbr", "");
+        fulltext = data.optString("name", "");
+        addon = data.optString("addon", "");
+
         return true;
     }
 
@@ -42,6 +41,10 @@ public class Abbreviation extends MytfgObject {
         return fulltext;
     }
 
+    public String getAddon() {
+        return addon;
+    }
+
     public String getType() {
         return type;
     }
@@ -49,6 +52,7 @@ public class Abbreviation extends MytfgObject {
     public boolean filter(String filter) {
         filter = filter.toLowerCase();
         return getAbbreviation().toLowerCase().contains(filter)
-                || getFulltext().toLowerCase().contains(filter);
+                || getFulltext().toLowerCase().contains(filter)
+                || getAddon().toLowerCase().contains(filter);
     }
 }

@@ -160,36 +160,37 @@
                     android:text="@string/settings_general_title"
                     android:id="@+id/settings_general"/>
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                </ListView>
 
                 <Switch
-                    android:text="@string/settings_opt_fulltext"
+                    android:id="@+id/switch_fulltext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/switch_fulltext" />
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
+                    android:text="@string/settings_opt_fulltext" />
+
                 <Switch
                     android:text="@string/settings_opt_newslink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
                     android:id="@+id/switch_news_browser" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryText"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
                     android:textSize="@dimen/textSmallTitle"
                     android:text="@string/settings_opt_landing_page" />
 
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
                     android:entries="@array/settings_opt_landing_page_entries"
                     android:id="@+id/spinner_landing" />
 

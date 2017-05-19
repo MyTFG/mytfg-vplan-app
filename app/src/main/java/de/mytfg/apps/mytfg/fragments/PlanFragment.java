@@ -198,7 +198,7 @@ public class PlanFragment extends AuthenticationFragment {
                 AlertDialog.Builder timeDialog = new AlertDialog.Builder(context);
                 timeDialog.setTitle(getString(R.string.plan_time));
                 String time = plan.getChanged();
-                if (time.isEmpty()) {
+                if (time.isEmpty() || time.equals("0")) {
                     timeDialog.setMessage(getString(R.string.plan_no_update));
                 } else {
                     timeDialog.setMessage(time);

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.TextUtils;
@@ -151,7 +152,7 @@ public class SettingsFragment extends AuthenticationFragment {
     }
 
     private void showDialog(List<String> classes, List<String> preselect, final int max) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.MyDialog));
         // Set the dialog title
         builder.setTitle(R.string.account_additional_title);
         final String[] class_arr = new String[classes.size()];

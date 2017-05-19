@@ -15,6 +15,7 @@ import de.mytfg.apps.mytfg.objects.TfgEventsEntry;
 public class AbbreviationEntryHolder extends RecyclerView.ViewHolder {
     private TextView abbr;
     private TextView fullText;
+    private TextView addon;
     private ImageView type;
 
     private Context context;
@@ -26,6 +27,7 @@ public class AbbreviationEntryHolder extends RecyclerView.ViewHolder {
         cardView = (CardView) view;
         abbr = (TextView) view.findViewById(R.id.abbr_abbr);
         fullText = (TextView) view.findViewById(R.id.abbr_fulltext);
+        addon = (TextView) view.findViewById(R.id.abbr_addon);
         type = (ImageView) view.findViewById(R.id.abbr_type);
 
     }
@@ -42,6 +44,12 @@ public class AbbreviationEntryHolder extends RecyclerView.ViewHolder {
         }
         abbr.setText(entry.getAbbreviation());
         fullText.setText(entry.getFulltext());
+        if (entry.getAddon().length() > 0) {
+            addon.setVisibility(View.VISIBLE);
+            addon.setText(entry.getAddon());
+        } else {
+            addon.setVisibility(View.GONE);
+        }
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

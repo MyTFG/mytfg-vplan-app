@@ -140,11 +140,21 @@
         <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
         <item>@string/menutitle_vrr</item>
+        <item>@string/menutitle_abbreviations</item>
+        <item>@string/menutitle_boosters</item>
+        <item>@string/menutitle_parents</item>
+        <item>@string/menutitle_foundation</item>
+        <item>@string/menutitle_settings</item>
     </string-array>
     <string-array name="settings_opt_landing_page_fragments">
         <item>TfgFragment</item>
         <item>PlanFragment</item>
         <item>VrrFragment</item>
+        <item>AbbreviationsFragment</item>
+        <item>BoostersFragment</item>
+        <item>ParentsFragment</item>
+        <item>FoundationFragment</item>
+        <item>SettingsFragment</item>
     </string-array>
 
     <!-- USER -->
