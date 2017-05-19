@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.objects;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.Pair;
 
@@ -9,6 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,10 +70,14 @@ public class Vplan extends MytfgObject {
     }
 
     public void load(final SuccessCallback callback, boolean clearCache) {
+        this.load(callback, clearCache, timeout);
+    }
+
+    public void load(final SuccessCallback callback, boolean clearCache, long outdate_millis) {
         // Try to load from cache
         cacheAvail = false;
         if (!clearCache && loadFromCache()) {
-            if (upToDate()) {
+            if (upToDate(outdate_millis)) {
                 callback.callback(true);
                 return;
             }
@@ -159,7 +167,11 @@ public class Vplan extends MytfgObject {
     }
 
     public boolean upToDate() {
-        return (timestamp + timeout) >= System.currentTimeMillis();
+        return upToDate(timeout);
+    }
+
+    public boolean upToDate(long outdate) {
+        return (timestamp + outdate) >= System.currentTimeMillis();
     }
 
     public String getDayString() {
@@ -178,8 +190,25 @@ public class Vplan extends MytfgObject {
         return absent_strings;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public String formatDate() {
+        try {
+            Date in = new SimpleDateFormat("yyyy-MM-dd").parse(getDate());
+            return new SimpleDateFormat("EEE, dd.MM.yyyy").format(in);
+        } catch (ParseException ex) {
+            return getDate();
+        }
+    }
+
     public String getChanged() {
         return changed;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 
     private void saveToCache(JSONObject json) {

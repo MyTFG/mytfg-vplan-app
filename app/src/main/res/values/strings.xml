@@ -288,7 +288,6 @@
     <string name="next_showcase">Next</string>
 
 
-
     <!-- SHOWCASE TEXTS & TITLES -->
     <string name="sc_home_navi_title">Navigation</string>
     <string name="sc_home_navi_text">Click here to open the navigation</string>
@@ -304,4 +303,15 @@
     <string name="sc_plan_menu_text">Use these options to see more information like messages and the time of the last update</string>
     <string name="sc_plan_search_title">Search</string>
     <string name="sc_plan_search_text">You can search for classes, teachers, subjects, rooms and more</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- WIDGET -->
+    <string name="widget_conf_title">MyTFG Widget</string>
+    <string name="widget_conf_text">Which Widget would you like to use?</string>
+    <string name="widget_login_required">You have to login first</string>
+    <string name="widget_just_now">Just now</string>
+    <string name="widget_too_long">Long time ago</string>
+    <string name="widget_last_update">Last Update: </string>
 </resources>

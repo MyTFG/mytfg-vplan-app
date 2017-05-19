@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/defaultPadding"
+        android:paddingRight="@dimen/defaultPadding"
+        android:paddingBottom="@dimen/defaultPadding"
+        android:paddingTop="40dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="@string/widget_conf_title"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/defaultPadding">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/widget_conf_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_widget_today"
+                style="@style/AppTheme.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cardview_spacing"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_weight="1"
+                android:text="@string/plan_today" />
+
+            <Button
+                android:id="@+id/button_widget_tomorrow"
+                style="@style/AppTheme.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cardview_spacing"
+                android:layout_marginRight="@dimen/cardview_spacing"
+                android:layout_weight="1"
+                android:text="@string/plan_tomorrow" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:background="@color/cardview_dark_background"
+            android:padding="@dimen/defaultPadding"
+            android:src="@drawable/widget_preview" />
+
+    </LinearLayout>
+
+</LinearLayout>

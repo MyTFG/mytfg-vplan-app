@@ -98,6 +98,7 @@ public class PlanLogic implements FragmentHolderLogic {
         }
         //TabLayout.Tab tab = getTab();
         ViewPager pager = (ViewPager)((MainActivity)context).findViewById(R.id.plan_pager);
+
         ((MainActivity)context).getToolbarManager().getTabs().setupWithViewPager(pager);/*
         if (tab != null) {
             //tab.setText("Test, sas  - asd");

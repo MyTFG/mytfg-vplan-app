@@ -13,4 +13,10 @@
 
     <dimen name="sheet_text_scrim_height_top">50sp</dimen>
     <dimen name="sheet_text_scrim_height_bottom">80dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

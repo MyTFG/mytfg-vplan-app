@@ -315,6 +315,16 @@
     <string name="sc_plan_search_title">Suche</string>
     <string name="sc_plan_search_text">Suchen Sie nach Klassen, Lehrern, Fächern, Stunden, Räumen und mehr</string>
 
+
+
+    <!-- WIDGET -->
+    <string name="widget_conf_title">MyTFG Widget</string>
+    <string name="widget_conf_text">Welches Widget möchten Sie nutzen?</string>
+    <string name="widget_login_required">Login erforderlich</string>
+    <string name="widget_just_now">Gerade eben</string>
+    <string name="widget_too_long">Vor langer Zeit</string>
+    <string name="widget_last_update">Stand: </string>
+
     <string-array name="settings_opt_landing_page_entries">
         <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
