@@ -47,15 +47,17 @@ public class ToolbarManager {
 
         toolbar = (Toolbar) holder.findViewById(R.id.toolbar);
         context.setSupportActionBar(toolbar);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                context,
-                drawerLayout,
-                toolbar,
-                R.string.drawer_open,
-                R.string.drawer_close
-        );
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+        if (drawerLayout != null) {
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                    context,
+                    drawerLayout,
+                    toolbar,
+                    R.string.drawer_open,
+                    R.string.drawer_close
+            );
+            drawerLayout.addDrawerListener(actionBarDrawerToggle);
+            actionBarDrawerToggle.syncState();
+        }
     }
 
     public CoordinatorLayout coordinatorLayout() {
@@ -164,6 +166,9 @@ public class ToolbarManager {
 
     public ToolbarManager setTabs(boolean show) {
         tabs = (TabLayout) appBarLayout.findViewById(R.id.tablayout);
+        if (tabs == null) {
+            return this;
+        }
         if (show) {
             tabs.setVisibility(View.VISIBLE);
         } else {
@@ -271,15 +276,17 @@ public class ToolbarManager {
 
         context.setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                context,
-                drawerLayout,
-                toolbar,
-                R.string.drawer_open,
-                R.string.drawer_close
-        );
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+        if (drawerLayout != null) {
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                    context,
+                    drawerLayout,
+                    toolbar,
+                    R.string.drawer_open,
+                    R.string.drawer_close
+            );
+            drawerLayout.addDrawerListener(actionBarDrawerToggle);
+            actionBarDrawerToggle.syncState();
+        }
     }
 
     public Toolbar getToolbar() {

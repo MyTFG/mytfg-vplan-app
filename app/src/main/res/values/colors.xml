@@ -13,6 +13,8 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorAccent">#FF7400</color>
 
+    <color name="transparent">@android:color/transparent</color>
+
     <color name="googleBackground">#F9F9F9</color>
     <color name="colorBlack">#000000</color>
 

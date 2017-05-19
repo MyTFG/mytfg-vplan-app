@@ -110,7 +110,9 @@ public class Navigation {
         }
         ft.addToBackStack(null);
         ft.commit();
-        ((MainActivity)context).getDrawerLayout().closeDrawers();
+        if (((MainActivity)context).getDrawerLayout() != null) {
+            ((MainActivity) context).getDrawerLayout().closeDrawers();
+        }
     }
 
     public void navigate(AuthenticationFragment fragment, int container) {

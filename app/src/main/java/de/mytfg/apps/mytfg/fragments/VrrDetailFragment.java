@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,11 @@ public class VrrDetailFragment extends AuthenticationFragment {
         ImageView typeImg = (ImageView) view.findViewById(R.id.vrr_detail_img);
         TextView type = (TextView) view.findViewById(R.id.vrr_detail_type);
         TextView platform = (TextView) view.findViewById(R.id.vrr_detail_platform);
+
+        if (vrrEntry == null) {
+            Log.e("NULL", "VRR ENTRY IS NULL!");
+            return view;
+        }
 
         direction.setText(vrrEntry.getDirection());
         line.setText(vrrEntry.getLine());

@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        /*if (drawerLayout == null) {
+            DrawerLayout alternativeDrawer = (DrawerLayout) findViewById(R.id.drawer_layout_replacement);
+            if (alternativeDrawer != null) {
+                alternativeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN);
+                alternativeDrawer.setDrawerShadow(R.drawable.no_shadow, 0);
+                alternativeDrawer.setScrimColor(getResources().getColor(R.color.transparent));
+            }
+        }*/
         toolbarManager = new ToolbarManager(this, drawerLayout);
         toolbarManager.setExpandable(false, false);
 
