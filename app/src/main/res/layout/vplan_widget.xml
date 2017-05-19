@@ -50,6 +50,8 @@
         <ListView
             android:id="@+id/widget_list_view"
             android:layout_width="match_parent"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
             android:layout_height="wrap_content">
 
         </ListView>

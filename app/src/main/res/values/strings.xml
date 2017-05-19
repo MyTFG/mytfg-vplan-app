@@ -303,9 +303,6 @@
     <string name="sc_plan_menu_text">Use these options to see more information like messages and the time of the last update</string>
     <string name="sc_plan_search_title">Search</string>
     <string name="sc_plan_search_text">You can search for classes, teachers, subjects, rooms and more</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="configure">Configure</string>
-    <string name="add_widget">Add widget</string>
 
     <!-- WIDGET -->
     <string name="widget_conf_title">MyTFG Widget</string>
