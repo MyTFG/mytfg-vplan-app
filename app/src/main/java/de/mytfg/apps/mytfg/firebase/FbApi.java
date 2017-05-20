@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.xml.transform.stream.StreamResult;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.ApiCallback;
@@ -18,7 +17,6 @@ import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.navigation.Navigation;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
 import de.mytfg.apps.mytfg.tools.Settings;
 
 /**

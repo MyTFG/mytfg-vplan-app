@@ -10,7 +10,6 @@ import android.support.v4.app.NotificationCompat;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 public class FbNotify {
     private static int nextId = 0;

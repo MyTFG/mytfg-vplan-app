@@ -135,7 +135,7 @@ public class PlanLogic implements FragmentHolderLogic {
                     CoordinatorLayout coordinatorLayout = (CoordinatorLayout) ((MainActivity) context).findViewById(R.id.coordinator_layout);
                     // Show snackbar since user input is invalid
                     int code = plan.getLastCode();
-                    String message = context.getString(R.string.plan_failed);
+                    String message; // = context.getString(R.string.plan_failed);
                     switch (code) {
                         case -1:
                             message = context.getString(R.string.api_offline);

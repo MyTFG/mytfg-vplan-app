@@ -84,6 +84,10 @@ public class PlanFragment extends AuthenticationFragment {
         }
         expand = false;
 
+        if (savedInstanceState != null && savedInstanceState.containsKey("planTab")) {
+            tab = savedInstanceState.getInt("planTab");
+        }
+
         setHasOptionsMenu(true);
 
         final FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
@@ -226,47 +230,45 @@ public class PlanFragment extends AuthenticationFragment {
         }
 
 
-        // Create Pager elements if not existent
-        if ((today == null || tomorrow == null || true)) {
-            todayPlan = new Vplan(context, "today");
-            tomorrowPlan = new Vplan(context, "tomorrow");
+        todayPlan = new Vplan(context, "today");
+        tomorrowPlan = new Vplan(context, "tomorrow");
 
-            today = new PlanLogic(todayPlan);
-            tomorrow = new PlanLogic(tomorrowPlan);
+        today = new PlanLogic(todayPlan);
+        tomorrow = new PlanLogic(tomorrowPlan);
 
-            viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_base_list,
-                            today
-                    )
-            );
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_base_list,
-                            tomorrow
-                    )
-            );
-            viewPager.setAdapter(viewPagerAdapter);
-            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_base_list,
+                        today
+                )
+        );
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_base_list,
+                        tomorrow
+                )
+        );
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                }
+            }
 
-                @Override
-                public void onPageSelected(int position) {
-                    context.getToolbarManager().showFab();
-                    tab = position;
-                }
+            @Override
+            public void onPageSelected(int position) {
+                context.getToolbarManager().showFab();
+                tab = position;
+            }
 
-                @Override
-                public void onPageScrollStateChanged(int state) {
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-                }
-            });
-        }
+            }
+        });
+
 
         TabLayout tabLayout = context.getToolbarManager().getTabs();
         if (tabLayout != null) {
@@ -298,7 +300,7 @@ public class PlanFragment extends AuthenticationFragment {
         Handler handler = new Handler();
         handler.postDelayed(runnable, 10);
 
-        this.showcase();
+        //this.showcase();
     }
 
     private void setupViewpager() {
@@ -308,6 +310,14 @@ public class PlanFragment extends AuthenticationFragment {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+    }
+
+    private int getTab() {
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.plan_pager);
+        if (viewPager != null) {
+            return viewPager.getCurrentItem();
+        }
+        return 0;
     }
 
     private void showcase() {
@@ -329,5 +339,11 @@ public class PlanFragment extends AuthenticationFragment {
 
     }
 
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("planTab", getTab());
+    }
 }
 

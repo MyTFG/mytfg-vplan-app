@@ -97,8 +97,6 @@ public class ToolbarManager {
 
     public ToolbarManager setTabOutscroll(boolean outscroll) {
         AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
-        //Toolbar.LayoutParams toolbarParams = (Toolbar.LayoutParams) toolbar.getLayoutParams();
-        // TODO: Allow outscroll of Toolbar without tabs
         if (outscroll) {
             params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
         } else {
@@ -129,7 +127,9 @@ public class ToolbarManager {
         }
         appBarLayout.setEnabled(expandable);
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
-        ((DisableableAppBarLayoutBehavior) layoutParams.getBehavior()).setEnabled(expanded);
+        if (((DisableableAppBarLayoutBehavior) layoutParams.getBehavior()) != null) {
+            ((DisableableAppBarLayoutBehavior) layoutParams.getBehavior()).setEnabled(expanded);
+        }
         return this;
     }
 

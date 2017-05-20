@@ -1,15 +1,11 @@
 package de.mytfg.apps.mytfg.tools;
 
-import android.app.Application;
 import android.content.Context;
-import android.util.Log;
-
-import java.util.Date;
 
 import de.mytfg.apps.mytfg.R;
 
 /**
- * Created by bader on 19.05.2017.
+ * Collection of TimeUtils
  */
 
 public class TimeUtils {

@@ -15,7 +15,7 @@ import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.tools.JsonFileManager;
 
 /**
- * Created by bader on 18.05.2017.
+ * API Wrapper for abbreviations.
  */
 
 public class Abbreviations extends MytfgObject {

@@ -8,9 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
-import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.Abbreviation;
-import de.mytfg.apps.mytfg.objects.TfgEventsEntry;
 
 public class AbbreviationEntryHolder extends RecyclerView.ViewHolder {
     private TextView abbr;

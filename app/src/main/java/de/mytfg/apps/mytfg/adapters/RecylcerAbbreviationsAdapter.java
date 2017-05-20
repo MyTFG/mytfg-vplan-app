@@ -11,8 +11,6 @@ import java.util.UUID;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.Abbreviation;
-import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 public class RecylcerAbbreviationsAdapter extends RecyclerView.Adapter<AbbreviationEntryHolder> {
     private Context context;
@@ -39,8 +37,7 @@ public class RecylcerAbbreviationsAdapter extends RecyclerView.Adapter<Abbreviat
     public AbbreviationEntryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.cardview_abbreviationentry, null);
-        AbbreviationEntryHolder newsEntryHolder = new AbbreviationEntryHolder(view);
-        return newsEntryHolder;
+        return new AbbreviationEntryHolder(view);
     }
 
     @Override

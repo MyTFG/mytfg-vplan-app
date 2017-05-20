@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -43,7 +42,7 @@ public class VplanWidget extends AppWidgetProvider {
         Log.d("WIDGET", "UPDATE FOR WIDGET " + appWidgetId);
 
         final CharSequence day = VplanWidgetConfigureActivity.loadDayPref(context, appWidgetId);
-        CharSequence daystr = "";
+        CharSequence daystr;
         // Construct the RemoteViews object
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.vplan_widget);
 

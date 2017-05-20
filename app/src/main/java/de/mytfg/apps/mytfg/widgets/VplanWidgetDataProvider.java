@@ -18,7 +18,7 @@ import de.mytfg.apps.mytfg.objects.Vplan;
 import de.mytfg.apps.mytfg.objects.VplanEntry;
 
 /**
- * Created by bader on 19.05.2017.
+ * Adapter for Widget ListView
  */
 
 public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
@@ -125,12 +125,11 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
             Log.d("WIDGET", "Day: " + plan.getDayString());
             Log.d("WIDGET", "Date: " + plan.formatDate());
             AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
-            //if (plan.getDay().equals("today")) {
-            //    awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
-            //} else {
-            //    awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
-            //}
-            //}
+            if (plan.getDay().equals("today")) {
+                awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
+            } else {
+                awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
+            }
         } else {
             Log.d("WIDGET", "Loading started");
             plan.load(new SuccessCallback() {

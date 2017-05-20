@@ -11,7 +11,6 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
-import android.transition.Fade;
 import android.transition.TransitionSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -84,7 +83,7 @@ public class Navigation {
         if (args == null) {
             args = new Bundle();
         }
-        long transId = System.currentTimeMillis();
+        //long transId = System.currentTimeMillis();
 
 
         FragmentTransaction ft = ((MainActivity)context).getSupportFragmentManager().beginTransaction();

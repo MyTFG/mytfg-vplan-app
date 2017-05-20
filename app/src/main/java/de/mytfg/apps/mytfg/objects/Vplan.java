@@ -2,7 +2,6 @@ package de.mytfg.apps.mytfg.objects;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.Pair;
 
@@ -15,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.ApiCallback;
@@ -39,7 +39,7 @@ public class Vplan extends MytfgObject {
     private String day_str;
     private String changed;
     private List<String> marquee = new LinkedList<>();
-    private List<Pair<String, String>> absent_teachers = new LinkedList<>();
+    //private List<Pair<String, String>> absent_teachers = new LinkedList<>();
     private List<String> absent_strings = new LinkedList<>();
     private long timestamp = 0;
     private boolean cacheAvail = false;
@@ -125,7 +125,7 @@ public class Vplan extends MytfgObject {
     private boolean parse(JSONObject result) {
         this.entries = new LinkedList<>();
         this.marquee = new LinkedList<>();
-        this.absent_teachers = new LinkedList<>();
+        //this.absent_teachers = new LinkedList<>();
         this.absent_strings = new LinkedList<>();
         try {
             JSONObject plan = result.getJSONObject("plan");
@@ -153,7 +153,7 @@ public class Vplan extends MytfgObject {
             JSONArray absentlessons = plan.getJSONArray("absent_lessons");
             for (int i = 0; i < absent.length(); ++i) {
                 Pair<String, String> p = new Pair<>(absent.getString(i), absentlessons.getString(i));
-                this.absent_teachers.add(p);
+                //this.absent_teachers.add(p);
                 this.absent_strings.add(p.first + ": " + p.second);
             }
             changed = plan.getString("changed");
@@ -170,7 +170,7 @@ public class Vplan extends MytfgObject {
         return upToDate(timeout);
     }
 
-    public boolean upToDate(long outdate) {
+    private boolean upToDate(long outdate) {
         return (timestamp + outdate) >= System.currentTimeMillis();
     }
 
@@ -196,8 +196,8 @@ public class Vplan extends MytfgObject {
 
     public String formatDate() {
         try {
-            Date in = new SimpleDateFormat("yyyy-MM-dd").parse(getDate());
-            return new SimpleDateFormat("EEE, dd.MM.yyyy").format(in);
+            Date in = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY).parse(getDate());
+            return new SimpleDateFormat("EEE, dd.MM.yyyy", Locale.GERMANY).format(in);
         } catch (ParseException ex) {
             return getDate();
         }

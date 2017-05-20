@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.StringTokenizer;
 import java.util.UUID;
 
 import de.mytfg.apps.mytfg.R;
@@ -44,8 +43,7 @@ public class RecylcerVrrAdapter extends RecyclerView.Adapter<VrrEntryHolder> {
     public VrrEntryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.cardview_vrrentry, null);
-        VrrEntryHolder vrrEntryHolder = new VrrEntryHolder(view);
-        return vrrEntryHolder;
+        return new VrrEntryHolder(view);
     }
 
     @Override

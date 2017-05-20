@@ -37,6 +37,8 @@ public class TfgFragment extends AuthenticationFragment {
     private EventsLogic eventsLogic;
     private TfgEvents events;
 
+    private int setTab = 0;
+
     public TfgFragment() {
     }
 
@@ -68,6 +70,10 @@ public class TfgFragment extends AuthenticationFragment {
                 context.getToolbarManager().showSearchBar();
             }
         });
+
+        if (savedInstanceState != null && savedInstanceState.containsKey("tfgTab")) {
+            setTab = savedInstanceState.getInt("tfgTab");
+        }
 
         setHasOptionsMenu(true);
 
@@ -108,55 +114,52 @@ public class TfgFragment extends AuthenticationFragment {
     public void onResume() {
         super.onResume();
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
-        // Create Pager elements if not existent
-        if (newsLogic == null || eventsLogic == null || true) {
-            news = new TfgNews(context);
-            newsLogic = new NewsLogic(news, context);
+        news = new TfgNews(context);
+        newsLogic = new NewsLogic(news, context);
 
-            events = new TfgEvents(context);
-            eventsLogic = new EventsLogic(events, context);
+        events = new TfgEvents(context);
+        eventsLogic = new EventsLogic(events, context);
 
-            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_news,
-                            newsLogic
-                    )
-            );
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_news,
+                        newsLogic
+                )
+        );
 
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_events,
-                            eventsLogic
-                    )
-            );
-            viewPager.setAdapter(viewPagerAdapter);
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_events,
+                        eventsLogic
+                )
+        );
+        viewPager.setAdapter(viewPagerAdapter);
 
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        context.getToolbarManager().setImage(R.drawable.news_header_s, true);
+                        break;
+                    case 1:
+                        context.getToolbarManager().setImage(R.drawable.events_header_s, true);
+                        break;
                 }
+            }
 
-                @Override
-                public void onPageSelected(int position) {
-                    switch (position) {
-                        case 0:
-                            context.getToolbarManager().setImage(R.drawable.news_header_s, true);
-                            break;
-                        case 1:
-                            context.getToolbarManager().setImage(R.drawable.events_header_s, true);
-                            break;
-                    }
-                }
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-        }
+            }
+        });
 
 
 
@@ -169,16 +172,26 @@ public class TfgFragment extends AuthenticationFragment {
         Handler handler = new Handler();
         handler.postDelayed(runnable, 10);
 
-        showcase();
+        //showcase();
+    }
+
+    private int getTab() {
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
+        if (viewPager != null) {
+            return viewPager.getCurrentItem();
+        }
+        return 0;
     }
 
     private void setupViewpager() {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
 
+
         TabLayout tabLayout = context.getToolbarManager().getTabs();
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+        viewPager.setCurrentItem(setTab);
     }
 
 
@@ -195,6 +208,12 @@ public class TfgFragment extends AuthenticationFragment {
                 .add(tab1, R.string.sc_home_news, R.string.sc_home_news_text)
                 .add(tab2, R.string.sc_home_events, R.string.sc_home_events_text)
                 .showChain();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("tfgTab", getTab());
     }
 }
 

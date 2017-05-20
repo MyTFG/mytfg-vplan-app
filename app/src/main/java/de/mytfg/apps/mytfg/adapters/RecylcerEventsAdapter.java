@@ -35,8 +35,7 @@ public class RecylcerEventsAdapter extends RecyclerView.Adapter<EventsEntryHolde
     public EventsEntryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.cardview_eventsentry, null);
-        EventsEntryHolder eventsEntryHolder = new EventsEntryHolder(view);
-        return eventsEntryHolder;
+        return new EventsEntryHolder(view);
     }
 
     @Override

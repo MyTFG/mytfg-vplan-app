@@ -9,5 +9,5 @@ import android.support.v4.app.Fragment;
 public abstract class AuthenticationFragment extends Fragment {
     public boolean needsAuthentication() {
         return false;
-    };
+    }
 }

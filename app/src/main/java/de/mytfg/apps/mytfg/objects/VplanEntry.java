@@ -59,7 +59,6 @@ public class VplanEntry extends MytfgObject {
             plan_text = data.getString("plan_text");
             summary = data.getString("shortage");
         } catch (JSONException ex) {
-            // TODO: Remove this line:
             ex.printStackTrace();
             return false;
         }

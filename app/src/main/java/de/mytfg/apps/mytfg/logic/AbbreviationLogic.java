@@ -9,19 +9,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.adapters.RecylcerAbbreviationsAdapter;
-import de.mytfg.apps.mytfg.adapters.RecylcerEventsAdapter;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 import de.mytfg.apps.mytfg.objects.Abbreviation;
 import de.mytfg.apps.mytfg.objects.Abbreviations;
-import de.mytfg.apps.mytfg.objects.TfgEvents;
-import de.mytfg.apps.mytfg.objects.TfgEventsEntry;
 import de.mytfg.apps.mytfg.tools.ItemOffsetDecoration;
 
 /**

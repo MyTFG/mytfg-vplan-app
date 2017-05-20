@@ -13,22 +13,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.amlcurran.showcaseview.targets.Target;
-
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.adapters.FragmentHolder;
 import de.mytfg.apps.mytfg.adapters.ViewPagerAdapter;
 import de.mytfg.apps.mytfg.logic.AbbreviationLogic;
-import de.mytfg.apps.mytfg.logic.EventsLogic;
-import de.mytfg.apps.mytfg.logic.NewsLogic;
-import de.mytfg.apps.mytfg.objects.Abbreviation;
 import de.mytfg.apps.mytfg.objects.Abbreviations;
-import de.mytfg.apps.mytfg.objects.TfgEvents;
-import de.mytfg.apps.mytfg.objects.TfgNews;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
-import de.mytfg.apps.mytfg.tools.CustomViewTarget;
-import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class AbbreviationsFragment extends AuthenticationFragment {
     private View view;
@@ -37,6 +27,8 @@ public class AbbreviationsFragment extends AuthenticationFragment {
     private AbbreviationLogic teacherLogic;
 
     private AbbreviationLogic subjectLogic;
+
+    private int setTab = 0;
 
     public AbbreviationsFragment() {
     }
@@ -71,6 +63,10 @@ public class AbbreviationsFragment extends AuthenticationFragment {
         });
 
         setHasOptionsMenu(true);
+
+        if (savedInstanceState != null && savedInstanceState.containsKey("abbrTab")) {
+            setTab = savedInstanceState.getInt("abbrTab");
+        }
 
         return view;
     }
@@ -110,54 +106,52 @@ public class AbbreviationsFragment extends AuthenticationFragment {
         super.onResume();
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.abbr_pager);
         // Create Pager elements if not existent
-        if (subjectLogic == null || teacherLogic == null || true) {
-            Abbreviations teachers = new Abbreviations(context, "teachers");
-            teacherLogic = new AbbreviationLogic(teachers, context);
+        Abbreviations teachers = new Abbreviations(context, "teachers");
+        teacherLogic = new AbbreviationLogic(teachers, context);
 
-            Abbreviations subjects = new Abbreviations(context, "subjects");
-            subjectLogic = new AbbreviationLogic(subjects, context);
+        Abbreviations subjects = new Abbreviations(context, "subjects");
+        subjectLogic = new AbbreviationLogic(subjects, context);
 
-            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
 
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_abbreviation_list,
-                            teacherLogic
-                    )
-            );
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_abbreviation_list,
+                        teacherLogic
+                )
+        );
 
-            viewPagerAdapter.addFragment(
-                    FragmentHolder.newInstance(
-                            R.layout.fragment_abbreviation_list,
-                            subjectLogic
-                    )
-            );
-            viewPager.setAdapter(viewPagerAdapter);
+        viewPagerAdapter.addFragment(
+                FragmentHolder.newInstance(
+                        R.layout.fragment_abbreviation_list,
+                        subjectLogic
+                )
+        );
+        viewPager.setAdapter(viewPagerAdapter);
 
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        context.getToolbarManager().setImage(R.drawable.abbreviation_teacher_header, true);
+                        break;
+                    case 1:
+                        context.getToolbarManager().setImage(R.drawable.abbreviation_subjects_header, true);
+                        break;
                 }
+            }
 
-                @Override
-                public void onPageSelected(int position) {
-                    switch (position) {
-                        case 0:
-                            context.getToolbarManager().setImage(R.drawable.abbreviation_teacher_header, true);
-                            break;
-                        case 1:
-                            context.getToolbarManager().setImage(R.drawable.abbreviation_subjects_header, true);
-                            break;
-                    }
-                }
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-        }
+            }
+        });
 
         Runnable runnable = new Runnable() {
             @Override
@@ -177,6 +171,23 @@ public class AbbreviationsFragment extends AuthenticationFragment {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+
+        viewPager.setCurrentItem(setTab);
+    }
+
+    private int getTab() {
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.abbr_pager);
+        if (viewPager != null) {
+            return viewPager.getCurrentItem();
+        }
+        return 0;
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("abbrTab", getTab());
     }
 }
 

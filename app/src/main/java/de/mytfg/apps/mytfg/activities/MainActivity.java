@@ -10,7 +10,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                MyTFGApi api = new MyTFGApi(context);
                 FbApi.updateFirebase(context);
                 switch (item.getItemId()) {
                     default:
@@ -157,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                     String type = intent.getExtras().getString("type");
                     switch (type != null ? type : "") {
                         case "vplan_update":
-                            int tab = intent.getExtras().getInt("tab");
                             fragment = new PlanFragment();
                             break;
                         default:

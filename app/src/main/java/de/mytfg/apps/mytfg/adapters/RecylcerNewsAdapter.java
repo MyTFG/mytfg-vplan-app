@@ -38,8 +38,7 @@ public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
     public NewsEntryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.cardview_newsentry, null);
-        NewsEntryHolder newsEntryHolder = new NewsEntryHolder(view);
-        return newsEntryHolder;
+        return new NewsEntryHolder(view);
     }
 
     @Override

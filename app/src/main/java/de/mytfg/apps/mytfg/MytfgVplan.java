@@ -6,7 +6,7 @@ import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
 /**
- * Created by lbader on 03.12.16.
+ * The Application class. Handles ACRA.
  */
 
 @ReportsCrashes(

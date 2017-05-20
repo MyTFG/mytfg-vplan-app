@@ -19,7 +19,7 @@ public class JsonFileManager {
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
+                String receiveString;
                 StringBuilder stringBuilder = new StringBuilder();
 
                 while((receiveString = bufferedReader.readLine()) != null) {
@@ -32,6 +32,7 @@ public class JsonFileManager {
                 return new JSONObject(ret);
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return new JSONObject();
     }

@@ -1,6 +1,5 @@
 package de.mytfg.apps.mytfg.objects;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +21,8 @@ public class VrrEntry extends MytfgObject {
     private String platform;
     private String sched;
     private String date;
+    private String json;
+
     /**
      * Do not use this method. Use the load method and pass a JSON Object.
      * @param callback Always called with false
@@ -35,7 +36,9 @@ public class VrrEntry extends MytfgObject {
         if (data == null) {
             return false;
         }
+
         try {
+            this.json = data.toString();
             line = data.getString("line");
             direction = data.getString("destination");
             arrival = data.getString("arrival");
@@ -72,6 +75,10 @@ public class VrrEntry extends MytfgObject {
 
     public int getDelay() {
         return delay;
+    }
+
+    public String getJson() {
+        return json;
     }
 
     public ArrayList<String> getRoute() {

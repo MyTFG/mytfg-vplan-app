@@ -37,7 +37,7 @@ public class FragmentHolder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         resId = getArguments().getInt("fraglayout");
-        View view = inflater.inflate(resId, container, false);;
+        View view = inflater.inflate(resId, container, false);
 
         if (logic != null) {
             logic.init(getContext(), view, getArguments());

@@ -80,7 +80,7 @@ public class SettingsFragment extends AuthenticationFragment {
             details.setVisibility(View.VISIBLE);
             additional.setVisibility(View.VISIBLE);
             String device = api.getStoredDevice();
-            long expirets = api.getExpire();
+            //long expires = api.getExpire();
             String expire = api.getExpireString();
             final User user = api.getUser();
 

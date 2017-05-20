@@ -2,7 +2,6 @@ package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.objects.VplanEntry;
 import de.mytfg.apps.mytfg.objects.VrrEntry;
 
 /**
@@ -48,8 +47,21 @@ public class VrrDetailFragment extends AuthenticationFragment {
         TextView platform = (TextView) view.findViewById(R.id.vrr_detail_platform);
 
         if (vrrEntry == null) {
+            vrrEntry = new VrrEntry();
             Log.e("NULL", "VRR ENTRY IS NULL!");
-            return view;
+            // Try to load from saved instance
+            if (savedInstanceState != null && savedInstanceState.containsKey("entryJson")) {
+                try {
+                    JSONObject json = new JSONObject(savedInstanceState.getString("entryJson"));
+                    if (!vrrEntry.load(json)) {
+                        return view;
+                    }
+                } catch (JSONException ex) {
+                    return view;
+                }
+            } else {
+                return view;
+            }
         }
 
         direction.setText(vrrEntry.getDirection());
@@ -80,5 +92,12 @@ public class VrrDetailFragment extends AuthenticationFragment {
 
 
         return view;
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("entryJson", vrrEntry.getJson());
     }
 }

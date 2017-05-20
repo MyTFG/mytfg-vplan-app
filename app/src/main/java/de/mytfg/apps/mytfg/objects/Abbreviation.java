@@ -1,13 +1,11 @@
 package de.mytfg.apps.mytfg.objects;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 
 /**
- * Created by bader on 18.05.2017.
+ * Represents an abbreviation for a teacher or a subject.
  */
 
 public class Abbreviation extends MytfgObject {

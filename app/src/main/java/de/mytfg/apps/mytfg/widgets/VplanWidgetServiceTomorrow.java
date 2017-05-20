@@ -5,7 +5,7 @@ import android.util.Log;
 import android.widget.RemoteViewsService;
 
 /**
- * Created by bader on 19.05.2017.
+ * RemoteViewsService for next Day.
  */
 
 public class VplanWidgetServiceTomorrow extends RemoteViewsService {

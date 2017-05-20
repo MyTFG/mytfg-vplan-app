@@ -3,18 +3,15 @@ package de.mytfg.apps.mytfg.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.objects.Vplan;
 import de.mytfg.apps.mytfg.objects.VplanEntry;
-import de.mytfg.apps.mytfg.objects.VrrEntry;
 
 /**
  * Provices detailed related to a VRR connection.
