@@ -13,7 +13,6 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:tint">@color/colorAccent</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
         <item name="windowActionModeOverlay">true</item>
     </style>
