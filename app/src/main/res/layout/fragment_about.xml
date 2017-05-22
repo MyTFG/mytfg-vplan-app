@@ -108,6 +108,15 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textDefault"
                     android:text="@string/about_permissions_text" />
+
+                <Button
+                    android:id="@+id/button_datapolicy"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|right"
+                    android:text="@string/menutitle_datapolicy"
+                    android:theme="@style/AppTheme.Button" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

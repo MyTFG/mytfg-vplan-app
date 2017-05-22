@@ -22,6 +22,7 @@
     <string name="menutitle_login">Login</string>
     <string name="menutitle_settings">Account &amp; Settings</string>
     <string name="menutitle_about">About this App</string>
+    <string name="menutitle_datapolicy">Data Policy</string>
     <string name="menutitle_back">Back</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">More</string>
@@ -311,4 +312,7 @@
     <string name="widget_just_now">Just now</string>
     <string name="widget_too_long">Long time ago</string>
     <string name="widget_last_update">Last Update: </string>
+
+    <!-- PAGE -->
+    <string name="page_failed">Page could not be loaded</string>
 </resources>

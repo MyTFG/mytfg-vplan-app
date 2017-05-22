@@ -21,6 +21,7 @@
     <string name="menutitle_settings">Account &amp; Einstellungen</string>
     <string name="menutitle_login">Anmelden</string>
     <string name="menutitle_about">Über diese App</string>
+    <string name="menutitle_datapolicy">Datenschutz</string>
     <string name="menutitle_back">Zurück</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">Mehr</string>
@@ -324,6 +325,9 @@
     <string name="widget_just_now">Gerade eben</string>
     <string name="widget_too_long">Vor langer Zeit</string>
     <string name="widget_last_update">Stand: </string>
+
+    <!-- PAGE -->
+    <string name="page_failed">Seite konnte nicht geladen werden.</string>
 
     <string-array name="settings_opt_landing_page_entries">
         <item>@string/menutitle_tfg</item>
