@@ -340,7 +340,7 @@
         <item>PlanFragment</item>
         <item>VrrFragment</item>
         <item>AbbreviationsFragment</item>
-        <item>BoostersFragment</item>
+        <item>BoosterFragment</item>
         <item>ParentsFragment</item>
         <item>FoundationFragment</item>
         <item>SettingsFragment</item>
