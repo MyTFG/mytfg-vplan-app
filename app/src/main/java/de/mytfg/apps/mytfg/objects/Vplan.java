@@ -220,7 +220,7 @@ public class Vplan extends MytfgObject {
         JsonFileManager.write(json, "vplan_" + getDay(), context);
     }
 
-    private boolean loadFromCache() {
+    public boolean loadFromCache() {
         JSONObject json = JsonFileManager.read("vplan_" + getDay(), context);
         return parse(json);
     }

@@ -43,6 +43,7 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
     @Override
     public void onDataSetChanged() {
         plan = new Vplan(mContext, day);
+        plan.loadFromCache();
         initData();
     }
 
@@ -124,12 +125,10 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
             Log.d("WIDGET", "Entries: " + mCollection.size());
             Log.d("WIDGET", "Day: " + plan.getDayString());
             Log.d("WIDGET", "Date: " + plan.formatDate());
+            Log.d("WIDGET", "NOTIFY");
             AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
-            if (plan.getDay().equals("today")) {
-                awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
-            } else {
-                awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
-            }
+            awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
+            awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
         } else {
             Log.d("WIDGET", "Loading started");
             plan.load(new SuccessCallback() {
