@@ -10,7 +10,11 @@ import de.mytfg.apps.mytfg.api.SuccessCallback;
  * Represents a single News Entry from the RSS Feed of TFG.
  */
 public class TfgNewsEntry extends MytfgObject {
+
+
+
     private long timestamp;
+    private String json;
     private String link;
     private String title;
     private String text;
@@ -30,16 +34,23 @@ public class TfgNewsEntry extends MytfgObject {
             return false;
         }
         try {
+            json = data.toString();
             timestamp = data.getLong("ts");
             link = data.getString("link");
             title = data.getString("title");
             text = data.getString("text");
             html = data.getString("html");
             summary = data.getString("summary");
+
+            for(String imgTag : html.)
         } catch (JSONException ex) {
             return false;
         }
         return true;
+    }
+
+    public String getJson() {
+        return json;
     }
 
     public String getTitle() {

@@ -315,4 +315,5 @@
 
     <!-- PAGE -->
     <string name="page_failed">Page could not be loaded</string>
+    <string name="news_title">TFG-News</string>
 </resources>

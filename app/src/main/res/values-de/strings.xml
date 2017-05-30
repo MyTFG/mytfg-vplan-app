@@ -349,4 +349,5 @@
         <item>FoundationFragment</item>
         <item>SettingsFragment</item>
     </string-array>
+    <string name="news_title">TFG-News</string>
 </resources>
