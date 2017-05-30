@@ -48,6 +48,7 @@ public class MyTFGApi {
     private ProgressBar loadingBar;
     private Context context;
     private boolean inApp = false;
+    private static int overrideLoad = 0;
 
     public MyTFGApi(Context context) {
         this.context = context;
@@ -232,6 +233,36 @@ public class MyTFGApi {
 
     public void call(String apiFunction, ApiCallback callback) {
         call(apiFunction, new ApiParams(), callback);
+    }
+
+    public void startLoading() {
+        overrideLoad++;
+        RequestTask.activeCalls++;
+
+        if (RequestTask.activeCalls > 0 && loadingBar != null) {
+            loadingBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void stopLoading() {
+        if (overrideLoad == 0) {
+            return;
+        }
+        overrideLoad--;
+        RequestTask.activeCalls--;
+
+        if (RequestTask.activeCalls <= 0 && loadingBar != null) {
+            loadingBar.setVisibility(View.GONE);
+        }
+    }
+
+    public void clearOverrideLoading() {
+        RequestTask.activeCalls-= overrideLoad;
+        overrideLoad = 0;
+
+        if (RequestTask.activeCalls <= 0 && loadingBar != null) {
+            loadingBar.setVisibility(View.GONE);
+        }
     }
 
     /**

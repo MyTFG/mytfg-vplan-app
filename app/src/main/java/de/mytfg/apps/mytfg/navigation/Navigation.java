@@ -47,6 +47,7 @@ public class Navigation {
         finishOnBack = false;
 
         MyTFGApi api = new MyTFGApi(context);
+        api.clearOverrideLoading();
         if (fragment.needsAuthentication() && !api.isLoggedIn()) {
             navigate(new LoginFragment(), container);
             return;
