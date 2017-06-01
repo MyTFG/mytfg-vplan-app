@@ -33,6 +33,7 @@ dependencies {
     compile 'ch.acra:acra:4.7.0'
     compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
 }
 

@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.objects;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +21,8 @@ public class TfgNewsEntry extends MytfgObject {
     private String text;
     private String html;
     private String summary;
+    private String[] images;
+
     /**
      * Do not use this method. Use the load method and pass a JSON Object.
      * @param callback Always called with false
@@ -42,7 +45,12 @@ public class TfgNewsEntry extends MytfgObject {
             html = data.getString("html");
             summary = data.getString("summary");
 
-            for(String imgTag : html.)
+            JSONArray imagesJson = data.getJSONArray("imgs");
+            images = new String[imagesJson.length()];
+            for(int i = 0; i < imagesJson.length(); i++) {
+                images[i] = imagesJson.getString(i);
+            }
+
         } catch (JSONException ex) {
             return false;
         }
@@ -75,6 +83,10 @@ public class TfgNewsEntry extends MytfgObject {
 
     public String getHtml() {
         return html;
+    }
+
+    public String[] getImages() {
+        return images;
     }
 
     public boolean filter(String filter) {

@@ -29,6 +29,32 @@
             android:layout_marginBottom="@dimen/defaultPadding"
             android:id="@+id/news_detail_date" />
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
+            android:id="@+id/news_detail_flipper_card">
+
+            <ProgressBar
+                android:id="@+id/news_detail_progress_bar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <de.mytfg.apps.mytfg.tools.ViewFlipperIndicator
+                android:id="@+id/news_detail_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:measureAllChildren="true"
+                android:paddingBottom="@dimen/defaultPadding"
+                android:paddingLeft="@dimen/defaultPadding"
+                android:paddingRight="@dimen/defaultPadding"
+                android:paddingTop="@dimen/defaultPadding"
+                android:visibility="invisible" />
+
+        </android.support.v7.widget.CardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
