@@ -136,6 +136,7 @@
     <string name="settings_general_title">Settings</string>
     <string name="settings_opt_newslink">Open News in Browser</string>
     <string name="settings_opt_fulltext">Show Plan as Fulltext</string>
+    <string name="settings_opt_toolbar">Hide Toolbar automatically</string>
     <string name="settings_opt_landing_page">Default Page</string>
     <string-array name="settings_opt_landing_page_entries">
         <item>@string/menutitle_tfg</item>

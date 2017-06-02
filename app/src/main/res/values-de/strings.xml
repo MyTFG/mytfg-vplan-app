@@ -140,6 +140,7 @@
     <string name="settings_general_title">Einstellungen</string>
     <string name="settings_opt_newslink">News im Browser öffnen</string>
     <string name="settings_opt_fulltext">VPlan als Volltext anzeigen</string>
+    <string name="settings_opt_toolbar">Toolbar automatisch ausblenden</string>
     <string name="settings_opt_landing_page">Standardansicht</string>
 
 

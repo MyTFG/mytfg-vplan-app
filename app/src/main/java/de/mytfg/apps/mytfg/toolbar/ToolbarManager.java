@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.tools.DisableableAppBarLayoutBehavior;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 public class ToolbarManager {
     private MainActivity context;
@@ -34,6 +35,7 @@ public class ToolbarManager {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private TabLayout tabs;
     private SearchView searchView;
+    private boolean currentTabOutscroll;
 
     private Toolbar toolbar;
 
@@ -97,9 +99,13 @@ public class ToolbarManager {
 
     public ToolbarManager setTabOutscroll(boolean outscroll) {
         AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
-        if (outscroll) {
+        Settings settings = new Settings(context);
+        boolean autohide_tabs = settings.getBool("hide_toolbar");
+        if (outscroll && autohide_tabs) {
+            currentTabOutscroll = true;
             params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
         } else {
+            currentTabOutscroll = false;
             params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
         }
         collapsingToolbarLayout.setLayoutParams(params);
@@ -210,6 +216,9 @@ public class ToolbarManager {
     }
 
     public ToolbarManager showSearchBar() {
+        if (currentTabOutscroll) {
+            this.setExpandable(true, true);
+        }
         MenuItem searchItem = toolbar.getMenu().findItem(R.id.action_search);
         if (searchItem != null) {
             searchItem.expandActionView();
