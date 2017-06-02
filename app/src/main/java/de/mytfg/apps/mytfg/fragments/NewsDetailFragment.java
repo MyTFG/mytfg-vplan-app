@@ -40,7 +40,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
-        ((MainActivity)getActivity()).getToolbarManager()
+        ((MainActivity) getActivity()).getToolbarManager()
                 .clear()
                 .setTitle(getContext().getString(R.string.news_title))
                 .setImage(R.drawable.news_detail_header).showBottomScrim()
@@ -88,21 +88,21 @@ public class NewsDetailFragment extends AuthenticationFragment {
         final View flipperCard = view.findViewById(R.id.news_detail_flipper_card);
         final View flipperProgress = view.findViewById(R.id.news_detail_progress_bar);
 
-        if(newsEntry.getImages().length == 0) {
+        if (newsEntry.getImages().length == 0) {
             flipperCard.setVisibility(View.GONE);
         } else {
             final MyTFGApi api = new MyTFGApi(getContext());
 
-            for(String path : newsEntry.getImages()) {
+            for (String path : newsEntry.getImages()) {
                 api.startLoading();
                 ImageView imageView = new ImageView(getContext());
                 Picasso.with(getContext()).load(BASE_URL + path)
-                        .error(R.mipmap.ic_error)
+                        .error(R.drawable.download_error)
                         .into(imageView, new Callback() {
                             @Override
                             public void onSuccess() {
                                 api.stopLoading();
-                                if(!api.isLoading()) {
+                                if (!api.isLoading()) {
                                     flipper.setVisibility(View.VISIBLE);
                                     flipperProgress.setVisibility(View.GONE);
                                 }
@@ -111,7 +111,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                             @Override
                             public void onError() {
                                 api.stopLoading();
-                                if(!api.isLoading()) {
+                                if (!api.isLoading()) {
                                     flipper.setVisibility(View.VISIBLE);
                                     flipperProgress.setVisibility(View.GONE);
                                 }
@@ -120,7 +120,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                 flipper.addView(imageView);
             }
 
-            if(newsEntry.getImages().length > 1) {
+            if (newsEntry.getImages().length > 1) {
                 float density = getResources().getDisplayMetrics().density;
                 flipper.setPadding(flipper.getPaddingLeft(),
                         flipper.getPaddingTop(),

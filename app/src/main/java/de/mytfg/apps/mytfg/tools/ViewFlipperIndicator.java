@@ -54,7 +54,7 @@ public class ViewFlipperIndicator extends ViewFlipper {
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
 
-        if(getChildCount() <= 1) {
+        if (getChildCount() <= 1) {
             return;
         }
 
