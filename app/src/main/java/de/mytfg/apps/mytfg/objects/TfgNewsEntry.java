@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.objects;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,12 +11,18 @@ import de.mytfg.apps.mytfg.api.SuccessCallback;
  * Represents a single News Entry from the RSS Feed of TFG.
  */
 public class TfgNewsEntry extends MytfgObject {
+
+
+
     private long timestamp;
+    private String json;
     private String link;
     private String title;
     private String text;
     private String html;
     private String summary;
+    private String[] images;
+
     /**
      * Do not use this method. Use the load method and pass a JSON Object.
      * @param callback Always called with false
@@ -30,16 +37,28 @@ public class TfgNewsEntry extends MytfgObject {
             return false;
         }
         try {
+            json = data.toString();
             timestamp = data.getLong("ts");
             link = data.getString("link");
             title = data.getString("title");
             text = data.getString("text");
             html = data.getString("html");
             summary = data.getString("summary");
+
+            JSONArray imagesJson = data.getJSONArray("imgs");
+            images = new String[imagesJson.length()];
+            for(int i = 0; i < imagesJson.length(); i++) {
+                images[i] = imagesJson.getString(i);
+            }
+
         } catch (JSONException ex) {
             return false;
         }
         return true;
+    }
+
+    public String getJson() {
+        return json;
     }
 
     public String getTitle() {
@@ -64,6 +83,10 @@ public class TfgNewsEntry extends MytfgObject {
 
     public String getHtml() {
         return html;
+    }
+
+    public String[] getImages() {
+        return images;
     }
 
     public boolean filter(String filter) {

@@ -13,6 +13,7 @@ import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
 import de.mytfg.apps.mytfg.tools.Settings;
 
 public class NewsEntryHolder extends RecyclerView.ViewHolder {
+
     private TextView title;
     private TextView date;
     private TextView summary;
@@ -29,39 +30,26 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
         summary  = (TextView) view.findViewById(R.id.news_summary);
     }
 
-    public void update(TfgNewsEntry entry, boolean extended) {
-        //titleView.setText(baseObject.getName());
+    public void update(TfgNewsEntry entry) {
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
-        if (extended) {
-            //summary.setText(Html.fromHtml(entry.getHtml()));
-            summary.setText(entry.getText());
-        } else {
-            summary.setText(entry.getSummary());
-        }
-        final String link = entry.getLink();
-        Settings settings = new Settings(context);
-        if (!link.isEmpty() && settings.getBool("news_browser")) {
-            setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(link));
-                    context.startActivity(i);
-                }
-            });
-        } else {
-            setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }
+        summary.setText(entry.getSummary());
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {
         cardView.setOnClickListener(listener);
+    }
+
+    public TextView getTitle() {
+        return title;
+    }
+
+    public TextView getDate() {
+        return date;
+    }
+
+    public TextView getSummary() {
+        return summary;
     }
 
     public CardView getCardView() {

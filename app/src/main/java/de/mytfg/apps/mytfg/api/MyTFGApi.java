@@ -256,6 +256,10 @@ public class MyTFGApi {
         }
     }
 
+    public boolean isLoading() {
+        return RequestTask.activeCalls > 0;
+    }
+
     public void clearOverrideLoading() {
         RequestTask.activeCalls-= overrideLoad;
         overrideLoad = 0;

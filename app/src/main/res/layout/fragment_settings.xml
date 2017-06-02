@@ -169,14 +169,6 @@
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_opt_fulltext" />
 
-                <Switch
-                    android:text="@string/settings_opt_newslink"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/defaultPadding"
-                    android:paddingTop="@dimen/defaultPadding"
-                    android:id="@+id/switch_news_browser" />
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
