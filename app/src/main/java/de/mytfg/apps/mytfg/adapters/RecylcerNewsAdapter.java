@@ -71,8 +71,8 @@ public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
                 @Override
                 public void onClick(View view) {
                     HashMap<String, Pair<String, View>> sharedElements = new HashMap<>();
-                    sharedElements.put("direction", new Pair<String, View>(uniqueTitle, title));
-                    sharedElements.put("typeImg", new Pair<String, View>(uniqueDate, date));
+                    sharedElements.put("title", new Pair<String, View>(uniqueTitle, title));
+                    sharedElements.put("date", new Pair<String, View>(uniqueDate, date));
                     sharedElements.put("frame", new Pair<String, View>(uniqueCardview, cardView));
 
                     NewsDetailFragment fragment = NewsDetailFragment.newInstance(entry);
