@@ -1,33 +1,47 @@
 package de.mytfg.apps.mytfg.fragments;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
+import de.mytfg.apps.mytfg.tools.Settings;
 import de.mytfg.apps.mytfg.tools.ViewFlipperIndicator;
 
 public class NewsDetailFragment extends AuthenticationFragment {
 
+    private static final String TAG = "NewsDetailFragment";
     private static final String BASE_URL = "https://mytfg.de/api_tfg_image.x?src=";
 
     private TfgNewsEntry newsEntry;
+    private final ArrayList<Target> downloadTargets = new ArrayList<>();
 
     public static NewsDetailFragment newInstance(TfgNewsEntry entry) {
         NewsDetailFragment fragment = new NewsDetailFragment();
@@ -39,6 +53,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
+        setHasOptionsMenu(true);
 
         ((MainActivity) getActivity()).getToolbarManager()
                 .clear()
@@ -70,7 +85,13 @@ public class NewsDetailFragment extends AuthenticationFragment {
 
         title.setText(newsEntry.getTitle());
         date.setText(newsEntry.getDateString());
-        text.setText(newsEntry.getText());
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            text.setText(Html.fromHtml(newsEntry.getHtml(), Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            text.setText(Html.fromHtml(newsEntry.getHtml()));
+        }
+        text.setMovementMethod(LinkMovementMethod.getInstance());
 
         final ViewFlipperIndicator flipper = (ViewFlipperIndicator) view.findViewById(R.id.news_detail_flipper);
         flipper.setInAnimation(getContext(), R.anim.slide_in_right);
@@ -88,36 +109,51 @@ public class NewsDetailFragment extends AuthenticationFragment {
         final View flipperCard = view.findViewById(R.id.news_detail_flipper_card);
         final View flipperProgress = view.findViewById(R.id.news_detail_progress_bar);
 
+        downloadTargets.clear();
+        downloadTargets.ensureCapacity(newsEntry.getImages().length);
+
         if (newsEntry.getImages().length == 0) {
             flipperCard.setVisibility(View.GONE);
         } else {
             final MyTFGApi api = new MyTFGApi(getContext());
+            Picasso.with(getContext()).setLoggingEnabled(true);
 
             for (String path : newsEntry.getImages()) {
                 api.startLoading();
-                ImageView imageView = new ImageView(getContext());
-                Picasso.with(getContext()).load(BASE_URL + path)
-                        .error(R.drawable.download_error)
-                        .into(imageView, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                api.stopLoading();
-                                if (!api.isLoading()) {
-                                    flipper.setVisibility(View.VISIBLE);
-                                    flipperProgress.setVisibility(View.GONE);
-                                }
-                            }
+                Target target = new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        Log.d(TAG, "Succesfully loaded image from " + from.name());
+                        ImageView imageView = new ImageView(getContext());
+                        imageView.setImageBitmap(bitmap);
+                        insertView(imageView);
+                    }
 
-                            @Override
-                            public void onError() {
-                                api.stopLoading();
-                                if (!api.isLoading()) {
-                                    flipper.setVisibility(View.VISIBLE);
-                                    flipperProgress.setVisibility(View.GONE);
-                                }
-                            }
-                        });
-                flipper.addView(imageView);
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+                        Log.e(TAG, "Error while downloading image");
+                        ImageView imageView = new ImageView(getContext());
+                        imageView.setImageDrawable(errorDrawable);
+                        insertView(imageView);
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {}
+
+                    private void insertView(View view) {
+                        flipper.addView(view);
+                        api.stopLoading();
+                        if (!api.isLoading()) {
+                            flipper.setVisibility(View.VISIBLE);
+                            flipperProgress.setVisibility(View.GONE);
+                        }
+                    }
+                };
+                downloadTargets.add(target);
+                Picasso.with(getContext())
+                        .load(BASE_URL + path)
+                        .error(R.drawable.download_error)
+                        .into(target);
             }
 
             if (newsEntry.getImages().length > 1) {
@@ -136,6 +172,23 @@ public class NewsDetailFragment extends AuthenticationFragment {
         ViewCompat.setTransitionName(date, getArguments().getString("date"));
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.news_detail_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.news_detail_browser:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsEntry.getLink()));
+                startActivity(browserIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

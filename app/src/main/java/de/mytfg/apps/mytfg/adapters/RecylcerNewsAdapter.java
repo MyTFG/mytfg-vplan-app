@@ -53,37 +53,34 @@ public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
         final TfgNewsEntry entry = elements.get(position);
         holder.update(entry);
 
-        Settings settings = new Settings(context);
-        if (!settings.getBool("news_browser")) {
-            final TextView title = holder.getTitle();
-            final TextView date = holder.getDate();
-            final CardView cardView = holder.getCardView();
+        final TextView title = holder.getTitle();
+        final TextView date = holder.getDate();
+        final CardView cardView = holder.getCardView();
 
-            final String uniqueTitle = "title_" + position + "_" + unique;
-            final String uniqueDate = "date_" + position + "_" + unique;
-            final String uniqueCardview = "frame_" + position + "_" + unique;
+        final String uniqueTitle = "title_" + position + "_" + unique;
+        final String uniqueDate = "date_" + position + "_" + unique;
+        final String uniqueCardview = "frame_" + position + "_" + unique;
 
-            ViewCompat.setTransitionName(title, uniqueTitle);
-            ViewCompat.setTransitionName(date, uniqueDate);
-            ViewCompat.setTransitionName(cardView, uniqueCardview);
+        ViewCompat.setTransitionName(title, uniqueTitle);
+        ViewCompat.setTransitionName(date, uniqueDate);
+        ViewCompat.setTransitionName(cardView, uniqueCardview);
 
-            holder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    HashMap<String, Pair<String, View>> sharedElements = new HashMap<>();
-                    sharedElements.put("title", new Pair<String, View>(uniqueTitle, title));
-                    sharedElements.put("date", new Pair<String, View>(uniqueDate, date));
-                    sharedElements.put("frame", new Pair<String, View>(uniqueCardview, cardView));
+        holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String, Pair<String, View>> sharedElements = new HashMap<>();
+                sharedElements.put("title", new Pair<String, View>(uniqueTitle, title));
+                sharedElements.put("date", new Pair<String, View>(uniqueDate, date));
+                sharedElements.put("frame", new Pair<String, View>(uniqueCardview, cardView));
 
-                    NewsDetailFragment fragment = NewsDetailFragment.newInstance(entry);
-                    ((MainActivity) context).getNavi().navigate(
-                            fragment,
-                            R.id.fragment_container,
-                            sharedElements
-                    );
-                }
-            });
-        }
+                NewsDetailFragment fragment = NewsDetailFragment.newInstance(entry);
+                ((MainActivity) context).getNavi().navigate(
+                        fragment,
+                        R.id.fragment_container,
+                        sharedElements
+                );
+            }
+        });
     }
 
     @Override

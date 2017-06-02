@@ -31,29 +31,9 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
     }
 
     public void update(TfgNewsEntry entry) {
-        //titleView.setText(baseObject.getName());
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
         summary.setText(entry.getSummary());
-        final String link = entry.getLink();
-        Settings settings = new Settings(context);
-        if (!link.isEmpty() && settings.getBool("news_browser")) {
-            setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(link));
-                    context.startActivity(i);
-                }
-            });
-        } else {
-            setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

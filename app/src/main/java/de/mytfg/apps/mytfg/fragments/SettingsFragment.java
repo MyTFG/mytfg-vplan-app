@@ -304,7 +304,6 @@ public class SettingsFragment extends AuthenticationFragment {
 
     private void updateSettings() {
         Switch fulltext = (Switch) view.findViewById(R.id.switch_fulltext);
-        Switch newsbrowser = (Switch) view.findViewById(R.id.switch_news_browser);
         Spinner landing = (Spinner) view.findViewById(R.id.spinner_landing);
 
         final Settings settings = new Settings(context);
@@ -314,13 +313,6 @@ public class SettingsFragment extends AuthenticationFragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 settings.save("plan_fulltext", b);
-            }
-        });
-        newsbrowser.setChecked(settings.getBool("news_browser"));
-        newsbrowser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                settings.save("news_browser", b);
             }
         });
 
