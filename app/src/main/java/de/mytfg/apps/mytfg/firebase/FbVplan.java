@@ -55,7 +55,7 @@ class FbVplan {
                 if (classes.size() > 0) {
                     // Notification!
                     String cls = TextUtils.join(", ", classes);
-                    FbNotify.notifyVplan(context, "MyTFG VPlan für " + datestr , "VPlan-Update der Klassen:\n" + cls, day);
+                    FbNotify.notifyVplan(context, "MyTFG VPlan für " + datestr , "Klassen: " + cls, day);
                 }
                 break;
             case User.USER_RIGHTS_TEACHER:
@@ -70,7 +70,7 @@ class FbVplan {
                 String text2 = "";
                 if (classes.size() > 0) {
                     String cls = TextUtils.join(", ", classes);
-                    text2 = "VPlan-Update der Klassen:\n" + cls;
+                    text2 = "Klassen: " + cls;
                 }
                 String t = text2;
                 if (text.length() > 0) {
