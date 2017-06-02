@@ -28,9 +28,12 @@ import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.ApiCallback;
 import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
+import de.mytfg.apps.mytfg.api.SuccessCallback;
+import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
 import de.mytfg.apps.mytfg.tools.CustomViewTarget;
+import de.mytfg.apps.mytfg.tools.Settings;
 import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class LoginFragment extends AuthenticationFragment {
@@ -110,6 +113,19 @@ public class LoginFragment extends AuthenticationFragment {
                                     }
                                     context.getNavi().clear();
                                     context.getNavi().navigate(new PlanFragment(), R.id.fragment_container);
+
+                                    // Send Firebase Token to Server
+                                    FbApi fbApi = new FbApi(context);
+                                    Settings settings = new Settings(context);
+                                    String fbtoken = settings.getString("firebaseToken");
+                                    if (!fbtoken.isEmpty()) {
+                                        fbApi.sendFbToken(fbtoken, new SuccessCallback() {
+                                            @Override
+                                            public void callback(boolean success) {
+                                                Log.d("FB-ID", "Login: " + success);
+                                            }
+                                        });
+                                    }
                                 } catch (JSONException ex) {
                                     snackText = getString(R.string.login_badresponse);
                                 }
