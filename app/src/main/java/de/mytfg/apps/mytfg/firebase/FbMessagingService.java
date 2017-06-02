@@ -20,13 +20,15 @@ public class FbMessagingService extends FirebaseMessagingService {
             // Notify or update view
             Map<String, String> data = remoteMessage.getData();
             String type = data.get("type");
-            switch (type) {
-                default:
-                    break;
-                case "vplan_change":
-                    FbVplan fbVplan = new FbVplan(this);
-                    fbVplan.handle(data);
-                    break;
+            if (type != null) {
+                switch (type) {
+                    default:
+                        break;
+                    case "vplan_change":
+                        FbVplan fbVplan = new FbVplan(this);
+                        fbVplan.handle(data);
+                        break;
+                }
             }
         }
 
