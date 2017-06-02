@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.logic;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -32,6 +33,8 @@ public class NewsLogic implements FragmentHolderLogic {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
 
+    private boolean forceReload = true;
+
     private String current_filter = null;
     public NewsLogic(TfgNews news) {
         this.news = news;
@@ -44,12 +47,11 @@ public class NewsLogic implements FragmentHolderLogic {
     @Override
     public void init(final Context context, View view, Bundle args) {
         this.context = context;
-        Log.d("Init", context.toString());
+
+        Log.d("NEWS", "Init");
         recyclerView = (RecyclerView) view.findViewById(R.id.news_recylcerview);
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.base_refreshLayout);
 
-        adapter = new RecylcerNewsAdapter(context);
-        recyclerView.setAdapter(adapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -87,12 +89,28 @@ public class NewsLogic implements FragmentHolderLogic {
     }
 
     private void display() {
-        adapter = new RecylcerNewsAdapter(context);
-        recyclerView.setAdapter(adapter);
+        if (!forceReload && adapter != null) {
+            Log.d("NEWS", "display alternative");
+            Log.d("NEWS", "SCROLL " + recyclerView.getScrollState());
+            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
+            return;
+        }
+
+        forceReload = false;
+        Log.d("NEWS", "display");
+        Log.d("NEWS adapter", "" + adapter);
+        if (adapter == null) {
+            adapter = new RecylcerNewsAdapter(context);
+        }
+        Parcelable state = recyclerView.getLayoutManager().onSaveInstanceState();
+        adapter.clear();
         for (TfgNewsEntry entry : this.news.filter(this.current_filter)) {
             adapter.addItem(entry);
         }
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        recyclerView.getLayoutManager().onRestoreInstanceState(state);
         //TabLayout.Tab tab = getTab();
         ViewPager pager = (ViewPager)((MainActivity)context).findViewById(R.id.tfg_pager);
         TabLayout tabLayout = ((MainActivity)context).getToolbarManager().getTabs();
@@ -108,6 +126,7 @@ public class NewsLogic implements FragmentHolderLogic {
     }
 
     private void loadNews(boolean reload) {
+        forceReload = reload;
         refreshLayout.setRefreshing(true);
         this.news.load(new SuccessCallback() {
             @Override
@@ -147,12 +166,12 @@ public class NewsLogic implements FragmentHolderLogic {
 
     public void filter(String filter) {
         this.current_filter = filter;
-        this.display();
+        //this.display();
     }
 
     public void resetFilter() {
         this.current_filter = null;
-        this.display();
+        //this.display();
     }
 
 }
