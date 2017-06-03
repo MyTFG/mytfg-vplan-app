@@ -23,7 +23,7 @@
                 android:layout_marginEnd="@dimen/cardview_spacing"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textSize="@dimen/textTitle"
+                android:textSize="@dimen/textMediumTitle"
                 android:id="@+id/abbr_abbr" />
 
             <ImageView
