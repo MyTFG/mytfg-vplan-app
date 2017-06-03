@@ -12,6 +12,7 @@ import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 public class FragmentHolder extends Fragment {
     int resId;
     private FragmentHolderLogic logic;
+    private View view;
 
     public static FragmentHolder newInstance(int layout) {
         return FragmentHolder.newInstance(layout, null);
@@ -37,7 +38,7 @@ public class FragmentHolder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         resId = getArguments().getInt("fraglayout");
-        View view = inflater.inflate(resId, container, false);
+        view = inflater.inflate(resId, container, false);
 
         if (logic != null) {
             logic.init(getContext(), view, getArguments());
@@ -53,6 +54,10 @@ public class FragmentHolder extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //logic.saveInstanceState();
+    }
+
+    public void init() {
+        logic.init(getContext(), view, getArguments());
     }
 
 

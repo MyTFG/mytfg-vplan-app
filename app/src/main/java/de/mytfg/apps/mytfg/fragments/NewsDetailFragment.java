@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -43,6 +44,8 @@ public class NewsDetailFragment extends AuthenticationFragment {
     private TfgNewsEntry newsEntry;
     private final ArrayList<Target> downloadTargets = new ArrayList<>();
 
+    private Context context;
+
     public static NewsDetailFragment newInstance(TfgNewsEntry entry) {
         NewsDetailFragment fragment = new NewsDetailFragment();
         fragment.newsEntry = entry;
@@ -51,9 +54,11 @@ public class NewsDetailFragment extends AuthenticationFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
         setHasOptionsMenu(true);
+
+        context = getContext();
 
         ((MainActivity) getActivity()).getToolbarManager()
                 .clear()
@@ -124,7 +129,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         Log.d(TAG, "Succesfully loaded image from " + from.name());
-                        ImageView imageView = new ImageView(getContext());
+                        ImageView imageView = new ImageView(context);
                         imageView.setImageBitmap(bitmap);
                         insertView(imageView);
                     }
@@ -132,7 +137,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                     @Override
                     public void onBitmapFailed(Drawable errorDrawable) {
                         Log.e(TAG, "Error while downloading image");
-                        ImageView imageView = new ImageView(getContext());
+                        ImageView imageView = new ImageView(context);
                         imageView.setImageDrawable(errorDrawable);
                         insertView(imageView);
                     }
@@ -150,7 +155,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                     }
                 };
                 downloadTargets.add(target);
-                Picasso.with(getContext())
+                Picasso.with(context)
                         .load(BASE_URL + path)
                         .error(R.drawable.download_error)
                         .into(target);

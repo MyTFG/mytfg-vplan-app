@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,11 +34,16 @@ public class TfgFragment extends AuthenticationFragment {
 
     private NewsLogic newsLogic;
     private TfgNews news;
+    private FragmentHolder newsFragment;
 
     private EventsLogic eventsLogic;
     private TfgEvents events;
+    private FragmentHolder eventsFragment;
+
+    private ViewPagerAdapter viewPagerAdapter;
 
     private int setTab = 0;
+    private boolean expand = true;
 
     public TfgFragment() {
     }
@@ -45,10 +51,10 @@ public class TfgFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_tfg, container, false);
-
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
-        viewPager.setAdapter(new ViewPagerAdapter(this.getChildFragmentManager()));
+        Log.d("NEWS", "createView");
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_tfg, container, false);
+        }
         final MainActivity context = (MainActivity)this.getActivity();
 
         this.context = context;
@@ -58,10 +64,16 @@ public class TfgFragment extends AuthenticationFragment {
                 .clearMenu()
                 .setImage(R.drawable.news_header_s)
                 .showBottomScrim()
-                .setExpandable(true, true)
                 .setTabs(true)
                 .showFab()
                 .setTabOutscroll(true);
+
+        if (expand) {
+            context.getToolbarManager()
+                    .setExpandable(true, true);
+        }
+
+        expand = false;
 
         final FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -112,30 +124,47 @@ public class TfgFragment extends AuthenticationFragment {
 
     @Override
     public void onResume() {
+        Log.d("NEWS", "resume");
         super.onResume();
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
+
+
         news = new TfgNews(context);
-        newsLogic = new NewsLogic(news, context);
+        if (newsLogic == null) {
+            newsLogic = new NewsLogic(news, context);
+        }
+        if (newsFragment == null) {
+            newsFragment = FragmentHolder.newInstance(
+                    R.layout.fragment_news,
+                    newsLogic
+            );
+        }
 
         events = new TfgEvents(context);
-        eventsLogic = new EventsLogic(events, context);
+        if (eventsLogic == null) {
+            eventsLogic = new EventsLogic(events, context);
+        }
+        if (eventsFragment == null) {
+            eventsFragment = FragmentHolder.newInstance(
+                    R.layout.fragment_events,
+                    eventsLogic
+            );
+        }
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
-
-        viewPagerAdapter.addFragment(
-                FragmentHolder.newInstance(
-                        R.layout.fragment_news,
-                        newsLogic
-                )
-        );
-
-        viewPagerAdapter.addFragment(
-                FragmentHolder.newInstance(
-                        R.layout.fragment_events,
-                        eventsLogic
-                )
-        );
+        if (viewPagerAdapter == null) {
+            viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager());
+            viewPagerAdapter.addFragment(
+                    newsFragment
+            );
+            viewPagerAdapter.addFragment(
+                    eventsFragment
+            );
+        } else {
+            newsFragment.init();
+            eventsFragment.init();
+        }
         viewPager.setAdapter(viewPagerAdapter);
+        viewPagerAdapter.notifyDataSetChanged();
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -174,6 +203,8 @@ public class TfgFragment extends AuthenticationFragment {
 
         //showcase();
     }
+
+
 
     private int getTab() {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
