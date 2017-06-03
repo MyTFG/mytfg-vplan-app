@@ -304,6 +304,7 @@ public class SettingsFragment extends AuthenticationFragment {
 
     private void updateSettings() {
         Switch fulltext = (Switch) view.findViewById(R.id.switch_fulltext);
+        Switch toolbar = (Switch) view.findViewById(R.id.switch_toolbar);
         Spinner landing = (Spinner) view.findViewById(R.id.spinner_landing);
 
         final Settings settings = new Settings(context);
@@ -313,6 +314,14 @@ public class SettingsFragment extends AuthenticationFragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 settings.save("plan_fulltext", b);
+            }
+        });
+
+        toolbar.setChecked(settings.getBool("hide_toolbar"));
+        toolbar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                settings.save("hide_toolbar", b);
             }
         });
 
