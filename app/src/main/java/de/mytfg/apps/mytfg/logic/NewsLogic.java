@@ -34,6 +34,7 @@ public class NewsLogic implements FragmentHolderLogic {
     private SwipeRefreshLayout refreshLayout;
 
     private boolean forceReload = true;
+    private Parcelable layoutState;
 
     private String current_filter = null;
     public NewsLogic(TfgNews news) {
@@ -59,6 +60,7 @@ public class NewsLogic implements FragmentHolderLogic {
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                layoutState = recyclerView.getLayoutManager().onSaveInstanceState();
                 if (dy > 2) {
                     ((MainActivity) context).getToolbarManager().hideFab();
                 } else if (dy < -2) {
@@ -94,6 +96,7 @@ public class NewsLogic implements FragmentHolderLogic {
             Log.d("NEWS", "SCROLL " + recyclerView.getScrollState());
             adapter.notifyDataSetChanged();
             recyclerView.setAdapter(adapter);
+            recyclerView.getLayoutManager().onRestoreInstanceState(layoutState);
             return;
         }
 
