@@ -174,6 +174,7 @@ public class TfgFragment extends AuthenticationFragment {
 
             @Override
             public void onPageSelected(int position) {
+                setTab = position;
                 switch (position) {
                     case 0:
                         context.getToolbarManager().setImage(R.drawable.news_header_s, true);
