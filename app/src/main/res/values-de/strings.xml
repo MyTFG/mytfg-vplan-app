@@ -352,4 +352,5 @@
     </string-array>
     <string name="news_title">TFG-News</string>
     <string name="news_detail_open_in_browser">Im Browser öffnen</string>
+    <string name="image_view">Bildanzeige</string>
 </resources>
