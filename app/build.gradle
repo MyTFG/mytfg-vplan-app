@@ -34,6 +34,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.chrisbanes:PhotoView:2.0.0'
     testCompile 'junit:junit:4.12'
 }
 

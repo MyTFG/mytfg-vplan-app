@@ -128,14 +128,17 @@ public class ToolbarManager {
     }
 
     public ToolbarManager setExpandable(boolean expandable, boolean animate, boolean expanded) {
-        if (expanded) {
-            appBarLayout.setExpanded(true, animate);
-        }
+        appBarLayout.setExpanded(expanded, animate);
         appBarLayout.setEnabled(expandable);
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
         if (((DisableableAppBarLayoutBehavior) layoutParams.getBehavior()) != null) {
             ((DisableableAppBarLayoutBehavior) layoutParams.getBehavior()).setEnabled(expanded);
         }
+        return this;
+    }
+
+    public ToolbarManager setExpanded(boolean expanded, boolean animate) {
+        appBarLayout.setExpanded(expanded, animate);
         return this;
     }
 

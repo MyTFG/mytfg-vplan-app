@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,12 +30,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import de.mytfg.apps.mytfg.R;
+import de.mytfg.apps.mytfg.activities.ImageActivity;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
-import de.mytfg.apps.mytfg.tools.Settings;
 import de.mytfg.apps.mytfg.tools.ViewFlipperIndicator;
 
 public class NewsDetailFragment extends AuthenticationFragment {
@@ -43,8 +46,14 @@ public class NewsDetailFragment extends AuthenticationFragment {
 
     private TfgNewsEntry newsEntry;
     private final ArrayList<Target> downloadTargets = new ArrayList<>();
-
+    private String unique;
     private Context context;
+    private int lastFlipperPos = 0;
+    private ViewFlipperIndicator flipper;
+
+    public  NewsDetailFragment() {
+        unique = UUID.randomUUID().toString();
+    }
 
     public static NewsDetailFragment newInstance(TfgNewsEntry entry) {
         NewsDetailFragment fragment = new NewsDetailFragment();
@@ -55,7 +64,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
+        View view = getView() != null ? getView() : inflater.inflate(R.layout.fragment_news_detail, container, false);
         setHasOptionsMenu(true);
 
         context = getContext();
@@ -72,7 +81,6 @@ public class NewsDetailFragment extends AuthenticationFragment {
 
         if (newsEntry == null) {
             newsEntry = new TfgNewsEntry();
-            Log.e("NULL", "NEWS ENTRY IS NULL!");
             // Try to load from saved instance
             if (savedInstanceState != null && savedInstanceState.containsKey("entryJson")) {
                 try {
@@ -99,8 +107,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
         text.setMovementMethod(LinkMovementMethod.getInstance());
 
         final ViewFlipperIndicator flipper = (ViewFlipperIndicator) view.findViewById(R.id.news_detail_flipper);
-        flipper.setInAnimation(getContext(), R.anim.slide_in_right);
-        flipper.setOutAnimation(getContext(), R.anim.slide_out_left);
+        this.flipper = flipper;
         Paint paint = new Paint();
         paint.setColor(getResources().getColor(R.color.accent));
         flipper.setPaintCurrent(paint);
@@ -110,12 +117,50 @@ public class NewsDetailFragment extends AuthenticationFragment {
         flipper.setMargin(15);
         flipper.setPaintNormal(paint);
         flipper.setFlipInterval(4000);
+        lastFlipperPos = 0;
 
-        final View flipperCard = view.findViewById(R.id.news_detail_flipper_card);
-        final View flipperProgress = view.findViewById(R.id.news_detail_progress_bar);
+        ViewCompat.setTransitionName(view, getArguments().getString("frame"));
+        ViewCompat.setTransitionName(title, getArguments().getString("title"));
+        ViewCompat.setTransitionName(date, getArguments().getString("date"));
+
+        return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.news_detail_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.news_detail_browser:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsEntry.getLink()));
+                startActivity(browserIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("entryJson", newsEntry.getJson());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        final ViewFlipperIndicator flipper = this.flipper;
+        final View flipperCard = getView().findViewById(R.id.news_detail_flipper_card);
+        final View flipperProgress = getView().findViewById(R.id.news_detail_progress_bar);
 
         downloadTargets.clear();
         downloadTargets.ensureCapacity(newsEntry.getImages().length);
+
+        flipper.removeAllViews();
 
         if (newsEntry.getImages().length == 0) {
             flipperCard.setVisibility(View.GONE);
@@ -146,9 +191,22 @@ public class NewsDetailFragment extends AuthenticationFragment {
                     public void onPrepareLoad(Drawable placeHolderDrawable) {}
 
                     private void insertView(View view) {
+                        ViewCompat.setTransitionName(view, "image_" + flipper.getChildCount() + "_" + unique);
+                        view.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent event) {
+                                enlargeImage(view);
+                                return true;
+                            }
+                        });
                         flipper.addView(view);
                         api.stopLoading();
                         if (!api.isLoading()) {
+                            flipper.setInAnimation(null);
+                            flipper.setOutAnimation(null);
+                            flipper.setDisplayedChild(lastFlipperPos);
+                            flipper.setInAnimation(getContext(), R.anim.slide_in_right);
+                            flipper.setOutAnimation(getContext(), R.anim.slide_out_left);
                             flipper.setVisibility(View.VISIBLE);
                             flipperProgress.setVisibility(View.GONE);
                         }
@@ -167,39 +225,17 @@ public class NewsDetailFragment extends AuthenticationFragment {
                         flipper.getPaddingTop(),
                         flipper.getPaddingRight(),
                         (int) (25 * density));
-                flipper.setAutoStart(true);
                 flipper.startFlipping();
             }
         }
-
-        ViewCompat.setTransitionName(view, getArguments().getString("frame"));
-        ViewCompat.setTransitionName(title, getArguments().getString("title"));
-        ViewCompat.setTransitionName(date, getArguments().getString("date"));
-
-        return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.news_detail_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.news_detail_browser:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsEntry.getLink()));
-                startActivity(browserIntent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("entryJson", newsEntry.getJson());
+    private void enlargeImage(View view) {
+        lastFlipperPos = flipper.getDisplayedChild();
+        Intent intent = new Intent(context, ImageActivity.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view, ViewCompat.getTransitionName(view));
+        intent.putExtra("image", BASE_URL + newsEntry.getImages()[flipper.getDisplayedChild()]);
+        intent.putExtra("transition_name", ViewCompat.getTransitionName(view));
+        startActivity(intent, options.toBundle());
     }
 }
