@@ -78,6 +78,11 @@
         Ihr Login für die Klasse %5$s ist gültig bis zum %6$s.
     </string>
 
+    <string name="event_calendar_confirm_text">Möchten Sie dieses Event in ihrem Geräte-Kalender speichern?</string>
+    <string name="event_calendar_confirm_title">Zum Kalender hinzufügen</string>
+    <string name="event_calendar_confirm_yes">Ja</string>
+    <string name="event_calendar_confirm_no">Nein</string>
+
     <!-- PLAN -->
     <string name="plan_failed">Plan konnte nicht geladen werden</string>
     <string name="plan_today">Aktueller Tag</string>

@@ -1,7 +1,9 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -82,14 +84,27 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_EDIT);
-                intent.setType("vnd.android.cursor.item/event");
-                intent.putExtra("beginTime", calendarTs);
-                intent.putExtra("allDay", calendarFullDay);
-                intent.putExtra("endTime", calendarTs + 60*60*1000);
-                intent.putExtra("title", entry.getTitle());
-                intent.putExtra("eventLocation", entry.getLocation());
-                context.startActivity(intent);
+                new AlertDialog.Builder(context)
+                        .setMessage(context.getString(R.string.event_calendar_confirm_text))
+                        .setTitle(context.getString(R.string.event_calendar_confirm_title))
+                        .setPositiveButton(context.getString(R.string.event_calendar_confirm_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(Intent.ACTION_EDIT);
+                                intent.setType("vnd.android.cursor.item/event");
+                                intent.putExtra("beginTime", calendarTs);
+                                intent.putExtra("allDay", calendarFullDay);
+                                intent.putExtra("endTime", calendarTs + 60*60*1000);
+                                intent.putExtra("title", entry.getTitle());
+                                intent.putExtra("eventLocation", entry.getLocation());
+                                context.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton(context.getString(R.string.event_calendar_confirm_no), null)
+                        .setIcon(R.drawable.ic_menu_plan).show();
+
+
+
             }
         });
     }
