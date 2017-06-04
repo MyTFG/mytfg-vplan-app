@@ -186,5 +186,7 @@ public class PlanLogic implements FragmentHolderLogic {
         this.display();
     }
 
-
+    public Vplan getPlan() {
+        return plan;
+    }
 }

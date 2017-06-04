@@ -158,5 +158,7 @@ public class AbbreviationLogic implements FragmentHolderLogic {
         this.display();
     }
 
-
+    public Abbreviations getAbbreviations() {
+        return abbreviations;
+    }
 }
