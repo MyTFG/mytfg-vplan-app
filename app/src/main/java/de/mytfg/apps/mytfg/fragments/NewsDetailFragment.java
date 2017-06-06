@@ -169,7 +169,6 @@ public class NewsDetailFragment extends AuthenticationFragment {
             Picasso.with(getContext()).setLoggingEnabled(true);
 
             for (String path : newsEntry.getImages()) {
-                api.startLoading();
                 Target target = new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -191,6 +190,10 @@ public class NewsDetailFragment extends AuthenticationFragment {
                     public void onPrepareLoad(Drawable placeHolderDrawable) {}
 
                     private void insertView(View view) {
+                        downloadTargets.remove(this);
+                        if(getContext() == null) {
+                            return;
+                        }
                         ViewCompat.setTransitionName(view, "image_" + flipper.getChildCount() + "_" + unique);
                         view.setOnTouchListener(new View.OnTouchListener() {
                             @Override
@@ -200,8 +203,7 @@ public class NewsDetailFragment extends AuthenticationFragment {
                             }
                         });
                         flipper.addView(view);
-                        api.stopLoading();
-                        if (!api.isLoading()) {
+                        if (downloadTargets.isEmpty()) {
                             flipper.setInAnimation(null);
                             flipper.setOutAnimation(null);
                             flipper.setDisplayedChild(lastFlipperPos);
