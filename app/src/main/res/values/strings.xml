@@ -53,6 +53,11 @@
     <string name="home_status_action_login">Login</string>
     <string name="news_failed">Could not load News</string>
 
+    <string name="event_calendar_confirm_text">Would you like to add this event to your device calendar?</string>
+    <string name="event_calendar_confirm_title">Add to Calendar</string>
+    <string name="event_calendar_confirm_yes">Yes</string>
+    <string name="event_calendar_confirm_no">Cancel</string>
+
     <!-- Abbreviations -->
     <string name="abbr_failed">Could not load Abbreviations</string>
     <string name="abbr_teacher">Teachers</string>

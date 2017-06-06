@@ -52,6 +52,7 @@ public class TfgFragment extends AuthenticationFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d("NEWS", "createView");
+        Log.d("NEWS", "createView " + view);
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_tfg, container, false);
         }
@@ -124,11 +125,8 @@ public class TfgFragment extends AuthenticationFragment {
 
     @Override
     public void onResume() {
-        Log.d("NEWS", "resume");
         super.onResume();
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.tfg_pager);
-
-
         news = new TfgNews(context);
         if (newsLogic == null) {
             newsLogic = new NewsLogic(news, context);
@@ -159,10 +157,8 @@ public class TfgFragment extends AuthenticationFragment {
             viewPagerAdapter.addFragment(
                     eventsFragment
             );
-        } else {
-            newsFragment.init();
-            eventsFragment.init();
         }
+
         viewPager.setAdapter(viewPagerAdapter);
         viewPagerAdapter.notifyDataSetChanged();
 
@@ -174,6 +170,7 @@ public class TfgFragment extends AuthenticationFragment {
 
             @Override
             public void onPageSelected(int position) {
+                setTab = position;
                 switch (position) {
                     case 0:
                         context.getToolbarManager().setImage(R.drawable.news_header_s, true);

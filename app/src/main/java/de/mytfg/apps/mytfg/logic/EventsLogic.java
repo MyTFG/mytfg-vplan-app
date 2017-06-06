@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.logic;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -32,6 +33,12 @@ public class EventsLogic implements FragmentHolderLogic {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
 
+    private Parcelable layoutState;
+
+    private int scrollPos = 0;
+
+    private boolean forceReload = true;
+
     private String current_filter = null;
     public EventsLogic(TfgEvents events) {
         this.events = events;
@@ -48,8 +55,6 @@ public class EventsLogic implements FragmentHolderLogic {
         recyclerView = (RecyclerView) view.findViewById(R.id.events_recylcerview);
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.base_refreshLayout);
 
-        adapter = new RecylcerEventsAdapter(context);
-        recyclerView.setAdapter(adapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -57,6 +62,7 @@ public class EventsLogic implements FragmentHolderLogic {
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                layoutState = recyclerView.getLayoutManager().onSaveInstanceState();
                 if (dy > 2) {
                     ((MainActivity) context).getToolbarManager().hideFab();
                 } else if (dy < -2) {
@@ -76,11 +82,24 @@ public class EventsLogic implements FragmentHolderLogic {
     }
 
     private void display() {
-        adapter = new RecylcerEventsAdapter(context);
-        recyclerView.setAdapter(adapter);
+        if (!forceReload && adapter != null) {
+            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
+            recyclerView.getLayoutManager().onRestoreInstanceState(layoutState);
+            return;
+        }
+
+        forceReload = false;
+
+        if (adapter == null) {
+            adapter = new RecylcerEventsAdapter(context);
+        }
+        Parcelable state = recyclerView.getLayoutManager().onSaveInstanceState();
+        adapter.clear();
         for (TfgEventsEntry entry : this.events.filter(this.current_filter)) {
             adapter.addItem(entry);
         }
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         //TabLayout.Tab tab = getTab();
         ViewPager pager = (ViewPager)((MainActivity)context).findViewById(R.id.tfg_pager);
@@ -88,6 +107,7 @@ public class EventsLogic implements FragmentHolderLogic {
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(pager);
         }
+        recyclerView.getLayoutManager().onRestoreInstanceState(state);
         /*
         if (tab != null) {
             //tab.setText("Test, sas  - asd");
@@ -107,6 +127,7 @@ public class EventsLogic implements FragmentHolderLogic {
     }
 
     private void loadEvents(boolean reload) {
+        forceReload = reload;
         refreshLayout.setRefreshing(true);
         this.events.load(new SuccessCallback() {
             @Override
