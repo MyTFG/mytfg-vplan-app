@@ -308,7 +308,7 @@
 
     <!-- SHOWCASE TEXTS & TITLES -->
     <string name="sc_home_navi_title">Navigation</string>
-    <string name="sc_home_navi_text">Klicken Sie zum Öffnen der Navigation hier</string>
+    <string name="sc_home_navi_text">Klicken Sie zum Öffnen der Navigation hier oder wischen Sie vom linken Rand Ihres Gerätes</string>
     <string name="sc_home_news">Aktuelles vom TFG</string>
     <string name="sc_home_news_text">Aktuelle News vom TFG - Ankündigungen, Projekte und mehr!</string>
     <string name="sc_home_events">TFG Kalender</string>

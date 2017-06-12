@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -198,7 +199,7 @@ public class TfgFragment extends AuthenticationFragment {
         Handler handler = new Handler();
         handler.postDelayed(runnable, 10);
 
-        //showcase();
+        showcase();
     }
 
 
@@ -229,12 +230,15 @@ public class TfgFragment extends AuthenticationFragment {
 
         ToolbarManager tbm = ((MainActivity)getActivity()).getToolbarManager();
 
-        Target tab1 = new CustomViewTarget(tbm.getTabs(), 0.25, 0.5);
-        Target tab2 = new CustomViewTarget(tbm.getTabs(), 0.75, 0.5);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+            && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+
+            // Don't show the navigation hint on large landscape devices (tablets)
+            return;
+        }
 
         scm.createChain(this)
-                .add(tab1, R.string.sc_home_news, R.string.sc_home_news_text)
-                .add(tab2, R.string.sc_home_events, R.string.sc_home_events_text)
+                .add(new CustomViewTarget(tbm.getToolbar(), 50, 0, CustomViewTarget.Type.ABS_MID_L), R.string.sc_home_navi_title, R.string.sc_home_navi_text)
                 .showChain();
     }
 
