@@ -258,11 +258,15 @@
 
     <!-- Boosters -->
     <string name="boosters_text">
-        Die Vereinigung der Freunde des Theodor-Fliedner-Gymnasiums e.V. (Förderverein des TFG, Düsseldorf) besteht seit 1956 und
-        ist unverzichtbarer Teil unseres aktiven Schullebens.
-        \nDie konkreten Ziele und Aufgaben des Fördervereins ergeben sich aus § 2 der Satzung des Fördervereins.
-        \nDer Förderverein unterstützt große und kleine Projekte an der Schule sowie Initiativen der Elternschaft und der Schüler,
-        die aus den Fördertöpfen des Schulträgers oder der Schulstiftung nicht bedient werden können.
+        Der Förderverein, gegründet 1956, ist ein unverzichtbarer Teil unseres Schullebens.
+        \nEine Vielzahl von kleinen und größeren Projekten konnten durch den Förderverein bereits an unserer Schule realisiert werden,
+        die über die reguläre Unterrichtsausstattung hinausgehen und die aus den Fördertöpfen des Schulträgers oder der Schulstiftung
+        nicht bedient werden können. Unterstützt werden alle Bereiche des schulischen Alltags.
+        \nGerne können auch Sie sich mit Ideen und Vorschlägen einbringen. Sie erreichen uns unter info@tfg-foerderverein.de
+        \n
+        \nSie sind noch kein Mitglied? Besuchen Sie unsere Homepage tfg-foerderverein.de! Dort können Sie sich eine Beitrittserklärung herunterladen.
+        \n
+        \nWir freuen uns auf Sie!
     </string>
     <string name="boosters_address">Address</string>
     <string name="boosters_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
@@ -270,6 +274,9 @@
     <string name="boosters_web_val">tfg-foerderverein.de</string>
     <string name="boosters_mail">Mail</string>
     <string name="boosters_mail_val">info@tfg-foerderverein.de</string>
+    <string name="boosters_dl">Declaration of Accession</string>
+    <string name="boosters_dl_val">Download (PDF)</string>
+    <string name="boosters_dl_url" formatted="false">https://www.tfg-foerderverein.de/app/download/19660868/Beitrittserklärung+Förderverein+des+Theodor-Fliedner-Gymnasiums.pdf</string>
 
     <!-- FEEDBACK -->
     <string name="feedback_hint_title">Provide Feedback</string>

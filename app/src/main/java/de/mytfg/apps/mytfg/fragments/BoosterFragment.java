@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.fragments;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
@@ -83,6 +84,17 @@ public class BoosterFragment extends AuthenticationFragment {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SENDTO);
                 i.setData(Uri.parse("mailto:" + getString(R.string.boosters_mail_val)));
+                startActivity(i);
+            }
+        });
+
+
+        CardView pdf = (CardView) view.findViewById(R.id.boosters_pdf);
+        pdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(getString(R.string.boosters_dl_url)));
                 startActivity(i);
             }
         });
