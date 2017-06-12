@@ -195,11 +195,10 @@ public class NewsDetailFragment extends AuthenticationFragment {
                             return;
                         }
                         ViewCompat.setTransitionName(view, "image_" + flipper.getChildCount() + "_" + unique);
-                        view.setOnTouchListener(new View.OnTouchListener() {
+                        view.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public boolean onTouch(View view, MotionEvent event) {
+                            public void onClick(View view) {
                                 enlargeImage(view);
-                                return true;
                             }
                         });
                         flipper.addView(view);
