@@ -5,6 +5,8 @@
     <string name="news_failed">News konnten nicht geladen werden</string>
     <string name="firebase_failed">Could not update Firebase Token</string>
 
+    <string name="chooser_title">Wie wollen Sie diese Datei öffnen?</string>
+
     <!-- Dialogs -->
     <string name="please_wait">Bitte warten</string>
     <string name="login_process">Sie werden eingeloggt&#8230;</string>

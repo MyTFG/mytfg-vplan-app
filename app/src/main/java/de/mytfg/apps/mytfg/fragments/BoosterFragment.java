@@ -95,6 +95,8 @@ public class BoosterFragment extends AuthenticationFragment {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(getString(R.string.boosters_dl_url)));
+                //i.setType("application/pdf");
+                //Intent choose = Intent.createChooser(i, getString(R.string.chooser_title));
                 startActivity(i);
             }
         });

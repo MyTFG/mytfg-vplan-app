@@ -4,6 +4,8 @@
     <string name="drawer_close">Close Navigation</string>
     <string name="firebase_failed">Could not update Firebase Token</string>
 
+    <string name="chooser_title">Choose what to do</string>
+
     <!-- Dialogs -->
     <string name="please_wait">Please wait</string>
     <string name="login_process">Logging in&#8230;</string>
