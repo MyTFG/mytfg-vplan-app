@@ -143,6 +143,50 @@
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/link_tfg_exams"
+            android:padding="@dimen/cardview_spacing"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginBottom="@dimen/cardview_spacing">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/cardview_spacing"
+                android:background="@color/colorPrimaryLight">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_gravity="start"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/ic_icon_download"
+                    android:layout_marginRight="@dimen/cardview_default_radius" />
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/link_examplan" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_action_open_link"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

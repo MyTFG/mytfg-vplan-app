@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/plan_search"
+        android:visible="false"
+        app:showAsAction="collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/show_exam_title"
+        android:icon="@drawable/ic_show_marquee"
+        android:title="@string/exams_show_title"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/show_exams"
+        android:icon="@drawable/ic_menu_download"
+        android:title="@string/plan_show_exam"
+        app:showAsAction="ifRoom" />
+</menu>

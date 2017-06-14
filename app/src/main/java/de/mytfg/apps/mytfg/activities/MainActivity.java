@@ -18,10 +18,12 @@ import de.mytfg.apps.mytfg.fragments.AbbreviationsFragment;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
 import de.mytfg.apps.mytfg.fragments.BoosterFragment;
+import de.mytfg.apps.mytfg.fragments.ExamFragment;
 import de.mytfg.apps.mytfg.fragments.FeedbackFragment;
 import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
+import de.mytfg.apps.mytfg.fragments.PagesFragment;
 import de.mytfg.apps.mytfg.fragments.ParentsFragment;
 import de.mytfg.apps.mytfg.fragments.SettingsFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
@@ -83,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
                         //navi.clear();
                         navi.navigate(new PlanFragment(), R.id.fragment_container);
                         return true;
+                    case R.id.mainmenu_exams:
+                        //navi.clear();
+                        navi.navigate(new ExamFragment(), R.id.fragment_container);
+                        return true;
                     case R.id.mainmenu_vrr:
                         //navi.clear();
                         navi.navigate(new VrrFragment(), R.id.fragment_container);
@@ -112,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.mainmenu_links:
                         //navi.clear();
                         navi.navigate(new LinksFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.mainmenu_pages:
+                        //navi.clear();
+                        navi.navigate(new PagesFragment(), R.id.fragment_container);
                         return true;
                     case R.id.submenu_partners_secretary:
                         //navi.clear();

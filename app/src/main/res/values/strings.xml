@@ -19,6 +19,7 @@
     <string name="menutitle_calendar">Calendar</string>
     <string name="menutitle_tfg">TFG</string>
     <string name="menutitle_plan">Plan</string>
+    <string name="menutitle_exams">Exams</string>
     <string name="menutitle_vrr">VRR</string>
     <string name="menutitle_partners">Partners</string>
     <string name="menutitle_login">Login</string>
@@ -35,6 +36,7 @@
     <string name="menutitle_secretary">Office</string>
     <string name="menutitle_foundation">Schulstiftung</string>
     <string name="menutitle_links">Links</string>
+    <string name="menutitle_pages">MyTFG Pages</string>
     <string name="menutitle_abbreviations">Abbreviations</string>
 
     <!-- HOME -->
@@ -75,6 +77,7 @@
     <string name="plan_show_marquee">Show announcements</string>
     <string name="plan_show_absent">Show absent teachers</string>
     <string name="plan_show_time">Show Update time</string>
+    <string name="plan_show_exam">Show Exams as PDF</string>
     <string name="plan_absent">Absent teachers</string>
     <string name="plan_marquee">Announcements</string>
     <string name="plan_time">Last Update</string>
@@ -85,6 +88,18 @@
     <string name="plan_no_teachers">No absent teachers</string>
     <string name="plan_no_update">Unknown</string>
     <string name="plan_empty">No entries present</string>
+
+    <!-- EXAMS -->
+    <string name="exams_tab_title">Grade %s</string>
+    <string name="exam_rescheduled">Canceled / Rescheduled</string>
+    <string name="exams_show_title">Show Infos</string>
+    <string name="exams_info">Exam Info</string>
+    <string name="exams_not_loaded">Exams not yet loaded</string>
+
+    <!-- PAGES -->
+    <string name="page_datapolicy">Datapolicy</string>
+    <string name="page_faq">MyTFG FAQ</string>
+    <string name="page_changelog">App Changelog</string>
 
     <!-- API CODES -->
     <string name="api_offline">No Internet connection</string>
@@ -149,6 +164,7 @@
         <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
         <item>@string/menutitle_vrr</item>
+        <item>@string/menutitle_exams</item>
         <item>@string/menutitle_abbreviations</item>
         <item>@string/menutitle_boosters</item>
         <item>@string/menutitle_parents</item>
@@ -159,6 +175,7 @@
         <item>TfgFragment</item>
         <item>PlanFragment</item>
         <item>VrrFragment</item>
+        <item>ExamFragment</item>
         <item>AbbreviationsFragment</item>
         <item>BoosterFragment</item>
         <item>ParentsFragment</item>
@@ -184,6 +201,7 @@
     <string name="about_permissions_text">
         Phone ID, Network, Storage
     </string>
+    <string name="about_version_string">Version %s</string>
 
     <!-- LINKS -->
     <string name="link_moodle">TFG Moodle</string>
@@ -192,6 +210,8 @@
     <string name="link_parents">TFG Eltern</string>
     <string name="link_boosters">TFG Förderverein</string>
     <string name="link_foundation">Schulstiftung</string>
+    <string name="link_examplan">Exams</string>
+    <string name="link_examplan_url" formatted="false">https://mytfg.de/api_exams_pdf.x</string>
 
     <!-- VRR -->
     <string name="vrr_dir_header">Direction</string>

@@ -9,8 +9,10 @@
             android:title="@string/menutitle_plan" />
         <item android:id="@+id/mainmenu_vrr"
             android:icon="@drawable/ic_menu_vrr"
-            android:title="@string/menutitle_vrr" >
-        </item>
+            android:title="@string/menutitle_vrr" />
+        <item android:id="@+id/mainmenu_exams"
+            android:icon="@drawable/ic_menu_exams_b"
+            android:title="@string/menutitle_exams" />
         <item android:id="@+id/mainmenu_more"
             android:icon="@drawable/ic_menu_more"
             android:title="@string/menutitle_more" >

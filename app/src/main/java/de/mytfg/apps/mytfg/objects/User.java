@@ -95,6 +95,19 @@ public class User extends MytfgObject {
         return grade;
     }
 
+    public int getGradeNum() {
+        String digits = getGrade().replaceAll("[^0-9]", "");
+        try {
+            int grade = Integer.valueOf(digits);
+            if (grade <= 12 && grade >= 5) {
+                return grade;
+            }
+        } catch (Exception ex) {
+            return -1;
+        }
+        return -1;
+    }
+
     public int getRights() {
         return rights;
     }

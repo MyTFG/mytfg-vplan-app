@@ -164,7 +164,7 @@ public class LoginFragment extends AuthenticationFragment {
 
     @Override
     public void onResume() {
-        showcase();
+        //showcase();
         super.onResume();
     }
 

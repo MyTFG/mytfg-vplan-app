@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import  de.mytfg.apps.mytfg.R;
@@ -71,6 +72,15 @@ public class AboutFragment extends AuthenticationFragment {
                 context.getNavi().navigate(fragment, R.id.fragment_container);
             }
         });
+
+        TextView version = (TextView) view.findViewById(R.id.about_version);
+        String versionName;
+        try {
+            versionName = getActivity().getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (Exception ex) {
+            versionName = "?";
+        }
+        version.setText(getString(R.string.about_version_string, versionName));
 
         return view;
     }

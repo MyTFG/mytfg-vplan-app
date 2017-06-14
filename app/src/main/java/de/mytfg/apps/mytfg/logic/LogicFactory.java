@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 import de.mytfg.apps.mytfg.objects.Abbreviations;
+import de.mytfg.apps.mytfg.objects.Exams;
 import de.mytfg.apps.mytfg.objects.TfgEvents;
 import de.mytfg.apps.mytfg.objects.TfgNews;
 import de.mytfg.apps.mytfg.objects.Vplan;
@@ -26,6 +27,9 @@ public class LogicFactory {
             case "AbbreviationLogic":
                 Abbreviations abbr = new Abbreviations(c, param);
                 return new AbbreviationLogic(abbr);
+            case "ExamLogic":
+                Exams exams = new Exams(c);
+                return new ExamLogic(exams, param);
         }
     }
 }

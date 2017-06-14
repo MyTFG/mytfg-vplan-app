@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 import de.mytfg.apps.mytfg.logic.AbbreviationLogic;
+import de.mytfg.apps.mytfg.logic.ExamLogic;
 import de.mytfg.apps.mytfg.logic.LogicFactory;
 import de.mytfg.apps.mytfg.logic.PlanLogic;
 
@@ -81,6 +82,8 @@ public class FragmentHolder extends Fragment {
             outState.putString("logicparam", ((PlanLogic)logic).getPlan().getDay());
         } else if (logic instanceof AbbreviationLogic) {
             outState.putString("logicparam", ((AbbreviationLogic)logic).getAbbreviations().getType());
+        } else if (logic instanceof ExamLogic) {
+            outState.putString("logicparam", ((ExamLogic)logic).getCls());
         }
         //logic.saveInstanceState();
     }

@@ -19,6 +19,7 @@
     <string name="menutitle_calendar">Kalender</string>
     <string name="menutitle_tfg">TFG</string>
     <string name="menutitle_plan">VPlan</string>
+    <string name="menutitle_exams">Klausurplan</string>
     <string name="menutitle_vrr">Fahrplan</string>
     <string name="menutitle_settings">Account &amp; Einstellungen</string>
     <string name="menutitle_login">Anmelden</string>
@@ -35,6 +36,7 @@
     <string name="menutitle_foundation">Schulstiftung</string>
     <string name="menutitle_partners">Partner</string>
     <string name="menutitle_links">Links</string>
+    <string name="menutitle_pages">MyTFG Seiten</string>
     <string name="menutitle_abbreviations">Abkürzungen</string>
 
     <!-- API CODES -->
@@ -94,6 +96,7 @@
     <string name="comment_header">Bemerkung</string>
     <string name="plan_show_marquee">Mitteilungen anzeigen</string>
     <string name="plan_show_absent">Abwesende Lehrer anzeigen</string>
+    <string name="plan_show_exam">Klausurplan als PDF</string>
     <string name="plan_absent">Abwesende Lehrer</string>
     <string name="plan_show_time">Zeige letzte Aktualisierung</string>
     <string name="plan_marquee">Mitteilungen</string>
@@ -105,6 +108,18 @@
     <string name="plan_no_teachers">Keine abwesenden Lehrer</string>
     <string name="plan_no_update">Unbekannt</string>
     <string name="plan_empty">Keine Einträge vorhanden</string>
+
+    <!-- EXAMS -->
+    <string name="exams_tab_title">Stufe %s</string>
+    <string name="exam_rescheduled">Annulliert / Verschoben</string>
+    <string name="exams_show_title">Weitere Informationen</string>
+    <string name="exams_info">Klausurplan Info</string>
+    <string name="exams_not_loaded">Klausurplan nicht geladen</string>
+
+    <!-- PAGES -->
+    <string name="page_datapolicy">Datenschutz</string>
+    <string name="page_faq">MyTFG FAQ</string>
+    <string name="page_changelog">App Changelog</string>
 
     <!-- Abbreviations -->
     <string name="abbr_failed">Abkürzungen konnten nicht geladen werden</string>
@@ -183,6 +198,7 @@
         \nNetzwerkverbindung (Internet): Um die Daten vom MyTFG Server abzurufen, ist selbstverständlich Zugriff auf die Internetverbindung notwendig.
         \nSpeicherzugriff: Anmeldedaten sowie abgerufene Inhalte werden lokal auf dem Gerät gespeichert (gecached), um den Datenverbrauch zu minimieren.
     </string>
+    <string name="about_version_string">Version %s</string>
 
     <!-- LINKS -->
     <string name="link_moodle">TFG Moodle</string>
@@ -191,6 +207,8 @@
     <string name="link_parents">TFG Eltern</string>
     <string name="link_boosters">TFG Förderverein</string>
     <string name="link_foundation">Schulstiftung</string>
+    <string name="link_examplan">Klausurplan</string>
+    <string name="link_examplan_url" formatted="false">https://mytfg.de/api_exams_pdf.x</string>
 
     <!-- VRR -->
     <string name="vrr_dir_header">Richtung</string>
@@ -348,6 +366,7 @@
         <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
         <item>@string/menutitle_vrr</item>
+        <item>@string/menutitle_exams</item>
         <item>@string/menutitle_abbreviations</item>
         <item>@string/menutitle_boosters</item>
         <item>@string/menutitle_parents</item>
@@ -358,6 +377,7 @@
         <item>TfgFragment</item>
         <item>PlanFragment</item>
         <item>VrrFragment</item>
+        <item>ExamFragment</item>
         <item>AbbreviationsFragment</item>
         <item>BoosterFragment</item>
         <item>ParentsFragment</item>

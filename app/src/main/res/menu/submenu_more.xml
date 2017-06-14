@@ -10,6 +10,10 @@
             android:icon="@drawable/ic_menu_links"
             android:title="@string/menutitle_links" >
         </item>
+        <item android:id="@+id/mainmenu_pages"
+            android:icon="@drawable/ic_menu_pages"
+            android:title="@string/menutitle_pages" >
+        </item>
         <item android:id="@+id/submenu_partners_boosters"
             android:icon="@drawable/ic_menu_boosters"
             android:title="@string/menutitle_boosters" />

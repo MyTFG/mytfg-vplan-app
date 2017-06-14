@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
+import de.mytfg.apps.mytfg.activities.PdfActivity;
 
 public class LinksFragment extends AuthenticationFragment {
     private final String mytfgUrl = "https://mytfg.de";
@@ -26,8 +27,10 @@ public class LinksFragment extends AuthenticationFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final String examUrl = getString(R.string.link_examplan_url);
+
         View view = inflater.inflate(R.layout.fragment_links, container, false);
-        MainActivity context = (MainActivity)this.getActivity();
+        final MainActivity context = (MainActivity)this.getActivity();
         setHasOptionsMenu(true);
         context.getToolbarManager()
                 .clear()
@@ -63,6 +66,16 @@ public class LinksFragment extends AuthenticationFragment {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(tfgUrl));
+                startActivity(i);
+            }
+        });
+
+        final CardView exam = (CardView) view.findViewById(R.id.link_tfg_exams);
+        exam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, PdfActivity.class);
+                i.putExtra("pdf_url", examUrl);
                 startActivity(i);
             }
         });
