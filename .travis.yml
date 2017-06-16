@@ -8,7 +8,7 @@ android:
     # The BuildTools version used by your project
     - build-tools-25.0.1
     # The SDK version used to compile your project
-    - android-25
+    - android-26
     # Additional components
     ## Google Cloud Messaging for Android Library
     - extra-google-gcm
