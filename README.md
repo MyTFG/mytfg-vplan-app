@@ -6,7 +6,7 @@ This is the official App of the Theodor-Fliedner-Gymnasium Düsseldorf.
 
 It uses the MyTFG API.
  
-![MyTFG Logo](https://mytfg.de/img/7/ball2-128.png) 
+![MyTFG Logo](https://mytfg.de/img/7/ball-128.png) 
 
 MyTFG is accessible via [MyTFG.de](https://mytfg.de).
 
