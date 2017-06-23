@@ -2,12 +2,14 @@ package de.mytfg.apps.mytfg.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -161,6 +163,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (type != null ? type : "") {
                     case "vplan_update":
                         fragment = new PlanFragment();
+                        break;
+                    case "show_message":
+                        fragment = new TfgFragment();
+                        AlertDialog.Builder notify = new AlertDialog.Builder(context);
+                        notify.setTitle(intent.getExtras().getString("title"));
+                        notify.setMessage(intent.getExtras().getString("text"));
+                        notify.setIcon(R.drawable.tfg2_round);
+                        notify.show();
                         break;
                     default:
                         break;

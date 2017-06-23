@@ -232,7 +232,7 @@
     <string name="office_fax">Fax</string>
     <string name="office_mail">E-Mail</string>
     <string name="office_open">Öffnungszeiten</string>
-    <string name="office_open_val">8:00 bis 16:00 Uhr</string>
+    <string name="office_open_val">8:00 bis 10:45 und 11:15 bis 14:30 Uhr</string>
     <string name="office_address_val">Kalkumer Schloßallee 28\n40489 Düsseldorf</string>
     <string name="office_phone_val">0211/9405701</string>
     <string name="office_fax_val">0211/9405747</string>

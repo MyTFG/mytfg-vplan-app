@@ -239,7 +239,7 @@
     <string name="office_mail">Mail</string>
     <string name="office_mail_val">mail@tfg-duesseldorf.de</string>
     <string name="office_open">Opening times</string>
-    <string name="office_open_val">8am to 4pm</string>
+    <string name="office_open_val">8am to 10.45 and 11.15am to 2.30pm</string>
 
     <!-- PARENT -->
     <string name="parents_address">Address</string>
