@@ -77,7 +77,7 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="20dp"
                     android:scaleType="fitEnd"
-                    android:src="@drawable/ic_menu_moodle"
+                    android:src="@mipmap/moodle"
                     android:layout_marginRight="@dimen/cardview_default_radius" />
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="20dp"
                     android:scaleType="fitEnd"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@mipmap/tfg_ugly"
                     android:layout_marginRight="@dimen/cardview_default_radius" />
 
                 <TextView
@@ -165,7 +165,7 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="20dp"
                     android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_download"
+                    android:src="@mipmap/exams"
                     android:layout_marginRight="@dimen/cardview_default_radius" />
 
                 <TextView
