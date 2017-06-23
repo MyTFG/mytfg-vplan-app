@@ -96,6 +96,9 @@ public class User extends MytfgObject {
     }
 
     public int getGradeNum() {
+        if (getGrade() == null) {
+            return -1;
+        }
         String digits = getGrade().replaceAll("[^0-9]", "");
         try {
             int grade = Integer.valueOf(digits);
