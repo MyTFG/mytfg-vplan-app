@@ -91,6 +91,9 @@ public class ExamLogic implements FragmentHolderLogic {
 
     private void display() {
         adapter = new RecylcerExamsAdapter(context);
+        if (recyclerView == null) {
+            return;
+        }
         recyclerView.setAdapter(adapter);
         Map<String, List<ExamEntry>> map = this.exams.filter(this.current_filter);
         List<ExamEntry> examEntries = new LinkedList<>();
