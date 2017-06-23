@@ -167,11 +167,13 @@ public class EventsLogic implements FragmentHolderLogic {
 
     public void filter(String filter) {
         this.current_filter = filter;
+        forceReload = true;
         this.display();
     }
 
     public void resetFilter() {
         this.current_filter = null;
+        forceReload = true;
         this.display();
     }
 
