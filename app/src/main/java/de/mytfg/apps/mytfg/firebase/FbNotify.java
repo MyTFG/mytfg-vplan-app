@@ -41,7 +41,7 @@ public class FbNotify {
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         c,
-                        0,
+                        nextId,
                         resultIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
@@ -74,7 +74,7 @@ public class FbNotify {
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         c,
-                        0,
+                        id,
                         resultIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
