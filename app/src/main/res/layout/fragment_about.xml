@@ -49,7 +49,7 @@
                     android:layout_marginEnd="@dimen/cardview_default_radius"
                     android:layout_marginBottom="@dimen/cardview_default_radius"
                     android:scaleType="fitEnd"
-                    android:src="@mipmap/mytfg"
+                    android:src="@mipmap/mytfg_text"
                     android:id="@+id/mytfg"
                     android:layout_marginRight="@dimen/cardview_default_radius" />
             </LinearLayout>
