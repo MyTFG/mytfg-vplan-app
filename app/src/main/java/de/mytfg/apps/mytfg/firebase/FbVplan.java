@@ -6,11 +6,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +32,10 @@ class FbVplan {
     void handle(Map<String, String> data) {
         MyTFGApi api = new MyTFGApi(context);
         if (!api.isLoggedIn()) {
+            Log.d("FbVplan", "Not logged in");
             return;
         }
+        Log.d("FbVplan", "logged in");
 
         String date = data.get("date");
         String day = data.get("daystr");
@@ -50,7 +54,8 @@ class FbVplan {
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
-        List<String> subscribtions = api.getAdditionalClasses();
+        List<String> subscribtionsDefault = api.getAdditionalClasses();
+        List<String> subscribtions = new LinkedList<>();
         String userclass = api.getUser().getGrade();
         int userrights = api.getUser().getRights();
         String text = "";
@@ -91,6 +96,8 @@ class FbVplan {
         extras.putStringArrayList("teachers", teachers);
         extras.putStringArrayList("classes", classes);
 
+        Log.d("FbVplan", "Userrights: " + userrights);
+        Log.d("FbVplan", "Userclass: " + userclass);
 
         switch (userrights) {
             case User.USER_RIGHTS_ADMIN:
@@ -107,7 +114,14 @@ class FbVplan {
                     text = "Änderungen, die " + api.getUser().getFirstname() + " " + api.getUser().getLastname() + " betreffen!";
                 }
             default:
-                subscribtions.add(userclass);
+                subscribtionsDefault.add(userclass);
+                for (String sub : subscribtionsDefault) {
+                    if (sub.charAt(0) == '0') {
+                        subscribtions.add(sub.substring(1));
+                    } else {
+                        subscribtions.add(sub);
+                    }
+                }
                 classes.retainAll(subscribtions);
                 String text2 = "";
                 if (classes.size() > 0) {
@@ -121,6 +135,7 @@ class FbVplan {
                         t += "\n" + text2;
                     }
                 }
+                Log.d("FbVPlan", t);
                 if (t.length() > 0) {
                     FbNotify.notifyVplan(context, "MyTFG VPlan für " + datestr, t, day, nextId, extras);
                 }

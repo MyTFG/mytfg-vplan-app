@@ -28,6 +28,10 @@ public class FbMessagingService extends FirebaseMessagingService {
                         FbVplan fbVplan = new FbVplan(this);
                         fbVplan.handle(data);
                         break;
+                    case "message":
+                        FbMessage fbMessage = new FbMessage(this);
+                        fbMessage.handle(data);
+                        break;
                 }
             }
         }

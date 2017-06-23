@@ -31,6 +31,8 @@ public class FbApi {
         FbApi fbApi = new FbApi(context);
         FirebaseMessaging.getInstance().subscribeToTopic("tfg_news");
         FirebaseMessaging.getInstance().subscribeToTopic("tfg_events");
+        // Manual messages send from MyTFG
+        FirebaseMessaging.getInstance().subscribeToTopic("mytfg_messages");
 
         if (!api.isLoggedIn()) {
             return;
