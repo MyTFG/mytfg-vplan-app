@@ -110,7 +110,9 @@ public class MyTFGApi {
         Set<String> set = preferences.getStringSet("additional_classes", new android.support.v4.util.ArraySet<String>());
         List<String> list = new LinkedList<>();
         for (String cls : set) {
-            list.add(cls);
+            if (cls != null) {
+                list.add(cls);
+            }
         }
         return list;
     }
@@ -118,7 +120,9 @@ public class MyTFGApi {
     public void setAdditionalClasses(List<String> classes) {
         Set<String> classSet = new android.support.v4.util.ArraySet<>(classes.size());
         for (String cls : classes) {
-            classSet.add(cls);
+            if (cls != null) {
+                classSet.add(cls);
+            }
         }
         SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
