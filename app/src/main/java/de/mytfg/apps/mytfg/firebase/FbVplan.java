@@ -116,6 +116,9 @@ class FbVplan {
             default:
                 subscribtionsDefault.add(userclass);
                 for (String sub : subscribtionsDefault) {
+                    if (sub == null || sub.length() == 0) {
+                        continue;
+                    }
                     if (sub.charAt(0) == '0') {
                         subscribtions.add(sub.substring(1));
                     } else {
