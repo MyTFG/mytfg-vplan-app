@@ -17,6 +17,11 @@
             android:layout_height="wrap_content"
             android:text="@string/parents_info_text"/>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/foundation_header"/>
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
