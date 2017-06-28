@@ -366,7 +366,7 @@ public class MyTFGApi {
                 Log.e("API", "Malformed URL: " + ex.getMessage());
                 return null;
             } catch (Exception ex) {
-                Log.e("API Exception", ex.getMessage());
+                Log.e("API Exception", ex.getMessage() == null ? "" : ex.getMessage());
                 return null;
             }
         }
