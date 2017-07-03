@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.activities.PdfActivity;
 
 public class LinksFragment extends AuthenticationFragment {
     private final String mytfgUrl = "https://mytfg.de";
@@ -74,8 +73,8 @@ public class LinksFragment extends AuthenticationFragment {
         exam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, PdfActivity.class);
-                i.putExtra("pdf_url", examUrl);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(examUrl));
                 startActivity(i);
             }
         });

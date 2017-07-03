@@ -1,7 +1,5 @@
 package de.mytfg.apps.mytfg.fragments;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.activities.PdfActivity;
 
 public class PagesFragment extends AuthenticationFragment {
     public PagesFragment() {

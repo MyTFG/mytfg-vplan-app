@@ -72,7 +72,6 @@ public class Exams extends MytfgObject {
         // Otherwise request new data
         MyTFGApi api = new MyTFGApi(context);
         ApiParams params = new ApiParams();
-        api.addAuth(params);
         api.call("api_exams_linear", params, new ApiCallback() {
             @Override
             public void callback(JSONObject result, int responseCode) {

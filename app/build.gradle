@@ -7,8 +7,8 @@ android {
         applicationId "de.mytfg.apps.mytfg"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 25
-        versionName "0.9.3b"
+        versionCode 26
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -35,7 +35,6 @@ dependencies {
     compile 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
-    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
     testCompile 'junit:junit:4.12'
 }
 

@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -24,7 +25,6 @@ import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.activities.PdfActivity;
 import de.mytfg.apps.mytfg.adapters.FragmentHolder;
 import de.mytfg.apps.mytfg.adapters.ViewPagerAdapter;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
@@ -214,9 +214,9 @@ public class PlanFragment extends AuthenticationFragment {
                 timeDlg.show();
                 return true;
             case R.id.show_exams:
-                Intent intent = new Intent(context, PdfActivity.class);
-                intent.putExtra("pdf_url", getString(R.string.link_examplan_url));
-                startActivity(intent);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(getString(R.string.link_examplan_url)));
+                startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);

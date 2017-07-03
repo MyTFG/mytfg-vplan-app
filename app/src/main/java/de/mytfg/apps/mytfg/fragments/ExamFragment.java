@@ -1,18 +1,16 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,23 +18,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.amlcurran.showcaseview.targets.Target;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
-
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.activities.PdfActivity;
 import de.mytfg.apps.mytfg.adapters.FragmentHolder;
 import de.mytfg.apps.mytfg.adapters.ViewPagerAdapter;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.logic.ExamLogic;
-import de.mytfg.apps.mytfg.logic.PlanLogic;
 import de.mytfg.apps.mytfg.objects.Exams;
-import de.mytfg.apps.mytfg.objects.User;
-import de.mytfg.apps.mytfg.objects.Vplan;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
-import de.mytfg.apps.mytfg.tools.CustomViewTarget;
-import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class ExamFragment extends AuthenticationFragment {
     private View view;
@@ -57,7 +45,7 @@ public class ExamFragment extends AuthenticationFragment {
 
     @Override
     public boolean needsAuthentication() {
-        return true;
+        return false;
     }
 
     @Nullable
@@ -151,9 +139,9 @@ public class ExamFragment extends AuthenticationFragment {
 
         switch (item.getItemId()) {
             case R.id.show_exams:
-                Intent intent = new Intent(context, PdfActivity.class);
-                intent.putExtra("pdf_url", getString(R.string.link_examplan_url));
-                startActivity(intent);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(getString(R.string.link_examplan_url)));
+                startActivity(i);
                 return true;
             case R.id.show_exam_title:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
