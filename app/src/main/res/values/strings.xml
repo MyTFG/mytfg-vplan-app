@@ -275,7 +275,13 @@
 
     <!-- PARENTS -->
     <string name="parents_info_text">
-        Sorry, not available in English.
+        Die Elternarbeit am TFG wird geprägt durch die Vertreter der einzelnen Klassen- und Jahrgangsstufen,
+        die durchschnittlich mit 90 Personen den Kreis der Schulpflegschaft bilden.
+        \nDie dreimal pro Jahr stattfindenden Schulpflegschaftssitzungen sind das Informationsforum,
+        in dem schulübergreifende Themen vorgestellt und diskutiert sowie Wünsche und Bedürfnisse aus
+        den Klassen und Jahrgangsstufen gesammelt werden, die dann ggf. zu Anträgen führen,
+        die in der Schulkonferenz - dem paritätisch besetzten obersten Entscheidungsgremium der Schule -
+        zur Abstimmung gestellt werden.
     </string>
 
     <!-- Boosters -->
@@ -303,7 +309,11 @@
     <!-- FEEDBACK -->
     <string name="feedback_hint_title">Provide Feedback</string>
     <string name="feedback_hint_text">
-        Please give some feedback.
+        Please give some feedback how we could improve this App.
+        \n We need your feedback to find and fix bugs and to learn about the features you would like this App to have.
+        \n The information will be transmitted anonymously, however, to allow us to contact you in case we have any questions,
+        we would also like you to give your name and your E-Mail address.
+        \n Thank you for helping us!
     </string>
     <string name="feedback_form_title">Feedback</string>
     <string name="feedback_form_name">Name (optional)</string>
