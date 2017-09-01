@@ -209,9 +209,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        getSupportFragmentManager().putFragment(outState,
-                "fragmentInstanceSaved",
-                getSupportFragmentManager().findFragmentById(R.id.fragment_container));
+        if (getSupportFragmentManager().findFragmentById(R.id.fragment_container) != null) {
+            getSupportFragmentManager().putFragment(outState,
+                    "fragmentInstanceSaved",
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container));
+        }
     }
 
     @Override
