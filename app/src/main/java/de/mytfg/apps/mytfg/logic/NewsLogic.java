@@ -91,6 +91,9 @@ public class NewsLogic implements FragmentHolderLogic {
     }
 
     private void display() {
+        if (recyclerView == null) {
+            return;
+        }
         if (!forceReload && adapter != null) {
             Log.d("NEWS", "display alternative");
             Log.d("NEWS", "SCROLL " + recyclerView.getScrollState());
