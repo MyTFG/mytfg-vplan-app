@@ -201,7 +201,9 @@ public class VrrFragment extends AuthenticationFragment {
                     adapter.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(state);
                 } else {
-                    ((MainActivity)getActivity()).getNavi().snackbar(getString(R.string.api_vrr_error));
+                    if (getActivity() != null) {
+                        ((MainActivity) getActivity()).getNavi().snackbar(getString(R.string.api_vrr_error));
+                    }
                 }
             }
         }, true);
