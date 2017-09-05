@@ -10,6 +10,7 @@
     <!-- Dialogs -->
     <string name="please_wait">Bitte warten</string>
     <string name="login_process">Sie werden eingeloggt&#8230;</string>
+    <string name="login_deleted">Ihr Login ist abgelaufen</string>
     <string name="login_empty">Bitte Nutzernamen und Passwort angeben.</string>
     <string name="next_close">Drücken Sie den Zurück-Button zum Schließen erneut</string>
 
@@ -28,6 +29,7 @@
     <string name="menutitle_back">Zurück</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">Mehr</string>
+    <string name="menutitle_authmanage">Authentifizierungen</string>
 
     <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
@@ -132,11 +134,13 @@
         Sie sind angemeldet.&lt;br/>
         Ihr Nutzername ist &lt;b>%3$s&lt;/b>&lt;br/>
         Die Geräte-ID ist &lt;b>%4$s&lt;/b>&lt;br/>
-        Ihre Anmeldung ist gültig bis %5$s&lt;br/>
-        Ihr Berechtigungslevel ist &lt;b>%6$s&lt;/b>&lt;br/>
-        Ihre Klasse ist &lt;b>%7$s&lt;/b>
+        Der Geräte-Name ist &lt;b>%5$s&lt;/b>&lt;br/>
+        Ihre Anmeldung ist gültig bis %6$s&lt;br/>
+        Ihr Berechtigungslevel ist &lt;b>%7$s&lt;/b>&lt;br/>
+        Ihre Klasse ist &lt;b>%8$s&lt;/b>
     </string>
     <string name="logout_action">Abmelden</string>
+    <string name="manage_authentications">Logins verwalten</string>
     <string name="account_logged_out">Sie wurden ausgeloggt</string>
     <string name="account_additional_title">Zusätzliche Klassen</string>
     <string name="account_additional_select">Weitere Klassen wählen</string>
@@ -157,6 +161,16 @@
     <string name="account_process">Zusätzliche Klassen werden geladen</string>
     <string name="account_accept">Speichern</string>
     <string name="account_discard">Verwerfen</string>
+    <string name="account_wlan_title">WLAN "MyTFG"</string>
+    <string name="account_wlan_text">Verbinden Sie sich mit dem WLAN "MyTFG"
+    \nHinweis: Sie müssen sich in Reichweite des Netzwerks befinden!</string>
+    <string name="account_wlan_password">MyTFG Passwort</string>
+    <string name="account_wlan_username">MyTFG Nutzername</string>
+    <string name="account_wlan_connect">Speichern</string>
+    <string name="account_wlan_empty">Bitte füllen Sie beide Felder aus</string>
+    <string name="account_wlan_saved">WLAN MyTFG wurde eingerichtet. Sie können nun eine Verbindung herstellen.</string>
+    <string name="account_wlan_failed">Konfiguration des WLAN MyTFG fehlgeschlagen</string>
+    <string name="account_wlan_version">Diese Funktion steht erst ab Jelly Bean zur Verfügung</string>
 
     <!-- SETTING -->
     <string name="settings_general_title">Einstellungen</string>
@@ -165,6 +179,24 @@
     <string name="settings_opt_toolbar">Toolbar automatisch ausblenden</string>
     <string name="settings_opt_landing_page">Standardansicht</string>
 
+
+    <!-- Auth MANAGE -->
+    <string name="manage_authentications_active">Aktiv</string>
+    <string name="manage_authentications_timedout">Abgelaufen</string>
+    <string name="manage_authentications_timeout_at">Gütig bis %1$s</string>
+    <string name="manage_authentications_timedout_at">Abgelaufen am %1$s</string>
+    <string name="manage_authentications_lastused">Letzte Nutzung: %1$s</string>
+    <string name="manage_authentications_lastgeo">Letzter Ort: %1$s</string>
+    <string name="manage_authentications_lastip">Letzte IP: %1$s</string>
+    <string name="manage_authentications_this_device">Dieses Gerät</string>
+    <string name="manage_authentications_dlg_header">Authentifizierung verwalten</string>
+    <string name="manage_authentications_dlg_this_device">Um dieses Login zu löschen, loggen Sie sich aus der App aus</string>
+    <string name="manage_authentications_dlg_remove">Löschen</string>
+    <string name="manage_authentications_dlg_cancel">Abbrechen</string>
+    <string name="manage_authentications_dlg_remove_text">Möchten Sie diese Authentifizierung löschen?</string>
+    <string name="manage_authentications_process">Authentifizierung wird gelöscht…</string>
+    <string name="manage_authentications_remove_success">Erfolgreich gelöscht</string>
+    <string name="manage_authentications_remove_failed">Authentifizierung konnte nicht gelöscht werden</string>
 
     <!-- USER -->
     <string name="user_rights_norights">Nicht eingeloggt</string>
@@ -203,6 +235,7 @@
     <!-- LINKS -->
     <string name="link_moodle">TFG Moodle</string>
     <string name="link_mytfg">MyTFG</string>
+    <string name="link_mytfg_help">IT-Hilfe</string>
     <string name="link_tfgweb">TFG Web</string>
     <string name="link_parents">TFG Eltern</string>
     <string name="link_boosters">TFG Förderverein</string>

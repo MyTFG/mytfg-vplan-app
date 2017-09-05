@@ -1,9 +1,14 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiEnterpriseConfig;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -80,6 +86,7 @@ public class SettingsFragment extends AuthenticationFragment {
             details.setVisibility(View.VISIBLE);
             additional.setVisibility(View.VISIBLE);
             String device = api.getStoredDevice();
+            String deviceName = api.getDeviceName();
             //long expires = api.getExpire();
             String expire = api.getExpireString();
             final User user = api.getUser();
@@ -93,6 +100,7 @@ public class SettingsFragment extends AuthenticationFragment {
                             user.getLastname(),
                             user.getUsername(),
                             device,
+                            deviceName,
                             expire,
                             user.getLevel(),
                             user.getGrade()
@@ -118,6 +126,17 @@ public class SettingsFragment extends AuthenticationFragment {
                 }
             });
 
+            Button manageLogins = (Button) view.findViewById(R.id.authentications_button);
+            manageLogins.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.getNavi().navigate(
+                            new AuthmanageFragment(),
+                            R.id.fragment_container
+                    );
+                }
+            });
+
             updateAdditionalClasses();
         } else {
             login.setVisibility(View.VISIBLE);
@@ -130,6 +149,48 @@ public class SettingsFragment extends AuthenticationFragment {
                 }
             });
         }
+
+
+        Button wlan = view.findViewById(R.id.account_wlan_connect);
+        final EditText wlan_user_text = view.findViewById(R.id.account_wlan_username);
+        final EditText wlan_user_pw = view.findViewById(R.id.account_wlan_password);
+
+        wlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                    String user = wlan_user_text.getText().toString();
+                    String password = wlan_user_pw.getText().toString();
+                    if (user.length() == 0 || password.length() == 0) {
+                        context.getNavi().snackbar(context.getString(R.string.account_wlan_empty));
+                    } else {
+                        WifiConfiguration wfc = new WifiConfiguration();
+                        wfc.SSID = "\"MyTFG\"";
+                        wfc.status = WifiConfiguration.Status.DISABLED;
+                        wfc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_EAP);
+                        wfc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.IEEE8021X);
+                        wfc.enterpriseConfig.setIdentity(user);
+                        wfc.enterpriseConfig.setPassword(password);
+                        wfc.enterpriseConfig.setPhase2Method(WifiEnterpriseConfig.Phase2.MSCHAPV2);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            wfc.enterpriseConfig.setDomainSuffixMatch("mytfg.de");
+                        }
+                        wfc.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
+                        WifiManager wfMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                        int code = wfMgr.addNetwork(wfc);
+                        if (code != -1) {
+                            context.getNavi().snackbar(context.getString(R.string.account_wlan_saved));
+                            wlan_user_pw.setText("");
+                            wlan_user_text.setText("");
+                        } else {
+                            context.getNavi().snackbar(context.getString(R.string.account_wlan_failed));
+                        }
+                    }
+                } else {
+                    context.getNavi().snackbar(context.getString(R.string.account_wlan_version));
+                }
+            }
+        });
 
         updateSettings();
     }

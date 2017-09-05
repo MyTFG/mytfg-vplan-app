@@ -16,6 +16,7 @@ import de.mytfg.apps.mytfg.activities.MainActivity;
 
 public class LinksFragment extends AuthenticationFragment {
     private final String mytfgUrl = "https://mytfg.de";
+    private final String helpUrl = "https://help.mytfg.de";
     private final String moodleUrl = "https://tfgym-duesseldorf.lms.schulon.org/";
     private final String tfgUrl = "http://tfg-duesseldorf.de";
 
@@ -45,6 +46,17 @@ public class LinksFragment extends AuthenticationFragment {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(mytfgUrl));
+                startActivity(i);
+            }
+        });
+
+
+        CardView mytfgHelp = (CardView) view.findViewById(R.id.link_mytfg_help);
+        mytfgHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(helpUrl));
                 startActivity(i);
             }
         });

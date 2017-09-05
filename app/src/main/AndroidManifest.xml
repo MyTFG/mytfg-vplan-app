@@ -4,6 +4,7 @@
     package="de.mytfg.apps.mytfg">
 
     <!-- To perform API requests -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- To generate the Device ID -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

@@ -9,6 +9,7 @@
     <!-- Dialogs -->
     <string name="please_wait">Please wait</string>
     <string name="login_process">Logging in&#8230;</string>
+    <string name="login_deleted">Your Login has been removed</string>
     <string name="login_empty">Please enter username and password</string>
 
     <string name="next_close">Press back again to close the App</string>
@@ -29,6 +30,7 @@
     <string name="menutitle_back">Back</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">More</string>
+    <string name="menutitle_authmanage">Authentications</string>
 
     <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
@@ -128,11 +130,13 @@
         You are currently logged in.&lt;br/>
         Your username is &lt;b>%3$s&lt;/b>&lt;br/>
         The device ID is &lt;b>%4$s&lt;/b>&lt;br/>
-        Your login will expire at %5$s&lt;br/>
-        Your user level is &lt;b>%6$s&lt;/b>&lt;br/>
-        Your class is &lt;b>%7$s&lt;/b>
+        The device name is &lt;b>%5$s&lt;/b>&lt;br/>
+        Your login will expire at %6$s&lt;br/>
+        Your user level is &lt;b>%7$s&lt;/b>&lt;br/>
+        Your class is &lt;b>%8$s&lt;/b>
     </string>
     <string name="logout_action">Logout</string>
+    <string name="manage_authentications">Manage Logins</string>
     <string name="account_logged_out">You were logged out</string>
     <string name="account_additional_title">Additional classes</string>
     <string name="account_additional_select">Select additional classes</string>
@@ -153,6 +157,35 @@
     <string name="account_process">Additional classes are loading</string>
     <string name="account_accept">OK</string>
     <string name="account_discard">Discard</string>
+    <string name="account_wlan_title">WLAN "MyTFG"</string>
+    <string name="account_wlan_text">Connect to the WLAN "MyTFG"
+    \nNote: You have to be in range of the network!</string>
+    <string name="account_wlan_password">MyTFG Password</string>
+    <string name="account_wlan_username">MyTFG Username</string>
+    <string name="account_wlan_connect">Setup</string>
+    <string name="account_wlan_empty">Please provide username and password</string>
+    <string name="account_wlan_saved">WLAN MyTFG has been configured</string>
+    <string name="account_wlan_failed">Configuration of WLAN MyTFG failed</string>
+    <string name="account_wlan_version">This feature is available on Jelly Bean+ devices only</string>
+
+
+    <!-- Auth MANAGE -->
+    <string name="manage_authentications_active">Active</string>
+    <string name="manage_authentications_timedout">Timed Out</string>
+    <string name="manage_authentications_timeout_at">Valid until %1$s</string>
+    <string name="manage_authentications_timedout_at">Timed out on %1$s</string>
+    <string name="manage_authentications_lastused">Last Usage: %1$s</string>
+    <string name="manage_authentications_lastgeo">Last Location: %1$s</string>
+    <string name="manage_authentications_lastip">Last IP: %1$s</string>
+    <string name="manage_authentications_this_device">This Device</string>
+    <string name="manage_authentications_dlg_header">Manage Authentication</string>
+    <string name="manage_authentications_dlg_this_device">To delete this authentication, log out from this App</string>
+    <string name="manage_authentications_dlg_remove">Delete</string>
+    <string name="manage_authentications_dlg_cancel">Cancel</string>
+    <string name="manage_authentications_dlg_remove_text">Would you like to delete this authentication?</string>
+    <string name="manage_authentications_process">Deleting authentication…</string>
+    <string name="manage_authentications_remove_success">Successfully deleted</string>
+    <string name="manage_authentications_remove_failed">Failed to delete authentication</string>
 
     <!-- SETTING -->
     <string name="settings_general_title">Settings</string>
@@ -206,6 +239,7 @@
     <!-- LINKS -->
     <string name="link_moodle">TFG Moodle</string>
     <string name="link_mytfg">MyTFG</string>
+    <string name="link_mytfg_help">MyTFG Help</string>
     <string name="link_tfgweb">TFG Web</string>
     <string name="link_parents">TFG Eltern</string>
     <string name="link_boosters">TFG Förderverein</string>

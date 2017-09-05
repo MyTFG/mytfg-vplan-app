@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +38,7 @@ import javax.net.ssl.HttpsURLConnection;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.firebase.FbApi;
+import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.objects.Vplan;
 
@@ -151,6 +153,28 @@ public class MyTFGApi {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.startsWith(manufacturer)) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+
+    private String capitalize(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        char first = s.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
+        }
+    }
+
     public String getUsername() {
         SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getString("username", "");
@@ -185,12 +209,13 @@ public class MyTFGApi {
      * @param device The device ID
      * @param expire The expire date as Timestamp for the token
      */
-    public void saveLogin(String username, String token, String device, long expire) {
+    public void saveLogin(String username, String token, String device, String devicename, long expire) {
         SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
                 .putString("token", token)
                 .putString("username", username)
                 .putString("device", device)
+                .putString("devicename", devicename)
                 .putLong("expire", expire)
                 .apply();
     }
@@ -204,6 +229,7 @@ public class MyTFGApi {
         preferences.edit()
                 .remove("token")
                 .remove("device")
+                .remove("devicename")
                 .remove("expire")
                 .remove("additional_classes")
                 .apply();
@@ -231,7 +257,7 @@ public class MyTFGApi {
         if (params == null) {
             callback.callback(null, -1);
         } else {
-            new MyTFGApi.RequestTask(this.loadingBar, apiFunction, params, callback).addBody(body).execute("");
+            new MyTFGApi.RequestTask(this.loadingBar, apiFunction, params, callback).addBody(body).setContext(context).execute("");
         }
     }
 
@@ -285,6 +311,8 @@ public class MyTFGApi {
 
         private String baseUrl = "https://mytfg.de/";
 
+        private Context context;
+
         private int responseCode = -1;
         private String responseMessage = "";
         private JSONObject body;
@@ -297,6 +325,11 @@ public class MyTFGApi {
             if (loadingBar != null) {
                 loadingBar.setVisibility(View.VISIBLE);
             }
+        }
+
+        private RequestTask setContext(Context context) {
+            this.context = context;
+            return this;
         }
 
         private RequestTask addBody(JSONObject body) {
@@ -387,6 +420,30 @@ public class MyTFGApi {
             else
                 Log.d("API Result", result);
 
+            if (responseCode == 403) {
+                // Check for deleted login
+                try {
+                    boolean login_canceled = false;
+                    JSONObject tmp = new JSONObject(result);
+                    if (tmp.optString("login_error", "").equals("deleted")) {
+                        // Login deleted
+                        login_canceled = true;
+                    } else if (tmp.optString("login_error", "").equals("timedout")) {
+                        login_canceled = true;
+                    }
+                    if (login_canceled && context instanceof MainActivity) {
+                        MainActivity activity = (MainActivity)context;
+                        activity.getNavi().snackbar(context.getString(R.string.login_deleted));
+                        MyTFGApi api = new MyTFGApi(context);
+                        api.logout(false);
+                        activity.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
+                        return;
+                    }
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                    callback.callback(new JSONObject(), responseCode);
+                }
+            }
 
             if (result == null) {
                 callback.callback(new JSONObject(), responseCode);

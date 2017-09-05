@@ -3,6 +3,7 @@ package de.mytfg.apps.mytfg.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import de.mytfg.apps.mytfg.BuildConfig;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.ApiCallback;
@@ -91,6 +93,10 @@ public class LoginFragment extends AuthenticationFragment {
                     params.addParam("user", login);
                     params.addParam("password", password);
                     params.addParam("device", api.getDevice());
+                    params.addParam("deviceos", "android");
+                    params.addParam("deviceosversion", Build.VERSION.RELEASE);
+                    params.addParam("devicetype", "phone");
+                    params.addParam("devicename", api.getDeviceName());
                     api.call("api_auth_login", params, new ApiCallback() {
                         @Override
                         public void callback(JSONObject result, int responseCode) {
@@ -104,8 +110,9 @@ public class LoginFragment extends AuthenticationFragment {
                                     String uname = result.getString("username");
                                     String token = result.getString("token");
                                     String device = result.getString("device");
+                                    String devicename = result.getString("devicename");
                                     long expire = result.getLong("expires");
-                                    api.saveLogin(uname, token, device, expire);
+                                    api.saveLogin(uname, token, device, devicename, expire);
                                     User user = new User(context);
                                     JSONObject jsonuser = result.getJSONObject("user");
                                     if (!user.load(jsonuser)) {
