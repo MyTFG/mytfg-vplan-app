@@ -391,7 +391,7 @@ public class MyTFGApi {
                     return response;
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    Log.e("API IO", ex.getMessage());
+                    Log.e("API IO", ex.getMessage() == null ? "" : ex.getMessage());
                     return null;
                 }
             } catch (MalformedURLException ex) {

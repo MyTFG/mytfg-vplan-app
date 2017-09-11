@@ -18,6 +18,7 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +36,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.security.Key;
+import java.security.KeyStore;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -172,10 +180,50 @@ public class SettingsFragment extends AuthenticationFragment {
                         wfc.enterpriseConfig.setIdentity(user);
                         wfc.enterpriseConfig.setPassword(password);
                         wfc.enterpriseConfig.setPhase2Method(WifiEnterpriseConfig.Phase2.MSCHAPV2);
+                        wfc.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
+
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            // Set certificate: ISRG Root X1
+                            /*X509Certificate isrg = null;
+                            try {
+                                KeyStore keyStore = KeyStore.getInstance("AndroidCAStore");
+                                if (keyStore != null) {
+                                    keyStore.load(null, null);
+                                    Enumeration aliases = keyStore.aliases();
+                                    while (aliases.hasMoreElements()) {
+                                        String alias = (String) aliases.nextElement();
+                                        X509Certificate cert = (X509Certificate) keyStore.getCertificate(alias);
+                                        String dn = cert.getIssuerDN().getName();
+                                        String[] parts = dn.split(",");
+                                        for (String part : parts) {
+                                            String[] kv = part.split("=");
+                                            if (kv.length == 2) {
+                                                if (kv[0].equals("CN")) {
+                                                    if (kv[1].equals("ISRG Root X1")) {
+                                                        isrg = cert;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        if (isrg != null) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                if (isrg != null) {
+                                    wfc.enterpriseConfig.setCaCertificate(isrg);
+                                }
+                                wfc.enterpriseConfig.setDomainSuffixMatch("mytfg.de");
+                            } catch (Exception ex) {
+                                context.getNavi().snackbar(context.getString(R.string.account_wlan_failed));
+                                ex.printStackTrace();
+                                return;
+                            }*/
                             wfc.enterpriseConfig.setDomainSuffixMatch("mytfg.de");
                         }
-                        wfc.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
+
+
                         WifiManager wfMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                         int code = wfMgr.addNetwork(wfc);
                         if (code != -1) {

@@ -54,6 +54,7 @@ public class LoginFragment extends AuthenticationFragment {
         context.getToolbarManager()
                 .clear()
                 .setTitle(getString(R.string.menutitle_login))
+                .setImage(R.mipmap.header)
                 .setExpandable(true, true);
 
         MyTFGApi api = new MyTFGApi(context);

@@ -42,7 +42,7 @@
     <string name="menutitle_abbreviations">Abbreviations</string>
 
     <!-- HOME -->
-    <string name="home_status_title">MyTFG VPlan</string>
+    <string name="home_status_title">MyTFG</string>
     <string name="home_news">NEWS</string>
     <string name="home_status_not_loggedin">You are currently not logged in.\nTo use all features of this App please log in.</string>
     <string name="home_status_loggedin">
@@ -225,7 +225,7 @@
     <string name="user_rights_admin">Administrator</string>
 
     <!-- ABOUT -->
-    <string name="about_title">MyTFG VPlan</string>
+    <string name="about_title">MyTFG</string>
     <string name="about_text">This App uses the MyTFG API. All rights reserved.
         \nThe primary developer is Lennart Bader</string>
     <string name="about_opensource">Open Source</string>
