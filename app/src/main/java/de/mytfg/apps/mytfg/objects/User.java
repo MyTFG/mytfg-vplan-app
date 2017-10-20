@@ -21,6 +21,7 @@ public class User extends MytfgObject {
     private String firstname;
     private String lastname;
     private String grade;
+    private String usertype = null;
     private int rights;
 
     private Context context;
@@ -62,6 +63,7 @@ public class User extends MytfgObject {
             firstname = json.getString("firstname");
             lastname  = json.getString("lastname");
             grade     = json.getString("grade");
+            usertype  = json.getString("usertype");
             this.save(json);
             return true;
         } catch (JSONException ex) {
@@ -95,6 +97,10 @@ public class User extends MytfgObject {
         return grade;
     }
 
+    public String getUserType() {
+        return usertype;
+    }
+
     public int getGradeNum() {
         if (getGrade() == null) {
             return -1;
@@ -121,7 +127,11 @@ public class User extends MytfgObject {
             case USER_RIGHTS_NORIGHTS:
                 return context.getString(R.string.user_rights_norights);
             case USER_RIGHTS_PUPIL:
-                return context.getString(R.string.user_rights_pupil);
+                if (this.usertype == null || this.usertype.equals("pupil")) {
+                    return context.getString(R.string.user_rights_pupil);
+                } else {
+                    return context.getString(R.string.user_rights_parent);
+                }
             case USER_RIGHTS_TEACHER:
                 return context.getString(R.string.user_rights_teacher);
             case USER_RIGHTS_MANAGEMENT:

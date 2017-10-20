@@ -132,7 +132,7 @@
         The device ID is &lt;b>%4$s&lt;/b>&lt;br/>
         The device name is &lt;b>%5$s&lt;/b>&lt;br/>
         Your login will expire at %6$s&lt;br/>
-        Your user level is &lt;b>%7$s&lt;/b>&lt;br/>
+        Your user type is &lt;b>%7$s&lt;/b>&lt;br/>
         Your class is &lt;b>%8$s&lt;/b>
     </string>
     <string name="logout_action">Logout</string>
@@ -219,6 +219,7 @@
     <!-- USER -->
     <string name="user_rights_norights">Not logged in</string>
     <string name="user_rights_pupil">Pupil</string>
+    <string name="user_rights_parent">Parent</string>
     <string name="user_rights_teacher">Teacher</string>
     <string name="user_rights_management">Management</string>
     <string name="user_rights_system">System</string>

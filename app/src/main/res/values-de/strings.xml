@@ -136,7 +136,7 @@
         Die Geräte-ID ist &lt;b>%4$s&lt;/b>&lt;br/>
         Der Geräte-Name ist &lt;b>%5$s&lt;/b>&lt;br/>
         Ihre Anmeldung ist gültig bis %6$s&lt;br/>
-        Ihr Berechtigungslevel ist &lt;b>%7$s&lt;/b>&lt;br/>
+        Ihr Nutzertyp ist &lt;b>%7$s&lt;/b>&lt;br/>
         Ihre Klasse ist &lt;b>%8$s&lt;/b>
     </string>
     <string name="logout_action">Abmelden</string>
@@ -201,6 +201,7 @@
     <!-- USER -->
     <string name="user_rights_norights">Nicht eingeloggt</string>
     <string name="user_rights_pupil">Schüler</string>
+    <string name="user_rights_parent">Erziehungsberechtigte(r)</string>
     <string name="user_rights_teacher">Lehrer</string>
     <string name="user_rights_management">Verwaltung</string>
     <string name="user_rights_system">System</string>
