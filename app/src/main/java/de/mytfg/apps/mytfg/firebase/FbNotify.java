@@ -47,7 +47,7 @@ public class FbNotify {
                 );
 
         Bitmap icon = BitmapFactory.decodeResource(c.getResources(), R.mipmap.tfg2_round);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(c)
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(c, "channel_mytfg")
                 .setSmallIcon(R.drawable.tfg)
                 .addExtras(extras)
                 .setLargeIcon(icon)
@@ -80,7 +80,7 @@ public class FbNotify {
                 );
 
         Bitmap icon = BitmapFactory.decodeResource(c.getResources(), R.mipmap.tfg2_round);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(c)
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(c, "channel_mytfg")
                 .setSmallIcon(R.drawable.tfg)
                 .addExtras(extras)
                 .setLargeIcon(icon)

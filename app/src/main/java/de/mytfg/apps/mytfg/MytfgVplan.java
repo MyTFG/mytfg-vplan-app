@@ -1,9 +1,14 @@
 package de.mytfg.apps.mytfg;
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
+
 
 /**
  * The Application class. Handles ACRA.
@@ -22,5 +27,19 @@ public class MytfgVplan extends Application {
     public void onCreate() {
         ACRA.init(this);
         super.onCreate();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel();
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private void createNotificationChannel() {
+
+        NotificationChannel allChannel = new NotificationChannel(
+                "channel_mytfg", "MyTFG Channel", NotificationManager.IMPORTANCE_HIGH);
+
+
+        ((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+                .createNotificationChannel(allChannel);
     }
 }

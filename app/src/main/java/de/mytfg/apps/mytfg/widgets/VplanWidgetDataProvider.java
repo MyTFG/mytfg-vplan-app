@@ -60,6 +60,9 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public RemoteViews getViewAt(int position) {
+        if (mCollection.size() >= position) {
+            return null;
+        }
 
         VplanEntry entry = mCollection.get(position);
 

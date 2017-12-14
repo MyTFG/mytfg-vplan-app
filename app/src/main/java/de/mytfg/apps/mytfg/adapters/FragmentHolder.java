@@ -76,6 +76,9 @@ public class FragmentHolder extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        if (logic == null) {
+            return;
+        }
         outState.putString("logic", logic.getClass().getSimpleName());
         Log.d("FRAG", "type: " + logic.getClass().getSimpleName());
         if (logic instanceof PlanLogic) {

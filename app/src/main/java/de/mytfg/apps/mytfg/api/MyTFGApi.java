@@ -412,9 +412,6 @@ public class MyTFGApi {
                 loadingBar.setVisibility(View.GONE);
             }
 
-            // TODO: Remove this:
-            Log.d("API ResponseCode", "" + responseCode);
-            Log.d("API ResponseMsg ", responseMessage);
             if (result == null)
                 Log.d("API Result", "null");
             else
