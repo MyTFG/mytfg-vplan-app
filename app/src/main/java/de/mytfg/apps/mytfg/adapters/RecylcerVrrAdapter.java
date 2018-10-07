@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ public class RecylcerVrrAdapter extends RecyclerView.Adapter<VrrEntryHolder> {
         final TextView type = holder.getType();
         final TextView line = holder.getLine();
         final TextView arrival = holder.getArrival();
+        final FrameLayout typeFrame = holder.getTypeFrame();
 
         final String uniqueDirection = "direction_" + position + "_" + unique;
         final String uniquetypeImg = "typeImg" + position + "_" + unique;
@@ -64,6 +66,7 @@ public class RecylcerVrrAdapter extends RecyclerView.Adapter<VrrEntryHolder> {
         final String uniqueline = "line_" + position + "_" + unique;
         final String uniquearrival = "arrival_" + position + "_" + unique;
         final String uniqueCardview = "frame_" + position + "_" + unique;
+        final String uniquetypeFrame = "typeframe_" + position + "_" + unique;
 
         ViewCompat.setTransitionName(direction, uniqueDirection);
         ViewCompat.setTransitionName(cardView, uniqueCardview);
@@ -78,6 +81,7 @@ public class RecylcerVrrAdapter extends RecyclerView.Adapter<VrrEntryHolder> {
                 HashMap<String, Pair<String, View>> sharedElements = new HashMap<>();
                 sharedElements.put("direction", new Pair<String, View>(uniqueDirection, direction));
                 sharedElements.put("typeImg", new Pair<String, View>(uniquetypeImg, typeImg));
+                sharedElements.put("typeFrame", new Pair<String, View>(uniquetypeFrame, typeFrame));
                 sharedElements.put("type", new Pair<String, View>(uniquetype, type));
                 sharedElements.put("line", new Pair<String, View>(uniqueline, line));
                 sharedElements.put("arrival", new Pair<String, View>(uniquearrival, arrival));
