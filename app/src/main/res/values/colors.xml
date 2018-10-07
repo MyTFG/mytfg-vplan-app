@@ -17,12 +17,15 @@
 
     <color name="googleBackground">#F9F9F9</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
 
     <color name="colorDelay">#AA0000</color>
     <color name="colorRed">#aa0000</color>
     <color name="colorGreen">#00884b</color>
     <color name="colorBlue">#2d74da</color>
     <color name="colorYellow">#e3bc13</color>
+    <color name="colorAmber">#ff6f00</color>
+    <color name="colorOrange">#e65100</color>
 
     <color name="translucent_scrim_top">#AA000000</color>
     <color name="translucent_scrim_top_center">#66000000</color>

@@ -19,6 +19,7 @@ public class VplanEntry extends MytfgObject {
     private String comment;
     private String teacher;
     private String summary;
+    private String color;
 
 
     private boolean own;
@@ -58,6 +59,7 @@ public class VplanEntry extends MytfgObject {
             subst_text = data.getString("subst_text");
             plan_text = data.getString("plan_text");
             summary = data.getString("shortage");
+            color = data.getString("color");
         } catch (JSONException ex) {
             ex.printStackTrace();
             return false;
@@ -103,6 +105,10 @@ public class VplanEntry extends MytfgObject {
 
     public Vplan getVplan() {
         return day;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     /**

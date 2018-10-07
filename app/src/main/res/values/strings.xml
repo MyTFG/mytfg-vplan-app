@@ -40,6 +40,7 @@
     <string name="menutitle_links">Links</string>
     <string name="menutitle_pages">MyTFG Pages</string>
     <string name="menutitle_abbreviations">Abbreviations</string>
+    <string name="menutitle_lostandfound">Lost And Found</string>
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG</string>
@@ -110,6 +111,7 @@
     <string name="api_response">Invalid Server response</string>
     <string name="api_news_error">News could not be loaded</string>
     <string name="api_vrr_error">VRR Data could not be loaded</string>
+    <string name="api_laf_error">LostAndFound Entries could not be loaded</string>
 
     <!-- LOGIN -->
     <string name="login_title">MyTFG Login</string>

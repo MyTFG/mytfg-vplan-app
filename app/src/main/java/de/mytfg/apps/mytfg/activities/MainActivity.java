@@ -24,6 +24,7 @@ import de.mytfg.apps.mytfg.fragments.ExamFragment;
 import de.mytfg.apps.mytfg.fragments.FeedbackFragment;
 import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
+import de.mytfg.apps.mytfg.fragments.LostAndFoundFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
 import de.mytfg.apps.mytfg.fragments.PagesFragment;
 import de.mytfg.apps.mytfg.fragments.ParentsFragment;
@@ -144,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_abbreviations:
                         //navi.clear();
                         navi.navigate(new AbbreviationsFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_partners_lostandfound:
+                        //navi.clear();
+                        navi.navigate(new LostAndFoundFragment(), R.id.fragment_container);
                         return true;
                 }
             }
