@@ -39,15 +39,22 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:tint="@color/colorBlack"
-                    android:src="@drawable/ic_icon_donate"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_blue">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_donate_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -98,15 +105,22 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:tint="@color/colorBlack"
-                    android:src="@drawable/ic_icon_address"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_red">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_icon_address_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -158,15 +172,22 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_web"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_green">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_web_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -216,15 +237,22 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_phone"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_orange">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_phone_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -274,15 +302,22 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_mail"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_purple">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_mail_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -332,15 +367,22 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_open"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_indigo">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_open_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
