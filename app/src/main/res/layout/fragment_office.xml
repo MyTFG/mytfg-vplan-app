@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -39,6 +40,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:id="@+id/office_address">
 
             <LinearLayout
@@ -52,7 +54,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/circle_background_blue">
 
                     <ImageView
@@ -106,6 +107,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:id="@+id/office_phone">
 
             <LinearLayout
@@ -119,7 +121,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/circle_background_red">
 
                     <ImageView
@@ -174,6 +175,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:id="@+id/office_fax">
 
             <LinearLayout
@@ -187,7 +189,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/circle_background_green">
 
                     <ImageView
@@ -231,6 +232,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/office_mail">
 
@@ -245,7 +247,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/circle_background_orange">
 
                     <ImageView
@@ -298,6 +299,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/office_open">
 
@@ -312,7 +314,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/circle_background_purple">
 
                     <ImageView

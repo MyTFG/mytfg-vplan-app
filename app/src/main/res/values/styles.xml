@@ -15,6 +15,7 @@
         <item name="windowNoTitle">true</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="cardCornerRadius">8dp</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
@@ -68,6 +69,11 @@
 
     <style name="CustomText" parent="TextAppearance.ShowcaseView.Detail.Light">
         <item name="android:textColor">@color/colorIcons</item>
+    </style>
+
+    <style name="AppTheme.Base.CardViewStyle" parent="CardView">
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardElevation">2dp</item>
     </style>
 
     <style name="MyDialog" parent="Theme.AppCompat.Light.Dialog.Alert">

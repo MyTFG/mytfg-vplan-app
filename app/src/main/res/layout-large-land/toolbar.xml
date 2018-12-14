@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:layout_behavior="de.mytfg.apps.mytfg.tools.DisableableAppBarLayoutBehavior"
+    android:id="@+id/toolbarDefault"
+    android:paddingBottom="0dp">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:contentScrim="@color/colorPrimaryDark"
+        app:statusBarScrim="@color/colorPrimaryDark"
+        android:id="@+id/collapsingToolbarLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax"
+            android:id="@+id/toolbar_image"
+            android:src="@mipmap/front"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sheet_text_scrim_height_bottom"
+            android:layout_gravity="bottom"
+            android:id="@+id/toolbar_scrim_bottom"
+            android:layout_alignBottom="@+id/toolbar_image"
+            android:background="@drawable/scrim_bottom"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_marginRight="@dimen/defaultPadding"
+            android:layout_gravity="bottom|end"
+            android:scaleType="fitCenter"
+            android:id="@+id/toolbar_image_corner"
+            android:src="@drawable/schulstiftung_logo"/>
+
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:popupTheme="@style/AppTheme.Toolbar.Base"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_collapseMode="pin">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+    <android.support.design.widget.TabLayout android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:visibility="gone"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        android:theme="@style/AppTheme"
+        android:background="@color/colorPrimaryDark"
+        app:tabTextAppearance="@style/AppTheme.TabTextAppearance"
+        app:tabTextColor="@color/colorIconsDark"
+        app:tabSelectedTextColor="@color/colorIcons"
+        app:tabIndicatorColor="@color/colorAccent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+</android.support.design.widget.AppBarLayout>
