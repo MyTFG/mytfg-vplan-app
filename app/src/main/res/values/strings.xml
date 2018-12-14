@@ -235,6 +235,8 @@
     <string name="about_permissions_text">
         Phone ID, Network, Storage
     </string>
+    <string name="about_sponsoring">Sponsored by TFG-Förderverein</string>
+    <string name="about_sponsoring_text">This App is sponsored by the TFG-Förderverein.</string>
     <string name="about_version_string">Version %s</string>
 
     <!-- LINKS -->
@@ -325,6 +327,8 @@
         \nEine Vielzahl von kleinen und größeren Projekten konnten durch den Förderverein bereits an unserer Schule realisiert werden,
         die über die reguläre Unterrichtsausstattung hinausgehen und die aus den Fördertöpfen des Schulträgers oder der Schulstiftung
         nicht bedient werden können. Unterstützt werden alle Bereiche des schulischen Alltags.
+        \nAuch diese App wurde mithilfe des Fördervereins finanziert!
+        \n
         \nGerne können auch Sie sich mit Ideen und Vorschlägen einbringen. Sie erreichen uns unter info@tfg-foerderverein.de
         \n
         \nSie sind noch kein Mitglied? Besuchen Sie unsere Homepage tfg-foerderverein.de! Dort können Sie sich eine Beitrittserklärung herunterladen.

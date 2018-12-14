@@ -231,6 +231,9 @@
         \nNetzwerkverbindung (Internet): Um die Daten vom MyTFG Server abzurufen, ist selbstverständlich Zugriff auf die Internetverbindung notwendig.
         \nSpeicherzugriff: Anmeldedaten sowie abgerufene Inhalte werden lokal auf dem Gerät gespeichert (gecached), um den Datenverbrauch zu minimieren.
     </string>
+    <string name="about_sponsoring">Gesponsert durch den TFG-Förderverein</string>
+    <string name="about_sponsoring_text">Diese App wurde durch Gelder des TFG-Fördervereins finanziert.</string>
+
     <string name="about_version_string">Version %s</string>
 
     <!-- LINKS -->
@@ -286,6 +289,8 @@
         \nEine Vielzahl von kleinen und größeren Projekten konnten durch den Förderverein bereits an unserer Schule realisiert werden,
         die über die reguläre Unterrichtsausstattung hinausgehen und die aus den Fördertöpfen des Schulträgers oder der Schulstiftung
         nicht bedient werden können. Unterstützt werden alle Bereiche des schulischen Alltags.
+        \nAuch diese App wurde mithilfe des Fördervereins finanziert!
+        \n
         \nGerne können auch Sie sich mit Ideen und Vorschlägen einbringen. Sie können uns per E-Mail erreichen.
         \n
         \nSie sind noch kein Mitglied? Besuchen Sie unsere Homepage! Dort können Sie sich eine Beitrittserklärung herunterladen.
