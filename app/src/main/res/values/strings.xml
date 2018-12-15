@@ -30,7 +30,11 @@
     <string name="menutitle_back">Back</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">More</string>
+    <string name="menutitle_mytfg">MyTFG</string>
     <string name="menutitle_authmanage">Authentications</string>
+
+    <!-- MyTFG Menu -->
+    <string name="menutitle_mytfg_supportcenter">Supportcenter</string>
 
     <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>

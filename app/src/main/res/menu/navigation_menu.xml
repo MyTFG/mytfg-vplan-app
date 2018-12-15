@@ -13,6 +13,10 @@
         <item android:id="@+id/mainmenu_exams"
             android:icon="@drawable/ic_menu_exams_b"
             android:title="@string/menutitle_exams" />
+        <item android:id="@+id/mainmenu_mytfg"
+            android:icon="@mipmap/logo"
+            android:title="@string/menutitle_mytfg" >
+        </item>
         <item android:id="@+id/mainmenu_more"
             android:icon="@drawable/ic_menu_more"
             android:title="@string/menutitle_more" >

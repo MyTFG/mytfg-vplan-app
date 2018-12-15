@@ -29,7 +29,12 @@
     <string name="menutitle_back">Zurück</string>
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">Mehr</string>
+    <string name="menutitle_mytfg">MyTFG</string>
     <string name="menutitle_authmanage">Authentifizierungen</string>
+
+
+    <!-- MyTFG Menu -->
+    <string name="menutitle_mytfg_supportcenter">Supportcenter</string>
 
     <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>

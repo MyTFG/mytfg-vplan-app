@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/partners_group_1">
-        <item android:id="@+id/submenu_partners_back"
+        <item android:id="@+id/submenu_mytfg_back"
             android:icon="@drawable/ic_menu_back"
             android:title="@string/menutitle_back" />
     </group>
-    <group android:id="@+id/menu_group_1">
-        <item android:id="@+id/mainmenu_links"
-            android:icon="@drawable/ic_menu_links"
-            android:title="@string/menutitle_links" >
+    <group android:id="@+id/menu_group_2">
+        <item android:id="@+id/submenu_mytfg_supportcenter"
+            android:icon="@drawable/ic_menu_support"
+            android:title="@string/menutitle_mytfg_supportcenter" >
         </item>
-        <item android:id="@+id/mainmenu_pages"
-            android:icon="@drawable/ic_menu_pages"
-            android:title="@string/menutitle_pages" >
-        </item>
-        <item android:id="@+id/submenu_partners_boosters"
-            android:icon="@drawable/ic_menu_boosters"
-            android:title="@string/menutitle_boosters" />
-        <item android:id="@+id/submenu_partners_parents"
-            android:icon="@drawable/ic_menu_parents"
-            android:title="@string/menutitle_parents" />
-        <item android:id="@+id/submenu_partners_foundation"
-            android:icon="@drawable/ic_menu_foundation"
-            android:title="@string/menutitle_foundation" />
-        <item android:id="@+id/submenu_partners_secretary"
-            android:icon="@drawable/ic_menu_secretary"
-            android:title="@string/menutitle_secretary" />
-        <item android:id="@+id/submenu_partners_abbreviations"
-            android:icon="@drawable/ic_menu_abbr"
-            android:title="@string/menutitle_abbreviations" />
-        <item android:id="@+id/submenu_partners_lostandfound"
-            android:icon="@drawable/ic_menu_lostandfound"
-            android:title="@string/menutitle_lostandfound" />
     </group>
 </menu>

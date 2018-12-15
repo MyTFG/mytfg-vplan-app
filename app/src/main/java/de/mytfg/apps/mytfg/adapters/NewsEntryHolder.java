@@ -36,15 +36,13 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
     }
 
     public void update(TfgNewsEntry entry) {
-        long id = this.getAdapterPosition();
-
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
         summary.setText(entry.getSummary());
 
-        int color = ColorTool.getColor(id, context);
+        //int color = ColorTool.getColor(0, context);
 
-        headerLayout.setBackgroundColor(color);
+        //headerLayout.setBackgroundColor(color);
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

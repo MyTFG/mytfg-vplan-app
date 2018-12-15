@@ -31,6 +31,7 @@ import de.mytfg.apps.mytfg.fragments.ParentsFragment;
 import de.mytfg.apps.mytfg.fragments.SettingsFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.PlanFragment;
+import de.mytfg.apps.mytfg.fragments.SupportcenterFragment;
 import de.mytfg.apps.mytfg.fragments.TfgFragment;
 import de.mytfg.apps.mytfg.fragments.VrrFragment;
 import de.mytfg.apps.mytfg.navigation.Navigation;
@@ -149,6 +150,19 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_lostandfound:
                         //navi.clear();
                         navi.navigate(new LostAndFoundFragment(), R.id.fragment_container);
+                        return true;
+
+                    // SUBMENU "MyTFG"
+                    case R.id.mainmenu_mytfg:
+                        navigationView.getMenu().clear();
+                        navigationView.inflateMenu(R.menu.submenu_mytfg);
+                        return true;
+                    case R.id.submenu_mytfg_back:
+                        navigationView.getMenu().clear();
+                        navigationView.inflateMenu(R.menu.navigation_menu);
+                        return true;
+                    case R.id.submenu_mytfg_supportcenter:
+                        navi.navigate(new SupportcenterFragment(), R.id.fragment_container);
                         return true;
                 }
             }

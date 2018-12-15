@@ -14,6 +14,7 @@ import android.transition.ChangeTransform;
 import android.transition.TransitionSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 
 import java.util.HashMap;
 
@@ -120,6 +121,15 @@ public class Navigation {
     }
 
     public void onBackPressed() {
+        WebView webView = ((MainActivity)context).findViewById(R.id.webview);
+
+        if (webView != null) {
+            if (webView.canGoBack()) {
+                webView.goBack();
+                return;
+            }
+        }
+
         FragmentManager fragmentManager = ((MainActivity)context).getSupportFragmentManager();
         if (fragmentManager.getBackStackEntryCount() > 1) {
             fragmentManager.popBackStack();
