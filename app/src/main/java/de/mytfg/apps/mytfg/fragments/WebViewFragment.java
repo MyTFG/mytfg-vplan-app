@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
+import de.mytfg.apps.mytfg.adapters.MyTFGWebView;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 
 public class WebViewFragment extends AuthenticationFragment {
@@ -70,6 +71,8 @@ public class WebViewFragment extends AuthenticationFragment {
         cookieManager.setCookie("https://mytfg.de", "mytfg_app=true" + ";path=/");
         cookieManager.setCookie("https://mytfg.de", "mytfg_app_os=android" + ";path=/");
 
+
+        webView.setWebViewClient(new MyTFGWebView(context));
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);

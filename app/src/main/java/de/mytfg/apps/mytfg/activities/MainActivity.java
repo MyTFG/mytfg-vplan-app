@@ -163,40 +163,22 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.inflateMenu(R.menu.navigation_menu);
                         return true;
                     case R.id.submenu_mytfg_supportcenter:
-                        AuthenticationFragment supportFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_SUPPORTCENTER);
-                        supportFragment.setArguments(args);
-                        navi.navigate(supportFragment, R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_SUPPORTCENTER, context);
                         return true;
                     case R.id.submenu_mytfg_purchases:
-                        AuthenticationFragment purchaseFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_PURCHASES);
-                        purchaseFragment.setArguments(args);
-                        navi.navigate(purchaseFragment, R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_PURCHASES, context);
                         return true;
                     case R.id.submenu_mytfg_settings:
-                        AuthenticationFragment settingsFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_SETTINGS);
-                        settingsFragment.setArguments(args);
-                        navi.navigate(settingsFragment , R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_SETTINGS, context);
                         return true;
                     case R.id.submenu_mytfg_accounts:
-                        AuthenticationFragment accountFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_ACCOUNTS);
-                        accountFragment.setArguments(args);
-                        navi.navigate(accountFragment, R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_ACCOUNTS, context);
                         return true;
                     case R.id.submenu_mytfg_accounts_search:
-                        AuthenticationFragment accountSearchFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_ACCOUNTS_SEARCH);
-                        accountSearchFragment.setArguments(args);
-                        navi.navigate(accountSearchFragment, R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_ACCOUNTS_SEARCH, context);
                         return true;
                     case R.id.submenu_mytfg_accounts_create:
-                        AuthenticationFragment accountCreateFragment = new WebViewFragment();
-                        args.putString("url", MyTFGApi.URL_ACCOUNTS_CREATE);
-                        accountCreateFragment.setArguments(args);
-                        navi.navigate(accountCreateFragment, R.id.fragment_container);
+                        navi.toWebView(MyTFGApi.URL_ACCOUNTS_CREATE, context);
                         return true;
                 }
             }

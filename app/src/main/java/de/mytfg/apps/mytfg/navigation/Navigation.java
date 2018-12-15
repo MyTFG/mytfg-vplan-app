@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.navigation;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
+import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.tools.CopyDrawableImageTransform;
 
 public class Navigation {
@@ -118,6 +120,26 @@ public class Navigation {
 
     public void navigate(AuthenticationFragment fragment, int container) {
         this.navigate(fragment, container, new HashMap<String, Pair<String, View>>());
+    }
+
+    public void closeDrawer() {
+        if (((MainActivity)context).getDrawerLayout() != null) {
+            ((MainActivity) context).getDrawerLayout().closeDrawers();
+        }
+    }
+
+    public void toWebView(String url, MainActivity context) {
+        WebView webView = context.findViewById(R.id.webview);
+        if (webView != null) {
+            webView.loadUrl(url);
+            this.closeDrawer();
+        } else {
+            AuthenticationFragment fragment = new WebViewFragment();
+            Bundle args = new Bundle();
+            args.putString("url", url);
+            fragment.setArguments(args);
+            navigate(fragment, R.id.fragment_container);
+        }
     }
 
     public void onBackPressed() {
