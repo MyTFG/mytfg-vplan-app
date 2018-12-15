@@ -6,10 +6,12 @@ import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
+import de.mytfg.apps.mytfg.tools.ColorTool;
 import de.mytfg.apps.mytfg.tools.Settings;
 
 public class NewsEntryHolder extends RecyclerView.ViewHolder {
@@ -21,19 +23,28 @@ public class NewsEntryHolder extends RecyclerView.ViewHolder {
     private Context context;
     private CardView cardView;
 
+    private LinearLayout headerLayout;
+
     public NewsEntryHolder(View view) {
         super(view);
         context  = view.getContext();
         cardView = (CardView) view;
-        title    = (TextView) view.findViewById(R.id.news_title);
-        date     = (TextView) view.findViewById(R.id.news_date);
-        summary  = (TextView) view.findViewById(R.id.news_summary);
+        title    = view.findViewById(R.id.news_title);
+        date     = view.findViewById(R.id.news_date);
+        summary  = view.findViewById(R.id.news_summary);
+        headerLayout = view.findViewById(R.id.news_header);
     }
 
     public void update(TfgNewsEntry entry) {
+        long id = this.getAdapterPosition();
+
         title.setText(entry.getTitle());
         date.setText(entry.getDateString());
         summary.setText(entry.getSummary());
+
+        int color = ColorTool.getColor(id, context);
+
+        headerLayout.setBackgroundColor(color);
     }
 
     public void setOnClickListener(CardView.OnClickListener listener) {

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,16 +36,17 @@ public class VrrDetailFragment extends AuthenticationFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vrr_detail, container, false);
-        TextView direction = (TextView) view.findViewById(R.id.vrr_detail_direction);
-        TextView line = (TextView) view.findViewById(R.id.vrr_detail_line);
-        TextView delay = (TextView) view.findViewById(R.id.vrr_detail_delay);
-        TextView arrival = (TextView) view.findViewById(R.id.vrr_detail_arrival);
-        TextView route = (TextView) view.findViewById(R.id.vrr_detail_route);
-        TextView sched = (TextView) view.findViewById(R.id.vrr_detail_sched);
-        TextView real = (TextView) view.findViewById(R.id.vrr_detail_real);
-        ImageView typeImg = (ImageView) view.findViewById(R.id.vrr_detail_img);
-        TextView type = (TextView) view.findViewById(R.id.vrr_detail_type);
-        TextView platform = (TextView) view.findViewById(R.id.vrr_detail_platform);
+        TextView direction    = view.findViewById(R.id.vrr_detail_direction);
+        TextView line         = view.findViewById(R.id.vrr_detail_line);
+        TextView delay        = view.findViewById(R.id.vrr_detail_delay);
+        TextView arrival      = view.findViewById(R.id.vrr_detail_arrival);
+        TextView route        = view.findViewById(R.id.vrr_detail_route);
+        TextView sched        = view.findViewById(R.id.vrr_detail_sched);
+        TextView real         = view.findViewById(R.id.vrr_detail_real);
+        ImageView typeImg     = view.findViewById(R.id.vrr_detail_img);
+        FrameLayout typeFrame = view.findViewById(R.id.vrr_detail_type_frame);
+        TextView type         = view.findViewById(R.id.vrr_detail_type);
+        TextView platform     = view.findViewById(R.id.vrr_detail_platform);
 
         if (vrrEntry == null) {
             vrrEntry = new VrrEntry();
@@ -74,10 +76,12 @@ public class VrrDetailFragment extends AuthenticationFragment {
         real.setText(vrrEntry.getDate());
         platform.setText(vrrEntry.getPlatform());
         if ("U-Bahn".equals(vrrEntry.getType())) {
-            typeImg.setImageResource(R.drawable.ic_vrr_tram);
+            typeImg.setImageResource(R.drawable.ic_vrr_tram_white);
+            typeFrame.setBackgroundResource(R.drawable.circle_background_blue);
             ((MainActivity)getActivity()).getToolbarManager().setImage(R.drawable.tram_header, true);
         } else {
-            typeImg.setImageResource(R.drawable.ic_vrr_bus);
+            typeImg.setImageResource(R.drawable.ic_vrr_bus_white);
+            typeFrame.setBackgroundResource(R.drawable.circle_background_red);
             ((MainActivity)getActivity()).getToolbarManager().setImage(R.drawable.bus_header, true);
         }
         ((MainActivity)getActivity()).getToolbarManager().setTitle(vrrEntry.getType()).showBottomScrim();

@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "de.mytfg.apps.mytfg"
         minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 31
-        versionName "1.2.1"
+        targetSdkVersion 28
+        versionCode 42
+        versionName "1.3.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,22 +20,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:cardview-v7:26.1.0'
-    compile 'com.github.amlcurran.showcaseview:library:5.4.3'
-    compile 'ch.acra:acra:4.7.0'
-    compile 'com.google.firebase:firebase-messaging:11.8.0'
-    compile 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.github.chrisbanes:PhotoView:2.0.0'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
+    implementation 'ch.acra:acra:4.7.0'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-messaging:17.3.3'
+    implementation 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    testImplementation 'junit:junit:4.12'
 }
 
 

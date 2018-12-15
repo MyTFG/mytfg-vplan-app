@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -18,6 +19,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:id="@+id/link_mytfg"
             android:layout_marginBottom="@dimen/cardview_spacing">
 
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/link_mytfg_help"
             android:layout_marginBottom="@dimen/cardview_spacing">
@@ -106,6 +109,7 @@
             android:padding="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:id="@+id/link_moodle"
             android:layout_marginBottom="@dimen/cardview_spacing">
 
@@ -151,6 +155,7 @@
             android:padding="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:layout_marginBottom="@dimen/cardview_spacing">
 
             <LinearLayout
@@ -193,6 +198,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/link_tfg_exams"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_marginBottom="@dimen/cardview_spacing">

@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultPadding"
+            app:contentPadding="10dp"
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -39,15 +41,21 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:tint="@color/colorBlack"
-                    android:src="@drawable/ic_icon_donate"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_blue">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_donate_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -89,6 +97,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/foundation_address">
 
@@ -98,15 +107,21 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:tint="@color/colorBlack"
-                    android:src="@drawable/ic_icon_address"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_red">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_icon_address_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -149,6 +164,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/parents_web">
 
@@ -158,15 +174,21 @@
                 android:orientation="horizontal"
                 android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_web"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_green">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_web_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -208,6 +230,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
+            app:contentPadding="10dp"
             android:id="@+id/foundation_phone">
 
             <LinearLayout
@@ -216,15 +239,21 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_phone"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_orange">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_phone_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -265,6 +294,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/foundation_mail">
 
@@ -274,15 +304,21 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_mail"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_purple">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_mail_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -323,6 +359,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/foundation_office">
 
@@ -332,15 +369,21 @@
                 android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:tint="@color/colorBlack"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_icon_open"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background_indigo">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_open_white"/>
+                </FrameLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"

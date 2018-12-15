@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,21 +18,22 @@ public class VrrEntryHolder extends RecyclerView.ViewHolder {
     private TextView type;
     private TextView delay;
     private ImageView typeImg;
-
+    private FrameLayout typeFrame;
 
     private Context context;
     private CardView cardView;
 
     public VrrEntryHolder(View view) {
         super(view);
-        context  = view.getContext();
-        cardView = (CardView) view;
-        line      = (TextView) view.findViewById(R.id.vrr_entry_line);
-        direction = (TextView) view.findViewById(R.id.vrr_dir);
-        arrival   = (TextView) view.findViewById(R.id.vrr_time);
-        type      = (TextView) view.findViewById(R.id.vrr_type);
-        typeImg = (ImageView) view.findViewById(R.id.vrr_type_img);
-        delay     = (TextView) view.findViewById(R.id.vrr_delay);
+        context   = view.getContext();
+        cardView  = (CardView) view;
+        line      = view.findViewById(R.id.vrr_entry_line);
+        direction = view.findViewById(R.id.vrr_dir);
+        arrival   = view.findViewById(R.id.vrr_time);
+        type      = view.findViewById(R.id.vrr_type);
+        typeImg   = view.findViewById(R.id.vrr_type_img);
+        delay     = view.findViewById(R.id.vrr_delay);
+        typeFrame = view.findViewById(R.id.vrr_type_background);
     }
 
     public void update(VrrEntry entry) {
@@ -39,9 +41,11 @@ public class VrrEntryHolder extends RecyclerView.ViewHolder {
         direction.setText(entry.getDirection());
         arrival.setText(entry.getArrival());
         if ("U-Bahn".equals(entry.getType())) {
-            typeImg.setImageResource(R.drawable.ic_vrr_tram);
+            typeImg.setImageResource(R.drawable.ic_vrr_tram_white);
+            typeFrame.setBackgroundResource(R.drawable.circle_background_blue);
         } else {
-            typeImg.setImageResource(R.drawable.ic_vrr_bus);
+            typeImg.setImageResource(R.drawable.ic_vrr_bus_white);
+            typeFrame.setBackgroundResource(R.drawable.circle_background_red);
         }
         type.setText(entry.getType());
         /*if (entry.getDelay() > 0) {
@@ -82,5 +86,9 @@ public class VrrEntryHolder extends RecyclerView.ViewHolder {
 
     public ImageView getTypeImg() {
         return typeImg;
+    }
+
+    public FrameLayout getTypeFrame() {
+        return typeFrame;
     }
 }

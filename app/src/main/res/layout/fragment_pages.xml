@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -17,6 +18,7 @@
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/page_datapolicy"
             android:layout_marginBottom="@dimen/cardview_spacing">
@@ -27,14 +29,23 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing"
                 android:background="@color/colorPrimaryLight">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_menu_pages"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_amber">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_menu_pages_white"/>
+                </FrameLayout>
 
                 <TextView
                     android:textSize="@dimen/textMediumTitle"
@@ -63,6 +74,7 @@
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/page_faq"
             android:layout_marginBottom="@dimen/cardview_spacing">
@@ -73,14 +85,23 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing"
                 android:background="@color/colorPrimaryLight">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_menu_pages"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_indigo">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_menu_pages_white"/>
+                </FrameLayout>
 
                 <TextView
                     android:textSize="@dimen/textMediumTitle"
@@ -107,6 +128,7 @@
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/page_changelog"
             android:layout_marginBottom="@dimen/cardview_spacing">
@@ -117,14 +139,23 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing"
                 android:background="@color/colorPrimaryLight">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_gravity="start"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_menu_pages"
-                    android:layout_marginRight="@dimen/cardview_default_radius" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/circle_background_red">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="start"
+                        android:layout_height="40dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_menu_pages_white"/>
+                </FrameLayout>
 
                 <TextView
                     android:textSize="@dimen/textMediumTitle"

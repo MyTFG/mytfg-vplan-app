@@ -30,13 +30,21 @@
                     android:textSize="@dimen/textTitle"
                     android:id="@+id/vrr_detail_line" />
 
-                <ImageView
-                    android:layout_marginTop="@dimen/defaultPadding"
+                <FrameLayout
+                    android:id="@+id/vrr_detail_type_frame"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultPadding"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/vrr_detail_img"
-                    android:src="@drawable/ic_vrr_tram"/>
+                    android:background="@drawable/circle_background_blue"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/vrr_detail_img"
+                        android:src="@drawable/ic_vrr_tram_white"/>
+                </FrameLayout>
             </LinearLayout>
 
 
