@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryTransparent">#EE3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#2d74da</color>
+    <color name="colorPrimaryTransparent">#2d74da</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
     <color name="colorPrimaryLight2">#C5CAE9</color>
     <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorSecondaryLight">#DFE2F4</color>
@@ -11,7 +11,7 @@
     <color name="colorPrimaryText">#000000</color>
     <color name="colorSecondaryText">#333333</color>
     <color name="colorDivider">#B6B6B6</color>
-    <color name="colorAccent">#FF7400</color>
+    <color name="colorAccent">#f57c00</color>
 
     <color name="transparent">@android:color/transparent</color>
 
