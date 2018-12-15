@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,12 +14,17 @@ import android.support.v4.view.ViewCompat;
 import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
 import android.transition.TransitionSet;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
@@ -31,6 +37,9 @@ public class Navigation {
     private Context context;
 
     private boolean finishOnBack = false;
+
+    private NavigationView navigationView;
+    private View navigationHeader;
 
     public Navigation(Context context) {
         this.context = context;
@@ -46,6 +55,7 @@ public class Navigation {
             navigate(new AboutFragment(), container);
             return;
         }*/
+        updateHeader();
 
         finishOnBack = false;
 
@@ -192,5 +202,48 @@ public class Navigation {
                         text,
                         Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+
+    public void setNavigationView(NavigationView navigationView) {
+        this.navigationView = navigationView;
+    }
+
+    public void setNavigationHeader(View navigationHeader) {
+        this.navigationHeader = navigationHeader;
+    }
+
+    public void updateHeader() {
+        MyTFGApi api = new MyTFGApi(context);
+        TextView usernameTV = navigationHeader.findViewById(R.id.navigation_user_name);
+        TextView mailTV = navigationHeader.findViewById(R.id.navigation_user_mail);
+        CircleImageView userImg = navigationHeader.findViewById(R.id.navigation_user_image);
+
+        if (mailTV == null) {
+            return;
+        }
+
+        if (!api.isLoggedIn()) {
+            userImg.setImageResource(R.drawable.person_white);
+            mailTV.setVisibility(View.GONE);
+            usernameTV.setVisibility(View.GONE);
+        } else {
+            mailTV.setVisibility(View.VISIBLE);
+            usernameTV.setVisibility(View.VISIBLE);
+            mailTV.setText(api.getUser().getMail());
+            usernameTV.setText(api.getUser().getFirstname() + " " + api.getUser().getLastname());
+
+            if (api.getUser().getAvatar().equals("")) {
+                userImg.setImageResource(R.drawable.person_white);
+            } else {
+                try {
+                    Picasso.with(context)
+                            .load(api.getUser().getAvatar())
+                            .error(R.drawable.person_white)
+                            .into(userImg);
+                } catch (Exception ex) {
+                    Log.d("Picasso", ex.toString());
+                }
+            }
+        }
     }
 }

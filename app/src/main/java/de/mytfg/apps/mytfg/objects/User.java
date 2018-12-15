@@ -21,7 +21,9 @@ public class User extends MytfgObject {
     private String firstname;
     private String lastname;
     private String grade;
+    private String mail;
     private String usertype = null;
+    private String avatar;
     private int rights;
 
     private Context context;
@@ -64,6 +66,8 @@ public class User extends MytfgObject {
             lastname  = json.getString("lastname");
             grade     = json.getString("grade");
             usertype  = json.getString("usertype");
+            mail      = json.optString("mail", "");
+            avatar    = json.optString("avatar", "");
             this.save(json);
             return true;
         } catch (JSONException ex) {
@@ -95,6 +99,12 @@ public class User extends MytfgObject {
 
     public String getGrade() {
         return grade;
+    }
+
+    public String getMail() { return mail; }
+
+    public String getAvatar() {
+        return avatar;
     }
 
     public String getUserType() {

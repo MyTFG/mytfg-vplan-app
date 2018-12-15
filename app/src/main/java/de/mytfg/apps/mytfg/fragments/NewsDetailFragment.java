@@ -172,7 +172,6 @@ public class NewsDetailFragment extends AuthenticationFragment {
                 Target target = new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                        Log.d(TAG, "Succesfully loaded image from " + from.name());
                         ImageView imageView = new ImageView(context);
                         imageView.setImageBitmap(bitmap);
                         insertView(imageView);
@@ -180,7 +179,6 @@ public class NewsDetailFragment extends AuthenticationFragment {
 
                     @Override
                     public void onBitmapFailed(Drawable errorDrawable) {
-                        Log.e(TAG, "Error while downloading image");
                         ImageView imageView = new ImageView(context);
                         imageView.setImageDrawable(errorDrawable);
                         insertView(imageView);

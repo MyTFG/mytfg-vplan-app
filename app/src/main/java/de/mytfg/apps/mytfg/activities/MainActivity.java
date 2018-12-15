@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -9,8 +10,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
@@ -55,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
         navi = new Navigation(this);
         context = this;
 
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView = findViewById(R.id.navigation_view);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        View header = navigationView.inflateHeaderView(R.layout.navigation_header);
+
+        navi.setNavigationView(navigationView);
+        navi.setNavigationHeader(header);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
         /*if (drawerLayout == null) {
             DrawerLayout alternativeDrawer = (DrawerLayout) findViewById(R.id.drawer_layout_replacement);
             if (alternativeDrawer != null) {
@@ -223,8 +232,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        navi.navigate(fragment, R.id.fragment_container);
 
+        navi.navigate(fragment, R.id.fragment_container);
     }
 
     @Override

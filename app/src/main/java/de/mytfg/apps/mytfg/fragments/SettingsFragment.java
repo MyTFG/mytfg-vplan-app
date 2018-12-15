@@ -123,6 +123,8 @@ public class SettingsFragment extends AuthenticationFragment {
                     api.logout(false);
                     api.clearAdditionalClasses();
 
+                    context.getNavi().updateHeader();
+
 
                     CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
                     Snackbar snackbar = Snackbar
