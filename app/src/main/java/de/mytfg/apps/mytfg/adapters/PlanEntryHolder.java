@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.lb.auto_fit_textview.AutoResizeTextView;
-
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.VplanEntry;
 import de.mytfg.apps.mytfg.tools.CircleBackground;
