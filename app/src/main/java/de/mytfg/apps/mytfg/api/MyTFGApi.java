@@ -47,15 +47,21 @@ import de.mytfg.apps.mytfg.objects.Vplan;
  */
 
 public class MyTFGApi {
+    public static final String URL_SUPPORTCENTER = "https://mytfg.de/supportcenter/tickets.x";
+    public static final String URL_PURCHASES = "https://mytfg.de/purchases.x";
+    public static final String URL_SETTINGS = "https://mytfg.de/settings.x";
+    public static final String URL_ACCOUNTS = "https://mytfg.de/account.x";
+    public static final String URL_ACCOUNTS_SEARCH = "https://mytfg.de/account/search.x";
+    public static final String URL_ACCOUNTS_CREATE = "https://mytfg.de/account/create.x";
+
+
     private ProgressBar loadingBar;
     private Context context;
-    private boolean inApp = false;
     private static int overrideLoad = 0;
 
     public MyTFGApi(Context context) {
         this.context = context;
         if (context instanceof MainActivity) {
-            inApp = true;
             View rootview = ((Activity) context).getWindow().getDecorView()
                     .findViewById(android.R.id.content);
             loadingBar = (ProgressBar) rootview.findViewById(R.id.loadingBar);

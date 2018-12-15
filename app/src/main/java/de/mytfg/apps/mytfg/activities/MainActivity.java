@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -29,9 +28,8 @@ import de.mytfg.apps.mytfg.fragments.OfficeFragment;
 import de.mytfg.apps.mytfg.fragments.PagesFragment;
 import de.mytfg.apps.mytfg.fragments.ParentsFragment;
 import de.mytfg.apps.mytfg.fragments.SettingsFragment;
-import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.PlanFragment;
-import de.mytfg.apps.mytfg.fragments.SupportcenterFragment;
+import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.fragments.TfgFragment;
 import de.mytfg.apps.mytfg.fragments.VrrFragment;
 import de.mytfg.apps.mytfg.navigation.Navigation;
@@ -78,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FbApi.updateFirebase(context);
+
+                Bundle args = new Bundle();
+
                 switch (item.getItemId()) {
                     default:
                         return false;
@@ -162,7 +163,40 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.inflateMenu(R.menu.navigation_menu);
                         return true;
                     case R.id.submenu_mytfg_supportcenter:
-                        navi.navigate(new SupportcenterFragment(), R.id.fragment_container);
+                        AuthenticationFragment supportFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_SUPPORTCENTER);
+                        supportFragment.setArguments(args);
+                        navi.navigate(supportFragment, R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_mytfg_purchases:
+                        AuthenticationFragment purchaseFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_PURCHASES);
+                        purchaseFragment.setArguments(args);
+                        navi.navigate(purchaseFragment, R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_mytfg_settings:
+                        AuthenticationFragment settingsFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_SETTINGS);
+                        settingsFragment.setArguments(args);
+                        navi.navigate(settingsFragment , R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_mytfg_accounts:
+                        AuthenticationFragment accountFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_ACCOUNTS);
+                        accountFragment.setArguments(args);
+                        navi.navigate(accountFragment, R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_mytfg_accounts_search:
+                        AuthenticationFragment accountSearchFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_ACCOUNTS_SEARCH);
+                        accountSearchFragment.setArguments(args);
+                        navi.navigate(accountSearchFragment, R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_mytfg_accounts_create:
+                        AuthenticationFragment accountCreateFragment = new WebViewFragment();
+                        args.putString("url", MyTFGApi.URL_ACCOUNTS_CREATE);
+                        accountCreateFragment.setArguments(args);
+                        navi.navigate(accountCreateFragment, R.id.fragment_container);
                         return true;
                 }
             }

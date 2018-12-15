@@ -11,4 +11,30 @@
             android:title="@string/menutitle_mytfg_supportcenter" >
         </item>
     </group>
+    <group android:id="@+id/menu_group_3">
+        <item android:id="@+id/submenu_mytfg_purchases"
+            android:icon="@drawable/ic_menu_purchases"
+            android:title="@string/menutitle_mytfg_purchases" >
+        </item>
+    </group>
+    <group android:id="@+id/menu_group_4">
+        <item android:id="@+id/submenu_mytfg_accounts"
+            android:icon="@drawable/ic_menu_accounts"
+            android:title="@string/menutitle_mytfg_accounts" >
+        </item>
+        <item android:id="@+id/submenu_mytfg_accounts_search"
+            android:icon="@drawable/ic_menu_accounts_search"
+            android:title="@string/menutitle_mytfg_accounts_search" >
+        </item>
+        <item android:id="@+id/submenu_mytfg_accounts_create"
+            android:icon="@drawable/ic_menu_accounts_create"
+            android:title="@string/menutitle_mytfg_accounts_create" >
+        </item>
+    </group>
+    <group android:id="@+id/menu_group_5">
+        <item android:id="@+id/submenu_mytfg_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menutitle_mytfg_settings" >
+        </item>
+    </group>
 </menu>

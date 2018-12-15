@@ -11,10 +11,10 @@
             android:icon="@drawable/ic_menu_vrr"
             android:title="@string/menutitle_vrr" />
         <item android:id="@+id/mainmenu_exams"
-            android:icon="@drawable/ic_menu_exams_b"
+            android:icon="@drawable/ic_menu_exams"
             android:title="@string/menutitle_exams" />
         <item android:id="@+id/mainmenu_mytfg"
-            android:icon="@mipmap/logo"
+            android:icon="@drawable/ic_menu_mytfg"
             android:title="@string/menutitle_mytfg" >
         </item>
         <item android:id="@+id/mainmenu_more"

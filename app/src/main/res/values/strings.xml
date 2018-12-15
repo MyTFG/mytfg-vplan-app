@@ -35,6 +35,11 @@
 
     <!-- MyTFG Menu -->
     <string name="menutitle_mytfg_supportcenter">Supportcenter</string>
+    <string name="menutitle_mytfg_purchases">Purchases</string>
+    <string name="menutitle_mytfg_accounts">Account Management</string>
+    <string name="menutitle_mytfg_accounts_search">Search Account</string>
+    <string name="menutitle_mytfg_accounts_create">Create Account</string>
+    <string name="menutitle_mytfg_settings">Settings</string>
 
     <!-- More Menu -->
     <string name="menutitle_boosters">TFG Förderverein</string>
