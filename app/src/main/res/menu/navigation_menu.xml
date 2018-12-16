@@ -13,13 +13,19 @@
         <item android:id="@+id/mainmenu_exams"
             android:icon="@drawable/ic_menu_exams"
             android:title="@string/menutitle_exams" />
-        <item android:id="@+id/mainmenu_mytfg"
-            android:icon="@drawable/ic_menu_mytfg"
-            android:title="@string/menutitle_mytfg" >
-        </item>
         <item android:id="@+id/mainmenu_more"
             android:icon="@drawable/ic_menu_more"
             android:title="@string/menutitle_more" >
+        </item>
+    </group>
+    <group>
+        <item android:id="@+id/mainmenu_mytfg_open"
+            android:icon="@drawable/ic_menu_mytfg"
+            android:title="@string/menutitle_mytfg" >
+        </item>
+        <item android:id="@+id/mainmenu_mytfg"
+            android:icon="@drawable/ic_menu_burger"
+            android:title="@string/menutitle_mytfg_submenu" >
         </item>
     </group>
     <group android:id="@+id/menu_group_2">

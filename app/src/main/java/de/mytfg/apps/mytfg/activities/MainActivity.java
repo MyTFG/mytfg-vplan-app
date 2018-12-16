@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import de.mytfg.apps.mytfg.R;
+import de.mytfg.apps.mytfg.adapters.MyTFGWebView;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.fragments.AbbreviationsFragment;
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public static SharedPreferences sharedPreferences;
     private ToolbarManager toolbarManager;
     private MainActivity context;
+    private Menu menu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -163,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     // SUBMENU "MyTFG"
+                    case R.id.mainmenu_mytfg_open:
+                        navi.toWebView(MyTFGApi.URL_HOME, context);
+                        return true;
                     case R.id.mainmenu_mytfg:
                         navigationView.getMenu().clear();
                         navigationView.inflateMenu(R.menu.submenu_mytfg);
@@ -171,8 +180,14 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.getMenu().clear();
                         navigationView.inflateMenu(R.menu.navigation_menu);
                         return true;
+                    case R.id.submenu_mytfg_home:
+                        navi.toWebView(MyTFGApi.URL_HOME, context);
+                        return true;
                     case R.id.submenu_mytfg_supportcenter:
                         navi.toWebView(MyTFGApi.URL_SUPPORTCENTER, context);
+                        return true;
+                    case R.id.submenu_mytfg_supportcenter_tickets:
+                        navi.toWebView(MyTFGApi.URL_SUPPORTCENTER_TICKETS, context);
                         return true;
                     case R.id.submenu_mytfg_purchases:
                         navi.toWebView(MyTFGApi.URL_PURCHASES, context);
@@ -202,21 +217,44 @@ public class MainActivity extends AppCompatActivity {
                     "fragmentInstanceSaved");
         } else {
             Intent intent = getIntent();
-            if (intent.getExtras() != null && intent.getExtras().containsKey("type")) {
+            if (getIntent().getData() != null) {
+                Uri data = getIntent().getData();
+                // URI to String, Replace http to https
+                String url = data.toString().replace("http://", "https://");
+
+                Log.d("URL", url);
+                if (!MyTFGWebView.catchAppUrls(url, this)) {
+                    getNavi().toWebView(url, this);
+                }
+                return;
+            } else if (intent.getExtras() != null && intent.getExtras().containsKey("type")) {
                 String type = intent.getExtras().getString("type");
                 switch (type != null ? type : "") {
+                    case "open-webview":
+                        String url = intent.getExtras().getString("url", "");
+                        Log.d("URL", url);
+                        if (url.length() > 0) {
+                            url = "https://mytfg.de/" + url;
+                            navi.toWebView(url, this);
+                            return;
+                        }
+                        break;
                     case "vplan_update":
                         fragment = new PlanFragment();
                         break;
                     case "show_message":
                         fragment = new TfgFragment();
+
+                        navi.navigate(fragment, R.id.fragment_container);
+
                         AlertDialog.Builder notify = new AlertDialog.Builder(context);
                         notify.setTitle(intent.getExtras().getString("title"));
                         notify.setMessage(intent.getExtras().getString("text"));
                         notify.setIcon(R.drawable.tfg2_round);
                         notify.show();
-                        break;
+                        return;
                     default:
+                        Log.d("Intent-Type", type);
                         break;
                 }
             }
@@ -263,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // getMenuInflater().inflate(R.menu.cast, menu);
+        this.menu = menu;
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -272,6 +311,10 @@ public class MainActivity extends AppCompatActivity {
 
     public Navigation getNavi() {
         return this.navi;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }
 

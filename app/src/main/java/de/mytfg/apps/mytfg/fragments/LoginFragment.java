@@ -24,7 +24,6 @@ import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import de.mytfg.apps.mytfg.BuildConfig;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.ApiCallback;
@@ -33,10 +32,7 @@ import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
-import de.mytfg.apps.mytfg.tools.CustomViewTarget;
 import de.mytfg.apps.mytfg.tools.Settings;
-import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class LoginFragment extends AuthenticationFragment {
     private View view;
@@ -60,6 +56,14 @@ public class LoginFragment extends AuthenticationFragment {
         MyTFGApi api = new MyTFGApi(context);
         EditText username = (EditText) view.findViewById(R.id.login_username);
         username.setText(api.getUsername());
+
+        TextView forgotPassword = view.findViewById(R.id.login_forgot_password);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.getNavi().toWebView(MyTFGApi.URL_FORGOT_PASSWORD, context);
+            }
+        });
 
         TextView loginText = (TextView) view.findViewById(R.id.login_text);
         loginText.setText(Html.fromHtml(getString(R.string.login_text)));
@@ -180,15 +184,5 @@ public class LoginFragment extends AuthenticationFragment {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
-    }
-
-    private void showcase() {
-        ShowCaseManager scm = new ShowCaseManager(getContext());
-
-        ToolbarManager tbm = ((MainActivity)getContext()).getToolbarManager();
-
-        scm.createChain(this)
-                .add(new CustomViewTarget(tbm.getToolbar(), 50, 0, CustomViewTarget.Type.ABS_MID_L), R.string.sc_home_navi_title, R.string.sc_home_navi_text)
-                .showChain();
     }
 }

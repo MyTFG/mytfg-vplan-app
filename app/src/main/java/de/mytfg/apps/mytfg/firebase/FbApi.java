@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.firebase;
 
 import android.content.Context;
+import android.widget.Switch;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -92,6 +93,46 @@ public class FbApi {
                 } else {
                     callback.callback(false);
                 }
+            }
+        });
+    }
+
+    public void updateSubscription(String topic, String action, final SuccessCallback callback) {
+        MyTFGApi api = new MyTFGApi(context);
+        ApiParams params = new ApiParams();
+        params.addParam("topic", topic);
+        api.addAuth(params);
+        api.call("api/firebase/" + action, params, new ApiCallback() {
+            @Override
+            public void callback(JSONObject result, int responseCode) {
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    callback.callback(true);
+                } else {
+                    callback.callback(false);
+                }
+            }
+        });
+    }
+
+    public void isSubscribed(String topic, final Switch uiSwitch, final SuccessCallback callback) {
+        MyTFGApi api = new MyTFGApi(context);
+        ApiParams params = new ApiParams();
+        params.addParam("topic", topic);
+        api.addAuth(params);
+        api.call("api/firebase/isSubscribed", params, new ApiCallback() {
+            @Override
+            public void callback(JSONObject result, int responseCode) {
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                boolean subscribed = result.optJSONObject("abonnement").optBoolean("isSubscribed", false);
+
+                if (uiSwitch != null) {
+                    uiSwitch.setChecked(subscribed);
+                }
+
+                callback.callback(subscribed);
+            } else {
+                callback.callback(false);
+            }
             }
         });
     }

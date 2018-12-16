@@ -1,6 +1,5 @@
 package de.mytfg.apps.mytfg.fragments;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -15,7 +14,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.amlcurran.showcaseview.targets.Target;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
@@ -25,9 +23,6 @@ import de.mytfg.apps.mytfg.logic.EventsLogic;
 import de.mytfg.apps.mytfg.logic.NewsLogic;
 import de.mytfg.apps.mytfg.objects.TfgEvents;
 import de.mytfg.apps.mytfg.objects.TfgNews;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
-import de.mytfg.apps.mytfg.tools.CustomViewTarget;
-import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class TfgFragment extends AuthenticationFragment {
     private View view;
@@ -84,6 +79,8 @@ public class TfgFragment extends AuthenticationFragment {
                 context.getToolbarManager().showSearchBar();
             }
         });
+
+        setTab = getArguments().getInt("tfgTab", 0);
 
         if (savedInstanceState != null && savedInstanceState.containsKey("tfgTab")) {
             setTab = savedInstanceState.getInt("tfgTab");
@@ -198,8 +195,6 @@ public class TfgFragment extends AuthenticationFragment {
         };
         Handler handler = new Handler();
         handler.postDelayed(runnable, 10);
-
-        showcase();
     }
 
 
@@ -221,25 +216,6 @@ public class TfgFragment extends AuthenticationFragment {
             tabLayout.setupWithViewPager(viewPager);
         }
         viewPager.setCurrentItem(setTab);
-    }
-
-
-
-    private void showcase() {
-        ShowCaseManager scm = new ShowCaseManager(getContext());
-
-        ToolbarManager tbm = ((MainActivity)getActivity()).getToolbarManager();
-
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
-            && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-
-            // Don't show the navigation hint on large landscape devices (tablets)
-            return;
-        }
-
-        scm.createChain(this)
-                .add(new CustomViewTarget(tbm.getToolbar(), 50, 0, CustomViewTarget.Type.ABS_MID_L), R.string.sc_home_navi_title, R.string.sc_home_navi_text)
-                .showChain();
     }
 
     @Override

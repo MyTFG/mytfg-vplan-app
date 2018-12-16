@@ -40,6 +40,10 @@ public class Settings {
         return preferences.getBoolean(option, false);
     }
 
+    public boolean getBool(String option, boolean def) {
+        return preferences.getBoolean(option, def);
+    }
+
     public String getString(String option) {
         return preferences.getString(option, "");
     }

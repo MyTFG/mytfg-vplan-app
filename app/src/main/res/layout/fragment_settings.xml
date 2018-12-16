@@ -87,7 +87,8 @@
                     android:layout_width="wrap_content"
                     android:layout_gravity="end|right"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:padding="2dp"
+                    android:orientation="vertical">
 
                     <Button
                         android:layout_width="wrap_content"
@@ -95,9 +96,15 @@
                         android:layout_gravity="end"
                         android:id="@+id/authentications_button"
                         android:text="@string/manage_authentications"
-                        android:layout_marginEnd="@dimen/defaultPadding"
-                        style="@style/AppTheme.Button"
-                        android:layout_marginRight="@dimen/defaultPadding" />
+                        style="@style/AppTheme.Button" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:id="@+id/personal_settings_button"
+                        android:text="@string/account_personal_settings"
+                        style="@style/AppTheme.Button" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -153,7 +160,7 @@
                     android:id="@+id/account_additional_button"
                     android:visibility="gone"
                     android:text="@string/account_additional_select"
-                    style="@style/AppTheme.Button"/>
+                    android:theme="@style/AppTheme.Button"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -193,6 +200,38 @@
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_opt_toolbar" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryText"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:text="@string/settings_opt_notifications" />
+
+                <Switch
+                    android:id="@+id/switch_vplan_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
+                    android:text="@string/settings_vplan_notifications" />
+                <Switch
+                    android:id="@+id/switch_mytfg_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
+                    android:text="@string/settings_mytfg_notifications" />
+                <Switch
+                    android:id="@+id/switch_group_mytfg_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/defaultPadding"
+                    android:paddingTop="@dimen/defaultPadding"
+                    android:text="@string/settings_group_mytfg_notifications" />
 
                 <TextView
                     android:layout_width="match_parent"

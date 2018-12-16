@@ -95,4 +95,36 @@ public class FbNotify {
 
         FbNotify.nextId++;
     }
+
+    public static void notifyMyTFGNotification(Context c, String title, String text, String url, int id, Bundle extras) {
+        NotificationManager notificationManager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent resultIntent = new Intent(c, MainActivity.class);
+        resultIntent.putExtra("type", "open-webview");
+        resultIntent.putExtra("url", url);
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        c,
+                        id,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        Bitmap icon = BitmapFactory.decodeResource(c.getResources(), R.mipmap.tfg2_round);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(c, "channel_mytfg")
+                .setSmallIcon(R.drawable.tfg)
+                .addExtras(extras)
+                .setLargeIcon(icon)
+                .setColor(c.getResources().getColor(R.color.accent))
+                .setAutoCancel(true)
+                .setSound(android.provider.Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setContentTitle(title)
+                .setContentIntent(resultPendingIntent)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+                .setContentText(text);
+        notificationManager.notify(id, mBuilder.build());
+
+        FbNotify.nextId++;
+    }
 }

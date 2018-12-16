@@ -9,8 +9,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimaryAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
@@ -36,14 +36,9 @@
         <item name="color">@color/colorIcons</item>
     </style>
 
-    <style name="AppTheme.Button">
-        <item name="android:background">@drawable/button_background</item>
-        <item name="android:textColor">@color/colorIcons</item>
-        <item name="android:textSize">@dimen/textButton</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:paddingLeft">@dimen/defaultPadding</item>
-        <item name="android:paddingRight">@dimen/defaultPadding</item>
-        <item name="android:layout_marginTop">@dimen/defaultPadding</item>
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="AppTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">

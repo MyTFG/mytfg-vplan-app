@@ -23,4 +23,11 @@
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:colorControlActivated">@color/colorAccent</item>
     </style>
+
+
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
 </resources>

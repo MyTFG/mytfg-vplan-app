@@ -53,6 +53,8 @@ import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.ApiCallback;
 import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
+import de.mytfg.apps.mytfg.api.SuccessCallback;
+import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.tools.Settings;
 
@@ -84,9 +86,9 @@ public class SettingsFragment extends AuthenticationFragment {
     }
 
     private void updateViews() {
-        CardView details = (CardView) view.findViewById(R.id.account_loggedin);
-        CardView login = (CardView) view.findViewById(R.id.account_goto_login);
-        CardView additional = (CardView) view.findViewById(R.id.account_additional_card);
+        CardView details = view.findViewById(R.id.account_loggedin);
+        CardView login = view.findViewById(R.id.account_goto_login);
+        CardView additional = view.findViewById(R.id.account_additional_card);
 
         MyTFGApi api = new MyTFGApi(context);
         if (api.isLoggedIn()) {
@@ -99,9 +101,9 @@ public class SettingsFragment extends AuthenticationFragment {
             String expire = api.getExpireString();
             final User user = api.getUser();
 
-            TextView username = (TextView) view.findViewById(R.id.account_name);
+            TextView username = view.findViewById(R.id.account_name);
             username.setText(user.getUsername());
-            TextView text = (TextView) view.findViewById(R.id.account_info_text);
+            TextView text = view.findViewById(R.id.account_info_text);
             text.setText(Html.fromHtml(
                     String.format(getString(R.string.account_info_text),
                             user.getFirstname(),
@@ -115,7 +117,7 @@ public class SettingsFragment extends AuthenticationFragment {
                     )
             ));
 
-            Button logoutbtn = (Button) view.findViewById(R.id.logout_button);
+            Button logoutbtn = view.findViewById(R.id.logout_button);
             logoutbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -126,7 +128,7 @@ public class SettingsFragment extends AuthenticationFragment {
                     context.getNavi().updateHeader();
 
 
-                    CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.findViewById(R.id.coordinator_layout);
+                    CoordinatorLayout coordinatorLayout = context.findViewById(R.id.coordinator_layout);
                     Snackbar snackbar = Snackbar
                             .make(coordinatorLayout,
                                     getString(R.string.account_logged_out),
@@ -136,7 +138,15 @@ public class SettingsFragment extends AuthenticationFragment {
                 }
             });
 
-            Button manageLogins = (Button) view.findViewById(R.id.authentications_button);
+            Button personalSettings = view.findViewById(R.id.personal_settings_button);
+            personalSettings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.getNavi().toWebView(MyTFGApi.URL_SETTINGS, context);
+                }
+            });
+
+            Button manageLogins = view.findViewById(R.id.authentications_button);
             manageLogins.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -185,43 +195,6 @@ public class SettingsFragment extends AuthenticationFragment {
                         wfc.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            // Set certificate: ISRG Root X1
-                            /*X509Certificate isrg = null;
-                            try {
-                                KeyStore keyStore = KeyStore.getInstance("AndroidCAStore");
-                                if (keyStore != null) {
-                                    keyStore.load(null, null);
-                                    Enumeration aliases = keyStore.aliases();
-                                    while (aliases.hasMoreElements()) {
-                                        String alias = (String) aliases.nextElement();
-                                        X509Certificate cert = (X509Certificate) keyStore.getCertificate(alias);
-                                        String dn = cert.getIssuerDN().getName();
-                                        String[] parts = dn.split(",");
-                                        for (String part : parts) {
-                                            String[] kv = part.split("=");
-                                            if (kv.length == 2) {
-                                                if (kv[0].equals("CN")) {
-                                                    if (kv[1].equals("ISRG Root X1")) {
-                                                        isrg = cert;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (isrg != null) {
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (isrg != null) {
-                                    wfc.enterpriseConfig.setCaCertificate(isrg);
-                                }
-                                wfc.enterpriseConfig.setDomainSuffixMatch("mytfg.de");
-                            } catch (Exception ex) {
-                                context.getNavi().snackbar(context.getString(R.string.account_wlan_failed));
-                                ex.printStackTrace();
-                                return;
-                            }*/
                             wfc.enterpriseConfig.setDomainSuffixMatch("mytfg.de");
                         }
 
@@ -328,9 +301,9 @@ public class SettingsFragment extends AuthenticationFragment {
         MyTFGApi api = new MyTFGApi(context);
         final User user = api.getUser();
         // Additional classes
-        TextView explanation = (TextView)view.findViewById(R.id.account_additional_explanation);
-        TextView additional = (TextView)view.findViewById(R.id.account_additional_classes);
-        Button selectBtn = (Button)view.findViewById(R.id.account_additional_button);
+        TextView explanation = view.findViewById(R.id.account_additional_explanation);
+        TextView additional = view.findViewById(R.id.account_additional_classes);
+        Button selectBtn = view.findViewById(R.id.account_additional_button);
         String additionals = TextUtils.join(", ", api.getAdditionalClasses());
         if (api.getAdditionalClasses().size() == 0) {
             additionals = getString(R.string.account_addional_classes_none);
@@ -414,9 +387,12 @@ public class SettingsFragment extends AuthenticationFragment {
     }
 
     private void updateSettings() {
-        Switch fulltext = (Switch) view.findViewById(R.id.switch_fulltext);
-        Switch toolbar = (Switch) view.findViewById(R.id.switch_toolbar);
-        Spinner landing = (Spinner) view.findViewById(R.id.spinner_landing);
+        Switch fulltext = view.findViewById(R.id.switch_fulltext);
+        Switch toolbar = view.findViewById(R.id.switch_toolbar);
+        Switch vplanNotifications = view.findViewById(R.id.switch_vplan_notifications);
+        Switch mytfgNotifications = view.findViewById(R.id.switch_mytfg_notifications);
+        Switch groupNotifications = view.findViewById(R.id.switch_group_mytfg_notifications);
+        Spinner landing = view.findViewById(R.id.spinner_landing);
 
         final Settings settings = new Settings(context);
 
@@ -435,6 +411,66 @@ public class SettingsFragment extends AuthenticationFragment {
                 settings.save("hide_toolbar", b);
             }
         });
+
+
+        groupNotifications.setChecked(settings.getBool("group-mytfg-notifications"));
+        groupNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                settings.save("group-mytfg-notifications", b);
+            }
+        });
+
+        vplanNotifications.setChecked(settings.getBool("vplan-notifications", true));
+        vplanNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final CompoundButton compoundButton, boolean b) {
+                settings.save("vplan-notifications", b);
+                FbApi fbApi = new FbApi(context);
+                fbApi.updateSubscription("vplan-notifications", b ? "subscribe" : "unsubscribe", new SuccessCallback() {
+                    @Override
+                    public void callback(boolean success) {
+                        if (!success) {
+                            context.getNavi().snackbar(getResources().getString(R.string.api_settings_error));
+                        }
+                    }
+                });
+            }
+        });
+
+        mytfgNotifications.setChecked(settings.getBool("mytfg-notifications"));
+        mytfgNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final CompoundButton compoundButton, boolean b) {
+                settings.save("mytfg-notifications", b);
+                FbApi fbApi = new FbApi(context);
+                fbApi.updateSubscription("mytfg-notifications", b ? "subscribe" : "unsubscribe", new SuccessCallback() {
+                    @Override
+                    public void callback(boolean success) {
+                        if (!success) {
+                            context.getNavi().snackbar(getResources().getString(R.string.api_settings_error));
+                        }
+                    }
+                });
+            }
+        });
+
+
+
+        FbApi fbApi = new FbApi(context);
+        fbApi.isSubscribed("vplan-notifications", vplanNotifications, new SuccessCallback() {
+            @Override
+            public void callback(boolean success) {
+
+            }
+        });
+        fbApi.isSubscribed("mytfg-notifications", mytfgNotifications, new SuccessCallback() {
+            @Override
+            public void callback(boolean success) {
+
+            }
+        });
+
 
         String selection = settings.getString("landing_page");
         int selectedId = 0;

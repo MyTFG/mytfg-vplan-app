@@ -18,6 +18,7 @@ import java.util.Map;
 
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.User;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 /**
  * Handles Firebase messages related to the VPlan
@@ -35,6 +36,13 @@ class FbVplan {
             Log.d("FbVplan", "Not logged in");
             return;
         }
+
+        Settings settings = new Settings(context);
+        if (!settings.getBool("vplan-notifications", true)) {
+            Log.d("FbVplan", "Notifications turned off");
+            return;
+        }
+
         Log.d("FbVplan", "logged in");
 
         String date = data.get("date");

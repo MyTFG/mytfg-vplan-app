@@ -1,14 +1,13 @@
 package de.mytfg.apps.mytfg.objects;
 
 import android.content.Context;
-
-import org.acra.util.HttpRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import de.mytfg.apps.mytfg.api.ApiCallback;
+import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.tools.JsonFileManager;
@@ -46,7 +45,11 @@ public class MytfgPage extends MytfgObject {
         }
 
         MyTFGApi api = new MyTFGApi(context);
-        api.call("api_page_html_" + path, new ApiCallback() {
+        ApiParams params = new ApiParams();
+        api.addAuth(params);
+        params.addParam("page", path);
+
+        api.call("api/page/html", params, new ApiCallback() {
             @Override
             public void callback(JSONObject result, int responseCode) {
                 if (responseCode == HttpsURLConnection.HTTP_OK) {

@@ -47,12 +47,16 @@ import de.mytfg.apps.mytfg.objects.Vplan;
  */
 
 public class MyTFGApi {
-    public static final String URL_SUPPORTCENTER = "https://mytfg.de/supportcenter/tickets.x";
+    public static final String URL_HOME = "https://mytfg.de/start.x";
+    public static final String URL_SUPPORTCENTER = "https://mytfg.de/supportcenter.x";
+    public static final String URL_SUPPORTCENTER_TICKETS = "https://mytfg.de/supportcenter/tickets.x";
     public static final String URL_PURCHASES = "https://mytfg.de/purchases.x";
     public static final String URL_SETTINGS = "https://mytfg.de/settings.x";
+    public static final String URL_NOTIFICATIONS = "https://mytfg.de/notifications.x";
     public static final String URL_ACCOUNTS = "https://mytfg.de/account.x";
     public static final String URL_ACCOUNTS_SEARCH = "https://mytfg.de/account/search.x";
     public static final String URL_ACCOUNTS_CREATE = "https://mytfg.de/account/create.x";
+    public static final String URL_FORGOT_PASSWORD = "https://mytfg.de/account/pwreset.x";
 
 
     private ProgressBar loadingBar;

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:id="@+id/partners_group_1">
+    <group android:id="@+id/mytfg_group_0">
         <item android:id="@+id/submenu_mytfg_back"
             android:icon="@drawable/ic_menu_back"
             android:title="@string/menutitle_back" />
     </group>
-    <group android:id="@+id/menu_group_2">
+    <group android:id="@+id/mytfg_group_1">
+        <item android:id="@+id/submenu_mytfg_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menutitle_mytfg_start" >
+        </item>
+    </group>
+    <group android:id="@+id/mytfg_group_support">
         <item android:id="@+id/submenu_mytfg_supportcenter"
-            android:icon="@drawable/ic_menu_support"
+            android:icon="@drawable/ic_menu_supportcenter"
             android:title="@string/menutitle_mytfg_supportcenter" >
+        </item>
+        <item android:id="@+id/submenu_mytfg_supportcenter_tickets"
+            android:icon="@drawable/ic_menu_support"
+            android:title="@string/menutitle_mytfg_supportcenter_tickets" >
         </item>
     </group>
     <group android:id="@+id/menu_group_3">

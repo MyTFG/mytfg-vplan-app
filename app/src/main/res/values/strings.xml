@@ -31,10 +31,13 @@
     <string name="menutitle_feedback">Feedback</string>
     <string name="menutitle_more">More</string>
     <string name="menutitle_mytfg">MyTFG</string>
+    <string name="menutitle_mytfg_submenu">MyTFG Features</string>
     <string name="menutitle_authmanage">Authentications</string>
 
     <!-- MyTFG Menu -->
+    <string name="menutitle_mytfg_start">Home</string>
     <string name="menutitle_mytfg_supportcenter">Supportcenter</string>
+    <string name="menutitle_mytfg_supportcenter_tickets">Support Tickets</string>
     <string name="menutitle_mytfg_purchases">Purchases</string>
     <string name="menutitle_mytfg_accounts">Account Management</string>
     <string name="menutitle_mytfg_accounts_search">Search Account</string>
@@ -134,6 +137,7 @@
     <string name="login_badrequest">Invalid request - is this App outdated?</string>
     <string name="login_badresponse">Returned Server data invalid</string>
     <string name="login_serverfault">Server error</string>
+    <string name="login_forgot_password">I Forgot my Password</string>
 
     <!-- ACCOUNT -->
     <string name="account_info_text">
@@ -148,6 +152,7 @@
     </string>
     <string name="logout_action">Logout</string>
     <string name="manage_authentications">Manage Logins</string>
+    <string name="account_personal_settings">Personal Settings</string>
     <string name="account_logged_out">You were logged out</string>
     <string name="account_additional_title">Additional classes</string>
     <string name="account_additional_select">Select additional classes</string>
@@ -200,15 +205,21 @@
 
     <!-- SETTING -->
     <string name="settings_general_title">Settings</string>
+    <string name="api_settings_error">Settings could not be saved</string>
     <string name="settings_opt_newslink">Open News in Browser</string>
     <string name="settings_opt_fulltext">Show Plan as Fulltext</string>
     <string name="settings_opt_toolbar">Hide Toolbar automatically</string>
     <string name="settings_opt_landing_page">Default Page</string>
+    <string name="settings_opt_notifications">Notifications</string>
+    <string name="settings_vplan_notifications">Show VPlan Notifications</string>
+    <string name="settings_mytfg_notifications">Show MyTFG Notifications</string>
+    <string name="settings_group_mytfg_notifications">Group MyTFG Notifications</string>
     <string-array name="settings_opt_landing_page_entries">
         <item>@string/menutitle_tfg</item>
         <item>@string/menutitle_plan</item>
         <item>@string/menutitle_vrr</item>
         <item>@string/menutitle_exams</item>
+        <item>@string/menutitle_mytfg</item>
         <item>@string/menutitle_abbreviations</item>
         <item>@string/menutitle_boosters</item>
         <item>@string/menutitle_parents</item>
@@ -220,6 +231,7 @@
         <item>PlanFragment</item>
         <item>VrrFragment</item>
         <item>ExamFragment</item>
+        <item>WebViewFragment</item>
         <item>AbbreviationsFragment</item>
         <item>BoosterFragment</item>
         <item>ParentsFragment</item>
@@ -413,4 +425,21 @@
     <string name="news_title">TFG-News</string>
     <string name="news_detail_open_in_browser">Open in browser</string>
     <string name="image_view">Image View</string>
+
+
+    <!-- Warning -->
+    <string name="mytfg_mail">E-Mail Warning</string>
+    <string name="mytfg_mail_warning">
+        You\'ve set the default MyTFG Mail in your Account Settings.
+        \nThis way you won\'t be able to recover a lost password.
+        \nPlease consider changing your E-Mail address.
+        \nYou can also disable this warning.
+    </string>
+    <string name="mytfg_mail_update">Set Mail</string>
+    <string name="mytfg_mail_disable">Disable Warning</string>
+    <string name="mytfg_mail_ignore">Close</string>
+
+    <string name="show_notifications">Show Notifications</string>
+    <string name="new_notifications">You have %1$s unseen Notifications</string>
+    <string name="new_notification">You have an unseen Notification</string>
 </resources>

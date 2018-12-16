@@ -1,5 +1,6 @@
 package de.mytfg.apps.mytfg.fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,20 +21,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.amlcurran.showcaseview.targets.Target;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.adapters.FragmentHolder;
 import de.mytfg.apps.mytfg.adapters.ViewPagerAdapter;
+import de.mytfg.apps.mytfg.api.ApiCallback;
+import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.logic.PlanLogic;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.objects.Vplan;
-import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
-import de.mytfg.apps.mytfg.tools.CustomViewTarget;
-import de.mytfg.apps.mytfg.tools.ShowCaseManager;
 
 public class PlanFragment extends AuthenticationFragment {
     private View view;
@@ -308,6 +310,52 @@ public class PlanFragment extends AuthenticationFragment {
         handler.postDelayed(runnable, 10);
 
         //this.showcase();
+
+        MyTFGApi api = new MyTFGApi(context);
+
+        ApiParams params = new ApiParams();
+        api.addAuth(params);
+
+        api.call("api/account/checkMail.x", params, new ApiCallback() {
+            @Override
+            public void callback(JSONObject result, int responseCode) {
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    if (result != null) {
+                        String mail = result.optString("mail", "");
+                        Boolean isMyTFGMail = result.optBoolean("isMyTFGMail", false);
+                        Boolean mytfgMailWarningDisabled = result.optBoolean("warningDisabled", false);
+
+                        if (isMyTFGMail && !mytfgMailWarningDisabled) {
+                            new AlertDialog.Builder(context)
+                                    .setCancelable(true)
+                                    .setTitle(R.string.mytfg_mail)
+                                    .setMessage(getResources().getString(R.string.mytfg_mail_warning))
+                                    .setPositiveButton(R.string.mytfg_mail_update, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            context.getNavi().toWebView(MyTFGApi.URL_SETTINGS, context);
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setNegativeButton(R.string.mytfg_mail_disable, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            context.getNavi().toWebView(MyTFGApi.URL_SETTINGS, context);
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setNeutralButton(R.string.mytfg_mail_ignore, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .show();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     private void setupViewpager() {
@@ -328,21 +376,6 @@ public class PlanFragment extends AuthenticationFragment {
     }
 
     private void showcase() {
-        ShowCaseManager scm = new ShowCaseManager(getContext());
-
-        ToolbarManager tbm = ((MainActivity)getActivity()).getToolbarManager();
-
-        Target tab1 = new CustomViewTarget(tbm.getTabs(), 0.25, 0.5);
-        Target tab2 = new CustomViewTarget(tbm.getTabs(), 0.75, 0.5);
-        Target fab = new ViewTarget(R.id.fab, getActivity());
-        Target menu = new CustomViewTarget(tbm.getToolbar(), 200, 0, CustomViewTarget.Type.ABS_MID_R);
-
-        scm.createChain(this)
-                .add(tab1, R.string.sc_plan_today_title, R.string.sc_plan_today_text)
-                .add(tab2, R.string.sc_plan_next_title, R.string.sc_plan_next_text)
-                .add(menu, R.string.sc_plan_menu_title, R.string.sc_plan_menu_text)
-                .add(fab, R.string.sc_plan_search_title, R.string.sc_plan_search_text, true)
-                .showChain();
 
     }
 
