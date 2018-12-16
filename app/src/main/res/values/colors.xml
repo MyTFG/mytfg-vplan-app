@@ -15,6 +15,7 @@
     <color name="colorAccent">#f57c00</color>
 
     <color name="transparent">@android:color/transparent</color>
+    <color name="ripple_color">#666666</color>
 
     <color name="googleBackground">#F9F9F9</color>
     <color name="colorBlack">#000000</color>
