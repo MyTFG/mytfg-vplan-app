@@ -138,6 +138,14 @@ public class LoginFragment extends AuthenticationFragment {
                                             }
                                         });
                                     }
+                                    fbApi.updateSubscription("vplan-notifications", settings.getBool("vplan-notifications", false) ? "subscribe" : "unsubscribe", new SuccessCallback() {
+                                        @Override
+                                        public void callback(boolean success) {
+                                        if (!success) {
+                                            context.getNavi().snackbar(getResources().getString(R.string.api_settings_error));
+                                        }
+                                        }
+                                    });
                                 } catch (JSONException ex) {
                                     snackText = getString(R.string.login_badresponse);
                                 }

@@ -67,7 +67,7 @@ public class FbNotify {
         NotificationManager notificationManager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Intent resultIntent = new Intent(c, MainActivity.class);
-        resultIntent.putExtra("type", "show_message");
+        resultIntent.putExtra("type", "message");
         resultIntent.putExtra("title", title);
         resultIntent.putExtra("text", text);
 

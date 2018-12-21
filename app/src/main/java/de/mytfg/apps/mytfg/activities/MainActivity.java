@@ -213,11 +213,13 @@ public class MainActivity extends AppCompatActivity {
         Settings settings = new Settings(context);
 
         if (savedInstanceState != null) {
+            Log.d("Intent", "Saved Instance");
             fragment = (AuthenticationFragment)getSupportFragmentManager().getFragment(savedInstanceState,
                     "fragmentInstanceSaved");
         } else {
             Intent intent = getIntent();
             if (getIntent().getData() != null) {
+                Log.d("Intent", "Intent data received (MyTFG Link)");
                 Uri data = getIntent().getData();
                 // URI to String, Replace http to https
                 String url = data.toString().replace("http://", "https://");
@@ -229,8 +231,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             } else if (intent.getExtras() != null && intent.getExtras().containsKey("type")) {
                 String type = intent.getExtras().getString("type");
+
+                Log.d("Intent", "Intent received: " + type);
+
                 switch (type != null ? type : "") {
                     case "open-webview":
+                    case "mytfg-notification":
                         String url = intent.getExtras().getString("url", "");
                         Log.d("URL", url);
                         if (url.length() > 0) {
@@ -242,10 +248,13 @@ public class MainActivity extends AppCompatActivity {
                     case "vplan_update":
                         fragment = new PlanFragment();
                         break;
+                    case "message":
                     case "show_message":
                         fragment = new TfgFragment();
 
                         navi.navigate(fragment, R.id.fragment_container);
+
+                        Log.d("FB", "Notification should be shown");
 
                         AlertDialog.Builder notify = new AlertDialog.Builder(context);
                         notify.setTitle(intent.getExtras().getString("title"));
