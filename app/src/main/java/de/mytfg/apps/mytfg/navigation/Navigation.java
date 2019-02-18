@@ -15,6 +15,9 @@ import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
 import android.transition.TransitionSet;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
@@ -31,6 +34,7 @@ import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.fragments.AuthenticationFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.WebViewFragment;
+import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.tools.CopyDrawableImageTransform;
 
 public class Navigation {
@@ -223,7 +227,7 @@ public class Navigation {
         }
 
         if (!api.isLoggedIn()) {
-            userImg.setImageResource(R.drawable.person_white);
+            userImg.setImageResource(R.drawable.person_white80);
             mailTV.setVisibility(View.GONE);
             usernameTV.setVisibility(View.GONE);
         } else {
@@ -238,10 +242,52 @@ public class Navigation {
                 try {
                     Picasso.with(context)
                             .load(api.getUser().getAvatar())
-                            .error(R.drawable.person_white)
+                            .error(R.drawable.person_white80)
                             .into(userImg);
                 } catch (Exception ex) {
                     Log.d("Picasso", ex.toString());
+                }
+            }
+        }
+    }
+
+    public void setMyTFGMenu(Menu menu) {
+        MenuInflater inflater = new MenuInflater(context);
+        MyTFGApi api = new MyTFGApi(context);
+        User user = api.getUser();
+
+        inflater.inflate(R.menu.submenu_mytfg, menu);
+        for (int i = 0; i < menu.size(); ++i) {
+            MenuItem item = menu.getItem(i);
+            String permission = null;
+            switch (item.getItemId()) {
+                case R.id.submenu_mytfg_supportcenter_tickets:
+                    permission = "supportcenter/visit";
+                    break;
+                case R.id.submenu_mytfg_supportcenter:
+                    permission = "supportcenter/visit";
+                    break;
+                case R.id.submenu_mytfg_accounts:
+                    permission = "account/manage";
+                    break;
+                case R.id.submenu_mytfg_accounts_create:
+                    permission = "account/create";
+                    break;
+                case R.id.submenu_mytfg_accounts_search:
+                    permission = "account/search";
+                    break;
+                case R.id.submenu_mytfg_purchases:
+                    permission = "purchases";
+                    break;
+                case R.id.submenu_mytfg_settings:
+                    permission = "loggedin";
+                    break;
+            }
+            if (permission != null) {
+                if (user.hasPermission(permission)) {
+                    item.setVisible(true);
+                } else {
+                    item.setVisible(false);
                 }
             }
         }

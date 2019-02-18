@@ -150,10 +150,7 @@ public class SettingsFragment extends AuthenticationFragment {
             manageLogins.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.getNavi().navigate(
-                            new AuthmanageFragment(),
-                            R.id.fragment_container
-                    );
+                    context.getNavi().toWebView(MyTFGApi.URL_AUTHS, context);
                 }
             });
 

@@ -464,4 +464,9 @@
     <string name="show_notifications">Benachrichtigungen anzeigen</string>
     <string name="new_notifications">Sie haben %1$s Benachrichtigungen</string>
     <string name="new_notification">Sie haben eine Benachrichtigung</string>
+
+    <string name="mytfg_login_timeout_header">Login abgelaufen</string>
+    <string name="mytfg_login_timeout_text">Ihr Login ist abgelaufen. Bitte loggen Sie sich erneut ein, um Benachrichtigungen und andere Features der App zu nutzen.</string>
+    <string name="mytfg_login_renew">Login</string>
+    <string name="mytfg_login_cancel">Abbrechen</string>
 </resources>

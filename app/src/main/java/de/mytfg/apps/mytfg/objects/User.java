@@ -2,8 +2,11 @@ package de.mytfg.apps.mytfg.objects;
 
 import android.content.Context;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
@@ -25,6 +28,7 @@ public class User extends MytfgObject {
     private String usertype = null;
     private String avatar;
     private int rights;
+    private JSONArray permissions;
 
     private Context context;
 
@@ -68,6 +72,10 @@ public class User extends MytfgObject {
             usertype  = json.getString("usertype");
             mail      = json.optString("mail", "");
             avatar    = json.optString("avatar", "");
+            permissions = json.optJSONArray("permissions");
+            if (permissions == null) {
+                permissions = new JSONArray();
+            }
             this.save(json);
             return true;
         } catch (JSONException ex) {
@@ -78,6 +86,10 @@ public class User extends MytfgObject {
 
     private boolean save(JSONObject json) {
         return JsonFileManager.write(json, "user_" + getUsername(), context);
+    }
+
+    public boolean remove() {
+        return JsonFileManager.clear("user_" + getUsername(), context);
     }
 
 
@@ -109,6 +121,37 @@ public class User extends MytfgObject {
 
     public String getUserType() {
         return usertype;
+    }
+
+    public boolean hasPermission(String permission) {
+        if (this.permissions != null) {
+            for (int i = 0; i < permissions.length(); ++i) {
+                JSONObject perm = permissions.optJSONObject(i);
+                if (perm != null) {
+                    if (perm.optString("perm", "").equals(permission)) {
+                        if (perm.optBoolean("total", false)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<String> getPermissions() {
+        ArrayList<String> perms = new ArrayList<>();
+        if (this.permissions != null) {
+            for (int i = 0; i < permissions.length(); ++i) {
+                JSONObject perm = permissions.optJSONObject(i);
+                if (perm != null) {
+                    if (perm.optBoolean("total", false)) {
+                        perms.add(perm.optString("perm", ""));
+                    }
+                }
+            }
+        }
+        return perms;
     }
 
     public int getGradeNum() {

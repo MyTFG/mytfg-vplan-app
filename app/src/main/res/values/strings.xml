@@ -442,4 +442,10 @@
     <string name="show_notifications">Show Notifications</string>
     <string name="new_notifications">You have %1$s unseen Notifications</string>
     <string name="new_notification">You have an unseen Notification</string>
+
+    <string name="mytfg_login_timeout_header">Login Timeout</string>
+    <string name="mytfg_login_timeout_text">Your Login has timed out. Please log in again to get Notifications and use all features of this App.</string>
+    <string name="mytfg_login_renew">Login</string>
+    <string name="mytfg_login_cancel">Cancel</string>
+
 </resources>

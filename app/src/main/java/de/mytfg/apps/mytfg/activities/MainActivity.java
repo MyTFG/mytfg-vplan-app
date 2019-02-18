@@ -1,6 +1,7 @@
 package de.mytfg.apps.mytfg.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import java.net.URL;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.adapters.MyTFGWebView;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
+import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.fragments.AbbreviationsFragment;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
@@ -32,6 +34,7 @@ import de.mytfg.apps.mytfg.fragments.ExamFragment;
 import de.mytfg.apps.mytfg.fragments.FeedbackFragment;
 import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
+import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.LostAndFoundFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
 import de.mytfg.apps.mytfg.fragments.PagesFragment;
@@ -93,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 FbApi.updateFirebase(context);
 
                 Bundle args = new Bundle();
+
+                // Notify if Login timedout
+                final MyTFGApi api = new MyTFGApi(context);
+                api.checkLoginDialog(context);
 
                 switch (item.getItemId()) {
                     default:
@@ -174,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.mainmenu_mytfg:
                         navigationView.getMenu().clear();
-                        navigationView.inflateMenu(R.menu.submenu_mytfg);
+                        navi.setMyTFGMenu(navigationView.getMenu());
                         return true;
                     case R.id.submenu_mytfg_back:
                         navigationView.getMenu().clear();
@@ -281,6 +288,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navi.navigate(fragment, R.id.fragment_container);
+
+        final MyTFGApi api = new MyTFGApi(context);
+        api.checkLoginDialog(context);
     }
 
     @Override

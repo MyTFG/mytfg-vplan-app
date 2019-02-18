@@ -29,6 +29,7 @@ import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.ApiCallback;
 import de.mytfg.apps.mytfg.api.ApiParams;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
+import de.mytfg.apps.mytfg.api.SimpleCallback;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
@@ -125,6 +126,13 @@ public class LoginFragment extends AuthenticationFragment {
                                     }
                                     context.getNavi().clear();
                                     context.getNavi().navigate(new PlanFragment(), R.id.fragment_container);
+
+                                    api.updateAuthInfo(0, new SimpleCallback() {
+                                        @Override
+                                        public void callback() {
+
+                                        }
+                                    });
 
                                     // Send Firebase Token to Server
                                     FbApi fbApi = new FbApi(context);

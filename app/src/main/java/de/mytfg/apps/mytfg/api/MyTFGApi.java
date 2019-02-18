@@ -2,10 +2,12 @@ package de.mytfg.apps.mytfg.api;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -21,6 +23,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
@@ -57,14 +60,17 @@ public class MyTFGApi {
     public static final String URL_ACCOUNTS_SEARCH = "https://mytfg.de/account/search.x";
     public static final String URL_ACCOUNTS_CREATE = "https://mytfg.de/account/create.x";
     public static final String URL_FORGOT_PASSWORD = "https://mytfg.de/account/pwreset.x";
+    public static final String URL_AUTHS = "https://mytfg.de/account/authentications.x";
 
 
     private ProgressBar loadingBar;
     private Context context;
+    private SharedPreferences preferences;
     private static int overrideLoad = 0;
 
     public MyTFGApi(Context context) {
         this.context = context;
+        this.preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         if (context instanceof MainActivity) {
             View rootview = ((Activity) context).getWindow().getDecorView()
                     .findViewById(android.R.id.content);
@@ -79,7 +85,6 @@ public class MyTFGApi {
      * @return True iff user is logged in as far as known.
      */
     public boolean isLoggedIn() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         String token = preferences.getString("token", null);
         long date = preferences.getLong("expire", 0);
         long timestamp = System.currentTimeMillis()/1000;
@@ -87,11 +92,108 @@ public class MyTFGApi {
     }
 
     /**
+     * Queries the server for information about the current Login.
+     * This is done only once every two hours, otherwise, cached information is used.
+     */
+    public void updateAuthInfo(final SimpleCallback callback) {
+        long lastupdate = preferences.getLong("lastupdate", 0);
+        this.updateAuthInfo(lastupdate, callback);
+    }
+
+    public void updateAuthInfo(long lastupdate, final SimpleCallback callback) {
+        long timestamp = System.currentTimeMillis() / 1000;
+        long reloadTimeout = 60 * 5; // 5 minutes
+
+        if (lastupdate < timestamp - reloadTimeout) {
+            preferences.edit().putLong("lastupdate", timestamp).apply();
+            if (getToken().equals("")) {
+                callback.callback();
+                return;
+            }
+
+            ApiParams params = new ApiParams();
+            this.addAuth(params);
+            this.call("api/auth/info", params, new ApiCallback() {
+                @Override
+                public void callback(JSONObject result, int responseCode) {
+                    if (responseCode == HttpsURLConnection.HTTP_OK) {
+                        // Login is still valid, update expire from response
+                        long expire = 0;
+                        try {
+                            expire = result.getLong("expires");
+                        } catch (JSONException ex) {
+                            Log.d("AUTH", ex.getMessage());
+                        }
+
+                        JSONObject juser = result.optJSONObject("currentuser");
+                        if (juser != null) {
+                            User user = new User(context);
+                            user.load(juser);
+                        }
+
+                        preferences.edit()
+                                .putLong("expire", expire)
+                                .putBoolean("expired", false)
+                                .apply();
+                        callback.callback();
+                    } else {
+                        if (responseCode >= 500 || responseCode < 0) {
+                            // API down?
+                            callback.callback();
+                            return;
+                        }
+                        // Seems not to be a valid login anymore, logout
+                        // and set flag that the login has expired
+                        logout(false);
+                        preferences.edit()
+                                .putBoolean("expired", true)
+                                .apply();
+
+                        callback.callback();
+                    }
+                }
+            });
+        } else {
+            callback.callback();
+        }
+    }
+
+    public void checkLoginDialog(final MainActivity context) {
+        checkLogin(new SuccessCallback() {
+            @Override
+            public void callback(boolean success) {
+                if (!success) {
+                    if (isExpired()) {
+                        logout(false);
+                        new AlertDialog.Builder(context)
+                                .setCancelable(true)
+                                .setTitle(R.string.mytfg_login_timeout_header)
+                                .setMessage(context.getResources().getString(R.string.mytfg_login_timeout_text))
+                                .setPositiveButton(R.string.mytfg_login_renew, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        context.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton(R.string.mytfg_login_cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .show();
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * Adds authentication information to the parameter set.
      * @param params The parameter set the authentication information should be added to.
      */
     public void addAuth(ApiParams params) {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         String token = preferences.getString("token", "");
         String username = preferences.getString("username", "");
         String device = preferences.getString("device", "");
@@ -107,8 +209,31 @@ public class MyTFGApi {
      * parameter (true iff login information is still valid)
      * @param callback The callback to use
      */
-    public void checkLogin(SuccessCallback callback) {
+    public void checkLogin(final SuccessCallback callback) {
+        this.updateAuthInfo(new SimpleCallback() {
+            @Override
+            public void callback() {
+                callback.callback(isLoggedIn());
+            }
+        });
+    }
 
+    /**
+     * Checks whether the currently saved login is expired.
+     * This should be combined with "checkLogin".
+     */
+    public boolean isExpired() {
+        if (!isLoggedIn()) {
+            return preferences.getBoolean("expired", false);
+        }
+
+        return false;
+    }
+
+    public void setExpired(boolean expired) {
+        preferences.edit()
+                .putBoolean("expired", expired)
+                .apply();
     }
 
     public User getUser() {
@@ -118,7 +243,6 @@ public class MyTFGApi {
     }
 
     public List<String> getAdditionalClasses() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         Set<String> set = preferences.getStringSet("additional_classes", new android.support.v4.util.ArraySet<String>());
         List<String> list = new LinkedList<>();
         for (String cls : set) {
@@ -136,7 +260,6 @@ public class MyTFGApi {
                 classSet.add(cls);
             }
         }
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
                 .putStringSet("additional_classes", classSet)
                 .apply();
@@ -146,7 +269,6 @@ public class MyTFGApi {
     }
 
     public void clearAdditionalClasses() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
                 .remove("additional_classes")
                 .apply();
@@ -186,22 +308,18 @@ public class MyTFGApi {
     }
 
     public String getUsername() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getString("username", "");
     }
 
     public String getStoredDevice() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getString("device", "");
     }
 
     public String getToken() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getString("token", "");
     }
 
     public long getExpire() {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         return preferences.getLong("expire", 0);
     }
 
@@ -220,13 +338,13 @@ public class MyTFGApi {
      * @param expire The expire date as Timestamp for the token
      */
     public void saveLogin(String username, String token, String device, String devicename, long expire) {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
                 .putString("token", token)
                 .putString("username", username)
                 .putString("device", device)
                 .putString("devicename", devicename)
                 .putLong("expire", expire)
+                .putBoolean("expired", false)
                 .apply();
     }
 
@@ -235,14 +353,17 @@ public class MyTFGApi {
      * @param deleteUsername Specifies if the username should be deleted, too
      */
     public void logout(boolean deleteUsername) {
-        SharedPreferences preferences = context.getSharedPreferences("authmanager", Context.MODE_PRIVATE);
         preferences.edit()
                 .remove("token")
                 .remove("device")
                 .remove("devicename")
                 .remove("expire")
                 .remove("additional_classes")
+                .putBoolean("expired", false)
                 .apply();
+
+        getUser().remove();
+
         if (deleteUsername) {
             preferences.edit()
                     .remove("username")
@@ -371,6 +492,7 @@ public class MyTFGApi {
                 URL url = new URL(baseUrl + path + ".x");
 
                 HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+                Log.d("API Call", url.toString());
 
                 connection.setReadTimeout(8000);
                 connection.setConnectTimeout(10000);
@@ -408,6 +530,9 @@ public class MyTFGApi {
                 ex.printStackTrace();
                 Log.e("API", "Malformed URL: " + ex.getMessage());
                 return null;
+            } catch (SocketTimeoutException ex) {
+                Log.e("API Timeout", ex.getMessage() == null ? "" : ex.getMessage());
+                return null;
             } catch (Exception ex) {
                 Log.e("API Exception", ex.getMessage() == null ? "" : ex.getMessage());
                 return null;
@@ -422,6 +547,7 @@ public class MyTFGApi {
                 loadingBar.setVisibility(View.GONE);
             }
 
+            Log.d("API ResponseCode", "" + responseCode);
             if (result == null)
                 Log.d("API Result", "null");
             else
@@ -439,16 +565,21 @@ public class MyTFGApi {
                         login_canceled = true;
                     }
                     if (login_canceled && context instanceof MainActivity) {
+                        Log.d("API", "Login canceled");
                         MainActivity activity = (MainActivity)context;
                         activity.getNavi().snackbar(context.getString(R.string.login_deleted));
                         MyTFGApi api = new MyTFGApi(context);
                         api.logout(false);
                         activity.getNavi().navigate(new LoginFragment(), R.id.fragment_container);
                         return;
+                    } else {
+                        callback.callback(new JSONObject(), responseCode);
+                        return;
                     }
                 } catch (JSONException ex) {
                     ex.printStackTrace();
                     callback.callback(new JSONObject(), responseCode);
+                    return;
                 }
             }
 
@@ -460,6 +591,7 @@ public class MyTFGApi {
                     callback.callback(obj, responseCode);
                 } catch (JSONException ex) {
                     ex.printStackTrace();
+                    Log.e("API Inv JSON", result);
                     callback.callback(new JSONObject(), responseCode);
                 }
             }
