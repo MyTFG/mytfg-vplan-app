@@ -44,6 +44,7 @@ import de.mytfg.apps.mytfg.fragments.PlanFragment;
 import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.fragments.TfgFragment;
 import de.mytfg.apps.mytfg.fragments.VrrFragment;
+import de.mytfg.apps.mytfg.fragments.WifiFragment;
 import de.mytfg.apps.mytfg.navigation.Navigation;
 import de.mytfg.apps.mytfg.toolbar.ToolbarManager;
 import de.mytfg.apps.mytfg.tools.Settings;
@@ -173,6 +174,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.submenu_partners_lostandfound:
                         //navi.clear();
                         navi.navigate(new LostAndFoundFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.submenu_wifi:
+                        //navi.clear();
+                        navi.navigate(new WifiFragment(), R.id.fragment_container);
                         return true;
 
                     // SUBMENU "MyTFG"

@@ -53,6 +53,7 @@
     <string name="menutitle_pages">MyTFG Pages</string>
     <string name="menutitle_abbreviations">Abbreviations</string>
     <string name="menutitle_lostandfound">Lost And Found</string>
+    <string name="menutitle_wifi">Wifi Scan</string>
 
     <!-- HOME -->
     <string name="home_status_title">MyTFG</string>

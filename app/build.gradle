@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
     testImplementation 'junit:junit:4.12'
 }
 

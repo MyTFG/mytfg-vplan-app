@@ -210,8 +210,18 @@ public class ToolbarManager {
         return this;
     }
 
+    public ToolbarManager showFab(int drawable) {
+        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        fab.setImageResource(drawable);
+        if (fab.getVisibility() != View.VISIBLE) {
+            fab.show();
+        }
+        return this;
+    }
+
     public ToolbarManager showFab() {
         FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+        fab.setImageResource(android.R.drawable.ic_menu_search);
         if (fab.getVisibility() != View.VISIBLE) {
             fab.show();
         }

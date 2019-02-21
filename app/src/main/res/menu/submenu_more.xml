@@ -32,5 +32,8 @@
         <item android:id="@+id/submenu_partners_lostandfound"
             android:icon="@drawable/ic_menu_lostandfound"
             android:title="@string/menutitle_lostandfound" />
+        <item android:id="@+id/submenu_wifi"
+            android:icon="@drawable/ic_wifi_black_24dp"
+            android:title="@string/menutitle_wifi" />
     </group>
 </menu>

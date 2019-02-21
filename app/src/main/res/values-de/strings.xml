@@ -54,6 +54,7 @@
     <string name="menutitle_pages">MyTFG Seiten</string>
     <string name="menutitle_abbreviations">Abkürzungen</string>
     <string name="menutitle_lostandfound">Fundbüro</string>
+    <string name="menutitle_wifi">WLAN-Scan</string>
 
     <!-- API CODES -->
     <string name="api_offline">Keine Internet Verbindung</string>
