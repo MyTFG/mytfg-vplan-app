@@ -470,4 +470,23 @@
     <string name="mytfg_login_timeout_text">Ihr Login ist abgelaufen. Bitte loggen Sie sich erneut ein, um Benachrichtigungen und andere Features der App zu nutzen.</string>
     <string name="mytfg_login_renew">Login</string>
     <string name="mytfg_login_cancel">Abbrechen</string>
+
+
+    <!-- Wifi Scanning -->
+    <string name="wifi_scan_forbidden">Zu viele Scans. Bitte später erneut versuchen.</string>
+    <string name="wifi_scan_pending">Keine WLAN-Daten</string>
+    <string name="wifi_scan_pending_sub">Bitte starten Sie einen Scan</string>
+    <string name="wifi_scan_good">WLAN-Empfang ist gut</string>
+    <string name="wifi_scan_good_sub">Es sollten keine Probleme auftreten</string>
+    <string name="wifi_scan_warning">WLAN-Empfang ist Ok</string>
+    <string name="wifi_scan_warning_sub">Es könnte jedoch besser sein…</string>
+    <string name="wifi_scan_error">Kein WLAN-Empfang</string>
+    <string name="wifi_scan_error_sub">Entweder kein oder nur sehr schlechter Empfang</string>
+
+    <string name="wifi_ap_unknown">Unbekannter AP</string>
+    <string name="wifi_band">WLAN-Band</string>
+    <string name="wifi_band_24">2.4 GHz</string>
+    <string name="wifi_band_50">5 GHz</string>
+    <string name="wifi_channel">Kanal</string>
+    <string name="wifi_quality">Qualität</string>
 </resources>

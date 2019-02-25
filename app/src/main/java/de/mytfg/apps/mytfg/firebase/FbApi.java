@@ -3,6 +3,7 @@ package de.mytfg.apps.mytfg.firebase;
 import android.content.Context;
 import android.widget.Switch;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 

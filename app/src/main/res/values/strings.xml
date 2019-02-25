@@ -449,4 +449,22 @@
     <string name="mytfg_login_renew">Login</string>
     <string name="mytfg_login_cancel">Cancel</string>
 
+
+    <!-- Wifi Scanning -->
+    <string name="wifi_scan_forbidden">Wifi Scanning is disabled due to too many scans. Try again later.</string>
+    <string name="wifi_scan_pending">No Wifi Information</string>
+    <string name="wifi_scan_pending_sub">Please start a new scan</string>
+    <string name="wifi_scan_good">Wifi Coverage is Good</string>
+    <string name="wifi_scan_good_sub">There should be no problems</string>
+    <string name="wifi_scan_warning">Wifi Coverage is Ok</string>
+    <string name="wifi_scan_warning_sub">Not the best results, though</string>
+    <string name="wifi_scan_error">No Wifi Coverage</string>
+    <string name="wifi_scan_error_sub">Either no or really bad reception</string>
+
+    <string name="wifi_ap_unknown">Unknown AP</string>
+    <string name="wifi_band">Wifi-Band</string>
+    <string name="wifi_band_24">2.4 GHz</string>
+    <string name="wifi_band_50">5 GHz</string>
+    <string name="wifi_channel">Channel</string>
+    <string name="wifi_quality">Quality</string>
 </resources>

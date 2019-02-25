@@ -2,10 +2,14 @@ package de.mytfg.apps.mytfg.firebase;
 
 import android.util.Log;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
+
+import de.mytfg.apps.mytfg.api.SuccessCallback;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 public class FbMessagingService extends FirebaseMessagingService {
     @Override
@@ -47,5 +51,24 @@ public class FbMessagingService extends FirebaseMessagingService {
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
+    }
+
+    @Override
+    public void onNewToken(String token) {
+        super.onNewToken(token);
+        Log.d("FB-MS", "onNewToken");
+        Log.d("FB-MS", "New token: " + token);
+
+        Settings settings = new Settings(this.getApplicationContext());
+        settings.save("firebaseToken", token);
+        settings.save("firebaseTokenUpdated", true);
+
+        FbApi fbApi = new FbApi(getApplicationContext());
+        fbApi.sendFbToken(token, new SuccessCallback() {
+            @Override
+            public void callback(boolean success) {
+                Log.d("FB-ID-Server", "" + success);
+            }
+        });
     }
 }

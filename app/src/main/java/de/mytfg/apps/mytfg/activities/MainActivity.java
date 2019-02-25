@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.FirebaseApp;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseApp.initializeApp(this);
 
         sharedPreferences = getPreferences(MODE_PRIVATE);
 
@@ -330,6 +334,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ToolbarManager getToolbarManager() {
+        if (toolbarManager == null) {
+            toolbarManager = new ToolbarManager(this, drawerLayout);
+        }
         return toolbarManager;
     }
 

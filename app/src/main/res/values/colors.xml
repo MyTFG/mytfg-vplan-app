@@ -14,6 +14,11 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorAccent">#f57c00</color>
 
+    <color name="wifiPending">#005DB9</color>
+    <color name="wifiError">#B90002</color>
+    <color name="wifiWarning">#ED9700</color>
+    <color name="wifiGood">#248D00</color>
+
     <color name="transparent">@android:color/transparent</color>
     <color name="ripple_color">#666666</color>
 
