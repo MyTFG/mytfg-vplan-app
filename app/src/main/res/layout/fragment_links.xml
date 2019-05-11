@@ -3,7 +3,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -17,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
+            style="?attr/cardStyle"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
             app:contentPadding="10dp"
@@ -27,8 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"
@@ -62,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
+            style="?attr/cardStyle"
             android:clickable="true"
             app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
@@ -72,8 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"
@@ -105,6 +104,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
+            style="?attr/cardStyle"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
@@ -117,8 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"
@@ -153,6 +152,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/link_tfg_web"
             android:padding="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             app:contentPadding="10dp"
@@ -162,8 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"
@@ -200,6 +199,7 @@
             android:padding="@dimen/cardview_spacing"
             app:contentPadding="10dp"
             android:foreground="?android:attr/selectableItemBackground"
+            style="?attr/cardStyle"
             android:clickable="true"
             android:layout_marginBottom="@dimen/cardview_spacing">
 
@@ -207,8 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"

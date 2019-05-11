@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".activities.MainActivity"
-    style="@style/AppTheme">
+    tools:context=".activities.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_height="wrap_content"
@@ -17,11 +16,11 @@
         <include layout="@layout/toolbar" />
 
         <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragment_container"
-            android:background="@color/googleBackground"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:background="?attr/windowBackgroundColor"
+            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         </FrameLayout>
 
@@ -42,7 +41,7 @@
             android:id="@+id/fab"
             android:src="@android:drawable/ic_menu_search"
             app:fabSize="normal"
-            app:backgroundTint="@color/colorAccent"
+            app:backgroundTint="?attr/myColorAccent"
             android:tint="@color/colorIcons"
             android:clickable="true"
             android:layout_margin="16dp"

@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="?attr/cardStyle"
             android:padding="@dimen/cardview_padding"
             android:layout_marginBottom="@dimen/cardview_padding">
 
@@ -25,8 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -48,14 +47,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -144,7 +143,7 @@
                     android:layout_gravity="end"
                     android:id="@+id/feedback_button"
                     android:text="@string/feedback_action"
-                    style="@style/AppTheme.Button"/>
+                    style="?attr/AppThemeButton"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

@@ -1,8 +1,7 @@
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -12,12 +11,12 @@
         android:fitsSystemWindows="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:descendantFocusability="beforeDescendants"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:descendantFocusability="beforeDescendants">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="?attr/cardStyle"
             android:padding="@dimen/cardview_spacing"
             android:layout_marginBottom="@dimen/defaultPadding">
 
@@ -25,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -47,14 +45,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/defaultPadding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_spacing"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_spacing">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -74,14 +72,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
+                    android:nextFocusDown="@id/login_button"
                     android:hint="@string/login_hint_password" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:nextFocusDown="@id/login_forgot_password"
                     android:layout_gravity="end"
                     android:id="@+id/login_button"
                     android:text="@string/login_action"
-                    style="@style/AppTheme.Button"/>
+                    style="?attr/AppThemeButton"/>
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="AppTheme">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,6 +11,18 @@
         <item name="android:colorControlNormal">@color/colorPrimaryDark</item>
         <item name="android:colorControlActivated">@color/ripple_color</item>
         <item name="android:colorControlHighlight">@color/ripple_color</item>
+    </style>
+
+    <style name="DarkTheme.Base" parent="DarkTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:colorPrimary">@color/nm_colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/nm_colorPrimaryDark</item>
+        <item name="android:textColorTertiary">@color/nm_colorSecondaryText</item>
+        <item name="android:textColorSecondary">@color/nm_colorSecondaryText</item>
+        <item name="android:colorAccent">@color/nm_colorAccent</item>
+        <item name="android:colorControlNormal">@color/nm_colorPrimaryDark</item>
+        <item name="android:colorControlActivated">@color/colorRedDark</item>
+        <item name="android:colorControlHighlight">@color/colorRed</item>
     </style>
 
     <style name="AppTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
@@ -24,10 +36,25 @@
         <item name="android:colorControlActivated">@color/colorAccent</item>
     </style>
 
-
-
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
         <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="DarkTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressTint">@color/nm_colorAccent</item>
+        <item name="android:indeterminateTint">@color/nm_colorAccent</item>
+        <item name="android:progressBackgroundTint">@color/nm_colorAccent</item>
+    </style>
+
+    <style name="DarkTheme.Switch" parent="Base.Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:colorControlActivated">@color/nm_colorAccent</item>
+        <item name="android:textColor">@color/nm_colorPrimaryText</item>
+    </style>
+
+    <style name="DarkTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/nm_colorPrimaryDark</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 </resources>

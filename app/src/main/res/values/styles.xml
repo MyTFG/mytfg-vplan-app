@@ -1,11 +1,51 @@
 <resources>
+    <attr format="reference" name="cardStyle" />
+    <attr format="reference" name="cardColor" />
+    <attr name="windowBackgroundColor" format="reference" />
+    <attr name="toolbarTheme" format="reference" />
+    <attr name="toolbarThemePopup" format="reference" />
+    <attr name="AppThemeButton" format="reference" />
+    <attr name="AppThemeSwitch" format="reference" />
+    <attr name="AppThemeProgressBar" format="reference" />
+    <attr name="toolbarScrim" format="reference" />
+    <attr name="navigationStyle" format="reference" />
+    <attr name="navigationTextColor" format="reference" />
+    <attr name="tabTheme" format="reference" />
+    <attr name="tabColor" format="reference" />
+    <attr name="tabBackground" format="reference" />
+    <attr name="myIconTint" format="reference" />
+    <attr name="myColorAccent" format="reference" />
+    <attr name="styleSpinner" format="reference" />
+    <attr name="colorText" format="reference" />
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
-        <item name="colorControlHighlight">#40ffffff</item>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="windowBackgroundColor">@color/googleBackground</item>
+        <item name="toolbarTheme">@style/AppTheme.Toolbar</item>
+        <item name="toolbarThemePopup">@style/AppTheme.Toolbar.Base</item>
+
+        <item name="AppThemeProgressBar">@style/AppTheme.ProgressBar</item>
+        <item name="AppThemeButton">@style/AppTheme.Button</item>
+        <item name="AppThemeSwitch">@style/AppTheme.Switch</item>
+
+        <item name="cardStyle">@style/CardView.Light</item>
+        <item name="toolbarScrim">@color/colorPrimaryDark</item>
+        <item name="editTextStyle">@style/AppTheme.EditText</item>
+        <item name="android:editTextStyle">@style/AppTheme.EditText</item>
+        <item name="cardColor">@color/googleBackground</item>
+        <item name="navigationStyle">@style/AppTheme.Navigation</item>
+        <item name="navigationTextColor">@color/colorPrimaryText</item>
+        <item name="tabTheme">@style/AppTheme.TabTheme</item>
+        <item name="myIconTint">@color/colorPrimaryText</item>
+        <item name="myColorAccent">@color/colorAccent</item>
+        <item name="tabColor">@color/colorAccent</item>
+        <item name="alertDialogTheme">@style/AppTheme.Dialog</item>
+        <item name="styleSpinner">@style/Widget.AppCompat.Spinner</item>
+        <item name="colorText">@color/colorPrimaryText</item>
+        <item name="tabBackground">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="AppTheme.Base" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,24 +53,47 @@
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimaryAccent</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="cardCornerRadius">8dp</item>
+
     </style>
 
-    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+    <!-- App theme without action bar -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.TabTheme" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@color/colorPrimaryDark</item>
+        <item name="tabTextAppearance">@style/AppTheme.TabTextAppearance</item>
+        <item name="tabTextColor">@color/colorIconsDark</item>
+        <item name="tabSelectedTextColor">@color/colorIcons</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
     <style name="AppTheme.Toolbar" parent="AppTheme.Toolbar.Base" />
+
+    <style name="DarkTheme.Toolbar" parent="DarkTheme.Toolbar.Base" />
 
     <style name="AppTheme.Toolbar.Base" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="DarkTheme.Toolbar.Base" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:colorBackground">@color/nm_colorPrimaryDark</item>
     </style>
 
     <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
@@ -43,7 +106,15 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="DarkTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/nm_colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
     <style name="AppTheme.ProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+    </style>
+
+    <style name="AppTheme.Navigation" parent="Widget.Design.NavigationView">
     </style>
 
     <style name="AppTheme.TabTextAppearance">
@@ -68,7 +139,7 @@
         <item name="android:textColor">@color/colorIcons</item>
     </style>
 
-    <style name="AppTheme.Base.CardViewStyle" parent="CardView">
+    <style name="AppTheme.Base.CardViewStyle" parent="CardView.Light">
         <item name="cardCornerRadius">2dp</item>
         <item name="cardElevation">2dp</item>
     </style>
@@ -76,7 +147,100 @@
     <style name="MyDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/accent</item>
         <item name="android:textColorPrimary">@color/colorPrimaryText</item>
-        <item name="android:background">@color/cardview_light_background</item>
+        <item name="android:background">@color/colorRed</item>
     </style>
 
+
+    <!-- Dark Mode -->
+    <style name="DarkTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="cardStyle">@style/DarkTheme.CardViewStyle</item>
+        <item name="windowBackgroundColor">@color/nm_bg</item>
+        <item name="toolbarTheme">@style/DarkTheme.Toolbar</item>
+        <item name="toolbarThemePopup">@style/DarkTheme.Toolbar.Base</item>
+
+        <item name="AppThemeProgressBar">@style/DarkTheme.ProgressBar</item>
+        <item name="AppThemeButton">@style/DarkTheme.Button</item>
+        <item name="AppThemeSwitch">@style/DarkTheme.Switch</item>
+        <item name="toolbarScrim">@color/nm_colorPrimaryDark</item>
+
+        <item name="editTextColor">@color/colorWhite</item>
+        <item name="android:editTextStyle">@style/DarkTheme.EditText</item>
+        <item name="editTextStyle">@style/DarkTheme.EditText</item>
+        <item name="cardColor">@color/nm_card</item>
+        <item name="navigationStyle">@style/DarkTheme.Navigation</item>
+        <item name="navigationTextColor">@color/nm_colorPrimaryText</item>
+        <item name="tabTheme">@style/DarkTheme.TabTheme</item>
+        <item name="myIconTint">@color/nm_colorSecondaryText</item>
+        <item name="myColorAccent">@color/nm_colorAccent</item>
+        <item name="tabColor">@color/colorWhite</item>
+        <item name="alertDialogTheme">@style/DarkTheme.Dialog</item>
+        <item name="styleSpinner">@style/DarkTheme.Spinner</item>
+
+        <item name="spinnerDropDownItemStyle">@style/DarkTheme.Spinner.Item</item>
+        <item name="spinnerStyle">@style/DarkTheme.Spinner</item>
+        <item name="android:dropDownSpinnerStyle">@style/DarkTheme.Spinner</item>
+        <item name="colorText">@color/nm_colorPrimaryText</item>
+        <item name="tabBackground">@color/nm_colorPrimaryDark</item>
+</style>
+
+    <style name="DarkTheme.Base" parent="DarkTheme">
+        <item name="colorPrimary">@color/colorRed</item>
+        <item name="colorPrimaryDark">@color/colorRedDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorRedDark</item>
+        <item name="colorControlActivated">@color/colorRed</item>
+        <item name="colorControlHighlight">@color/colorPrimaryAccent</item>
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
+        <item name="editTextStyle">@style/DarkTheme.EditText</item>
+    </style>
+
+    <style name="DarkTheme.CardViewStyle" parent="CardView.Dark">
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/nm_card</item>
+    </style>
+
+    <style name="DarkTheme.ToolbarTheme" parent="AppTheme.Toolbar.Base">
+        <item name="android:colorBackground">@color/nm_colorPrimaryDark</item>
+    </style>
+
+    <style name="DarkTheme.Navigation" parent="Widget.Design.NavigationView">
+        <item name="android:background">@color/nm_bg</item>
+        <item name="android:textColor">@color/nm_colorSecondaryText</item>
+    </style>
+
+    <style name="DarkTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/nm_colorSecondaryText</item>
+        <item name="android:textColorHint">@color/nm_colorTertiaryText</item>
+        <item name="android:editTextColor">@color/nm_colorSecondaryText</item>
+    </style>
+
+    <style name="DarkTheme.Navigation.TextAppearance">
+        <item name="android:textColor">@color/nm_colorSecondaryText</item>
+        <item name="android:textSize">50dp</item>
+    </style>
+
+
+    <style name="DarkTheme.TabTheme" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@color/nm_colorPrimaryDark</item>
+        <item name="tabTextAppearance">@style/AppTheme.TabTextAppearance</item>
+        <item name="tabTextColor">@color/colorIconsDark</item>
+        <item name="tabSelectedTextColor">@color/nm_colorPrimaryText</item>
+        <item name="tabIndicatorColor">@color/colorRed</item>
+    </style>
+
+    <style name="DarkTheme.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="colorAccent">@color/colorRedDark</item>
+        <item name="android:textColorPrimary">@color/nm_colorPrimaryText</item>
+        <item name="android:windowBackground">@color/nm_card_darker</item>"
+    </style>
+
+    <style name="DarkTheme.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/nm_colorPrimaryText</item>
+    </style>
+
+    <style name="DarkTheme.Spinner.Item" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textColor">@color/nm_colorPrimaryText</item>
+        <item name="android:background">@color/nm_card_darker</item>
+    </style>
 </resources>

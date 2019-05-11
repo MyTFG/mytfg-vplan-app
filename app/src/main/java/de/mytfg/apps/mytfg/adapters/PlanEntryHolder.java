@@ -12,6 +12,7 @@ import android.widget.TextView;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.VplanEntry;
 import de.mytfg.apps.mytfg.tools.CircleBackground;
+import de.mytfg.apps.mytfg.tools.ColorTool;
 import de.mytfg.apps.mytfg.tools.Settings;
 
 import static android.view.View.GONE;
@@ -55,7 +56,7 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
         if (planEntry == null) {
             linearLayout.setVisibility(GONE);
             emptyText.setVisibility(View.VISIBLE);
-            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimaryLight));
+            cardView.setCardBackgroundColor(context.getResources().getColor(ColorTool.getCardColor(context)));
             return;
         }
 
@@ -97,9 +98,9 @@ public class PlanEntryHolder extends RecyclerView.ViewHolder {
 
         cls.setText(planEntry.getCls());
         if (planEntry.isOwn()) {
-            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimaryLight));
+            cardView.setCardBackgroundColor(context.getResources().getColor(ColorTool.getCardColor(context)));
         } else {
-            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorSecondaryLight));
+            cardView.setCardBackgroundColor(context.getResources().getColor(ColorTool.getCardColor(context, true)));
         }
 
         clsFrame.setBackgroundResource(CircleBackground.getResource(planEntry.getColor()));

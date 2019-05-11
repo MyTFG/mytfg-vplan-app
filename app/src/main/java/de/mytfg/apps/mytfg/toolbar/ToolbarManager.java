@@ -36,6 +36,7 @@ public class ToolbarManager {
     private TabLayout tabs;
     private SearchView searchView;
     private boolean currentTabOutscroll;
+    private int currentDrawable;
 
     private Toolbar toolbar;
 
@@ -212,7 +213,10 @@ public class ToolbarManager {
 
     public ToolbarManager showFab(int drawable) {
         FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
-        fab.setImageResource(drawable);
+        if (drawable != currentDrawable) {
+            fab.setImageResource(drawable);
+            currentDrawable = drawable;
+        }
         if (fab.getVisibility() != View.VISIBLE) {
             fab.show();
         }
@@ -220,12 +224,7 @@ public class ToolbarManager {
     }
 
     public ToolbarManager showFab() {
-        FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
-        fab.setImageResource(android.R.drawable.ic_menu_search);
-        if (fab.getVisibility() != View.VISIBLE) {
-            fab.show();
-        }
-        return this;
+        return showFab(R.drawable.ic_search_black_24dp);
     }
 
     public ToolbarManager showSearchBar() {

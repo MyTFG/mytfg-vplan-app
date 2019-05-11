@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -15,6 +14,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="?attr/cardStyle"
             android:padding="@dimen/cardview_padding"
             android:layout_marginBottom="@dimen/cardview_padding">
 
@@ -22,8 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
                 <TextView
                     android:textSize="@dimen/textTitle"
                     android:layout_width="match_parent"
@@ -60,14 +59,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -96,14 +95,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -117,6 +116,7 @@
                     android:text="@string/about_sponsoring_text" />
                 <ImageView
                     android:layout_width="200dp"
+                    android:background="@color/googleBackground"
                     android:layout_gravity="end"
                     android:layout_height="60dp"
                     android:layout_marginEnd="@dimen/cardview_default_radius"
@@ -132,14 +132,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -154,12 +154,12 @@
 
                 <Button
                     android:id="@+id/button_datapolicy"
-                    style="@style/AppTheme.Button"
+                    style="?attr/AppThemeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|right"
                     android:text="@string/menutitle_datapolicy"
-                    android:theme="@style/AppTheme.Button" />
+                    android:theme="?attr/AppThemeButton" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        app:contentScrim="@color/colorPrimaryDark"
-        app:statusBarScrim="@color/colorPrimaryDark"
+        app:contentScrim="?attr/toolbarScrim"
+        app:statusBarScrim="?attr/toolbarScrim"
         android:id="@+id/collapsingToolbarLayout">
 
         <ImageView
@@ -53,8 +53,8 @@
             android:id="@+id/toolbar"
             android:layout_height="?attr/actionBarSize"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:theme="@style/AppTheme.Toolbar"
-            app:popupTheme="@style/AppTheme.Toolbar.Base"
+            android:theme="?attr/toolbarTheme"
+            app:popupTheme="?attr/toolbarThemePopup"
 
             app:layout_collapseMode="pin">
 
@@ -68,12 +68,9 @@
         android:visibility="gone"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        android:theme="@style/AppTheme"
-        android:background="@color/colorPrimaryDark"
-        app:tabTextAppearance="@style/AppTheme.TabTextAppearance"
-        app:tabTextColor="@color/colorIconsDark"
-        app:tabSelectedTextColor="@color/colorIcons"
-        app:tabIndicatorColor="@color/colorAccent"
+        android:theme="?attr/tabTheme"
+        android:background="?attr/tabBackground"
+        app:tabIndicatorColor="?attr/tabColor"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android" />
 

@@ -36,6 +36,7 @@ import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.logic.PlanLogic;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.objects.Vplan;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 public class PlanFragment extends AuthenticationFragment {
     private View view;
@@ -114,7 +115,7 @@ public class PlanFragment extends AuthenticationFragment {
         MyTFGApi api = new MyTFGApi(context);
         final User user = api.getUser();
 
-        if (user.getRights() < 2) {
+        if (!user.hasPermission("vplan/absent")) {
             menu.getItem(1).setVisible(false);
         }
 
@@ -163,6 +164,10 @@ public class PlanFragment extends AuthenticationFragment {
             snackbar.show();
             return true;
         }
+
+        Settings settings = new Settings(context);
+        boolean nightmode = settings.getBool("nightmode");
+
         switch (item.getItemId()) {
             case R.id.show_absent:
                 AlertDialog.Builder absentDialog = new AlertDialog.Builder(context);
@@ -179,7 +184,7 @@ public class PlanFragment extends AuthenticationFragment {
                     absent = getString(R.string.plan_no_teachers);
                 }
                 absentDialog.setMessage(absent);
-                absentDialog.setIcon(R.drawable.ic_menu_absent);
+                absentDialog.setIcon(nightmode ? R.drawable.ic_show_absent : R.drawable.ic_menu_absent);
                 AlertDialog abs = absentDialog.create();
                 abs.show();
                 return true;
@@ -198,7 +203,7 @@ public class PlanFragment extends AuthenticationFragment {
                     message = getString(R.string.plan_no_announcements);
                 }
                 alertDialog.setMessage(message);
-                alertDialog.setIcon(R.drawable.ic_menu_about_old);
+                alertDialog.setIcon(nightmode ? R.drawable.ic_show_marquee : R.drawable.ic_menu_about_old);
                 AlertDialog alert = alertDialog.create();
                 alert.show();
                 return true;
@@ -211,7 +216,7 @@ public class PlanFragment extends AuthenticationFragment {
                 } else {
                     timeDialog.setMessage(time);
                 }
-                timeDialog.setIcon(R.drawable.ic_menu_clock);
+                timeDialog.setIcon(nightmode ? R.drawable.ic_show_time : R.drawable.ic_menu_clock);
                 AlertDialog timeDlg = timeDialog.create();
                 timeDlg.show();
                 return true;

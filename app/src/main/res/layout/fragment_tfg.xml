@@ -1,7 +1,6 @@
 <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorIcons"
     android:id="@+id/tfg_pager">
 
 </android.support.v4.view.ViewPager>

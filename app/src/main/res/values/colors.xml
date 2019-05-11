@@ -29,6 +29,8 @@
 
     <color name="colorDelay">#AA0000</color>
     <color name="colorRed">#aa0000</color>
+    <color name="colorRedDark">#880000</color>
+    <color name="colorRedDarker">#550000</color>
     <color name="colorGreen">#00884b</color>
     <color name="colorBlue">#2d74da</color>
     <color name="colorYellow">#e3bc13</color>
@@ -53,4 +55,15 @@
 
 
     <color name="widget_light_background">#CCFFFFFF</color>
+
+    <color name="nm_card">#242729</color>
+    <color name="nm_card_darker">#161819</color>
+    <color name="nm_bg">#2b2e31</color>
+    <color name="nm_colorPrimaryDark">@color/colorRedDark</color>
+    <color name="nm_colorPrimaryDarker">@color/colorRedDarker</color>
+    <color name="nm_colorSecondaryText">#BBBBBB</color>
+    <color name="nm_colorPrimaryText">#FFFFFF</color>
+    <color name="nm_colorPrimary">@color/colorRed</color>
+    <color name="nm_colorAccent">@color/colorRedDarker</color>
+    <color name="nm_colorTertiaryText">@color/colorGray</color>
 </resources>

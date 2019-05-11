@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
             android:visibility="gone"
             android:id="@+id/account_goto_login"
             android:layout_marginBottom="@dimen/cardview_padding">
@@ -26,8 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_gravity="start"
@@ -61,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
             android:id="@+id/account_loggedin"
             android:layout_marginBottom="@dimen/cardview_padding">
 
@@ -68,8 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -96,7 +95,7 @@
                         android:layout_gravity="end"
                         android:id="@+id/authentications_button"
                         android:text="@string/manage_authentications"
-                        style="@style/AppTheme.Button" />
+                        style="?attr/AppThemeButton" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -104,7 +103,7 @@
                         android:layout_gravity="end"
                         android:id="@+id/personal_settings_button"
                         android:text="@string/account_personal_settings"
-                        style="@style/AppTheme.Button" />
+                        style="?attr/AppThemeButton" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -112,7 +111,7 @@
                         android:layout_gravity="end"
                         android:id="@+id/logout_button"
                         android:text="@string/logout_action"
-                        style="@style/AppTheme.Button"/>
+                        style="?attr/AppThemeButton"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -125,6 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/account_additional_card"
+            style="?attr/cardStyle"
             android:padding="@dimen/cardview_padding"
             android:layout_marginBottom="@dimen/cardview_padding">
 
@@ -132,8 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -160,7 +159,7 @@
                     android:id="@+id/account_additional_button"
                     android:visibility="gone"
                     android:text="@string/account_additional_select"
-                    android:theme="@style/AppTheme.Button"/>
+                    android:theme="?attr/AppThemeButton"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -169,14 +168,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -191,12 +190,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/defaultPadding"
+                    style="?attr/AppThemeSwitch"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_opt_fulltext" />
                 <Switch
                     android:id="@+id/switch_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="?attr/AppThemeSwitch"
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_opt_toolbar" />
@@ -205,7 +206,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryText"
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
                     android:textSize="@dimen/textSmallTitle"
@@ -216,6 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/defaultPadding"
+                    style="?attr/AppThemeSwitch"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_vplan_notifications" />
                 <Switch
@@ -223,12 +224,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/defaultPadding"
+                    style="?attr/AppThemeSwitch"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_mytfg_notifications" />
                 <Switch
                     android:id="@+id/switch_group_mytfg_notifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="?attr/AppThemeSwitch"
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_group_mytfg_notifications" />
@@ -236,7 +239,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryText"
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
                     android:textSize="@dimen/textSmallTitle"
@@ -247,6 +249,9 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/defaultPadding"
                     android:paddingTop="@dimen/defaultPadding"
+                    style="?attr/styleSpinner"
+
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:entries="@array/settings_opt_landing_page_entries"
                     android:id="@+id/spinner_landing" />
 
@@ -259,14 +264,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/account_wlan_card"
             android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
             android:layout_marginBottom="@dimen/cardview_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/cardview_padding"
-                android:background="@color/colorPrimaryLight">
+                android:padding="@dimen/cardview_padding">
 
                 <TextView
                     android:textSize="@dimen/textTitle"
@@ -302,7 +307,7 @@
                     android:layout_gravity="end"
                     android:id="@+id/account_wlan_connect"
                     android:text="@string/account_wlan_connect"
-                    style="@style/AppTheme.Button"/>
+                    style="?attr/AppThemeButton"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

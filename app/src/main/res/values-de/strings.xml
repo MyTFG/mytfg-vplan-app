@@ -197,6 +197,7 @@
     <string name="settings_opt_toolbar">Toolbar automatisch ausblenden</string>
     <string name="settings_opt_landing_page">Standardansicht</string>
     <string name="settings_opt_notifications">Benachrichtigungen</string>
+    <string name="settings_opt_nightmode">Nachtmodus</string>
     <string name="settings_vplan_notifications">VPlan-Benachrichtigungen</string>
     <string name="settings_mytfg_notifications">MyTFG-Benachrichtigungen</string>
     <string name="settings_group_mytfg_notifications">MyTFG-Benachrichtigungen gruppieren</string>

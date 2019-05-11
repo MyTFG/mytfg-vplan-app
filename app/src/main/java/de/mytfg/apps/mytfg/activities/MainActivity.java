@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.ValueCallback;
 
 import com.google.firebase.FirebaseApp;
 
@@ -61,9 +62,18 @@ public class MainActivity extends AppCompatActivity {
     private MainActivity context;
     private Menu menu;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Settings settings = new Settings(this);
+        if (settings.getBool("nightmode", false)) {
+            setTheme(R.style.DarkTheme_Base);
+        } else {
+            setTheme(R.style.AppTheme_Base);
+        }
+
         setContentView(R.layout.activity_main);
 
         FirebaseApp.initializeApp(this);
@@ -226,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         AuthenticationFragment fragment = null;
-        Settings settings = new Settings(context);
 
         if (savedInstanceState != null) {
             Log.d("Intent", "Saved Instance");

@@ -588,6 +588,14 @@ public class MyTFGApi {
             } else {
                 try {
                     JSONObject obj = new JSONObject(result);
+                    // Update the currentuser if present
+                    if (obj.has("currentuser")) {
+                        JSONObject currentuser = obj.optJSONObject("currentuser");
+                        if (currentuser != null) {
+                            User user = new User(context);
+                            user.load(currentuser);
+                        }
+                    }
                     callback.callback(obj, responseCode);
                 } catch (JSONException ex) {
                     ex.printStackTrace();

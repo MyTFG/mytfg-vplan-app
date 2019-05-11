@@ -33,7 +33,7 @@
 
             <Button
                 android:id="@+id/button_widget_today"
-                style="@style/AppTheme.Button"
+                style="?attr/AppThemeButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/cardview_spacing"
@@ -43,7 +43,7 @@
 
             <Button
                 android:id="@+id/button_widget_tomorrow"
-                style="@style/AppTheme.Button"
+                style="?attr/AppThemeButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/cardview_spacing"

@@ -2,6 +2,7 @@ package de.mytfg.apps.mytfg.navigation;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -36,11 +38,13 @@ import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.tools.CopyDrawableImageTransform;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 public class Navigation {
     private Context context;
 
     private boolean finishOnBack = false;
+    private boolean nightmodeState = false;
 
     private NavigationView navigationView;
     private View navigationHeader;
@@ -221,6 +225,30 @@ public class Navigation {
         TextView usernameTV = navigationHeader.findViewById(R.id.navigation_user_name);
         TextView mailTV = navigationHeader.findViewById(R.id.navigation_user_mail);
         CircleImageView userImg = navigationHeader.findViewById(R.id.navigation_user_image);
+        ImageView nightmodeToggler = navigationHeader.findViewById(R.id.toggleNightmode);
+        ImageView background = navigationHeader.findViewById(R.id.imageView);
+
+        final Settings settings = new Settings(context);
+
+        nightmodeToggler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean nm = settings.getBool("nightmode");
+                settings.save("nightmode", !nm);
+                ((MainActivity)context).recreate();
+            }
+        });
+
+        if (settings.getBool("nightmode") != nightmodeState) {
+            if (settings.getBool("nightmode")) {
+                nightmodeToggler.setImageDrawable(context.getResources().getDrawable(R.drawable.disable_nightmode));
+                background.setImageDrawable(context.getResources().getDrawable(R.drawable.nightmode_navi));
+            } else {
+                nightmodeToggler.setImageDrawable(context.getResources().getDrawable(R.drawable.enable_nightmode));
+                background.setImageDrawable(context.getResources().getDrawable(R.drawable.school_tfg_navi));
+            }
+            nightmodeState = !nightmodeState;
+        }
 
         if (mailTV == null) {
             return;
@@ -240,8 +268,9 @@ public class Navigation {
                 userImg.setImageResource(R.drawable.person_white);
             } else {
                 try {
+                    Log.d("Avatar", api.getUser().getAvatar(true));
                     Picasso.with(context)
-                            .load(api.getUser().getAvatar())
+                            .load(api.getUser().getAvatar(true))
                             .error(R.drawable.person_white80)
                             .into(userImg);
                 } catch (Exception ex) {

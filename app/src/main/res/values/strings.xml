@@ -467,4 +467,5 @@
     <string name="wifi_band_50">5 GHz</string>
     <string name="wifi_channel">Channel</string>
     <string name="wifi_quality">Quality</string>
+    <string name="settings_opt_nightmode">Nightmode</string>
 </resources>

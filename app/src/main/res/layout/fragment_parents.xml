@@ -3,7 +3,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/colorIcons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_height="match_parent"
@@ -28,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultPadding"
             android:layout_marginBottom="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/cardview_spacing"
@@ -38,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -95,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/cardview_spacing"
+            style="?attr/cardStyle"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             app:contentPadding="10dp"
@@ -105,7 +105,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:background="@color/colorPrimaryLight"
                 android:padding="@dimen/cardview_spacing">
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -162,6 +161,7 @@
             android:layout_marginBottom="@dimen/cardview_spacing"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
+            style="?attr/cardStyle"
             app:contentPadding="10dp"
             android:padding="@dimen/cardview_spacing"
             android:id="@+id/parents_mail">
@@ -169,7 +169,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimaryLight"
                 android:orientation="horizontal"
                 android:padding="@dimen/cardview_spacing">
                 <FrameLayout

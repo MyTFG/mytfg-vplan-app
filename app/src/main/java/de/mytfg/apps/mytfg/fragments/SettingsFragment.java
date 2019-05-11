@@ -25,6 +25,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -42,6 +43,7 @@ import java.security.KeyStore;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
@@ -410,6 +412,7 @@ public class SettingsFragment extends AuthenticationFragment {
         });
 
 
+
         groupNotifications.setChecked(settings.getBool("group-mytfg-notifications"));
         groupNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -472,13 +475,15 @@ public class SettingsFragment extends AuthenticationFragment {
         String selection = settings.getString("landing_page");
         int selectedId = 0;
         String[] arr = getResources().getStringArray(R.array.settings_opt_landing_page_fragments);
+
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < arr.length; ++i) {
             if (arr[i].equals(selection)) {
                 selectedId = i;
-                break;
             }
+            list.add(arr[i]);
         }
-
+        landing.setAdapter(new ArrayAdapter<String>(context, R.layout.spinner_item, list));
         landing.setSelection(selectedId);
         landing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import de.mytfg.apps.mytfg.R;
+import de.mytfg.apps.mytfg.api.ApiParams;
+import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.tools.JsonFileManager;
 
@@ -116,11 +118,27 @@ public class User extends MytfgObject {
     public String getMail() { return mail; }
 
     public String getAvatar() {
-        return avatar;
+        return this.getAvatar(false);
+    }
+
+    public String getAvatar(boolean withAuthentication) {
+        if (avatar == null) {
+            return "";
+        } else {
+            if (withAuthentication) {
+                MyTFGApi api = new MyTFGApi(context);
+                ApiParams params = new ApiParams();
+                api.addAuth(params);
+
+                return "https://mytfg.de/" + avatar + "&" + params.toUrlString();
+            } else {
+                return "https://mytfg.de/" + avatar;
+            }
+        }
     }
 
     public String getUserType() {
-        return usertype;
+        return usertype == null ? "" : usertype;
     }
 
     public boolean hasPermission(String permission) {
@@ -175,23 +193,21 @@ public class User extends MytfgObject {
     }
 
     public String getLevel() {
-        switch (getRights()) {
+        switch (getUserType()) {
             default:
-            case USER_RIGHTS_NORIGHTS:
+            case "logged_out":
                 return context.getString(R.string.user_rights_norights);
-            case USER_RIGHTS_PUPIL:
-                if (this.usertype == null || this.usertype.equals("pupil")) {
-                    return context.getString(R.string.user_rights_pupil);
-                } else {
-                    return context.getString(R.string.user_rights_parent);
-                }
-            case USER_RIGHTS_TEACHER:
+            case "pupil":
+                return context.getString(R.string.user_rights_pupil);
+            case "parent":
+                return context.getString(R.string.user_rights_parent);
+            case "teacher":
                 return context.getString(R.string.user_rights_teacher);
-            case USER_RIGHTS_MANAGEMENT:
+            case "management":
                 return context.getString(R.string.user_rights_management);
-            case USER_RIGHTS_SYSTEM:
+            case "system":
                 return context.getString(R.string.user_rights_system);
-            case USER_RIGHTS_ADMIN:
+            case "admin":
                 return context.getString(R.string.user_rights_admin);
         }
     }
