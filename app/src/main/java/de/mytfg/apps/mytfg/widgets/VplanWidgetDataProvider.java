@@ -60,7 +60,7 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public RemoteViews getViewAt(int position) {
-        if (mCollection.size() >= position) {
+        if (mCollection.size() <= position) {
             return null;
         }
 
@@ -89,7 +89,6 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
         } else {
             view.setViewVisibility(R.id.widget_arrow, View.VISIBLE);
         }
-
 
         return view;
     }
