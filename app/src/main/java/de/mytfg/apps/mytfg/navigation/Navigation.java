@@ -239,6 +239,26 @@ public class Navigation {
             }
         });
 
+        userImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toWebView(MyTFGApi.URL_AVATAR, (MainActivity) context);
+            }
+        });
+
+        usernameTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toWebView(MyTFGApi.URL_SETTINGS, (MainActivity) context);
+            }
+        });
+        mailTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toWebView(MyTFGApi.URL_SETTINGS, (MainActivity) context);
+            }
+        });
+
         if (settings.getBool("nightmode") != nightmodeState) {
             if (settings.getBool("nightmode")) {
                 nightmodeToggler.setImageDrawable(context.getResources().getDrawable(R.drawable.disable_nightmode));

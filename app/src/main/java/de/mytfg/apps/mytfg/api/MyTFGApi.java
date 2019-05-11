@@ -55,6 +55,7 @@ public class MyTFGApi {
     public static final String URL_SUPPORTCENTER_TICKETS = "https://mytfg.de/supportcenter/tickets.x";
     public static final String URL_PURCHASES = "https://mytfg.de/purchases.x";
     public static final String URL_SETTINGS = "https://mytfg.de/settings.x";
+    public static final String URL_AVATAR = "https://mytfg.de/account/picture.x";
     public static final String URL_NOTIFICATIONS = "https://mytfg.de/notifications.x";
     public static final String URL_ACCOUNTS = "https://mytfg.de/account.x";
     public static final String URL_ACCOUNTS_SEARCH = "https://mytfg.de/account/search.x";
