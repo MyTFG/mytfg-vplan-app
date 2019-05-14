@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/widget_mainlayout"
+    android:background="@color/nm_bg"
+    android:padding="@dimen/widget_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:elevation="2dp"
+        android:id="@+id/widget_banner"
+        android:background="@color/nm_colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VPlan Widget"
+            android:id="@+id/widget_title"
+            android:textColor="@color/colorPrimaryLight"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_changed"
+            android:text="Letztes Update"
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimaryLight"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/plan_empty"
+        android:textColor="@color/colorBlack"
+        android:id="@+id/widget_plan_empty"
+        android:textAlignment="center"
+        android:padding="@dimen/defaultPadding"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/widget_list_view"
+            android:layout_width="match_parent"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/widget_fab"
+            android:layout_height="wrap_content"
+            android:src="@drawable/widget_fab_src_dark"
+            android:layout_margin="5dp"
+            android:layout_gravity="bottom|end"
+            android:clickable="true"
+            />
+
+
+    </FrameLayout>
+
+</LinearLayout>

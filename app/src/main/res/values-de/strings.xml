@@ -490,4 +490,10 @@
     <string name="wifi_band_50">5 GHz</string>
     <string name="wifi_channel">Kanal</string>
     <string name="wifi_quality">Qualität</string>
+
+    <string name="widget_nightmode_off">DarkMode Aus</string>
+    <string name="widget_nightmode_on">DarkMode An</string>
+    <string name="widget_nightmode_app">DarkMode wie App</string>
+    <string name="widget_nightmode_auto">Zeitbasierter DarkMode (vgl. App-Einstellungen)</string>
+    <string name="widget_nightmode_title">Welches Design möchten Sie nutzen?</string>
 </resources>

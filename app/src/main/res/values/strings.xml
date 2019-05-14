@@ -468,4 +468,9 @@
     <string name="wifi_channel">Channel</string>
     <string name="wifi_quality">Quality</string>
     <string name="settings_opt_nightmode">Nightmode</string>
+    <string name="widget_nightmode_off">Nightmode Off</string>
+    <string name="widget_nightmode_on">Nightmode On</string>
+    <string name="widget_nightmode_app">Nightmode from App</string>
+    <string name="widget_nightmode_auto">Time-Based Nightmode</string>
+    <string name="widget_nightmode_title">Which Design would you like to use?</string>
 </resources>

@@ -39,6 +39,7 @@ import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.tools.CopyDrawableImageTransform;
 import de.mytfg.apps.mytfg.tools.Settings;
+import de.mytfg.apps.mytfg.widgets.VplanWidget;
 
 public class Navigation {
     private Context context;
@@ -235,6 +236,7 @@ public class Navigation {
             public void onClick(View view) {
                 boolean nm = settings.getBool("nightmode");
                 settings.save("nightmode", !nm);
+                VplanWidget.updateAllWidgets((MainActivity)context);
                 ((MainActivity)context).recreate();
             }
         });

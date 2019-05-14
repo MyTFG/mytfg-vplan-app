@@ -25,6 +25,8 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
     private static final String TAG = "VplanWidgetDataProvider";
     private Vplan plan;
     private String day;
+    private int widgetId;
+    private boolean nightmode;
 
     private List<VplanEntry> mCollection = new ArrayList<>();
     private Context mContext = null;
@@ -32,12 +34,15 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
     public VplanWidgetDataProvider(Context context, Intent intent) {
         mContext = context;
         day = intent.getStringExtra("day");
-        Log.d("WIDGET", "DAY: " + day);
+        widgetId = Integer.valueOf(intent.getData().getSchemeSpecificPart());
+        nightmode = VplanWidget.useNightmode(context, widgetId);
+        Log.d("WIDGET", "VplanWidgetDataProvider DAY: " + day + "; Nightmode: " + nightmode);
         plan = new Vplan(mContext, day);
     }
 
     @Override
     public void onCreate() {
+        onDataSetChanged();
     }
 
     @Override
@@ -60,13 +65,17 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public RemoteViews getViewAt(int position) {
+        Log.d("WIDGET", "getViewAt(" + position + ")");
         if (mCollection.size() <= position) {
             return null;
         }
 
         VplanEntry entry = mCollection.get(position);
+        nightmode = VplanWidget.useNightmode(mContext, widgetId);
 
-        RemoteViews view = new RemoteViews(mContext.getPackageName(), R.layout.vplan_widget_entry);
+        int layout = nightmode ? R.layout.vplan_widget_entry_dark : R.layout.vplan_widget_entry;
+
+        RemoteViews view = new RemoteViews(mContext.getPackageName(), layout);
         view.setTextViewText(R.id.widget_plan_plan, entry.getPlan());
         view.setTextViewText(R.id.widget_plan_comment, entry.getComment());
         view.setTextViewText(R.id.widget_plan_substitution, entry.getSubstitution());
@@ -102,7 +111,7 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public int getViewTypeCount() {
-        return 1;
+        return 3;
     }
 
     @Override
@@ -112,11 +121,12 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public boolean hasStableIds() {
-        return true;
+        return false;
     }
 
     private void initData() {
         Log.d("WIDGET", "INIT DATA: " + plan.getDay());
+        nightmode = VplanWidget.useNightmode(mContext, widgetId);
         mCollection.clear();
         if (plan.isLoaded() && plan.upToDate()) {
             mCollection.clear();
@@ -138,7 +148,7 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
                 public void callback(boolean success) {
                     Log.d("WIDGET", "Loading finished: " + success);
                     if (success) {
-                        initData();
+                        onDataSetChanged();
                     }
                 }
             });

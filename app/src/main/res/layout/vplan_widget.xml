@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/widget_mainlayout"
     android:background="@color/widget_light_background"
     android:padding="@dimen/widget_margin">
 
@@ -12,6 +13,7 @@
         android:orientation="vertical"
         android:padding="5dp"
         android:elevation="2dp"
+        android:id="@+id/widget_banner"
         android:background="@color/colorPrimary">
 
         <TextView

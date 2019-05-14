@@ -7,7 +7,7 @@ android {
         applicationId "de.mytfg.apps.mytfg"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 45
+        versionCode 47
         versionName "1.4.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

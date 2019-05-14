@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import de.mytfg.apps.mytfg.R;
 
@@ -18,6 +19,7 @@ public class VplanWidgetConfigureActivity extends Activity {
     private static final String PREFS_NAME = "de.mytfg.apps.mytfg.widgets.VplanWidget";
     private static final String PREF_PREFIX_KEY = "appwidget_";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+    private static final String PREF_POSTFIX_NM = "_nightmode";
 
     public VplanWidgetConfigureActivity() {
         super();
@@ -48,6 +50,23 @@ public class VplanWidgetConfigureActivity extends Activity {
         prefs.apply();
     }
 
+    static void saveNightmodePref(Context context, int appWidgetId, int nightmode) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
+        prefs.putInt(PREF_PREFIX_KEY + appWidgetId + PREF_POSTFIX_NM, nightmode);
+        prefs.apply();
+    }
+
+    static int getNightmodePref(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        return prefs.getInt(PREF_PREFIX_KEY + appWidgetId + PREF_POSTFIX_NM, VplanWidget.Nightmode.OFF);
+    }
+
+    static void deleteNightmodePref(Context context, int appWidgetId) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
+        prefs.remove(PREF_PREFIX_KEY + appWidgetId + PREF_POSTFIX_NM);
+        prefs.apply();
+    }
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -64,6 +83,7 @@ public class VplanWidgetConfigureActivity extends Activity {
 
                 // When the button is clicked, store the string locally
                 saveDayPref(context, mAppWidgetId, "today");
+                saveNightmodePref(context, mAppWidgetId, getNightmode());
 
                 // It is the responsibility of the configuration activity to update the app widget
                 AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -84,6 +104,7 @@ public class VplanWidgetConfigureActivity extends Activity {
 
                 // When the button is clicked, store the string locally
                 saveDayPref(context, mAppWidgetId, "tomorrow");
+                saveNightmodePref(context, mAppWidgetId, getNightmode());
 
                 // It is the responsibility of the configuration activity to update the app widget
                 AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -108,6 +129,21 @@ public class VplanWidgetConfigureActivity extends Activity {
         // If this activity was started with an intent without an app widget ID, finish with an error.
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish();
+        }
+    }
+
+    private int getNightmode() {
+        RadioGroup group = findViewById(R.id.widget_radiogroup);
+        switch (group.getCheckedRadioButtonId()) {
+            default:
+            case R.id.widget_nightmode_off:
+                return VplanWidget.Nightmode.OFF;
+            case R.id.widget_nightmode_on:
+                return VplanWidget.Nightmode.ON;
+            case R.id.widget_nightmode_app:
+                return VplanWidget.Nightmode.APP;
+            case R.id.widget_nightmode_auto:
+                return VplanWidget.Nightmode.AUTO;
         }
     }
 }

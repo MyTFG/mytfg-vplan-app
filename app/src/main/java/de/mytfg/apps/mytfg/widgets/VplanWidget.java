@@ -4,8 +4,10 @@ import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -17,9 +19,11 @@ import java.util.Date;
 import java.util.Locale;
 
 import de.mytfg.apps.mytfg.R;
+import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.objects.Vplan;
+import de.mytfg.apps.mytfg.tools.Settings;
 
 /**
  * Implementation of App Widget functionality.
@@ -31,6 +35,25 @@ public class VplanWidget extends AppWidgetProvider {
     private static final String SYNC_CLICKED    = "automaticWidgetSyncButtonClick";
     private static int randomNum = 1;
 
+    class Nightmode {
+        static final int OFF = 0;
+        static final int ON = 1;
+        static final int APP = 2;
+        static final int AUTO = 3;
+    }
+
+    public static void updateAllWidgets(MainActivity context) {
+        Log.d("WIDGET", "Updating all Widgets");
+        Intent intent = new Intent(context, VplanWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        // Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
+        // since it seems the onUpdate() is only fired on that:
+        int[] ids = AppWidgetManager.getInstance(context.getApplication())
+                .getAppWidgetIds(new ComponentName(context.getApplication(), VplanWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
+    }
+
     static void updateAppWidget(final Context context, final AppWidgetManager appWidgetManager,
                                 final int appWidgetId) {
         updateAppWidget(context, appWidgetManager, appWidgetId, false);
@@ -39,12 +62,15 @@ public class VplanWidget extends AppWidgetProvider {
     static void updateAppWidget(final Context context, final AppWidgetManager appWidgetManager,
                                 final int appWidgetId, final boolean force) {
 
-        Log.d("WIDGET", "UPDATE FOR WIDGET " + appWidgetId);
+        Log.d("WIDGET", "UPDATE FOR WIDGET " + appWidgetId + " with Nightmode " + VplanWidget.useNightmode(context, appWidgetId));
 
         final CharSequence day = VplanWidgetConfigureActivity.loadDayPref(context, appWidgetId);
         CharSequence daystr;
         // Construct the RemoteViews object
-        final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.vplan_widget);
+
+        int layout = VplanWidget.useNightmode(context, appWidgetId) ? R.layout.vplan_widget_dark : R.layout.vplan_widget;
+
+        final RemoteViews views = new RemoteViews(context.getPackageName(), layout);
 
         views.setOnClickPendingIntent(R.id.widget_fab, getPendingSelfIntent(context, SYNC_CLICKED, appWidgetId));
 
@@ -96,7 +122,7 @@ public class VplanWidget extends AppWidgetProvider {
                         views.setViewVisibility(R.id.widget_plan_empty, View.GONE);
                         views.setViewVisibility(R.id.widget_list_view, View.VISIBLE);
                     }
-                    setRemoteAdapter(context, views, day.toString());
+                    setRemoteAdapter(context, views, day.toString(), appWidgetId);
                     appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list_view);
                 }
                 // Instruct the widget manager to update the widget
@@ -129,6 +155,7 @@ public class VplanWidget extends AppWidgetProvider {
         // When the user deletes the widget, delete the preference associated with it.
         for (int appWidgetId : appWidgetIds) {
             VplanWidgetConfigureActivity.deleteDayPref(context, appWidgetId);
+            VplanWidgetConfigureActivity.deleteNightmodePref(context, appWidgetId);
         }
     }
 
@@ -142,8 +169,12 @@ public class VplanWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
+    @Override
+    public void onRestored(Context context, int[] oldWidgetIds, int[] newWidgetIds) {
+        onUpdate(context, AppWidgetManager.getInstance(context), newWidgetIds);
+    }
 
-    private static void setRemoteAdapter(Context context, @NonNull final RemoteViews views, String day) {
+    private static void setRemoteAdapter(Context context, @NonNull final RemoteViews views, String day, int appWidgetId) {
         Intent intent;
         switch (day) {
             default:
@@ -155,10 +186,10 @@ public class VplanWidget extends AppWidgetProvider {
                 break;
         }
         intent.putExtra("day", day);
+        intent.setData(Uri.fromParts("content", String.valueOf(appWidgetId), null));
         intent.putExtra("random", randomNum);
         randomNum++;
         views.setRemoteAdapter(R.id.widget_list_view, intent);
-
     }
 
     protected static PendingIntent getPendingSelfIntent(Context context, String action, int appWidgetId) {
@@ -166,6 +197,23 @@ public class VplanWidget extends AppWidgetProvider {
         intent.setAction(action);
         intent.putExtra("appWidgetId", appWidgetId);
         return PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+    }
+
+    public static boolean useNightmode(Context context, int appWidgetId) {
+        int nightmode = VplanWidgetConfigureActivity.getNightmodePref(context, appWidgetId);
+        switch (nightmode) {
+            default:
+            case Nightmode.OFF:
+                return false;
+            case Nightmode.ON:
+                return true;
+            case Nightmode.APP:
+                Settings settings = new Settings(context);
+                return settings.getBool("nightmode", false);
+            case Nightmode.AUTO:
+                // TODO
+                return false;
+        }
     }
 }
 

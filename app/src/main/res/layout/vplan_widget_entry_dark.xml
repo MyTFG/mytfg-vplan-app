@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="@color/nm_bg"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/widget_plan_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/nm_colorPrimaryText"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/nm_colorPrimaryText"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_plan_cls"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/nm_colorPrimaryText"
+            android:id="@+id/widget_plan_plan"/>
+
+        <ImageView
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginStart="30sp"
+            android:id="@+id/widget_arrow"
+            android:layout_gravity="start"
+            android:scaleType="fitXY"
+            android:tint="@color/nm_colorPrimaryText"
+            android:src="@drawable/ic_vplan_arrow_down"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/nm_colorPrimaryText"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_plan_substitution"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/nm_colorPrimaryText"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_plan_comment"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

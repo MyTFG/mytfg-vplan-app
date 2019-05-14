@@ -21,6 +21,42 @@
         android:orientation="vertical"
         android:padding="@dimen/defaultPadding">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/widget_nightmode_title" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:id="@+id/widget_radiogroup"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:id="@+id/widget_nightmode_off"
+                android:text="@string/widget_nightmode_off" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/widget_nightmode_on"
+                android:text="@string/widget_nightmode_on"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/widget_nightmode_app"
+                android:text="@string/widget_nightmode_app"/>
+            <RadioButton
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/widget_nightmode_auto"
+                android:text="@string/widget_nightmode_auto"/>
+
+        </RadioGroup>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,8 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:background="@color/cardview_dark_background"
-            android:padding="@dimen/defaultPadding"
+            android:background="@color/nm_card"
+            android:padding="2dp"
             android:src="@drawable/widget_preview" />
 
     </LinearLayout>

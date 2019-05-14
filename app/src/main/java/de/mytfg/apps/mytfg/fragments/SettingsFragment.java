@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -392,6 +393,8 @@ public class SettingsFragment extends AuthenticationFragment {
         Switch mytfgNotifications = view.findViewById(R.id.switch_mytfg_notifications);
         Switch groupNotifications = view.findViewById(R.id.switch_group_mytfg_notifications);
         Spinner landing = view.findViewById(R.id.spinner_landing);
+
+        TextView test = view.findViewById(R.id.textview_test);
 
         final Settings settings = new Settings(context);
 
