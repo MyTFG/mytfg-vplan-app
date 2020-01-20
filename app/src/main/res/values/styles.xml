@@ -146,8 +146,6 @@
 
     <style name="MyDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
-        <item name="android:background">@color/colorRed</item>
     </style>
 
 
@@ -232,7 +230,7 @@
     <style name="DarkTheme.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="colorAccent">@color/colorRedDark</item>
         <item name="android:textColorPrimary">@color/nm_colorPrimaryText</item>
-        <item name="android:windowBackground">@color/nm_card_darker</item>"
+        <item name="android:windowBackground">@color/nm_card_darker</item>
     </style>
 
     <style name="DarkTheme.Spinner" parent="Widget.AppCompat.Spinner">

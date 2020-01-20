@@ -1,17 +1,29 @@
 package de.mytfg.apps.mytfg.firebase;
 
+import android.content.Context;
+import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Map;
+import java.util.Set;
 
 import de.mytfg.apps.mytfg.api.SuccessCallback;
+import de.mytfg.apps.mytfg.tools.JsonFileManager;
 import de.mytfg.apps.mytfg.tools.Settings;
+import de.mytfg.apps.mytfg.tools.TimeUtils;
 
 public class FbMessagingService extends FirebaseMessagingService {
+    private static int MaxNotificationLogSize = 100;
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         String TAG = "FBASE";
@@ -39,6 +51,13 @@ public class FbMessagingService extends FirebaseMessagingService {
                     case "message":
                         FbMessage fbMessage = new FbMessage(this);
                         fbMessage.handle(data);
+                        break;
+                    case "mytfg-ack":
+                        // Delete Notifications
+                        String ids = data.get("ids");
+                        String urls = data.get("urls");
+                        Log.d("Firebase ACK IDs", ids);
+                        Log.d("Firebase ACK URL", urls);
                         break;
                 }
             }
@@ -70,5 +89,68 @@ public class FbMessagingService extends FirebaseMessagingService {
                 Log.d("FB-ID-Server", "" + success);
             }
         });
+    }
+
+    public static void logNotification(Context context, String title, String text) {
+        logNotification(context, title, text, TimeUtils.now());
+    }
+
+    public static void logNotification(Context context, String title, String text, long timestamp) {
+        logNotification(context, title, text, timestamp, new Bundle());
+    }
+
+    public static void logNotification(Context context, String title, String text, long timestamp, Bundle args) {
+        JSONObject logObj = JsonFileManager.read("notifications.json", context);
+        JSONArray log = logObj.optJSONArray("notifications");
+        if (log == null) {
+            log = new JSONArray();
+        }
+
+        JSONObject entry = new JSONObject();
+        try {
+            JSONObject bundle = new JSONObject();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Set<String> keys = args.keySet();
+                for (String key : keys) {
+                    try {
+                        // json.put(key, bundle.get(key)); see edit below
+                        bundle.put(key, JSONObject.wrap(args.get(key)));
+                    } catch (JSONException e) {
+                        //Handle exception here
+                        Log.e("JSON", e.getMessage());
+                    }
+                }
+            }
+
+            entry.put("title", title);
+            entry.put("text", text);
+            entry.put("date", timestamp);
+            entry.put("bundle", bundle);
+            log.put(entry);
+        } catch (JSONException ex) {
+            Log.e("JSON", ex.getMessage());
+        }
+
+        JSONArray trimmedLog = FbMessagingService.trimLog(log);
+
+        logObj = new JSONObject();
+        try {
+            logObj.put("notifications", trimmedLog);
+        } catch (JSONException e) {
+            Log.e("JSON", e.getMessage());
+        }
+        JsonFileManager.write(logObj, "notifications.json", context);
+    }
+
+    private static JSONArray trimLog(JSONArray log) {
+        if (log.length() > MaxNotificationLogSize) {
+            JSONArray trimmed = new JSONArray();
+            for (int i = log.length() - MaxNotificationLogSize; i < log.length(); ++i) {
+                trimmed.put(log.opt(i));
+            }
+            return trimmed;
+        }
+
+        return log;
     }
 }

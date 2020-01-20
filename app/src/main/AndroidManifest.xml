@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     package="de.mytfg.apps.mytfg">
 
     <!-- Wifi Scan -->
@@ -15,7 +16,6 @@
 
     <application
         android:name=".MytfgVplan"
-        android:allowBackup="true"
         android:icon="@mipmap/tfg2_round"
         android:label="@string/app_name"
         android:supportsRtl="true"

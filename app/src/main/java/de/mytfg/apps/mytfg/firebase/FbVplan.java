@@ -19,6 +19,7 @@ import java.util.Map;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.tools.Settings;
+import de.mytfg.apps.mytfg.tools.TimeUtils;
 
 /**
  * Handles Firebase messages related to the VPlan
@@ -62,11 +63,15 @@ class FbVplan {
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
-        List<String> subscribtionsDefault = api.getAdditionalClasses();
-        List<String> subscribtions = new LinkedList<>();
+        List<String> subscriptionsDefault = api.getAdditionalClasses();
+        List<String> subscriptions = new LinkedList<>();
         String userclass = api.getUser().getGrade();
+        if (userclass != null) {
+            userclass = userclass.toLowerCase();
+        }
         int userrights = api.getUser().getRights();
         String text = "";
+        String allClasses = TextUtils.join(", ", classes);
 
         // Calculate ID based on date and day
         String toHash = MyTFGApi.tsToString(System.currentTimeMillis() / 1000) + day;
@@ -103,6 +108,7 @@ class FbVplan {
         Bundle extras = new Bundle();
         extras.putStringArrayList("teachers", teachers);
         extras.putStringArrayList("classes", classes);
+        extras.putString("type", "vplan");
 
         Log.d("FbVplan", "Userrights: " + userrights);
         Log.d("FbVplan", "Userclass: " + userclass);
@@ -113,6 +119,8 @@ class FbVplan {
                     // Notification!
                     String cls = TextUtils.join(", ", classes);
                     FbNotify.notifyVplan(context, "MyTFG VPlan für " + datestr , "Klassen: " + cls, day, nextId, extras);
+
+                    FbMessagingService.logNotification(context, "MyTFG VPlan für " + datestr, text, TimeUtils.now(), extras);
                 }
                 break;
             case User.USER_RIGHTS_TEACHER:
@@ -122,18 +130,24 @@ class FbVplan {
                     text = "Änderungen, die " + api.getUser().getFirstname() + " " + api.getUser().getLastname() + " betreffen!";
                 }
             default:
-                subscribtionsDefault.add(userclass);
-                for (String sub : subscribtionsDefault) {
+                if (userclass != null) {
+                    subscriptionsDefault.add(userclass);
+                }
+                for (String sub : subscriptionsDefault) {
                     if (sub == null || sub.length() == 0) {
                         continue;
                     }
+                    // Add both, with and without leading zero
                     if (sub.charAt(0) == '0') {
-                        subscribtions.add(sub.substring(1));
-                    } else {
-                        subscribtions.add(sub);
+                        subscriptions.add(sub.substring(1));
                     }
+                    subscriptions.add(sub);
                 }
-                classes.retainAll(subscribtions);
+                Log.d("VPLAN-FB", "Subscriptions: " + subscriptions.toString());
+                Log.d("VPLAN-FB", "Classes: " + classes.toString());
+
+                classes.retainAll(subscriptions);
+
                 String text2 = "";
                 if (classes.size() > 0) {
                     String cls = TextUtils.join(", ", classes);
@@ -149,6 +163,10 @@ class FbVplan {
                 Log.d("FbVPlan", t);
                 if (t.length() > 0) {
                     FbNotify.notifyVplan(context, "MyTFG VPlan für " + datestr, t, day, nextId, extras);
+                    FbMessagingService.logNotification(context, "MyTFG VPlan für " + datestr, t, TimeUtils.now(), extras);
+                } else {
+                    extras.putString("type", "vplan-skipped");
+                    FbMessagingService.logNotification(context, "MyTFG VPlan für " + datestr, allClasses, TimeUtils.now(), extras);
                 }
                 break;
         }

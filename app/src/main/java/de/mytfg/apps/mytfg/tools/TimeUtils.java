@@ -2,6 +2,10 @@ package de.mytfg.apps.mytfg.tools;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import de.mytfg.apps.mytfg.R;
 
 /**
@@ -33,5 +37,19 @@ public class TimeUtils {
         }
 
         return context.getString(R.string.widget_too_long);
+    }
+
+    public static long now() {
+        return new Date().getTime();
+    }
+
+    public static String format(long timestamp) {
+        return format(timestamp, "EEE, dd.MM.yyyy");
+    }
+
+    public static String format(long timestamp, String format) {
+        Date in = new Date();
+        in.setTime(timestamp);
+        return new SimpleDateFormat(format, Locale.GERMANY).format(in);
     }
 }

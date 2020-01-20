@@ -44,6 +44,7 @@ import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.objects.User;
 import de.mytfg.apps.mytfg.objects.Vplan;
+import de.mytfg.apps.mytfg.tools.JsonFileManager;
 
 /**
  * Wrapper for the MyTFG API. Handles Login tokens, authentication errors and result parsing.
@@ -372,6 +373,7 @@ public class MyTFGApi {
         }
         Vplan.clearCache("today", context);
         Vplan.clearCache("tomorrow", context);
+        JsonFileManager.clear("notifications.json", context);
         FbApi.unsubscribeAll(context);
     }
 

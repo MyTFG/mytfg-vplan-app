@@ -39,6 +39,7 @@ import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
 import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.LostAndFoundFragment;
+import de.mytfg.apps.mytfg.fragments.NotificationsFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
 import de.mytfg.apps.mytfg.fragments.PagesFragment;
 import de.mytfg.apps.mytfg.fragments.ParentsFragment;
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     private Navigation navi;
     // private ApiManager apiManager;
     public static SharedPreferences sharedPreferences;
-    private ToolbarManager toolbarManager;
     private MainActivity context;
     private Menu menu;
 
@@ -142,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.mainmenu_about:
                         //navi.clear();
                         navi.navigate(new AboutFragment(), R.id.fragment_container);
+                        return true;
+                    case R.id.mainmenu_notification:
+                        navi.navigate(new NotificationsFragment(), R.id.fragment_container);
                         return true;
                     case R.id.mainmenu_feedback:
                         //navi.clear();
@@ -275,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "message":
                     case "show_message":
-                        fragment = new TfgFragment();
+                        fragment = new NotificationsFragment();
 
                         navi.navigate(fragment, R.id.fragment_container);
 

@@ -37,6 +37,9 @@
         <item android:id="@+id/mainmenu_about"
             android:icon="@drawable/ic_menu_about"
             android:title="@string/menutitle_about" />
+        <item android:id="@+id/mainmenu_notification"
+            android:icon="@drawable/ic_menu_notifications"
+            android:title="@string/menutitle_notifications" />
         <item android:id="@+id/mainmenu_feedback"
             android:icon="@drawable/ic_menu_feedback"
             android:title="@string/menutitle_feedback" />

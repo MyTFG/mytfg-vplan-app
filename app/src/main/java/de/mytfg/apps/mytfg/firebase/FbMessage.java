@@ -17,6 +17,7 @@ import java.util.Map;
 
 import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.objects.User;
+import de.mytfg.apps.mytfg.tools.TimeUtils;
 
 /**
  * Handles Firebase messages related to the VPlan
@@ -37,6 +38,8 @@ class FbMessage {
         Bundle extras = new Bundle();
         extras.putString("title", title);
         extras.putString("text", text);
+        extras.putString("type", "message");
         FbNotify.notifyMessage(context, title, text, nextId, extras);
+        FbMessagingService.logNotification(context, title, text, TimeUtils.now(), extras);
     }
 }

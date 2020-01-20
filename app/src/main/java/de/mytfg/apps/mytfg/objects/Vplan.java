@@ -198,8 +198,8 @@ public class Vplan extends MytfgObject {
         try {
             Date in = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY).parse(getDate());
             return new SimpleDateFormat("EEE, dd.MM.yyyy", Locale.GERMANY).format(in);
-        } catch (ParseException ex) {
-            return getDate();
+        } catch (Exception ex) {
+            return getDate() == null ? "" : getDate();
         }
     }
 

@@ -30,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.objects.User;
+import de.mytfg.apps.mytfg.tools.JsonFileManager;
 import de.mytfg.apps.mytfg.tools.Settings;
 
 public class SettingsFragment extends AuthenticationFragment {
@@ -93,7 +95,27 @@ public class SettingsFragment extends AuthenticationFragment {
         CardView login = view.findViewById(R.id.account_goto_login);
         CardView additional = view.findViewById(R.id.account_additional_card);
 
+
+        TextView deviceId = view.findViewById(R.id.account_nerd_device);
+        TextView firebaseToken = view.findViewById(R.id.account_nerd_fb);
+        TextView fileSizes = view.findViewById(R.id.account_nerd_filesize);
+        TextView cache = view.findViewById(R.id.account_nerd_cache);
+
         MyTFGApi api = new MyTFGApi(context);
+        deviceId.setText(api.getDevice());
+        deviceId.setTextIsSelectable(true);
+
+        Settings settings = new Settings(context);
+        String token = settings.getString("firebaseToken");
+        firebaseToken.setText(token);
+        firebaseToken.setTextIsSelectable(true);
+
+        long sizeFiles = JsonFileManager.fileDirSize(context);
+        long sizeCache = JsonFileManager.getFileSize(context.getCacheDir());
+
+        fileSizes.setText(JsonFileManager.humanReadableByteCount(sizeFiles, true));
+        cache.setText(JsonFileManager.humanReadableByteCount(sizeCache,true));
+
         if (api.isLoggedIn()) {
             login.setVisibility(View.GONE);
             details.setVisibility(View.VISIBLE);
@@ -125,10 +147,16 @@ public class SettingsFragment extends AuthenticationFragment {
                 @Override
                 public void onClick(View view) {
                     MyTFGApi api = new MyTFGApi(context);
+
+
+                    ApiParams params = new ApiParams();
+                    api.addAuth(params);
+
                     api.logout(false);
                     api.clearAdditionalClasses();
 
                     context.getNavi().updateHeader();
+
 
 
                     CoordinatorLayout coordinatorLayout = context.findViewById(R.id.coordinator_layout);
@@ -137,6 +165,16 @@ public class SettingsFragment extends AuthenticationFragment {
                                     getString(R.string.account_logged_out),
                                     Snackbar.LENGTH_LONG);
                     snackbar.show();
+
+                    api.call("api/auth/logout.x", params, new ApiCallback() {
+                        @Override
+                        public void callback(JSONObject result, int responseCode) {
+                            if (responseCode != 200) {
+                                context.getNavi().snackbar(getResources().getString(R.string.logout_failed));
+                            }
+                        }
+                    });
+
                     updateViews();
                 }
             });
@@ -393,6 +431,7 @@ public class SettingsFragment extends AuthenticationFragment {
         Switch mytfgNotifications = view.findViewById(R.id.switch_mytfg_notifications);
         Switch groupNotifications = view.findViewById(R.id.switch_group_mytfg_notifications);
         Spinner landing = view.findViewById(R.id.spinner_landing);
+        Button testNotification = view.findViewById(R.id.button_test_notification);
 
         TextView test = view.findViewById(R.id.textview_test);
 
@@ -458,6 +497,31 @@ public class SettingsFragment extends AuthenticationFragment {
             }
         });
 
+        testNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyTFGApi api = new MyTFGApi(context);
+                ApiParams params = new ApiParams();
+                params.addParam("token", settings.getString("firebaseToken"));
+                api.addAuth(params);
+                api.call("api/firebase/validate", params, new ApiCallback() {
+                    @Override
+                    public void callback(JSONObject result, int responseCode) {
+                        if (responseCode == 200) {
+                            String error = result.optString("error", "");
+                            boolean success = result.optBoolean("success", false);
+                            if (success) {
+                                context.getNavi().snackbar(getResources().getString(R.string.firebase_test_successful));
+                            } else {
+                                context.getNavi().snackbar(error);
+                            }
+                        } else {
+                            context.getNavi().snackbar(getResources().getString(R.string.api_serverfault));
+                        }
+                    }
+                });
+            }
+        });
 
 
         FbApi fbApi = new FbApi(context);
@@ -478,13 +542,14 @@ public class SettingsFragment extends AuthenticationFragment {
         String selection = settings.getString("landing_page");
         int selectedId = 0;
         String[] arr = getResources().getStringArray(R.array.settings_opt_landing_page_fragments);
+        String[] names = getResources().getStringArray(R.array.settings_opt_landing_page_entries);
 
         List<String> list = new ArrayList<>();
         for (int i = 0; i < arr.length; ++i) {
             if (arr[i].equals(selection)) {
                 selectedId = i;
             }
-            list.add(arr[i]);
+            list.add(names[i]);
         }
         landing.setAdapter(new ArrayAdapter<String>(context, R.layout.spinner_item, list));
         landing.setSelection(selectedId);

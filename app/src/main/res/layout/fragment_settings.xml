@@ -237,6 +237,22 @@
                     android:paddingTop="@dimen/defaultPadding"
                     android:text="@string/settings_group_mytfg_notifications" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:id="@+id/button_test_notification"
+                        android:text="@string/account_test_notification"
+                        style="?attr/AppThemeButton" />
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -313,7 +329,82 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_nerd_card"
+            android:padding="@dimen/cardview_padding"
+            style="?attr/cardStyle"
+            android:layout_marginBottom="@dimen/cardview_padding">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/cardview_padding">
+
+
+                <TextView
+                    android:textSize="@dimen/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_nerd_title"
+                    android:id="@+id/settings_berd"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:text="@string/account_nerd_device"
+                    android:id="@+id/account_nerd_device_title"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/defaultPadding"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_nerd_device"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_nerd_fb"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:id="@+id/account_nerd_fb_title"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/defaultPadding"
+                    android:id="@+id/account_nerd_fb"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_nerd_filesize"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:id="@+id/account_nerd_filesize_title"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/defaultPadding"
+                    android:id="@+id/account_nerd_filesize"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_nerd_cache"
+                    android:textSize="@dimen/textSmallTitle"
+                    android:id="@+id/account_nerd_cache_title"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/defaultPadding"
+                    android:id="@+id/account_nerd_cache"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -65,7 +65,6 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public RemoteViews getViewAt(int position) {
-        Log.d("WIDGET", "getViewAt(" + position + ")");
         if (mCollection.size() <= position) {
             return null;
         }
@@ -128,20 +127,26 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
         Log.d("WIDGET", "INIT DATA: " + plan.getDay());
         nightmode = VplanWidget.useNightmode(mContext, widgetId);
         mCollection.clear();
+
         if (plan.isLoaded() && plan.upToDate()) {
-            mCollection.clear();
-            Log.d("WIDGET", "Data present");
-            for (VplanEntry entry : plan.getEntries()) {
-                mCollection.add(entry);
-            }
-            Log.d("WIDGET", "Entries: " + mCollection.size());
-            Log.d("WIDGET", "Day: " + plan.getDayString());
-            Log.d("WIDGET", "Date: " + plan.formatDate());
-            Log.d("WIDGET", "NOTIFY");
-            AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
-            awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
-            awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
+            Log.d("WIDGET", "Data up to date (Data PRovider)");
         } else {
+            Log.d("WIDGET", "Data too old (Data Provider)");
+        }
+
+        mCollection.clear();
+        for (VplanEntry entry : plan.getEntries()) {
+            mCollection.add(entry);
+        }
+        Log.d("WIDGET", "Entries: " + mCollection.size());
+        Log.d("WIDGET", "Day: " + plan.getDayString());
+        Log.d("WIDGET", "Date: " + plan.formatDate());
+        Log.d("WIDGET", "NOTIFY");
+        AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
+        awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceToday.class)), R.id.widget_list_view);
+        awm.notifyAppWidgetViewDataChanged(awm.getAppWidgetIds(new ComponentName(mContext, VplanWidgetServiceTomorrow.class)), R.id.widget_list_view);
+
+        /*else {
             Log.d("WIDGET", "Loading started");
             plan.load(new SuccessCallback() {
                 @Override
@@ -152,7 +157,7 @@ public class VplanWidgetDataProvider implements RemoteViewsService.RemoteViewsFa
                     }
                 }
             });
-        }
+        }*/
 
     }
 }

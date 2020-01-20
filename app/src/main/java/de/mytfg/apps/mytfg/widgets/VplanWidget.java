@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ public class VplanWidget extends AppWidgetProvider {
     // 4 hours
     private static long plan_update = 4 * 60 * 60 * 1000;
     private static final String SYNC_CLICKED    = "automaticWidgetSyncButtonClick";
+    private static final String HEADER_CLICKED    = "automaticWidgetHeaderClick";
     private static int randomNum = 1;
 
     class Nightmode {
@@ -72,7 +74,14 @@ public class VplanWidget extends AppWidgetProvider {
 
         final RemoteViews views = new RemoteViews(context.getPackageName(), layout);
 
+        // FAB
         views.setOnClickPendingIntent(R.id.widget_fab, getPendingSelfIntent(context, SYNC_CLICKED, appWidgetId));
+        // HEADER
+        Intent launchIntent = new Intent(context, MainActivity.class);
+        launchIntent.putExtra("type", "vplan_update");
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, 0);
+        views.setOnClickPendingIntent(R.id.widget_banner, pendingIntent);
 
         if (day.equals("today")) {
             daystr = context.getString(R.string.plan_today);
@@ -106,7 +115,7 @@ public class VplanWidget extends AppWidgetProvider {
             @Override
             public void callback(boolean success) {
                 //views.setViewVisibility(R.id.widget_fab, View.VISIBLE);
-                Log.d("WIDGET", "UPDATE COMPLETED: " + success);
+                Log.d("WIDGET", "PLAN UPDATE COMPLETED: " + success);
                 if (success) {
                     Date update = new Date();
                     update.setTime(plan.getTimestamp());
@@ -128,7 +137,7 @@ public class VplanWidget extends AppWidgetProvider {
                 // Instruct the widget manager to update the widget
                 appWidgetManager.updateAppWidget(appWidgetId, views);
             }
-        }, force, updateInt);
+        }, false);
     }
 
     @Override

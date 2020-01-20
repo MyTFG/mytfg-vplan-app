@@ -496,4 +496,16 @@
     <string name="widget_nightmode_app">DarkMode wie App</string>
     <string name="widget_nightmode_auto">Zeitbasierter DarkMode (vgl. App-Einstellungen)</string>
     <string name="widget_nightmode_title">Welches Design möchten Sie nutzen?</string>
+    <string name="account_show_firebase">FB Token</string>
+    <string name="account_test_notification">Push-Test</string>
+    <string name="firebase_test_successful">Test-Benachrichtigung versandt</string>
+    <string name="menutitle_notifications">Benachrichtigungen</string>
+    <string name="notifications_empty">Keine Benachrichtigungen gespeichert</string>
+    <string name="notification_skipped">Benachrichtigung nicht angezeigt</string>
+    <string name="logout_failed">Server-Logout fehlgeschlagen</string>
+    <string name="settings_nerd_title">Nerd-Informationen</string>
+    <string name="account_nerd_device">Geräte-ID</string>
+    <string name="account_nerd_fb">Firebase Token</string>
+    <string name="account_nerd_filesize">Daten Cache</string>
+    <string name="account_nerd_cache">Picasso Cache (Bilder)</string>
 </resources>

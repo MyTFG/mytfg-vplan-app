@@ -6,6 +6,7 @@ import android.os.Bundle;
 import java.util.Map;
 
 import de.mytfg.apps.mytfg.tools.Settings;
+import de.mytfg.apps.mytfg.tools.TimeUtils;
 
 /**
  * Handles Firebase messages related to the VPlan
@@ -20,14 +21,15 @@ class FbMyTFGNotification {
     void handle(Map<String, String> data) {
         String text = data.get("text");
         String title = data.get("title");
-        String url = data.get("url");
+        String url = data.get("url") == null ? "" : data.get("url");
+        String id = data.get("id") == null ? "0" : data.get("id");
 
         Settings settings = new Settings(context);
         int nextId;
         if (settings.getBool("group-mytfg-notifications", false)) {
             nextId = url.hashCode();
         } else {
-            nextId = data.get("timestamp").hashCode();
+            nextId = Integer.parseInt(id);
         }
 
 
@@ -35,6 +37,8 @@ class FbMyTFGNotification {
         extras.putString("title", title);
         extras.putString("text", text);
         extras.putString("url", url);
+        extras.putString("type", "mytfg-notification");
+        FbMessagingService.logNotification(context, title, text, TimeUtils.now(), extras);
         FbNotify.notifyMyTFGNotification(context, title, text, url, nextId, extras);
     }
 }
