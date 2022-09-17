@@ -7,17 +7,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.CardView;
+import androidx.annotation.Nullable;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,8 +30,6 @@ import android.widget.TextView;
 
 import com.skyfishjy.library.RippleBackground;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,7 +39,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.api.MyTFGApi;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.objects.ApMac;
 import de.mytfg.apps.mytfg.objects.ApMacs;

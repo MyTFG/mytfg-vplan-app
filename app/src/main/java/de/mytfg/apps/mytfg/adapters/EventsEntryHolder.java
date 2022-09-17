@@ -3,9 +3,12 @@ package de.mytfg.apps.mytfg.adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.TextView;
 
@@ -49,6 +52,7 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
         dayname.setText(MyTFGApi.getDayname(ts));
         String time = entry.getTime();
         String loc = entry.getLocation();
+        String dayType = MyTFGApi.getDayType(ts);
 
         long fullTs = ts;
         boolean fullDay;
@@ -74,7 +78,14 @@ public class EventsEntryHolder extends RecyclerView.ViewHolder {
             loc += loc.length() > 0 ? ", " + time : time;
         }
 
-        location.setText(loc);
+        Spanned locParsed;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            locParsed = Html.fromHtml(loc, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            locParsed = Html.fromHtml(loc);
+        }
+
+        location.setText(locParsed);
         if (loc.length() == 0) {
             location.setVisibility(View.GONE);
         } else {

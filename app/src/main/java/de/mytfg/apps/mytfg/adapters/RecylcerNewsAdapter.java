@@ -1,10 +1,10 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +17,7 @@ import java.util.UUID;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.fragments.NewsDetailFragment;
-import de.mytfg.apps.mytfg.fragments.VrrDetailFragment;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 public class RecylcerNewsAdapter extends RecyclerView.Adapter<NewsEntryHolder> {
     private Context context;

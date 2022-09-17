@@ -3,7 +3,7 @@ package  de.mytfg.apps.mytfg.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import  de.mytfg.apps.mytfg.R;
 import  de.mytfg.apps.mytfg.activities.MainActivity;
-import de.mytfg.apps.mytfg.navigation.Navigation;
 
 public class AboutFragment extends AuthenticationFragment {
     private final String githubUrl = "https://github.com/MyTFG/mytfg-vplan-app";

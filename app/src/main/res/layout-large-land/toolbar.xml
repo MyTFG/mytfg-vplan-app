@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +8,7 @@
     android:id="@+id/toolbarDefault"
     android:paddingBottom="0dp">
 
-    <android.support.design.widget.CollapsingToolbarLayout
+    <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -43,7 +43,7 @@
             android:id="@+id/toolbar_image_corner"
             android:src="@drawable/schulstiftung_logo"/>
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:id="@+id/toolbar"
@@ -57,10 +57,10 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:layout_collapseMode="pin">
 
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.CollapsingToolbarLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    <android.support.design.widget.TabLayout android:id="@+id/tablayout"
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
@@ -72,4 +72,4 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android" />
 
-</android.support.design.widget.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout>

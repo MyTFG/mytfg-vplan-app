@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.Switch;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONObject;
@@ -64,11 +63,7 @@ public class FbApi {
     public static void unsubscribeAll(Context context) {
         Settings settings = new Settings(context);
         settings.save("firebaseTokenUpdated", false);
-        try {
-            FirebaseInstanceId.getInstance().deleteInstanceId();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        FirebaseMessaging.getInstance().deleteToken();
     }
 
     public FbApi(Context context) {

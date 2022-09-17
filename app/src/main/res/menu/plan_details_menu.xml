@@ -7,7 +7,7 @@
         android:title="@string/plan_search"
         android:visible="false"
         app:showAsAction="collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item android:id="@+id/show_absent"
         android:icon="@drawable/ic_show_absent"
         android:title="@string/plan_show_absent"

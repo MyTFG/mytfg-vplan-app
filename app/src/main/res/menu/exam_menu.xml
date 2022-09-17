@@ -7,7 +7,7 @@
         android:title="@string/plan_search"
         android:visible="false"
         app:showAsAction="collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item android:id="@+id/show_exam_title"
         android:icon="@drawable/ic_show_marquee"

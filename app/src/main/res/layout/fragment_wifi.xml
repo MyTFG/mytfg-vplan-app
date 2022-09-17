@@ -42,7 +42,7 @@
             </LinearLayout>
         </com.skyfishjy.library.RippleBackground>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:id="@+id/wifi_results"
         android:layout_height="wrap_content">
@@ -52,7 +52,7 @@
             android:padding="@dimen/defaultPadding"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/wifi_status_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                         android:textAlignment="center"
                         android:textSize="@dimen/textDefault" />
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,5 +118,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

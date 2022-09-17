@@ -1,33 +1,26 @@
 package de.mytfg.apps.mytfg.activities;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.util.AttributeSet;
+import androidx.annotation.Nullable;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.ValueCallback;
 
 import com.google.firebase.FirebaseApp;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.adapters.MyTFGWebView;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
-import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.firebase.FbApi;
 import de.mytfg.apps.mytfg.fragments.AbbreviationsFragment;
 import de.mytfg.apps.mytfg.fragments.AboutFragment;
@@ -37,7 +30,6 @@ import de.mytfg.apps.mytfg.fragments.ExamFragment;
 import de.mytfg.apps.mytfg.fragments.FeedbackFragment;
 import de.mytfg.apps.mytfg.fragments.FoundationFragment;
 import de.mytfg.apps.mytfg.fragments.LinksFragment;
-import de.mytfg.apps.mytfg.fragments.LoginFragment;
 import de.mytfg.apps.mytfg.fragments.LostAndFoundFragment;
 import de.mytfg.apps.mytfg.fragments.NotificationsFragment;
 import de.mytfg.apps.mytfg.fragments.OfficeFragment;
@@ -45,7 +37,6 @@ import de.mytfg.apps.mytfg.fragments.PagesFragment;
 import de.mytfg.apps.mytfg.fragments.ParentsFragment;
 import de.mytfg.apps.mytfg.fragments.SettingsFragment;
 import de.mytfg.apps.mytfg.fragments.PlanFragment;
-import de.mytfg.apps.mytfg.fragments.WebViewFragment;
 import de.mytfg.apps.mytfg.fragments.TfgFragment;
 import de.mytfg.apps.mytfg.fragments.VrrFragment;
 import de.mytfg.apps.mytfg.fragments.WifiFragment;
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private Navigation navi;
+    private ToolbarManager toolbarManager;
     // private ApiManager apiManager;
     public static SharedPreferences sharedPreferences;
     private MainActivity context;

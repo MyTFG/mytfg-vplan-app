@@ -1,7 +1,7 @@
 package de.mytfg.apps.mytfg.logic;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 import de.mytfg.apps.mytfg.objects.Abbreviations;

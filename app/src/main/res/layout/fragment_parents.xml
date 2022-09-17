@@ -1,4 +1,4 @@
-<android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/foundation_header"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultPadding"
@@ -86,11 +86,11 @@
                     android:tint="@color/colorBlack"
                     android:layout_marginLeft="10dp" />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/cardview_spacing"
@@ -153,9 +153,9 @@
                     android:src="@drawable/ic_action_open_link"
                     android:layout_marginLeft="10dp" />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/cardview_spacing"
@@ -218,6 +218,6 @@
                     android:src="@drawable/ic_action_open_link"
                     android:layout_marginLeft="10dp" />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

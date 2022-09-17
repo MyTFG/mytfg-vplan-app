@@ -1,5 +1,7 @@
 package de.mytfg.apps.mytfg.objects;
 
+import android.text.Html;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -1,31 +1,23 @@
 package de.mytfg.apps.mytfg.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.adapters.RecyclerLostAndFoundAdapter;
-import de.mytfg.apps.mytfg.adapters.RecylcerVrrAdapter;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.objects.LostAndFound;
 import de.mytfg.apps.mytfg.objects.LostAndFoundEntry;
-import de.mytfg.apps.mytfg.objects.Vrr;
-import de.mytfg.apps.mytfg.objects.VrrEntry;
 import de.mytfg.apps.mytfg.tools.ItemOffsetDecoration;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 public class LostAndFoundFragment extends AuthenticationFragment {
     private View view;

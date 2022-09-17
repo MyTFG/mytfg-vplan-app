@@ -1,17 +1,15 @@
 package de.mytfg.apps.mytfg.navigation;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
 import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
 import android.transition.TransitionSet;

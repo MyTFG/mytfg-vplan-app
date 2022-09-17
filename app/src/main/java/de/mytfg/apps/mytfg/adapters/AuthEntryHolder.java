@@ -1,12 +1,11 @@
 package de.mytfg.apps.mytfg.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,10 +15,7 @@ import com.lb.auto_fit_textview.AutoResizeTextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
-import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.objects.Authentication;
-import de.mytfg.apps.mytfg.objects.VplanEntry;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 import static android.view.View.GONE;
 

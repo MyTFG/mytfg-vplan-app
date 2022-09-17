@@ -1,16 +1,15 @@
 package de.mytfg.apps.mytfg.logic;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
@@ -21,13 +20,10 @@ import java.util.Map;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.adapters.RecylcerExamsAdapter;
-import de.mytfg.apps.mytfg.adapters.RecylcerPlanAdapter;
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 import de.mytfg.apps.mytfg.fragments.FragmentHolderLogic;
 import de.mytfg.apps.mytfg.objects.ExamEntry;
 import de.mytfg.apps.mytfg.objects.Exams;
-import de.mytfg.apps.mytfg.objects.Vplan;
-import de.mytfg.apps.mytfg.objects.VplanEntry;
 import de.mytfg.apps.mytfg.tools.ItemOffsetDecoration;
 
 /**

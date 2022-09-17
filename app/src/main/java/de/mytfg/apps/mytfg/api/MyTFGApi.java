@@ -7,10 +7,12 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import androidx.collection.ArraySet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -245,7 +247,7 @@ public class MyTFGApi {
     }
 
     public List<String> getAdditionalClasses() {
-        Set<String> set = preferences.getStringSet("additional_classes", new android.support.v4.util.ArraySet<String>());
+        Set<String> set = preferences.getStringSet("additional_classes", new ArraySet<String>());
         List<String> list = new LinkedList<>();
         for (String cls : set) {
             if (cls != null) {
@@ -256,7 +258,7 @@ public class MyTFGApi {
     }
 
     public void setAdditionalClasses(List<String> classes) {
-        Set<String> classSet = new android.support.v4.util.ArraySet<>(classes.size());
+        Set<String> classSet = new ArraySet<>(classes.size());
         for (String cls : classes) {
             if (cls != null) {
                 classSet.add(cls);
@@ -649,6 +651,18 @@ public class MyTFGApi {
         timestamp = timestamp * 1000;
         try{
             DateFormat sdf = new SimpleDateFormat("EEE", Locale.GERMAN);
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch(Exception ex){
+            return "--";
+        }
+    }
+
+    public static String getDayType(long timestamp) {
+        timestamp = timestamp * 1000;
+        try{
+            DateFormat sdf = new SimpleDateFormat("u", Locale.GERMAN);
             Date netDate = (new Date(timestamp));
             return sdf.format(netDate);
         }

@@ -1,18 +1,14 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.api.MyTFGApi;
-import de.mytfg.apps.mytfg.objects.LostAndFound;
 import de.mytfg.apps.mytfg.objects.LostAndFoundEntry;
-import de.mytfg.apps.mytfg.objects.VrrEntry;
 
 public class LostAndFoundEntryHolder extends RecyclerView.ViewHolder {
     private TextView description;

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="de.mytfg.apps.mytfg">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Wifi Scan -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -31,6 +30,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
+            android:exported="true"
             android:theme="@style/AppTheme.Base"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -77,7 +77,8 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".widgets.VplanWidget">
+        <receiver android:name=".widgets.VplanWidget"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -87,18 +88,19 @@
                 android:resource="@xml/vplan_widget_info" />
         </receiver>
 
-        <activity android:name=".widgets.VplanWidgetConfigureActivity">
+        <activity android:name=".widgets.VplanWidgetConfigureActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
         <service android:name=".widgets.VplanWidgetServiceToday"
-            android:exported="false"
+            android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
         <service android:name=".widgets.VplanWidgetServiceTomorrow"
-            android:exported="false"
+            android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 

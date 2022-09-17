@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -28,7 +28,7 @@
             android:layout_marginBottom="@dimen/defaultPadding"
             android:id="@+id/news_detail_date" />
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="?attr/cardStyle"
@@ -53,7 +53,7 @@
                 android:paddingTop="@dimen/defaultPadding"
                 android:visibility="invisible" />
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,4 +63,4 @@
             android:id="@+id/news_detail_text" />
 
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

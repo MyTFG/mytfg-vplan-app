@@ -215,7 +215,7 @@
 
     <style name="DarkTheme.Navigation.TextAppearance">
         <item name="android:textColor">@color/nm_colorSecondaryText</item>
-        <item name="android:textSize">50dp</item>
+        <item name="android:textSize">50sp</item>
     </style>
 
 

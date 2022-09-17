@@ -1,18 +1,15 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
-import de.mytfg.apps.mytfg.tools.ColorTool;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 public class NewsEntryHolder extends RecyclerView.ViewHolder {
 

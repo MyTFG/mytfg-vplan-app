@@ -13,7 +13,7 @@
 
     <include layout="@layout/include_navigationview" />
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
 
 
         <!-- app:layout_behavior="de.mytfg.apps.mytfg.tools.ScrollAwareFabBehavior" -->
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:src="@android:drawable/ic_menu_search"
             app:fabSize="normal"
@@ -56,6 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

@@ -1,11 +1,10 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -13,7 +12,6 @@ import org.json.JSONObject;
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.activities.MainActivity;
 import de.mytfg.apps.mytfg.fragments.PlanFragment;
-import de.mytfg.apps.mytfg.objects.TfgNewsEntry;
 import de.mytfg.apps.mytfg.tools.TimeUtils;
 
 public class NotificationEntryHolder extends RecyclerView.ViewHolder {

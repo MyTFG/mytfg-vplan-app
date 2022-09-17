@@ -1,21 +1,15 @@
 package de.mytfg.apps.mytfg.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.lb.auto_fit_textview.AutoResizeTextView;
-
-import java.util.List;
-
 import de.mytfg.apps.mytfg.R;
 import de.mytfg.apps.mytfg.objects.ExamEntry;
-import de.mytfg.apps.mytfg.objects.VplanEntry;
-import de.mytfg.apps.mytfg.tools.Settings;
 
 import static android.view.View.GONE;
 
