@@ -19,6 +19,7 @@
     <string name="menutitle_news">News</string>
     <string name="menutitle_calendar">Calendar</string>
     <string name="menutitle_tfg">TFG</string>
+    <string name="menutitle_tfg_events">TFG News</string>
     <string name="menutitle_plan">Plan</string>
     <string name="menutitle_exams">Exams</string>
     <string name="menutitle_vrr">VRR</string>
@@ -123,6 +124,7 @@
     <string name="api_serverfault">Internal Server error</string>
     <string name="api_response">Invalid Server response</string>
     <string name="api_news_error">News could not be loaded</string>
+    <string name="api_events_error">Events could not be loaded</string>
     <string name="api_vrr_error">VRR Data could not be loaded</string>
     <string name="api_laf_error">LostAndFound Entries could not be loaded</string>
 

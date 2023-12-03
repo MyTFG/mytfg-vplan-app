@@ -76,6 +76,13 @@
                     android:layout_gravity="center"
                     android:src="@drawable/boosters_slide_6"/>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/boosters_slide_7"/>
+
 
             </de.mytfg.apps.mytfg.tools.ViewFlipperIndicator>
         </androidx.cardview.widget.CardView>

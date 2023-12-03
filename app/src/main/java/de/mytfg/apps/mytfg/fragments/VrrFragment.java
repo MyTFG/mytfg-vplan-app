@@ -148,11 +148,6 @@ public class VrrFragment extends AuthenticationFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("VRR", "Resume!");
-        Log.d("VRR", "RecylcerView: " + recyclerView);
-        Log.d("VRR", "swipe: " + swipeRefreshLayout);
-        Log.d("VRR", "adapter: " + adapter);
-        Log.d("VRR", "vrr: " + vrr);
         reshow();
         if (autoRefresh) {
             startTimer();

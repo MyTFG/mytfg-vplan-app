@@ -1,7 +1,10 @@
 package de.mytfg.apps.mytfg.objects;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.LinkedList;
 
 import de.mytfg.apps.mytfg.api.SuccessCallback;
 
@@ -21,8 +24,9 @@ public class VplanEntry extends MytfgObject {
     private String summary;
     private String color;
 
+    private String teachers_database_string;
 
-    private boolean own;
+    private final boolean own;
 
     private Vplan day;
 
@@ -60,6 +64,7 @@ public class VplanEntry extends MytfgObject {
             plan_text = data.getString("plan_text");
             summary = data.getString("shortage");
             color = data.getString("color");
+            teachers_database_string = data.getString("teachers");
         } catch (JSONException ex) {
             ex.printStackTrace();
             return false;
@@ -91,6 +96,10 @@ public class VplanEntry extends MytfgObject {
         return teacher;
     }
 
+    public String getTeachersAsString() {
+        return this.teachers_database_string;
+    }
+
     public String getPlanText() {
         return plan_text;
     }
@@ -117,6 +126,13 @@ public class VplanEntry extends MytfgObject {
      * @return True iff filter matches this entry
      */
     public boolean filter(String filter) {
+        if (filter.length() <= 3) {
+            // Only search for teachers, classes and lessons
+            return getCls().toLowerCase().contains(filter)
+                || getLesson().toLowerCase().contains(filter)
+                || getTeachersAsString().toLowerCase().contains(filter);
+        }
+
         return getCls().toLowerCase().contains(filter)
                 || getComment().toLowerCase().contains(filter)
                 || getLesson().toLowerCase().contains(filter)

@@ -165,6 +165,10 @@ public class EventsLogic implements FragmentHolderLogic {
         return context.getString(R.string.menutitle_calendar);
     }
 
+    public void update() {
+        this.display();
+    }
+
     public void filter(String filter) {
         this.current_filter = filter;
         forceReload = true;

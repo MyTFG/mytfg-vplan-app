@@ -19,6 +19,7 @@
     <string name="menutitle_news">Aktuelles</string>
     <string name="menutitle_calendar">Kalender</string>
     <string name="menutitle_tfg">TFG</string>
+    <string name="menutitle_tfg_events">TFG Aktuell</string>
     <string name="menutitle_plan">VPlan</string>
     <string name="menutitle_exams">Klausurplan</string>
     <string name="menutitle_vrr">Fahrplan</string>
@@ -62,6 +63,7 @@
     <string name="api_serverfault">Interner Server Fehler</string>
     <string name="api_response">Ungültige Server Antwort</string>
     <string name="api_news_error">News konnten nicht geladen werden</string>
+    <string name="api_events_error">Events konnten nicht geladen werden</string>
     <string name="api_vrr_error">Abfahrtszeiten konnten nicht geladen werden</string>
     <string name="api_laf_error">Fundbüroeinträge konnten nicht geladen werden</string>
 
